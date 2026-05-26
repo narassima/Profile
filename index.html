@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Narassima M.S. | Academic Portfolio</title>
+    <meta name="description" content="Academic portfolio of Dr. Narassima M.S., Assistant Professor at Great Lakes Institute of Management. Explore publications, courses, and research.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">Dr. Narassima M.S.</a>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="nav-links">
+                <a href="#home" class="nav-link active" data-target="home">Home</a>
+                <a href="#publications" class="nav-link" data-target="publications">Publications</a>
+                <a href="#teaching" class="nav-link" data-target="teaching">Teaching</a>
+                <a href="#projects" class="nav-link" data-target="projects">Mentorship</a>
+                <a href="#materials" class="nav-link" data-target="materials">Interactive Web Materials</a>
+                <a href="#experience" class="nav-link" data-target="experience">Experience</a>
+                <a href="#education" class="nav-link" data-target="education">Education</a>
+                <a href="#gallery" class="nav-link" data-target="gallery">Gallery</a>
+                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme" style="background: none; border: none; color: rgba(255, 255, 255, 0.85); font-size: 1.1rem; cursor: pointer; padding: 0.8rem 0.5rem; display: flex; align-items: center; justify-content: center; transition: var(--transition);" onmouseover="this.style.color='#FFFFFF'" onmouseout="this.style.color='rgba(255, 255, 255, 0.85)'">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+    
+        <!-- Home Section -->
+        <section id="home" class="page-section active-section">
+            <div class="hero-container">
+                <div class="hero-sidebar" style="display: flex; flex-direction: column; gap: 1.5rem;">
+                    <div class="hero-profile glass-card" style="height: fit-content;">
+                        <div class="hero-image-wrapper" style="margin-top: 1.5rem; z-index: 2; position: relative; border-width: 4px;">
+                            <img src="assets/img/profile.jpg" alt="Dr. Narassima M.S." class="profile-img">
+                        </div>
+                        <div class="hero-text">
+                            <h1 class="hero-name" style="margin-top: 0.5rem;">Dr. Narassima M.S.</h1>
+                            <h2 class="hero-title">Assistant Professor</h2>
+                            <p class="hero-institution"><i class="fas fa-university"></i> Great Lakes Institute of Management</p>
+                            <div class="hero-contact">
+                                <span class="contact-item" onclick="navigator.clipboard.writeText('msnarassima@gmail.com'); alert('Copied msnarassima@gmail.com');" title="Click to copy" style="cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem;"><i class="fas fa-envelope" style="color: #ea4335;"></i> msnarassima@gmail.com</span>
+                                <span class="contact-item" onclick="navigator.clipboard.writeText('narassima.s@greatlakes.edu.in'); alert('Copied narassima.s@greatlakes.edu.in');" title="Click to copy" style="cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem;"><i class="fas fa-envelope" style="color: #ea4335;"></i> narassima.s@greatlakes.edu.in</span>
+                                <a href="https://scholar.google.com/citations?user=RDFCAzYAAAAJ&hl=en" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem;"><i class="fas fa-graduation-cap" style="color: #4285F4;"></i> Google Scholar</a>
+                                <a href="https://www.linkedin.com/in/narassima/" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem;"><i class="fab fa-linkedin" style="color: #0077b5;"></i> LinkedIn</a>
+                                <a href="https://www.greatlakes.edu.in/chennai/faculty/narassima-m-s" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem;"><i class="fas fa-university" style="color: #004b87;"></i> GLIM Official Profile</a>
+                                <a href="https://www.researchgate.net/profile/Narassima-M-S" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem;"><i class="fab fa-researchgate" style="color: #00ccbb;"></i> ResearchGate</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Career Roadmap -->
+                    <div class="glass-card detail-card slide-up" style="animation-delay: 0.15s; padding: 1.5rem;">
+                        <div class="card-header" style="margin-bottom: 1.25rem;">
+                            <i class="fas fa-route" style="color: var(--primary-color);"></i>
+                            <h3 style="font-size: 1.15rem; font-weight: 700;">Career Roadmap</h3>
+                        </div>
+                        
+                        <div class="mini-timeline" style="position: relative; padding-left: 1.5rem; border-left: 2px dashed rgba(10, 102, 194, 0.25); display: flex; flex-direction: column; gap: 1.25rem; margin-bottom: 1.25rem;">
+                            
+                            <!-- Step 1 -->
+                            <div class="mini-timeline-item" style="position: relative;">
+                                <div style="position: absolute; left: -1.9rem; top: 0.25rem; width: 10px; height: 10px; border-radius: 50%; background: #137333; border: 2px solid var(--surface-color); box-shadow: 0 0 0 2px rgba(19, 115, 51, 0.2);"></div>
+                                <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin: 0 0 0.15rem;">Assistant Professor</h4>
+                                <p style="font-size: 0.85rem; color: var(--primary-color); font-weight: 600; margin: 0 0 0.15rem;">Great Lakes Institute of Management</p>
+                                <span style="font-size: 0.75rem; color: var(--text-secondary); font-weight: 500;">Dec 2023 - Present</span>
+                            </div>
+
+                            <!-- Step 2 -->
+                            <div class="mini-timeline-item" style="position: relative;">
+                                <div style="position: absolute; left: -1.9rem; top: 0.25rem; width: 10px; height: 10px; border-radius: 50%; background: var(--primary-color); border: 2px solid var(--surface-color);"></div>
+                                <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin: 0 0 0.15rem;">Junior Faculty (SRA / RA)</h4>
+                                <p style="font-size: 0.85rem; color: var(--primary-color); font-weight: 600; margin: 0 0 0.15rem;">Great Lakes Institute of Management</p>
+                                <span style="font-size: 0.75rem; color: var(--text-secondary); font-weight: 500;">Dec 2022 - Nov 2023</span>
+                            </div>
+
+                            <!-- Step 3 (Parallel PhD Track) -->
+                            <div class="mini-timeline-item" style="position: relative; background: rgba(10, 102, 194, 0.03); border-radius: 8px; padding: 0.5rem 0.5rem 0.5rem 0; margin-left: -0.25rem; border-left: 2px solid #ea4335;">
+                                <div style="position: absolute; left: -1.75rem; top: 0.75rem; width: 10px; height: 10px; border-radius: 50%; background: #ea4335; border: 2px solid var(--surface-color);"></div>
+                                <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin: 0 0 0.15rem; padding-left: 0.25rem;"><i class="fas fa-graduation-cap" style="color: #ea4335; font-size: 0.8rem; margin-right: 0.25rem;"></i> Ph.D. Scholar (Parallel Track)</h4>
+                                <p style="font-size: 0.85rem; color: var(--primary-color); font-weight: 600; margin: 0 0 0.15rem; padding-left: 0.25rem;">Amrita School of Engineering</p>
+                                <span style="font-size: 0.75rem; color: var(--text-secondary); font-weight: 500; padding-left: 0.25rem;">2019 - 2022</span>
+                            </div>
+
+                            <!-- Step 4 -->
+                            <div class="mini-timeline-item" style="position: relative;">
+                                <div style="position: absolute; left: -1.9rem; top: 0.25rem; width: 10px; height: 10px; border-radius: 50%; background: var(--primary-color); border: 2px solid var(--surface-color);"></div>
+                                <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin: 0 0 0.15rem;">Project Assistant</h4>
+                                <p style="font-size: 0.85rem; color: var(--primary-color); font-weight: 600; margin: 0 0 0.15rem;">Dept. of Social Welfare, Govt. TN & UNICEF</p>
+                                <span style="font-size: 0.75rem; color: var(--text-secondary); font-weight: 500;">Jan 2022 - Mar 2022</span>
+                            </div>
+
+                            <!-- Step 5 -->
+                            <div class="mini-timeline-item" style="position: relative;">
+                                <div style="position: absolute; left: -1.9rem; top: 0.25rem; width: 10px; height: 10px; border-radius: 50%; background: var(--primary-color); border: 2px solid var(--surface-color);"></div>
+                                <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin: 0 0 0.15rem;">Training Manager</h4>
+                                <p style="font-size: 0.85rem; color: var(--primary-color); font-weight: 600; margin: 0 0 0.15rem;">Dept. of Social Defense, Govt. of Tamilnadu</p>
+                                <span style="font-size: 0.75rem; color: var(--text-secondary); font-weight: 500;">Jul 2019 - Aug 2021</span>
+                            </div>
+
+                            <!-- Step 6 -->
+                            <div class="mini-timeline-item" style="position: relative;">
+                                <div style="position: absolute; left: -1.9rem; top: 0.25rem; width: 10px; height: 10px; border-radius: 50%; background: var(--primary-color); border: 2px solid var(--surface-color);"></div>
+                                <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin: 0 0 0.15rem;">Assistant System Engineer</h4>
+                                <p style="font-size: 0.85rem; color: var(--primary-color); font-weight: 600; margin: 0 0 0.15rem;">Tata Consultancy Services Ltd. (TCS)</p>
+                                <span style="font-size: 0.75rem; color: var(--text-secondary); font-weight: 500;">Sep 2017 - Feb 2019</span>
+                            </div>
+
+                            <!-- Step 7 (M.Tech. Scholar) -->
+                            <div class="mini-timeline-item" style="position: relative; background: rgba(10, 102, 194, 0.02); border-radius: 8px; padding: 0.25rem 0.25rem 0.25rem 0; margin-left: -0.25rem; border-left: 2px solid #ff9900;">
+                                <div style="position: absolute; left: -1.75rem; top: 0.5rem; width: 10px; height: 10px; border-radius: 50%; background: #ff9900; border: 2px solid var(--surface-color);"></div>
+                                <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin: 0 0 0.15rem; padding-left: 0.25rem;"><i class="fas fa-graduation-cap" style="color: #ff9900; font-size: 0.8rem; margin-right: 0.25rem;"></i> M.Tech. Scholar</h4>
+                                <p style="font-size: 0.85rem; color: var(--primary-color); font-weight: 600; margin: 0 0 0.15rem; padding-left: 0.25rem;">Amrita School of Engineering</p>
+                                <span style="font-size: 0.75rem; color: var(--text-secondary); font-weight: 500; padding-left: 0.25rem;">2015 - 2017 (Manufacturing Engineering)</span>
+                            </div>
+
+                            <!-- Step 8 -->
+                            <div class="mini-timeline-item" style="position: relative;">
+                                <div style="position: absolute; left: -1.9rem; top: 0.25rem; width: 10px; height: 10px; border-radius: 50%; background: var(--primary-color); border: 2px solid var(--surface-color);"></div>
+                                <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin: 0 0 0.15rem;">Software Engineer ILP</h4>
+                                <p style="font-size: 0.85rem; color: var(--primary-color); font-weight: 600; margin: 0 0 0.15rem;">UST Global, Trivandrum</p>
+                                <span style="font-size: 0.75rem; color: var(--text-secondary); font-weight: 500;">Jan 2015 - Jun 2015</span>
+                            </div>
+
+                        </div>
+                        
+                        <a href="#experience" onclick="document.querySelector('[data-target=\'experience\']').click();" style="display: flex; align-items: center; justify-content: center; width: 100%; padding: 0.6rem; background: rgba(10, 102, 194, 0.06); color: var(--primary-color); text-decoration: none; border-radius: 20px; font-size: 0.85rem; font-weight: 600; transition: all 0.3s ease; border: 1px solid rgba(10, 102, 194, 0.1);" onmouseover="this.style.background='var(--primary-color)'; this.style.color='white';" onmouseout="this.style.background='rgba(10, 102, 194, 0.06)'; this.style.color='var(--primary-color)';">
+                            View Full Roadmap Details <i class="fas fa-arrow-right" style="margin-left: 0.35rem;"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-details">
+                    <div class="glass-card detail-card slide-up">
+                        <div class="card-header">
+                            <i class="fas fa-user-circle"></i>
+                            <h3>About Me</h3>
+                        </div>
+                        <p>I am an Assistant Professor of Operations at the Great Lakes Institute of Management, Chennai, specializing in Operations Management, Supply Chain Management and Resilience, and Stochastic Simulation Modelling. Driven by a passion to bridge rigorous theory and business practice, my research focuses on developing evidence-based models for complex systems in healthcare, manufacturing, and public policy. I have authored various peer-reviewed articles in top-tier journals (such as Production Planning and Control, Supply Chain Management, Nature's Scientific Reports, and BMJ Open), published the textbook 'Design Thinking with Problem-Solving Techniques' with PHI Learning, and managed key research projects in collaboration with UNICEF and the Government of Tamil Nadu.</p>
+                    </div>
+
+                    <div class="glass-card detail-card slide-up" style="animation-delay: 0.05s;">
+                        <div class="card-header">
+                            <i class="fas fa-bullseye"></i>
+                            <h3>Objective</h3>
+                        </div>
+                        <p>To mentor, inspire and empower students beyond academics to facilitate them to meaningfully contribute to humanity. I am equally committed to research to bridge theory and practice, enable informed policymaking and evidence-based business decisions.</p>
+                    </div>
+
+                    <div class="glass-card detail-card slide-up" style="animation-delay: 0.1s;">
+                        <div class="card-header">
+                            <i class="fas fa-microscope"></i>
+                            <h3>Research Interests</h3>
+                        </div>
+                        <ul class="interest-list">
+                            <li><i class="fas fa-check-circle"></i> Operations Management</li>
+                            <li><i class="fas fa-check-circle"></i> Supply Chain Management and Resilience</li>
+                            <li><i class="fas fa-check-circle"></i> Modeling and Simulation of real-time systems</li>
+                            <li><i class="fas fa-check-circle"></i> Interdisciplinary research: Healthcare, Manufacturing, Industrial Engineering</li>
+                            <li><i class="fas fa-check-circle"></i> Sustainability</li>
+                        </ul>
+                    </div>
+
+                    <div class="glass-card detail-card slide-up" style="animation-delay: 0.2s;">
+                        <div class="card-header">
+                            <i class="fas fa-tools"></i>
+                            <h3>Tools & Technologies</h3>
+                        </div>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.5rem;">
+                            <span style="background: rgba(10, 102, 194, 0.08); color: var(--primary-color); padding: 0.35rem 0.75rem; border-radius: 15px; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-project-diagram" style="margin-right: 0.25rem;"></i> Arena & AnyLogic</span>
+                            <span style="background: rgba(10, 102, 194, 0.08); color: var(--primary-color); padding: 0.35rem 0.75rem; border-radius: 15px; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-network-wired" style="margin-right: 0.25rem;"></i> AnyLogistix</span>
+                            <span style="background: rgba(10, 102, 194, 0.08); color: var(--primary-color); padding: 0.35rem 0.75rem; border-radius: 15px; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-chart-line" style="margin-right: 0.25rem;"></i> SPSS (Statistics)</span>
+                            <span style="background: rgba(10, 102, 194, 0.08); color: var(--primary-color); padding: 0.35rem 0.75rem; border-radius: 15px; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-calculator" style="margin-right: 0.25rem;"></i> WarpPLS (SEM)</span>
+                            <span style="background: rgba(10, 102, 194, 0.08); color: var(--primary-color); padding: 0.35rem 0.75rem; border-radius: 15px; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-cubes" style="margin-right: 0.25rem;"></i> SAP ERP Systems</span>
+                            <span style="background: rgba(10, 102, 194, 0.08); color: var(--primary-color); padding: 0.35rem 0.75rem; border-radius: 15px; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-file-excel" style="margin-right: 0.25rem;"></i> MS Excel</span>
+                            <span style="background: rgba(10, 102, 194, 0.08); color: var(--primary-color); padding: 0.35rem 0.75rem; border-radius: 15px; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-brain" style="margin-right: 0.25rem;"></i> Generative AI</span>
+                            <span style="background: rgba(10, 102, 194, 0.08); color: var(--primary-color); padding: 0.35rem 0.75rem; border-radius: 15px; font-size: 0.85rem; font-weight: 600;"><i class="fab fa-python" style="margin-right: 0.25rem;"></i> Python Analytics</span>
+                        </div>
+                    </div>
+
+                    <div class="glass-card detail-card slide-up" style="animation-delay: 0.25s;">
+                        <div class="card-header">
+                            <i class="fas fa-heart"></i>
+                            <h3>Beyond Academics: Hobbies & Activities</h3>
+                        </div>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 0.5rem;">
+                            <div>
+                                <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.25rem;"><i class="fas fa-hands-helping" style="color: var(--primary-color); margin-right: 0.35rem;"></i> Karma Yoga Leadership</h4>
+                                <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">Active member guiding experiential social learning initiatives in village communities to foster sustainable and localized public development.</p>
+                            </div>
+                            <div>
+                                <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.25rem;"><i class="fas fa-running" style="color: var(--primary-color); margin-right: 0.35rem;"></i> Sports Committee Mentor</h4>
+                                <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">Contributed as a mentor for Sportscom at GLIM, coordinating athletic leagues, scheduling campus tournaments, and fostering physical health.</p>
+                            </div>
+                            <div>
+                                <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.25rem;"><i class="fas fa-icons" style="color: var(--primary-color); margin-right: 0.35rem;"></i> Personal Interests & Hobbies</h4>
+                                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem;">
+                                    <span style="background: rgba(234, 67, 53, 0.08); color: #ea4335; padding: 0.25rem 0.6rem; border-radius: 12px; font-size: 0.8rem; font-weight: 600;"><i class="fas fa-baseball-bat-ball"></i> Cricket</span>
+                                    <span style="background: rgba(19, 115, 51, 0.08); color: #137333; padding: 0.25rem 0.6rem; border-radius: 12px; font-size: 0.8rem; font-weight: 600;"><i class="fas fa-dumbbell"></i> Fitness & Health</span>
+                                    <span style="background: rgba(249, 171, 0, 0.08); color: #b06000; padding: 0.25rem 0.6rem; border-radius: 12px; font-size: 0.8rem; font-weight: 600;"><i class="fas fa-palette"></i> Drawing & Sketching</span>
+                                    <span style="background: rgba(10, 102, 194, 0.08); color: var(--primary-color); padding: 0.25rem 0.6rem; border-radius: 12px; font-size: 0.8rem; font-weight: 600;"><i class="fas fa-pencil-ruler"></i> Creative Designing</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Publications Section -->
+        <section id="publications" class="page-section">
+            <div class="section-header">
+                <h2>Publications</h2>
+                <div class="section-underline"></div>
+            </div>
+            
+            <div style="max-width: 600px; margin: 0 auto 2.5rem; display: flex; align-items: center; position: relative; gap: 0.5rem;">
+                <i class="fas fa-search" style="position: absolute; left: 1.25rem; color: var(--text-secondary); font-size: 1.1rem; pointer-events: none;"></i>
+                <input type="text" id="pub-search" placeholder="Search publications by title, co-author, or keywords..." style="width: 100%; padding: 0.85rem 1.5rem 0.85rem 3rem; border-radius: 30px; border: 1px solid var(--border-color); background: var(--glass-bg); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); color: var(--text-primary); font-family: var(--font-main); font-size: 1rem; outline: none; box-shadow: var(--shadow-sm); transition: var(--transition);">
+                <button id="pub-search-clear" style="position: absolute; right: 1.25rem; background: none; border: none; color: var(--text-secondary); font-size: 1.1rem; cursor: pointer; display: none; transition: var(--transition);"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <div class="glass-card content-card">
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="journals">Journals</button>
+                    <button class="tab-btn" data-tab="conferences">Conferences</button>
+                    <button class="tab-btn" data-tab="books">Books</button>
+                    <button class="tab-btn" data-tab="bookChapters">Book Chapters</button>
+                    <button class="tab-btn" data-tab="copyrights">Copyrights</button>
+                </div>
+                
+                <div class="tab-content active" id="tab-journals">
+                    <div class="publication-list" id="journal-list">
+                        <!-- Populated by JS -->
+                    </div>
+                    <div class="pagination" id="journal-pagination">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <div class="tab-content" id="tab-conferences">
+                    <div class="publication-list" id="conference-list">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <div class="tab-content" id="tab-books">
+                    <div class="publication-list" id="book-list">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <div class="tab-content" id="tab-bookChapters">
+                    <div class="publication-list" id="bookChapters-list">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <div class="tab-content" id="tab-copyrights">
+                    <div class="publication-list" id="copyrights-list">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Teaching Section -->
+        <section id="teaching" class="page-section">
+            <div class="section-header">
+                <h2>Teaching & Courses</h2>
+                <div class="section-underline"></div>
+            </div>
+
+            <div class="teaching-grid">
+                <div class="glass-card content-card word-cloud-card">
+                    <div class="card-header">
+                        <i class="fas fa-book-open"></i>
+                        <h3>Course Overview & Topics</h3>
+                    </div>
+                    <div class="course-topics-container" id="course-topics-list">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <div class="glass-card content-card word-cloud-card">
+                    <div class="card-header">
+                        <i class="fas fa-quote-left"></i>
+                        <h3>Student Testimonials</h3>
+                    </div>
+                    <div id="testimonials-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 1rem;">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <div class="glass-card content-card word-cloud-card">
+                    <div class="card-header">
+                        <i class="fas fa-comment-dots"></i>
+                        <h3>Student Feedback Highlights</h3>
+                    </div>
+                    <div class="word-cloud" id="word-cloud">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <div class="glass-card content-card word-cloud-card">
+                    <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                        <div style="display: flex; align-items: center; gap: 0.75rem;">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <h3>Courses Handled</h3>
+                        </div>
+                        <div class="filter-container" style="display: flex; align-items: center; gap: 0.5rem;">
+                            <label for="course-filter" style="font-size: 0.9rem; font-weight: 600; color: var(--text-secondary);">Select Course:</label>
+                            <select id="course-filter" style="padding: 0.5rem 1rem; border-radius: 20px; border: 1px solid var(--border-color); background: var(--surface-color); color: var(--text-primary); font-family: var(--font-main); font-size: 0.9rem; font-weight: 500; cursor: pointer; outline: none; box-shadow: var(--shadow-sm); transition: var(--transition);">
+                                <option value="select" selected>--Select--</option>
+                                <option value="all">All Courses</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="data-table" id="courses-table">
+                            <thead>
+                                <tr>
+                                    <th>Course Name</th>
+                                    <th>Year/ batch</th>
+                                    <th>Feedback Score (out of 5)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Mentorship Section -->
+        <section id="projects" class="page-section">
+            <div class="section-header">
+                <h2>Mentorship</h2>
+                <div class="section-underline"></div>
+            </div>
+            
+            <div style="max-width: 600px; margin: 0 auto 2.5rem; display: flex; align-items: center; position: relative; gap: 0.5rem;">
+                <i class="fas fa-search" style="position: absolute; left: 1.25rem; color: var(--text-secondary); font-size: 1.1rem; pointer-events: none;"></i>
+                <input type="text" id="mentorship-search" placeholder="Search by batch, project title, or keyword..." style="width: 100%; padding: 0.85rem 1.5rem 0.85rem 3rem; border-radius: 30px; border: 1px solid var(--border-color); background: var(--glass-bg); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); color: var(--text-primary); font-family: var(--font-main); font-size: 1rem; outline: none; box-shadow: var(--shadow-sm); transition: var(--transition);">
+                <button id="mentorship-search-clear" style="position: absolute; right: 1.25rem; background: none; border: none; color: var(--text-secondary); font-size: 1.1rem; cursor: pointer; display: none; transition: var(--transition);"><i class="fas fa-times"></i></button>
+            </div>
+
+            <div id="projects-container" style="max-width: 1000px; margin: 0 auto;">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <!-- Interactive Web Materials Section -->
+        <section id="materials" class="page-section">
+            <div class="section-header">
+                <h2>Interactive Web Materials</h2>
+                <div class="section-underline"></div>
+            </div>
+            
+            <p style="text-align: justify; max-width: 900px; margin: 0 auto 3rem; color: var(--text-secondary); font-size: 1.15rem; line-height: 1.8;">
+                Welcome to the Operations & Policy Analytics Portal. Below are the custom-engineered interactive web platforms, scientific calculators, and simulation dashboards developed by <strong>Dr. Narassima M.S.</strong> These state-of-the-art analytical tools were designed to bridge the gap between theoretical optimization models and real-world implementation, offering robust solutions for business workflow planning, public health epidemiological analysis, and macroeconomic policy formulation.
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2.5rem; max-width: 1150px; margin: 0 auto 2.5rem;">
+                <!-- Card 1: OM PGPM Planning -->
+                <a href="https://narassima.github.io/OM_PGPM_Planning/index.html" target="_blank" class="glass-card hover-lift" style="text-decoration: none; color: inherit; padding: 2.5rem 2rem; display: flex; flex-direction: column; gap: 1.25rem; border: 1px solid var(--border-color); border-radius: var(--radius-lg); height: 100%; transition: all 0.3s ease;">
+                    <div style="background: rgba(10, 102, 194, 0.08); color: var(--primary-color); width: 60px; height: 60px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem;">
+                        <i class="fas fa-sitemap"></i>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1.4rem; font-weight: 700; color: var(--text-primary); margin: 0 0 0.75rem;">OM PGPM Planning Dashboard</h3>
+                        <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin: 0; text-align: justify;">
+                            A sophisticated operations simulation and capacity modeling dashboard. It facilitates dynamic workflow mapping, scheduling coordination, bottleneck detection, and queueing-theory allocations for corporate supply chain processes. Designed as an active learning module for strategic operations analysis.
+                        </p>
+                    </div>
+                    <span style="font-size: 0.9rem; font-weight: 600; color: var(--primary-color); display: inline-flex; align-items: center; gap: 0.35rem; margin-top: auto;">Explore Dashboard <i class="fas fa-arrow-right"></i></span>
+                </a>
+
+                <!-- Card 2: DALY Calculator -->
+                <a href="https://coviddaly.cphr-mant.org/" target="_blank" class="glass-card hover-lift" style="text-decoration: none; color: inherit; padding: 2.5rem 2rem; display: flex; flex-direction: column; gap: 1.25rem; border: 1px solid var(--border-color); border-radius: var(--radius-lg); height: 100%; transition: all 0.3s ease;">
+                    <div style="background: rgba(10, 102, 194, 0.08); color: var(--primary-color); width: 60px; height: 60px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem;">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1.4rem; font-weight: 700; color: var(--text-primary); margin: 0 0 0.75rem;">COVID-19 DALY Calculator</h3>
+                        <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin: 0; text-align: justify;">
+                            An interactive, scientifically validated web-based calculator developed to evaluate and quantify public health impacts. It computes Disability-Adjusted Life Years (DALY) based on Years of Life Lost (YLL) and Years Lived with Disability (YLD) to guide evidence-based epidemic policy decisions.
+                        </p>
+                        <div style="margin-top: 0.75rem; font-size: 0.85rem; font-weight: 600; color: #137333; background: #e6f4ea; display: inline-block; padding: 0.25rem 0.6rem; border-radius: 6px;">
+                            <i class="fas fa-copyright" style="margin-right: 0.25rem;"></i> Copyright Reg: 7242/2024-CO/L
+                        </div>
+                    </div>
+                    <span style="font-size: 0.9rem; font-weight: 600; color: var(--primary-color); display: inline-flex; align-items: center; gap: 0.35rem; margin-top: auto;">Open Official Calculator <i class="fas fa-arrow-right"></i></span>
+                </a>
+
+                <!-- Card 3: Non-Health GDP Loss Estimator -->
+                <a href="https://covidnonhealthgdp.cphr-mant.org/" target="_blank" class="glass-card hover-lift" style="text-decoration: none; color: inherit; padding: 2.5rem 2rem; display: flex; flex-direction: column; gap: 1.25rem; border: 1px solid var(--border-color); border-radius: var(--radius-lg); height: 100%; transition: all 0.3s ease;">
+                    <div style="background: rgba(10, 102, 194, 0.08); color: var(--primary-color); width: 60px; height: 60px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem;">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1.4rem; font-weight: 700; color: var(--text-primary); margin: 0 0 0.75rem;">Non-Health GDP Loss Estimator</h3>
+                        <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin: 0; text-align: justify;">
+                            An advanced macroeconomic econometric simulator. This tool allows researchers and economists to evaluate, simulate, and project sectoral non-health Gross Domestic Product (GDP) losses resulting from workforce morbidity, mortality, and associated macroeconomic pandemic shockwaves.
+                        </p>
+                        <div style="margin-top: 0.75rem; font-size: 0.85rem; font-weight: 600; color: #137333; background: #e6f4ea; display: inline-block; padding: 0.25rem 0.6rem; border-radius: 6px;">
+                            <i class="fas fa-copyright" style="margin-right: 0.25rem;"></i> Copyright Reg: 6311/2024-CO/L
+                        </div>
+                    </div>
+                    <span style="font-size: 0.9rem; font-weight: 600; color: var(--primary-color); display: inline-flex; align-items: center; gap: 0.35rem; margin-top: auto;">Launch Official Estimator <i class="fas fa-arrow-right"></i></span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="page-section">
+            <div class="section-header">
+                <h2>Experience & Professional Positions</h2>
+                <div class="section-underline"></div>
+            </div>
+
+            <div class="timeline-container glass-card" id="experience-timeline">
+                <!-- Populated by JS -->
+            </div>
+
+            <div class="professional-roles glass-card mt-2">
+                <div class="card-header">
+                    <i class="fas fa-users"></i>
+                    <h3>Review & Editorial Boards</h3>
+                </div>
+                <div class="roles-grid" id="roles-grid">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <div class="professional-roles glass-card mt-2">
+                <div class="card-header">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <h3>Academic Contributions & Invited Talks</h3>
+                </div>
+                <div id="contributions-list" style="padding: 0 2rem 2rem; display: grid; grid-template-columns: 1fr; gap: 1rem; margin-top: 1rem;">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Education & Certifications Section -->
+        <section id="education" class="page-section">
+            <div class="section-header">
+                <h2>Education & Certifications</h2>
+                <div class="section-underline"></div>
+            </div>
+
+            <div class="edu-cert-grid">
+                <div class="glass-card content-card">
+                    <div class="card-header">
+                        <i class="fas fa-user-graduate"></i>
+                        <h3>Educational Qualification</h3>
+                    </div>
+                    <div class="timeline" id="education-timeline">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <div class="glass-card content-card">
+                    <div class="card-header">
+                        <i class="fas fa-certificate"></i>
+                        <h3>Certifications</h3>
+                    </div>
+                    <ul class="certification-list" id="certification-list">
+                        <!-- Populated by JS -->
+                    </ul>
+                </div>
+            </div>
+
+            <div class="glass-card content-card mt-2">
+                <div class="card-header">
+                    <i class="fas fa-trophy"></i>
+                    <h3>Achievements & Key Awards</h3>
+                </div>
+                <ul class="certification-list" id="achievements-list">
+                    <!-- Populated by JS -->
+                </ul>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="page-section">
+            <div class="section-header">
+                <h2>Gallery</h2>
+                <div class="section-underline"></div>
+            </div>
+
+            <!-- Google Maps Photography Card (rebranded) -->
+            <div style="max-width: 740px; margin: 0 auto 3.5rem;">
+                <a href="https://www.google.com/maps/contrib/116477131380312566240/photos/@12.7197187,76.4221103,7z/data=!4m3!8m2!3m1!1e1?authuser=1&entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" id="gmaps-photo-card" style="text-decoration: none; color: inherit; display: flex; align-items: stretch; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 32px rgba(234,113,10,0.15); border: 1px solid rgba(234,113,10,0.18); transition: all 0.35s ease; background: var(--glass-bg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);">
+                    <!-- Left accent strip -->
+                    <div style="width: 7px; background: linear-gradient(180deg, #e8710a, #f9ab00, #34a853, #4285F4); flex-shrink: 0;"></div>
+                    <!-- Icon block -->
+                    <div style="background: linear-gradient(135deg, #e8710a15, #f9ab0010); padding: 1.75rem 1.5rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                        <div style="position: relative; width: 64px; height: 64px;">
+                            <div style="width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(135deg, #e8710a, #f9ab00); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: white; box-shadow: 0 4px 16px rgba(234,113,10,0.4);">
+                                <i class="fas fa-map-marked-alt"></i>
+                            </div>
+                            <div style="position: absolute; bottom: -2px; right: -2px; width: 20px; height: 20px; border-radius: 50%; background: white; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 6px rgba(0,0,0,0.15);">
+                                <i class="fas fa-camera" style="font-size: 0.65rem; color: #e8710a;"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Text content -->
+                    <div style="flex: 1; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; justify-content: center; gap: 0.4rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #e8710a; background: rgba(234,113,10,0.1); padding: 0.2rem 0.6rem; border-radius: 6px;">Google Maps</span>
+                            <span style="font-size: 0.72rem; color: var(--text-secondary);">Photo Contributions</span>
+                        </div>
+                        <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--text-primary); margin: 0; line-height: 1.2;">Captured Through My Lens</h3>
+                        <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 0; line-height: 1.55;">Street photography, natural landscapes &amp; architectural captures — geotagged and published on Google Maps for the community.</p>
+                    </div>
+                    <!-- CTA arrow -->
+                    <div style="padding: 1.5rem 1.5rem 1.5rem 0.5rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                        <div id="gmaps-cta" style="width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, #e8710a, #f9ab00); display: flex; align-items: center; justify-content: center; color: white; font-size: 1rem; transition: transform 0.3s ease; box-shadow: 0 4px 12px rgba(234,113,10,0.35);">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- GLIM Clicks Collapsible Section -->
+            <div class="glim-clicks-wrapper" style="max-width: 1200px; margin: 0 auto;">
+
+                <!-- Collapsible Header / Toggle Button -->
+                <button id="glim-toggle-btn" onclick="toggleGlimClicks()" style="width: 100%; background: var(--glass-bg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid var(--border-color); border-radius: 16px; padding: 1.1rem 1.5rem; display: flex; align-items: center; gap: 1rem; cursor: pointer; transition: all 0.3s ease; text-align: left; margin-bottom: 1.25rem;">
+                    <div style="width: 42px; height: 42px; background: linear-gradient(135deg, #0A66C2, #004182); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 4px 12px rgba(10,102,194,0.3);">
+                        <i class="fas fa-images" style="color: white; font-size: 1.1rem;"></i>
+                    </div>
+                    <div style="flex: 1;">
+                        <div style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary);">GLIM Clicks</div>
+                        <div style="font-size: 0.82rem; color: var(--text-secondary); margin-top: 0.1rem;">Campus life, events &amp; moments at Great Lakes Institute of Management</div>
+                    </div>
+                    <!-- Preview strip (first 4 thumbnails) -->
+                    <div class="glim-preview-strip" style="display: flex; gap: 6px; flex-shrink: 0;">
+                        <div style="width: 48px; height: 48px; border-radius: 8px; overflow: hidden; border: 2px solid var(--surface-color); box-shadow: 0 2px 6px rgba(0,0,0,0.12);"><img src="assets/img/gallery_new/gallery_img_0.jpg" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
+                        <div style="width: 48px; height: 48px; border-radius: 8px; overflow: hidden; border: 2px solid var(--surface-color); box-shadow: 0 2px 6px rgba(0,0,0,0.12);"><img src="assets/img/gallery_new/gallery_img_4.jpg" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
+                        <div style="width: 48px; height: 48px; border-radius: 8px; overflow: hidden; border: 2px solid var(--surface-color); box-shadow: 0 2px 6px rgba(0,0,0,0.12);"><img src="assets/img/gallery_new/gallery_img_8.jpg" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
+                        <div class="glim-preview-count" style="width: 48px; height: 48px; border-radius: 8px; background: linear-gradient(135deg, #0A66C2, #004182); display: flex; align-items: center; justify-content: center; color: white; font-size: 0.78rem; font-weight: 700; box-shadow: 0 2px 6px rgba(10,102,194,0.3);">+39</div>
+                    </div>
+                    <!-- Chevron icon -->
+                    <div id="glim-chevron" style="width: 34px; height: 34px; border-radius: 50%; background: rgba(10,102,194,0.08); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: transform 0.4s cubic-bezier(0.25,0.8,0.25,1); color: var(--primary-color); font-size: 0.95rem;">
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </button>
+
+                <!-- Collapsible Grid Panel -->
+                <div id="glim-grid-panel" style="overflow: hidden; max-height: 0; transition: max-height 0.6s cubic-bezier(0.25,0.8,0.25,1), opacity 0.4s ease; opacity: 0;">
+                    <div class="masonry-grid" id="gallery-grid" style="padding-bottom: 1.5rem;">
+                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_0.jpg" alt="GLIM Clicks 1" loading="lazy"></div>
+                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_1.jpg" alt="GLIM Clicks 2" loading="lazy"></div>
+                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_2.jpg" alt="GLIM Clicks 3" loading="lazy"></div>
+                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_3.jpg" alt="GLIM Clicks 4" loading="lazy"></div>
+                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_4.jpg" alt="GLIM Clicks 5" loading="lazy"></div>
+                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_5.jpg" alt="GLIM Clicks 6" loading="lazy"></div>
+                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_6.jpg" alt="GLIM Clicks 7" loading="lazy"></div>
+                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_7.jpg" alt="GLIM Clicks 8" loading="lazy"></div>
+                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_8.jpg" alt="GLIM Clicks 9" loading="lazy"></div>
+                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_9.jpg" alt="GLIM Clicks 10" loading="lazy"></div>
+                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_10.jpg" alt="GLIM Clicks 11" loading="lazy"></div>
+                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_11.jpg" alt="GLIM Clicks 12" loading="lazy"></div>
+                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_12.jpg" alt="GLIM Clicks 13" loading="lazy"></div>
+                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_13.jpg" alt="GLIM Clicks 14" loading="lazy"></div>
+                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_14.jpg" alt="GLIM Clicks 15" loading="lazy"></div>
+                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_15.jpg" alt="GLIM Clicks 16" loading="lazy"></div>
+                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_16.jpg" alt="GLIM Clicks 17" loading="lazy"></div>
+                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_17.jpg" alt="GLIM Clicks 18" loading="lazy"></div>
+                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_18.jpg" alt="GLIM Clicks 19" loading="lazy"></div>
+                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_19.jpg" alt="GLIM Clicks 20" loading="lazy"></div>
+                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_20.jpg" alt="GLIM Clicks 21" loading="lazy"></div>
+                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_21.jpg" alt="GLIM Clicks 22" loading="lazy"></div>
+                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_22.jpg" alt="GLIM Clicks 23" loading="lazy"></div>
+                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_23.jpg" alt="GLIM Clicks 24" loading="lazy"></div>
+                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_24.jpg" alt="GLIM Clicks 25" loading="lazy"></div>
+                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_25.jpg" alt="GLIM Clicks 26" loading="lazy"></div>
+                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_26.jpg" alt="GLIM Clicks 27" loading="lazy"></div>
+                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_27.jpg" alt="GLIM Clicks 28" loading="lazy"></div>
+                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_28.jpg" alt="GLIM Clicks 29" loading="lazy"></div>
+                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_29.jpg" alt="GLIM Clicks 30" loading="lazy"></div>
+                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_30.jpg" alt="GLIM Clicks 31" loading="lazy"></div>
+                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_31.jpg" alt="GLIM Clicks 32" loading="lazy"></div>
+                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_32.jpg" alt="GLIM Clicks 33" loading="lazy"></div>
+                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_33.jpg" alt="GLIM Clicks 34" loading="lazy"></div>
+                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_34.jpg" alt="GLIM Clicks 35" loading="lazy"></div>
+                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_35.jpg" alt="GLIM Clicks 36" loading="lazy"></div>
+                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_36.jpg" alt="GLIM Clicks 37" loading="lazy"></div>
+                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_37.jpg" alt="GLIM Clicks 38" loading="lazy"></div>
+                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_38.jpg" alt="GLIM Clicks 39" loading="lazy"></div>
+                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_39.jpg" alt="GLIM Clicks 40" loading="lazy"></div>
+                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_40.jpg" alt="GLIM Clicks 41" loading="lazy"></div>
+                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_41.jpg" alt="GLIM Clicks 42" loading="lazy"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    
+        <!-- Image Lightbox Modal -->
+        <div id="image-lightbox" class="lightbox-modal">
+            <span class="lightbox-close">&times;</span>
+            <img class="lightbox-content" id="lightbox-img">
+            <a id="lightbox-download" class="lightbox-download-btn" download><i class="fas fa-download"></i> Download</a>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Dr. Narassima M.S. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
