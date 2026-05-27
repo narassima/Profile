@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
+
 </head>
 <body>
     <!-- Navbar -->
@@ -24,7 +25,7 @@
             </button>
             <nav class="nav-links">
                 <a href="#home" class="nav-link active" data-target="home">Home</a>
-                <a href="#publications" class="nav-link" data-target="publications">Publications</a>
+                <a href="#publications" class="nav-link" data-target="publications">Research</a>
                 <a href="#teaching" class="nav-link" data-target="teaching">Teaching</a>
                 <a href="#projects" class="nav-link" data-target="projects">Mentorship</a>
                 <a href="#materials" class="nav-link" data-target="materials">Interactive Web Materials</a>
@@ -144,45 +145,8 @@
                     </div>
                 </div>
 
-                <div class="hero-details" style="display: flex; flex-direction: column; gap: 1.5rem;">
-                    
-                    <!-- Academic Impact Dashboard -->
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; width: 100%;">
-                        <!-- Card 1 -->
-                        <div class="glass-card slide-up" style="padding: 1.25rem; display: flex; align-items: center; gap: 1rem; border-left: 4px solid #0a66c2; animation-delay: 0.05s;">
-                            <div style="background: rgba(10, 102, 194, 0.1); width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                <i class="fas fa-file-invoice" style="color: #0a66c2; font-size: 1.25rem;"></i>
-                            </div>
-                            <div>
-                                <h4 style="font-size: 1.6rem; font-weight: 800; color: var(--text-primary); margin: 0; line-height: 1.2;">68</h4>
-                                <p style="font-size: 0.75rem; color: var(--text-secondary); font-weight: 700; margin: 0.2rem 0 0; text-transform: uppercase; letter-spacing: 0.5px;">Publications</p>
-                            </div>
-                        </div>
-
-                        <!-- Card 2 -->
-                        <div class="glass-card slide-up" style="padding: 1.25rem; display: flex; align-items: center; gap: 1rem; border-left: 4px solid #f9ab00; animation-delay: 0.1s;">
-                            <div style="background: rgba(249, 171, 0, 0.1); width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                <i class="fas fa-book" style="color: #f9ab00; font-size: 1.25rem;"></i>
-                            </div>
-                            <div>
-                                <h4 style="font-size: 1.6rem; font-weight: 800; color: var(--text-primary); margin: 0; line-height: 1.2;">2</h4>
-                                <p style="font-size: 0.75rem; color: var(--text-secondary); font-weight: 700; margin: 0.2rem 0 0; text-transform: uppercase; letter-spacing: 0.5px;">Books Published</p>
-                            </div>
-                        </div>
-
-                        <!-- Card 3 -->
-                        <div class="glass-card slide-up" style="padding: 1.25rem; display: flex; align-items: center; gap: 1rem; border-left: 4px solid #137333; animation-delay: 0.15s;">
-                            <div style="background: rgba(19, 115, 51, 0.1); width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                <i class="fas fa-users" style="color: #137333; font-size: 1.25rem;"></i>
-                            </div>
-                            <div>
-                                <h4 style="font-size: 1.6rem; font-weight: 800; color: var(--text-primary); margin: 0; line-height: 1.2;">1,311</h4>
-                                <p style="font-size: 0.75rem; color: var(--text-secondary); font-weight: 700; margin: 0.2rem 0 0; text-transform: uppercase; letter-spacing: 0.5px;">Students Mentored</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="glass-card detail-card slide-up" style="animation-delay: 0.2s; margin-top: 0;">
+                <div class="hero-details">
+                    <div class="glass-card detail-card slide-up">
                         <div class="card-header">
                             <i class="fas fa-user-circle"></i>
                             <h3>About Me</h3>
@@ -254,6 +218,42 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Resized Academic Impact Dashboard -->
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; width: 100%; margin-top: 1rem;">
+                        <!-- Card 1 -->
+                        <div class="glass-card slide-up" style="padding: 1rem; display: flex; align-items: center; gap: 1rem; border-left: 3px solid #0a66c2; background: rgba(255,255,255,0.45); box-shadow: var(--shadow-sm); animation-delay: 0.05s;">
+                            <div style="background: rgba(10, 102, 194, 0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <i class="fas fa-file-invoice" style="color: #0a66c2; font-size: 1.1rem;"></i>
+                            </div>
+                            <div>
+                                <h4 style="font-size: 1.3rem; font-weight: 800; color: var(--text-primary); margin: 0; line-height: 1.2;">68</h4>
+                                <p style="font-size: 0.7rem; color: var(--text-secondary); font-weight: 700; margin: 0.15rem 0 0; text-transform: uppercase; letter-spacing: 0.5px;">Publications</p>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="glass-card slide-up" style="padding: 1rem; display: flex; align-items: center; gap: 1rem; border-left: 3px solid #f9ab00; background: rgba(255,255,255,0.45); box-shadow: var(--shadow-sm); animation-delay: 0.1s;">
+                            <div style="background: rgba(249, 171, 0, 0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <i class="fas fa-book" style="color: #f9ab00; font-size: 1.1rem;"></i>
+                            </div>
+                            <div>
+                                <h4 style="font-size: 1.3rem; font-weight: 800; color: var(--text-primary); margin: 0; line-height: 1.2;">2</h4>
+                                <p style="font-size: 0.7rem; color: var(--text-secondary); font-weight: 700; margin: 0.15rem 0 0; text-transform: uppercase; letter-spacing: 0.5px;">Books</p>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="glass-card slide-up" style="padding: 1rem; display: flex; align-items: center; gap: 1rem; border-left: 3px solid #137333; background: rgba(255,255,255,0.45); box-shadow: var(--shadow-sm); animation-delay: 0.15s;">
+                            <div style="background: rgba(19, 115, 51, 0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <i class="fas fa-users" style="color: #137333; font-size: 1.1rem;"></i>
+                            </div>
+                            <div>
+                                <h4 style="font-size: 1.3rem; font-weight: 800; color: var(--text-primary); margin: 0; line-height: 1.2;">1,300+</h4>
+                                <p style="font-size: 0.7rem; color: var(--text-secondary); font-weight: 700; margin: 0.15rem 0 0; text-transform: uppercase; letter-spacing: 0.5px;">Mentored</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -261,11 +261,11 @@
         <!-- Publications Section -->
         <section id="publications" class="page-section">
             <div class="section-header">
-                <h2>Publications</h2>
+                <h2>Research & Publications</h2>
                 <div class="section-underline"></div>
             </div>
             
-            <div style="max-width: 600px; margin: 0 auto 2.5rem; display: flex; align-items: center; position: relative; gap: 0.5rem;">
+            <div style="max-width: 600px; margin: 0 auto 2.5rem; display: flex; align-items: center; position: relative; gap: 0.5rem; z-index: 2;">
                 <i class="fas fa-search" style="position: absolute; left: 1.25rem; color: var(--text-secondary); font-size: 1.1rem; pointer-events: none;"></i>
                 <input type="text" id="pub-search" placeholder="Search publications by title, co-author, or keywords..." style="width: 100%; padding: 0.85rem 1.5rem 0.85rem 3rem; border-radius: 30px; border: 1px solid var(--border-color); background: var(--glass-bg); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); color: var(--text-primary); font-family: var(--font-main); font-size: 1rem; outline: none; box-shadow: var(--shadow-sm); transition: var(--transition);">
                 <button id="pub-search-clear" style="position: absolute; right: 1.25rem; background: none; border: none; color: var(--text-secondary); font-size: 1.1rem; cursor: pointer; display: none; transition: var(--transition);"><i class="fas fa-times"></i></button>
@@ -310,6 +310,406 @@
                 <div class="tab-content" id="tab-copyrights">
                     <div class="publication-list" id="copyrights-list">
                         <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Global Research Collaborators Card -->
+            <div class="glass-card" style="margin: 2.5rem auto 0; max-width: 1200px; padding: 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); z-index: 5; position: relative;">
+                <div class="card-header" style="margin-bottom: 1.25rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                        <i class="fas fa-handshake" style="color: var(--primary-color); font-size: 1.3rem;"></i>
+                        <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--text-primary);">Research Collaborations</h3>
+                    </div>
+                    <span style="font-size: 0.75rem; background: rgba(10, 102, 194, 0.08); color: var(--primary-color); padding: 0.25rem 0.6rem; border-radius: 12px; font-weight: 600;"><i class="fas fa-user-friends" style="margin-right: 0.25rem;"></i> Global Network</span>
+                </div>
+                
+
+
+                <!-- Sub-tabs navigation -->
+                <div class="collab-tabs">
+                    <button class="collab-tab-btn active" id="btn-collab-names"><i class="fas fa-user-friends"></i> Notable Collaborators</button>
+                    <button class="collab-tab-btn" id="btn-collab-institutions"><i class="fas fa-university"></i> Collaborating Institutions</button>
+                </div>
+
+                <!-- Sub-tab content 1: Collaborators -->
+                <div id="collab-tab-names" class="collab-tab-content active">
+                    <div class="collab-grid">
+                        <div class="collab-chip hover-lift">
+                            <i class="fas fa-user-circle"></i>
+                            <span>Dr. Angappa Gunasekaran</span>
+                            <div class="collab-tooltip">
+                                <strong>Dr. Angappa Gunasekaran</strong>
+                                <p>Professor of Supply Chain Management, Pennsylvania State University, Harrisburg, USA</p>
+                                <span class="tooltip-badge">Area: Lean Manufacturing & BI</span>
+                            </div>
+                        </div>
+                        <div class="collab-chip hover-lift">
+                            <i class="fas fa-user-circle"></i>
+                            <span>Dr. Erfan Babaee Tirkolaee</span>
+                            <div class="collab-tooltip">
+                                <strong>Dr. Erfan Babaee Tirkolaee</strong>
+                                <p>Assistant Professor, Istinye University, Istanbul, Turkey</p>
+                                <span class="tooltip-badge">Area: Green & Lean Manufacturing</span>
+                            </div>
+                        </div>
+                        <div class="collab-chip hover-lift">
+                            <i class="fas fa-user-circle"></i>
+                            <span>Dr. Olivia McDermott</span>
+                            <div class="collab-tooltip">
+                                <strong>Dr. Olivia McDermott</strong>
+                                <p>Lecturer & Researcher, University of Galway, Ireland</p>
+                                <span class="tooltip-badge">Area: Quality & Medical Devices</span>
+                            </div>
+                        </div>
+                        <div class="collab-chip hover-lift">
+                            <i class="fas fa-user-circle"></i>
+                            <span>Dr. S.P. Anbuudayasankar</span>
+                            <div class="collab-tooltip">
+                                <strong>Dr. S.P. Anbuudayasankar</strong>
+                                <p>Professor, Dept. of Mechanical Engineering, Guru Ghasidas Vishwavidyalaya (Central University), Bilaspur, India</p>
+                                <span class="tooltip-badge">Area: Operations & Supply Chain</span>
+                            </div>
+                        </div>
+                        <div class="collab-chip hover-lift">
+                            <i class="fas fa-user-circle"></i>
+                            <span>Dr. Vidyadhar V. Gedam</span>
+                            <div class="collab-tooltip">
+                                <strong>Dr. Vidyadhar V. Gedam</strong>
+                                <p>Assistant Professor, Indian Institute of Management (IIM) Mumbai, India</p>
+                                <span class="tooltip-badge">Area: Closed-Loop Supply Chain</span>
+                            </div>
+                        </div>
+                        <div class="collab-chip hover-lift">
+                            <i class="fas fa-user-circle"></i>
+                            <span>Dr. Denny John</span>
+                            <div class="collab-tooltip">
+                                <strong>Dr. Denny John</strong>
+                                <p>Evidence Synthesis Specialist, ICMR, New Delhi, India</p>
+                                <span class="tooltip-badge">Area: COVID-19 Burden & Health Systems</span>
+                            </div>
+                        </div>
+                        <div class="collab-chip hover-lift">
+                            <i class="fas fa-user-circle"></i>
+                            <span>Dr. K. Ganesh</span>
+                            <div class="collab-tooltip">
+                                <strong>Dr. K. Ganesh</strong>
+                                <p>Senior Knowledge Expert, McKinsey Knowledge Centre, Mumbai</p>
+                                <span class="tooltip-badge">Area: GSCM & Logistics Systems</span>
+                            </div>
+                        </div>
+                        <div class="collab-chip hover-lift">
+                            <i class="fas fa-user-circle"></i>
+                            <span>Dr. Vijay Yeldandi</span>
+                            <div class="collab-tooltip">
+                                <strong>Dr. Vijay Yeldandi</strong>
+                                <p>Clinical Professor, University of Illinois at Chicago, USA</p>
+                                <span class="tooltip-badge">Area: Infectious Disease & Modeling</span>
+                            </div>
+                        </div>
+                        <div class="collab-chip hover-lift">
+                            <i class="fas fa-user-circle"></i>
+                            <span>Dr. K. Mathiyazhagan</span>
+                            <div class="collab-tooltip">
+                                <strong>Dr. K. Mathiyazhagan</strong>
+                                <p>Professor & Chairperson - Research, Thiagarajar School of Management (TSM), Madurai, India</p>
+                                <span class="tooltip-badge">Area: Supply Chain Resilience</span>
+                            </div>
+                        </div>
+                        <div class="collab-chip hover-lift">
+                            <i class="fas fa-user-circle"></i>
+                            <span>Dr. Jaideep Menon</span>
+                            <div class="collab-tooltip">
+                                <strong>Dr. Jaideep Menon</strong>
+                                <p>Professor of Cardiology, Amrita Institute of Medical Sciences, Kochi</p>
+                                <span class="tooltip-badge">Area: Health Economics & ARIMA Models</span>
+                            </div>
+                        </div>
+                        <div class="collab-chip hover-lift">
+                            <i class="fas fa-user-circle"></i>
+                            <span>Dr. Amitava Banerjee</span>
+                            <div class="collab-tooltip">
+                                <strong>Dr. Amitava Banerjee</strong>
+                                <p>Professor of Clinical Data Science, University College London, UK</p>
+                                <span class="tooltip-badge">Area: Digital Health & Epidemiological Models</span>
+                            </div>
+                        </div>
+                        <div class="collab-chip hover-lift">
+                            <i class="fas fa-user-circle"></i>
+                            <span>Dr. Prashant R. Nair</span>
+                            <div class="collab-tooltip">
+                                <strong>Dr. Prashant R. Nair</strong>
+                                <p>Associate Professor, Amrita Vishwa Vidyapeetham, Coimbatore</p>
+                                <span class="tooltip-badge">Area: ICT Applications in SCM</span>
+                            </div>
+                        </div>
+                        <div class="collab-chip hover-lift">
+                            <i class="fas fa-user-circle"></i>
+                            <span>Dr. G.R. Jammy</span>
+                            <div class="collab-tooltip">
+                                <strong>Dr. G.R. Jammy</strong>
+                                <p>Public Health Expert, UNICEF Collaborative Hub, Hyderabad</p>
+                                <span class="tooltip-badge">Area: Epidemic Agent-Based Models</span>
+                            </div>
+                        </div>
+                        <div class="collab-chip hover-lift">
+                            <i class="fas fa-user-circle"></i>
+                            <span>Dr. Paramita Bhattacharya</span>
+                            <div class="collab-tooltip">
+                                <strong>Dr. Paramita Bhattacharya</strong>
+                                <p>Health Economist, IIPH, Bangalore, India</p>
+                                <span class="tooltip-badge">Area: COVID-19 DALY & VSL Modeling</span>
+                            </div>
+                        </div>
+                        <div class="collab-chip hover-lift">
+                            <i class="fas fa-user-circle"></i>
+                            <span>Dr. Nirmalya Mukherjee</span>
+                            <div class="collab-tooltip">
+                                <strong>Dr. Nirmalya Mukherjee</strong>
+                                <p>Director, Maitri Research, Kolkata, India</p>
+                                <span class="tooltip-badge">Area: Non-Health GDP Calculator</span>
+                            </div>
+                        </div>
+                        <div class="collab-chip hover-lift">
+                            <i class="fas fa-user-circle"></i>
+                            <span>Dr. Vandana Pai</span>
+                            <div class="collab-tooltip">
+                                <strong>Dr. Vandana Pai</strong>
+                                <p>Assistant Professor, Amrita School of Business, Coimbatore</p>
+                                <span class="tooltip-badge">Area: Closed-Loop SCM Heuristics</span>
+                            </div>
+                        </div>
+                        <div class="collab-chip hover-lift">
+                            <i class="fas fa-user-circle"></i>
+                            <span>Dr. M. Thenarasu</span>
+                            <div class="collab-tooltip">
+                                <strong>Dr. M. Thenarasu</strong>
+                                <p>Assistant Professor, Amrita School of Engineering, Coimbatore</p>
+                                <span class="tooltip-badge">Area: Lean & Manufacturing Simulation</span>
+                            </div>
+                        </div>
+                        <div class="collab-chip hover-lift">
+                            <i class="fas fa-user-circle"></i>
+                            <span>Dr. A. Sumesh</span>
+                            <div class="collab-tooltip">
+                                <strong>Dr. A. Sumesh</strong>
+                                <p>Assistant Professor, Amrita School of Engineering, Coimbatore</p>
+                                <span class="tooltip-badge">Area: Machine Learning in Shop Floor</span>
+                            </div>
+                        </div>
+                        <div class="collab-chip hover-lift">
+                            <i class="fas fa-user-circle"></i>
+                            <span>Dr. T. Mohanavelu</span>
+                            <div class="collab-tooltip">
+                                <strong>Dr. T. Mohanavelu</strong>
+                                <p>Researcher & Faculty, Amrita Vishwa Vidyapeetham</p>
+                                <span class="tooltip-badge">Area: Assembly Line Heuristics & SimLean</span>
+                            </div>
+                        </div>
+                        <div class="collab-chip hover-lift">
+                            <i class="fas fa-user-circle"></i>
+                            <span>Dr. K.V. Shriram</span>
+                            <div class="collab-tooltip">
+                                <strong>Dr. K.V. Shriram</strong>
+                                <p>Principal Consultant, Huawei Technologies, India (Ex-Amrita School of Engineering)</p>
+                                <span class="tooltip-badge">Area: Blockchain & Job Shop Scheduling</span>
+                            </div>
+                        </div>
+                        <div class="collab-chip hover-lift">
+                            <i class="fas fa-user-circle"></i>
+                            <span>Dr. S.K. Vasudevan</span>
+                            <div class="collab-tooltip">
+                                <strong>Dr. S.K. Vasudevan</strong>
+                                <p>Senior Manager - Industrial AI, Accenture, India (Ex-Intel & Amrita)</p>
+                                <span class="tooltip-badge">Area: Wearable Tech & Retail DL Models</span>
+                            </div>
+                        </div>
+                        <div class="collab-chip hover-lift">
+                            <i class="fas fa-user-circle"></i>
+                            <span>Dr. R. Vaira Vignesh</span>
+                            <div class="collab-tooltip">
+                                <strong>Dr. R. Vaira Vignesh</strong>
+                                <p>Assistant Professor, Dept. of Mechanical Engineering, Amrita School of Engineering, Coimbatore, India</p>
+                                <span class="tooltip-badge">Area: Friction Stir Processing & Metallurgy</span>
+                            </div>
+                        </div>
+                        <div class="collab-chip hover-lift">
+                            <i class="fas fa-user-circle"></i>
+                            <span>Dr. M. Dwarakanath</span>
+                            <div class="collab-tooltip">
+                                <strong>Dr. M. Dwarakanath</strong>
+                                <p>Environment & Waste Management Expert, Coimbatore</p>
+                                <span class="tooltip-badge">Area: GHG Inventorisation & Mitigation</span>
+                            </div>
+                        </div>
+                        <div class="collab-chip hover-lift">
+                            <i class="fas fa-user-circle"></i>
+                            <span>Dr. J. Petru</span>
+                            <div class="collab-tooltip">
+                                <strong>Dr. J. Petru</strong>
+                                <p>Professor, VSB - Technical University of Ostrava, Czech Republic</p>
+                                <span class="tooltip-badge">Area: Sustainable Machining & EN8 Steel</span>
+                            </div>
+                        </div>
+                        <div class="collab-chip hover-lift">
+                            <i class="fas fa-user-circle"></i>
+                            <span>Dr. P. Rangasami</span>
+                            <div class="collab-tooltip">
+                                <strong>Dr. P. Rangasami</strong>
+                                <p>Professor of Social Work, Amrita Vishwa Vidyapeetham</p>
+                                <span class="tooltip-badge">Area: Social Reintegration & Child Welfare</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sub-tab content 2: Institutions -->
+                <div id="collab-tab-institutions" class="collab-tab-content">
+                    <div class="collab-grid">
+                        <div class="collab-chip hover-lift">
+                            <i class="fas fa-university"></i>
+                            <span>Pennsylvania State University, Harrisburg, USA</span>
+                            <div class="collab-tooltip">
+                                <strong>Pennsylvania State University</strong>
+                                <p>Harrisburg, Pennsylvania, USA</p>
+                                <span class="tooltip-badge">Key Co-author: Dr. Angappa Gunasekaran</span>
+                            </div>
+                        </div>
+                        <div class="collab-chip hover-lift">
+                            <i class="fas fa-university"></i>
+                            <span>University of Galway, Ireland</span>
+                            <div class="collab-tooltip">
+                                <strong>University of Galway</strong>
+                                <p>Galway, Ireland</p>
+                                <span class="tooltip-badge">Key Co-authors: Dr. Olivia McDermott, Curran</span>
+                            </div>
+                        </div>
+                        <div class="collab-chip hover-lift">
+                            <i class="fas fa-university"></i>
+                            <span>Istinye University, Turkey</span>
+                            <div class="collab-tooltip">
+                                <strong>Istinye University</strong>
+                                <p>Istanbul, Turkey</p>
+                                <span class="tooltip-badge">Key Co-author: Dr. Erfan Babaee Tirkolaee</span>
+                            </div>
+                        </div>
+                        <div class="collab-chip hover-lift">
+                            <i class="fas fa-university"></i>
+                            <span>University College London, UK</span>
+                            <div class="collab-tooltip">
+                                <strong>University College London</strong>
+                                <p>London, United Kingdom</p>
+                                <span class="tooltip-badge">Key Co-author: Dr. Amitava Banerjee</span>
+                            </div>
+                        </div>
+                        <div class="collab-chip hover-lift">
+                            <i class="fas fa-university"></i>
+                            <span>University of Illinois at Chicago, USA</span>
+                            <div class="collab-tooltip">
+                                <strong>University of Illinois at Chicago</strong>
+                                <p>Chicago, Illinois, USA</p>
+                                <span class="tooltip-badge">Key Co-author: Dr. Vijay Yeldandi</span>
+                            </div>
+                        </div>
+                        <div class="collab-chip hover-lift">
+                            <i class="fas fa-university"></i>
+                            <span>VSB - Technical University of Ostrava</span>
+                            <div class="collab-tooltip">
+                                <strong>VSB - Technical University of Ostrava</strong>
+                                <p>Ostrava, Czech Republic</p>
+                                <span class="tooltip-badge">Key Co-author: Dr. J. Petru</span>
+                            </div>
+                        </div>
+                        <div class="collab-chip hover-lift">
+                            <i class="fas fa-university"></i>
+                            <span>University of Mons, Belgium</span>
+                            <div class="collab-tooltip">
+                                <strong>University of Mons</strong>
+                                <p>Mons, Belgium</p>
+                                <span class="tooltip-badge">Key Co-author: Dr. D. Lamy</span>
+                            </div>
+                        </div>
+                        <div class="collab-chip hover-lift">
+                            <i class="fas fa-university"></i>
+                            <span>National Chiao Tung University, Taiwan</span>
+                            <div class="collab-tooltip">
+                                <strong>National Chiao Tung University</strong>
+                                <p>Hsinchu, Taiwan</p>
+                                <span class="tooltip-badge">Key Co-author: Dr. T. R. Lee</span>
+                            </div>
+                        </div>
+                        <div class="collab-chip hover-lift">
+                            <i class="fas fa-university"></i>
+                            <span>Indian Council of Medical Research (ICMR)</span>
+                            <div class="collab-tooltip">
+                                <strong>ICMR, New Delhi</strong>
+                                <p>New Delhi, India</p>
+                                <span class="tooltip-badge">Key Co-authors: Dr. Denny John, Panchal</span>
+                            </div>
+                        </div>
+                        <div class="collab-chip hover-lift">
+                            <i class="fas fa-university"></i>
+                            <span>IIT Jammu, India</span>
+                            <div class="collab-tooltip">
+                                <strong>Indian Institute of Technology Jammu</strong>
+                                <p>Jammu & Kashmir, India</p>
+                                <span class="tooltip-badge">Key Co-author: Dr. K. Mathiyazhagan</span>
+                            </div>
+                        </div>
+                        <div class="collab-chip hover-lift">
+                            <i class="fas fa-university"></i>
+                            <span>IIM Mumbai (Ex-NITIE), India</span>
+                            <div class="collab-tooltip">
+                                <strong>Indian Institute of Management Mumbai</strong>
+                                <p>Mumbai, Maharashtra, India</p>
+                                <span class="tooltip-badge">Key Co-author: Dr. Vidyadhar V. Gedam</span>
+                            </div>
+                        </div>
+                        <div class="collab-chip hover-lift">
+                            <i class="fas fa-university"></i>
+                            <span>Amrita Vishwa Vidyapeetham, India</span>
+                            <div class="collab-tooltip">
+                                <strong>Amrita Vishwa Vidyapeetham</strong>
+                                <p>Coimbatore/Kochi, India</p>
+                                <span class="tooltip-badge">Key Co-authors: Dr. Anbuudayasankar, Thenarasu</span>
+                            </div>
+                        </div>
+                        <div class="collab-chip hover-lift">
+                            <i class="fas fa-university"></i>
+                            <span>Great Lakes Institute of Management</span>
+                            <div class="collab-tooltip">
+                                <strong>Great Lakes Institute of Management</strong>
+                                <p>Chennai, Tamil Nadu, India</p>
+                                <span class="tooltip-badge">Primary Affiliation: Dr. Narassima M.S.</span>
+                            </div>
+                        </div>
+                        <div class="collab-chip hover-lift">
+                            <i class="fas fa-university"></i>
+                            <span>McKinsey Knowledge Centre, India</span>
+                            <div class="collab-tooltip">
+                                <strong>McKinsey Knowledge Centre</strong>
+                                <p>Gurugram / Mumbai, India</p>
+                                <span class="tooltip-badge">Key Co-author: Dr. K. Ganesh</span>
+                            </div>
+                        </div>
+                        <div class="collab-chip hover-lift">
+                            <i class="fas fa-university"></i>
+                            <span>Indian Institute of Public Health (IIPH)</span>
+                            <div class="collab-tooltip">
+                                <strong>IIPH Bangalore</strong>
+                                <p>Bengaluru, India</p>
+                                <span class="tooltip-badge">Key Co-author: Dr. Paramita Bhattacharya</span>
+                            </div>
+                        </div>
+                        <div class="collab-chip hover-lift">
+                            <i class="fas fa-university"></i>
+                            <span>UNICEF Collaborative Hub, India</span>
+                            <div class="collab-tooltip">
+                                <strong>UNICEF Collaborative Hub</strong>
+                                <p>Hyderabad, India</p>
+                                <span class="tooltip-badge">Key Co-author: Dr. G.R. Jammy</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -412,7 +812,7 @@
             </div>
             
             <p style="text-align: justify; max-width: 900px; margin: 0 auto 3rem; color: var(--text-secondary); font-size: 1.15rem; line-height: 1.8;">
-                Welcome to the Operations & Policy Analytics Portal. Below are the custom-engineered interactive web platforms, scientific calculators, and simulation dashboards developed by <strong>Dr. Narassima M.S.</strong> These state-of-the-art analytical tools were designed to bridge the gap between theoretical optimization models and real-world implementation, offering robust solutions for business workflow planning, public health epidemiological analysis, and macroeconomic policy formulation.
+                Welcome to the Operations & Policy Analytics Portal. Below are the custom-engineered interactive web platforms, scientific calculators, and simulation dashboards. These state-of-the-art analytical tools were designed to bridge the gap between theoretical optimization models and real-world implementation, offering robust solutions for business workflow planning, public health epidemiological analysis, and macroeconomic policy formulation.
             </p>
 
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2.5rem; max-width: 1150px; margin: 0 auto 2.5rem;">
@@ -662,13 +1062,15 @@
             <a id="lightbox-download" class="lightbox-download-btn" download><i class="fas fa-download"></i> Download</a>
         </div>
 
+
+
     </main>
 
     <footer class="footer">
         <div class="footer-content" style="display: flex; flex-direction: column; align-items: center; gap: 0.75rem;">
             <p>&copy; 2026 Dr. Narassima M.S. All Rights Reserved.</p>
             <div class="hits-counter" style="margin-top: 0.25rem;">
-                <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fnarassima.github.io%2Facademic_website%2F&count_bg=%230A66C2&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=Hits&edge_flat=false" alt="Hits Counter" style="border-radius: 4px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);"/>
+                <img src="https://komarev.com/ghpvc/?username=narassima-academic-website&color=0a66c2&style=flat-square&label=Page+Views" alt="Hits Counter" style="border-radius: 4px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); height: 20px;"/>
             </div>
         </div>
     </footer>

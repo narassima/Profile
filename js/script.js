@@ -538,4 +538,79 @@ document.addEventListener('DOMContentLoaded', () => {
         gmapsCard.addEventListener('mouseleave', () => { gmapsCta.style.transform = ''; });
     }
 
+    // ── Research Collaborators Tab Switcher & Dynamic Floating Tooltip ──
+    const initCollaboratorsTabs = () => {
+        const btnNames = document.getElementById('btn-collab-names');
+        const btnInsts = document.getElementById('btn-collab-institutions');
+        const tabNames = document.getElementById('collab-tab-names');
+        const tabInsts = document.getElementById('collab-tab-institutions');
+
+        if (!btnNames || !btnInsts || !tabNames || !tabInsts) return;
+
+        btnNames.addEventListener('click', () => {
+            btnNames.classList.add('active');
+            btnInsts.classList.remove('active');
+            tabNames.classList.add('active');
+            tabInsts.classList.remove('active');
+        });
+
+        btnInsts.addEventListener('click', () => {
+            btnInsts.classList.add('active');
+            btnNames.classList.remove('active');
+            tabInsts.classList.add('active');
+            tabNames.classList.remove('active');
+        });
+
+        // ── Dynamic Floating Tooltip positioning on Document Body ──
+        let floatingTooltip = document.getElementById('collab-floating-tooltip');
+        if (!floatingTooltip) {
+            floatingTooltip = document.createElement('div');
+            floatingTooltip.id = 'collab-floating-tooltip';
+            document.body.appendChild(floatingTooltip);
+        }
+
+        const chips = document.querySelectorAll('.collab-chip');
+        chips.forEach(chip => {
+            const tooltipSource = chip.querySelector('.collab-tooltip');
+            if (!tooltipSource) return;
+
+            chip.addEventListener('mouseenter', () => {
+                floatingTooltip.innerHTML = tooltipSource.innerHTML;
+                floatingTooltip.style.visibility = 'visible';
+                floatingTooltip.style.opacity = '1';
+            });
+
+            chip.addEventListener('mousemove', (e) => {
+                // Get viewport dimensions
+                const tooltipWidth = 270;
+                const tooltipHeight = floatingTooltip.offsetHeight || 80;
+                
+                // Position offset
+                let left = e.clientX + 15;
+                let top = e.clientY + 15;
+                
+                // Keep tooltip inside horizontal viewport boundaries
+                if (left + tooltipWidth > window.innerWidth) {
+                    left = e.clientX - tooltipWidth - 15;
+                }
+                
+                // Keep tooltip inside vertical viewport boundaries
+                if (top + tooltipHeight > window.innerHeight) {
+                    top = e.clientY - tooltipHeight - 15;
+                }
+                
+                floatingTooltip.style.left = left + 'px';
+                floatingTooltip.style.top = top + 'px';
+            });
+
+            chip.addEventListener('mouseleave', () => {
+                floatingTooltip.style.opacity = '0';
+                floatingTooltip.style.visibility = 'hidden';
+            });
+        });
+    };
+
+    // Run collaborators switcher initialization
+    initCollaboratorsTabs();
+
 }); // end DOMContentLoaded
