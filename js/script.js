@@ -290,8 +290,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (testimonialsContainer && portfolioData.testimonials) {
         portfolioData.testimonials.forEach(test => {
             testimonialsContainer.innerHTML += `
-                <div style="background:rgba(255,255,255,0.7);padding:1.5rem;border-radius:var(--radius-md);border-left:4px solid var(--primary-color);display:flex;align-items:center;justify-content:center;min-height:90px;">
-                    <p style="font-style:italic;color:var(--text-primary);margin:0;text-align:center;line-height:1.6;">"${test.text}"</p>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"${test.text}"</p>
+                    <span class="testimonial-author">— ${test.author}</span>
                 </div>`;
         });
     }

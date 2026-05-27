@@ -1028,36 +1028,48 @@ const portfolioData = {
 ],
     testimonials: [
         {
-                "text": "Prof. Narassima is incredibly approachable. He takes the time to ensure every student grasps the fundamental concepts before moving forward.",
-                "author": "Student Feedback"
+                "text": "Working with Prof. Narassima feels like a blessing. He understands the requirements very well and always try his best to deliver the best possible outputs matching the requirements. \n\nHe is always just a call away to resolve any kind of queries and provide the best assistance to resolve the queries as soon as possible. \n\nNever had a second thought for seeking his guidance. He is always approachable which makes it very smooth and easy to cooperate with him to deliver the course.\n\nCheers to him for all of this, it makes me feel like working more with him and delivering more courses with him in future to deliver the best output. \n\nThankyou so much sir for always helping me and for all the guidance that you provided. I have learnt a lot of things from you and I cherish them a lot.",
+                "author": "Archit, Asst. Manager - Operations"
         },
         {
-                "text": "One of the best professors on campus! His ability to make complex mathematical models and simulations easy to understand is unmatched.",
-                "author": "Student Feedback"
+                "text": "Students consistently praise Prof. Narassima's exceptional clarity and patience, particularly noting his willingness to explain concepts multiple times and resolve every query without hesitation. His ability to make operations management highly intuitive and accessible for students from non-engineering backgrounds makes him one of the most respected and supportive professors on campus.",
+                "author": "Production & Operations Management"
         },
         {
-                "text": "His integration of real-world datasets into the Python and Data Storytelling courses gave us practical, industry-ready skills. Highly recommended!",
-                "author": "Student Feedback"
+                "text": "Highly appreciated for his student-centric teaching style and unparalleled patience. Students value his approach of personally checking in on each individual's understanding during classes and providing exhaustive guidance. His sessions are described as extremely interactive, encouraging, and deeply practical.",
+                "author": "Logistics & Distribution Management"
         },
         {
-                "text": "The classes were highly interactive and practical. He encourages abstract thinking and problem-solving at every step.",
-                "author": "Student Feedback"
+                "text": "Described as the absolute best in teaching simulation modeling and tools with simplicity and depth. Students laud his experiential learning approach, clear connect between theory and industry application, and his constant availability to guide students through hands-on labs and problem-solving.",
+                "author": "Business Process & Operations Simulation"
         },
         {
-                "text": "He explains difficult statistical concepts with ease and real-world examples. I finally feel confident with analytics.",
-                "author": "Student Feedback"
+                "text": "Lauded for breaking down complex optimization algorithms, mathematical modeling, and decision-making frameworks into highly structured and logical concepts. Students appreciate his rigorous analytical approach, real-world scenario analysis, and excellent course organization.",
+                "author": "Optimisation Techniques & Business Models"
         },
         {
-                "text": "Very approachable and always willing to help students outside of class hours. A truly great mentor.",
-                "author": "Student Feedback"
+                "text": "Praised for delivering highly structured, engaging, and practical sessions that make advanced Excel operations simple to master. Students highlight his incredible patience in handling all doubts, the excellent resources provided, and his supportive nature in building strong foundational analytics skills.",
+                "author": "Computer Applications in Business & Excel Boot Camps"
         },
         {
-                "text": "His passion for the subject is contagious. A truly inspiring learning experience.",
-                "author": "Student Feedback"
+                "text": "Highly recommended for his practical insights into consulting frameworks, unstructured problem solving, and technological integration. Students value the strategic thinking exercises, industry-relevant case discussions, and his engaging style that mirrors actual consulting roles.",
+                "author": "Technology & Management Consulting"
         },
         {
-                "text": "Excellent clarity of concepts. The case studies and datasets used were incredibly relevant to the current industry standards.",
-                "author": "Student Feedback"
+                "text": "Highly regarded for challenging students to push their cognitive boundaries and apply out-of-the-box abstract thinking. The course is highlighted as highly engaging, intellectually stimulating, and extremely effective in sharpening logical reasoning and structured problem-solving skills.",
+                "author": "Competitive Problem Solving & Abstract Thinking"
+        },
+        {
+                "text": "Lauded for explaining complex mathematical, algebraic, and quantitative models with ease and structured clarity. His supportive, friendly, and approachable teaching style helps build strong confidence in analytics, ensuring every student has a solid foundation for decision-making.",
+                "author": "Quantitative Skills & Algebra"
+        },
+        {
+                "text": "Lauded for integrating crucial green methodologies, carbon footprint assessment, and circular economy practices into supply chain management. Students value his modern, forward-thinking perspective and the practical case studies on sustainable operations.",
+                "author": "Sustainable Practices & Operations"
+        },
+        {
+                "text": "Commended for delivering rich, insightful, and practical learning experiences. Students value his structured delivery, patience in resolving queries, and the strong real-world context he integrates into every session, making complex logistics networks easy to conceptualize.",
+                "author": "Supply Chain & Logistics Management"
         }
 ],
     experience: [

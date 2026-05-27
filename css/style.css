@@ -1145,3 +1145,63 @@ body {
     .glim-preview-strip { display: none !important; }
 }
 
+/* Innovative Testimonials Hover Effect */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    padding: 1rem 0.5rem;
+    perspective: 1000px; /* 3D Perspective! */
+}
+
+.testimonial-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 1.5rem;
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.2rem;
+    min-height: 140px;
+    box-shadow: var(--shadow-sm);
+    
+    /* Shrink & push back by default to optimize space */
+    transform: scale(0.95) translateZ(-10px);
+    opacity: 0.75;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    cursor: pointer;
+    z-index: 1;
+}
+
+/* Hover active state: pop to front, expand, scale up, glow */
+.testimonial-card:hover {
+    transform: scale(1.06) translateY(-8px) translateZ(15px);
+    opacity: 1;
+    box-shadow: var(--shadow-lg), 0 12px 30px rgba(10, 102, 194, 0.2);
+    border-left-color: var(--secondary-color);
+    background: var(--surface-color);
+    z-index: 10;
+}
+
+.testimonial-text {
+    font-style: italic;
+    color: var(--text-primary);
+    margin: 0;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    white-space: pre-line; /* Essential to render \n correctly! */
+}
+
+.testimonial-author {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+    align-self: flex-end;
+    opacity: 0.9;
+    letter-spacing: 0.3px;
+}
+
