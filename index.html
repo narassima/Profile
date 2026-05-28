@@ -53,13 +53,18 @@
                             <h1 class="hero-name" style="margin-top: 0.5rem;">Dr. Narassima M.S.</h1>
                             <h2 class="hero-title">Assistant Professor</h2>
                             <p class="hero-institution"><i class="fas fa-university"></i> Great Lakes Institute of Management</p>
-                            <div class="hero-contact">
-                                <span class="contact-item" onclick="navigator.clipboard.writeText('msnarassima@gmail.com'); alert('Copied msnarassima@gmail.com');" title="Click to copy" style="cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem;"><i class="fas fa-envelope" style="color: #ea4335;"></i> msnarassima@gmail.com</span>
-                                <span class="contact-item" onclick="navigator.clipboard.writeText('narassima.s@greatlakes.edu.in'); alert('Copied narassima.s@greatlakes.edu.in');" title="Click to copy" style="cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem;"><i class="fas fa-envelope" style="color: #ea4335;"></i> narassima.s@greatlakes.edu.in</span>
-                                <a href="https://scholar.google.com/citations?user=RDFCAzYAAAAJ&hl=en" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem;"><i class="fas fa-graduation-cap" style="color: #4285F4;"></i> Google Scholar</a>
-                                <a href="https://www.linkedin.com/in/narassima/" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem;"><i class="fab fa-linkedin" style="color: #0077b5;"></i> LinkedIn</a>
-                                <a href="https://www.greatlakes.edu.in/chennai/faculty/narassima-m-s" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem;"><i class="fas fa-university" style="color: #004b87;"></i> GLIM Official Profile</a>
-                                <a href="https://www.researchgate.net/profile/Narassima-M-S" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem;"><i class="fab fa-researchgate" style="color: #00ccbb;"></i> ResearchGate</a>
+                            <div class="hero-contact" style="display: flex; flex-direction: column; gap: 0.75rem; width: 100%;">
+                                <span class="contact-item" onclick="navigator.clipboard.writeText('msnarassima@gmail.com'); alert('Copied msnarassima@gmail.com');" title="Click to copy" style="cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem; width: 100%;"><i class="fas fa-envelope" style="color: #ea4335;"></i> msnarassima@gmail.com</span>
+                                <span class="contact-item" onclick="navigator.clipboard.writeText('narassima.s@greatlakes.edu.in'); alert('Copied narassima.s@greatlakes.edu.in');" title="Click to copy" style="cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem; width: 100%;"><i class="fas fa-envelope" style="color: #ea4335;"></i> narassima.s@greatlakes.edu.in</span>
+                                
+                                <div class="profile-ids-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem 0.5rem; width: 100%; margin-top: 0.5rem;">
+                                    <a href="https://scholar.google.com/citations?user=RDFCAzYAAAAJ&hl=en" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.85rem;"><i class="fas fa-graduation-cap" style="color: #4285F4;"></i> Google Scholar</a>
+                                    <a href="https://www.linkedin.com/in/narassima/" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.85rem;"><i class="fab fa-linkedin" style="color: #0077b5;"></i> LinkedIn</a>
+                                    <a href="https://www.greatlakes.edu.in/chennai/faculty/narassima-m-s" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.85rem;"><i class="fas fa-university" style="color: #004b87;"></i> GLIM Profile</a>
+                                    <a href="https://www.researchgate.net/profile/Narassima-M-S" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.85rem;"><i class="fab fa-researchgate" style="color: #00ccbb;"></i> ResearchGate</a>
+                                    <a href="https://orcid.org/0000-0002-4113-430X" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.85rem;"><i class="fab fa-orcid" style="color: #A6CE39;"></i> ORCID Profile</a>
+                                    <a href="https://www.scopus.com/authid/detail.uri?authorId=57193504360" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.85rem;"><i class="fas fa-book-reader" style="color: #FF7F00;"></i> Scopus ID</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -227,7 +232,7 @@
                                 <i class="fas fa-file-invoice" style="color: #0a66c2; font-size: 1.1rem;"></i>
                             </div>
                             <div>
-                                <h4 style="font-size: 1.3rem; font-weight: 800; color: var(--text-primary); margin: 0; line-height: 1.2;">68</h4>
+                                <h4 class="stat-number" data-target="68" style="font-size: 1.3rem; font-weight: 800; color: var(--text-primary); margin: 0; line-height: 1.2;">68</h4>
                                 <p style="font-size: 0.7rem; color: var(--text-secondary); font-weight: 700; margin: 0.15rem 0 0; text-transform: uppercase; letter-spacing: 0.5px;">Publications</p>
                             </div>
                         </div>
@@ -238,7 +243,7 @@
                                 <i class="fas fa-book" style="color: #f9ab00; font-size: 1.1rem;"></i>
                             </div>
                             <div>
-                                <h4 style="font-size: 1.3rem; font-weight: 800; color: var(--text-primary); margin: 0; line-height: 1.2;">2</h4>
+                                <h4 class="stat-number" data-target="2" style="font-size: 1.3rem; font-weight: 800; color: var(--text-primary); margin: 0; line-height: 1.2;">2</h4>
                                 <p style="font-size: 0.7rem; color: var(--text-secondary); font-weight: 700; margin: 0.15rem 0 0; text-transform: uppercase; letter-spacing: 0.5px;">Books</p>
                             </div>
                         </div>
@@ -249,8 +254,19 @@
                                 <i class="fas fa-users" style="color: #137333; font-size: 1.1rem;"></i>
                             </div>
                             <div>
-                                <h4 style="font-size: 1.3rem; font-weight: 800; color: var(--text-primary); margin: 0; line-height: 1.2;">1,300+</h4>
+                                <h4 class="stat-number" data-target="1300" data-suffix="+" style="font-size: 1.3rem; font-weight: 800; color: var(--text-primary); margin: 0; line-height: 1.2;">1,300+</h4>
                                 <p style="font-size: 0.7rem; color: var(--text-secondary); font-weight: 700; margin: 0.15rem 0 0; text-transform: uppercase; letter-spacing: 0.5px;">Mentored</p>
+                            </div>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div class="glass-card slide-up" style="padding: 1rem; display: flex; align-items: center; gap: 1rem; border-left: 3px solid #ea4335; background: rgba(255,255,255,0.45); box-shadow: var(--shadow-sm); animation-delay: 0.2s;">
+                            <div style="background: rgba(234, 67, 53, 0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <i class="fas fa-map-marked-alt" style="color: #ea4335; font-size: 1.1rem;"></i>
+                            </div>
+                            <div>
+                                <h4 class="stat-number" data-target="36" data-suffix="M+" style="font-size: 1.3rem; font-weight: 800; color: var(--text-primary); margin: 0; line-height: 1.2;">36M+</h4>
+                                <p style="font-size: 0.7rem; color: var(--text-secondary); font-weight: 700; margin: 0.15rem 0 0; text-transform: uppercase; letter-spacing: 0.5px;">Google Maps Views</p>
                             </div>
                         </div>
                     </div>

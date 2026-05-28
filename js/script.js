@@ -613,4 +613,61 @@ document.addEventListener('DOMContentLoaded', () => {
     // Run collaborators switcher initialization
     initCollaboratorsTabs();
 
+    // ── Count-Up Animation for Stats on Scroll ──────────────────
+    const runCountUpAnimation = () => {
+        const stats = document.querySelectorAll('.stat-number');
+        if (stats.length === 0) return;
+        
+        const countUp = (el) => {
+            const target = parseInt(el.getAttribute('data-target') || '0', 10);
+            const suffix = el.getAttribute('data-suffix') || '';
+            const duration = 1500; // ms
+            const startTime = performance.now();
+            
+            const updateCount = (currentTime) => {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                
+                // Ease out quad
+                const easeProgress = progress * (2 - progress);
+                const currentValue = Math.floor(easeProgress * target);
+                
+                if (target >= 1000) {
+                    el.textContent = currentValue.toLocaleString() + suffix;
+                } else {
+                    el.textContent = currentValue + suffix;
+                }
+                
+                if (progress < 1) {
+                    requestAnimationFrame(updateCount);
+                } else {
+                    if (target >= 1000) {
+                        el.textContent = target.toLocaleString() + suffix;
+                    } else {
+                        el.textContent = target + suffix;
+                    }
+                }
+            };
+            
+            requestAnimationFrame(updateCount);
+        };
+        
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    countUp(entry.target);
+                    obs.unobserve(entry.target); // Run once
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        stats.forEach(stat => {
+            const suffix = stat.getAttribute('data-suffix') || '';
+            stat.textContent = '0' + suffix;
+            observer.observe(stat);
+        });
+    };
+    
+    runCountUpAnimation();
+
 }); // end DOMContentLoaded
