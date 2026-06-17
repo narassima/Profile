@@ -527,7 +527,7 @@ body {
 
 .page-btn.active {
     background: var(--primary-color);
-    color: white;
+    color: var(--surface-color);
     border-color: var(--primary-color);
 }
 
@@ -1232,7 +1232,7 @@ body {
 }
 
 .collab-tab-btn.active {
-    color: white;
+    color: var(--surface-color);
     background: var(--primary-color);
 }
 
@@ -1290,7 +1290,7 @@ body {
 
 .collab-chip:hover {
     background: var(--primary-color);
-    color: white;
+    color: var(--surface-color);
     border-color: var(--primary-color);
     transform: translateY(-2px);
     box-shadow: 0 4px 10px rgba(var(--primary-rgb, 26, 115, 232), 0.2);
