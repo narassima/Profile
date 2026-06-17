@@ -1057,18 +1057,7 @@ body {
     border-radius: 3px;
 }
 
-/* Connecting Line */
-.horizontal-roadmap-container::before {
-    content: '';
-    position: absolute;
-    top: 3.65rem;
-    left: 2rem;
-    right: 2rem;
-    height: 4px;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-    z-index: 1;
-    border-radius: 2px;
-}
+/* Connecting Line - removed to avoid partial scroll cut-off */
 
 .roadmap-item {
     position: relative;
