@@ -1259,6 +1259,10 @@ const portfolioData = {
 ],
     certifications: [
         {
+                "name": "Training the Trainer Program on SAP HANA S4",
+                "issuer": "May 2026"
+        },
+        {
                 "name": "Crash Course on Python",
                 "issuer": "Coursera, Google (Feb 2022)"
         },
@@ -1298,6 +1302,10 @@ const portfolioData = {
         }
 ],
     achievements: [
+        {
+                "name": "Organizing Committee Member",
+                "issuer": "Served as an organizing committee member for Sportscom, college annual fest, and tour at Great Lakes Institute of Management, Chennai, for multiple years"
+        },
         {
                 "name": "Young Achiever Award",
                 "issuer": "In recognition of outstanding performance and potential as a young scholar, awarded on Founders Day at Great Lakes Institute of Management"
