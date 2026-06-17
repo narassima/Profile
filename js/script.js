@@ -101,10 +101,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         const matchesQuery = (pub) => {
+            if (query.startsWith('year:')) {
+                const targetYear = query.replace('year:', '').trim();
+                return String(pub.year || '') === targetYear;
+            }
             return (pub.title || '').toLowerCase().includes(query) ||
                    (pub.authors || '').toLowerCase().includes(query) ||
                    (pub.journal || '').toLowerCase().includes(query) ||
-                   (pub.year || '').toLowerCase().includes(query);
+                   String(pub.year || '').toLowerCase().includes(query);
         };
 
         // 1. Journals tab
@@ -698,5 +702,308 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     
     runCountUpAnimation();
+
+    // ── Material You Theme Accent Picker ─────────────────────────
+    const colorPickerContainer = document.querySelector('.color-picker-container');
+    if (colorPickerContainer) {
+        const dots = colorPickerContainer.querySelectorAll('.color-dot');
+        const colorPalette = {
+            blue: { light: { primary: '#1a73e8', hover: '#1557b0' }, dark: { primary: '#8ab4f8', hover: '#aecbfa' } },
+            red: { light: { primary: '#ea4335', hover: '#c5221f' }, dark: { primary: '#f28b82', hover: '#f6aea9' } },
+            yellow: { light: { primary: '#f29900', hover: '#d56e00' }, dark: { primary: '#fdd663', hover: '#ffe082' } },
+            green: { light: { primary: '#34a853', hover: '#137333' }, dark: { primary: '#81c995', hover: '#a8dab5' } }
+        };
+
+        const updateAccentColor = (colorName) => {
+            const isDark = document.body.classList.contains('dark-theme');
+            const palette = colorPalette[colorName] || colorPalette.blue;
+            const activeColors = isDark ? palette.dark : palette.light;
+            
+            document.documentElement.style.setProperty('--primary-color', activeColors.primary);
+            document.documentElement.style.setProperty('--primary-hover', activeColors.hover);
+            
+            // Save state
+            localStorage.setItem('theme-accent-color', colorName);
+            
+            // Update UI dots
+            dots.forEach(dot => {
+                if (dot.getAttribute('data-color') === colorName) {
+                    dot.classList.add('active');
+                    dot.style.border = '2px solid white';
+                    dot.style.boxShadow = '0 0 0 1.5px ' + activeColors.primary;
+                } else {
+                    dot.classList.remove('active');
+                    dot.style.border = '1.5px solid transparent';
+                    dot.style.boxShadow = 'none';
+                }
+            });
+        };
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const color = dot.getAttribute('data-color');
+                updateAccentColor(color);
+            });
+        });
+
+        // Initialize from localStorage
+        const savedAccent = localStorage.getItem('theme-accent-color') || 'blue';
+        updateAccentColor(savedAccent);
+
+        // Recheck on theme toggle
+        const toggleBtn = document.getElementById('theme-toggle');
+        if (toggleBtn) {
+            toggleBtn.addEventListener('click', () => {
+                setTimeout(() => {
+                    const currentAccent = localStorage.getItem('theme-accent-color') || 'blue';
+                    updateAccentColor(currentAccent);
+                }, 50);
+            });
+        }
+    }
+
+    // ── Publications Timeline SVG Chart ──────────────────────────
+    const chartContainer = document.getElementById('publication-chart-container');
+    const resetChartFilterBtn = document.getElementById('reset-timeline-filter');
+    
+    if (chartContainer && portfolioData.publications) {
+        // Collect years from all publications
+        const yearsMap = {};
+        portfolioData.publications.forEach(pub => {
+            if (pub.year) {
+                yearsMap[pub.year] = (yearsMap[pub.year] || 0) + 1;
+            }
+        });
+        
+        // Sort years ascending
+        const sortedYears = Object.keys(yearsMap).map(Number).sort((a,b) => a - b);
+        const maxPubs = Math.max(...Object.values(yearsMap));
+        
+        if (sortedYears.length > 0) {
+            let svgHtml = `<svg width="100%" height="110px" viewBox="0 0 400 110" preserveAspectRatio="none" style="overflow: visible;">`;
+            const barWidth = Math.floor(340 / sortedYears.length) - 8;
+            const startX = 30;
+            
+            sortedYears.forEach((year, index) => {
+                const count = yearsMap[year];
+                const height = Math.max(12, Math.floor((count / maxPubs) * 80));
+                const x = startX + index * (barWidth + 8);
+                const y = 90 - height;
+                
+                svgHtml += `
+                    <g class="timeline-bar-group" data-year="${year}">
+                        <!-- Invisible hover pad -->
+                        <rect x="${x - 2}" y="10" width="${barWidth + 4}" height="90" fill="transparent" style="cursor:pointer;" />
+                        <!-- Actual bar -->
+                        <rect class="timeline-bar" x="${x}" y="${y}" width="${barWidth}" height="${height}" rx="3" fill="var(--primary-color)" />
+                        <!-- Bar text count -->
+                        <text x="${x + barWidth/2}" y="${y - 6}" font-family="var(--font-main)" font-size="7.5" font-weight="700" fill="var(--text-secondary)" text-anchor="middle">${count}</text>
+                        <!-- Year label -->
+                        <text x="${x + barWidth/2}" y="102" font-family="var(--font-main)" font-size="8.5" font-weight="600" fill="var(--text-secondary)" text-anchor="middle">${year}</text>
+                    </g>
+                `;
+            });
+            
+            // Y-axis line
+            svgHtml += `<line x1="${startX - 6}" y1="10" x2="${startX - 6}" y2="92" stroke="var(--border-color)" stroke-width="1" />`;
+            // X-axis line
+            svgHtml += `<line x1="${startX - 6}" y1="92" x2="390" y2="92" stroke="var(--border-color)" stroke-width="1" />`;
+            
+            svgHtml += `</svg>`;
+            chartContainer.innerHTML = svgHtml;
+            
+            const barGroups = chartContainer.querySelectorAll('.timeline-bar-group');
+            
+            const filterPublicationsByYear = (year) => {
+                barGroups.forEach(g => {
+                    const bar = g.querySelector('.timeline-bar');
+                    if (g.getAttribute('data-year') === String(year)) {
+                        bar.classList.add('active-bar');
+                    } else {
+                        bar.classList.remove('active-bar');
+                    }
+                });
+                
+                if (resetChartFilterBtn) resetChartFilterBtn.style.display = 'inline-block';
+                
+                const pubSearchInput = document.getElementById('pub-search');
+                if (pubSearchInput) {
+                    pubSearchInput.value = `year: ${year}`;
+                    pubSearchInput.dispatchEvent(new Event('input'));
+                }
+            };
+            
+            barGroups.forEach(g => {
+                g.addEventListener('click', () => {
+                    const year = g.getAttribute('data-year');
+                    filterPublicationsByYear(year);
+                });
+            });
+            
+            if (resetChartFilterBtn) {
+                resetChartFilterBtn.addEventListener('click', () => {
+                    barGroups.forEach(g => {
+                        const bar = g.querySelector('.timeline-bar');
+                        bar.classList.remove('active-bar');
+                    });
+                    resetChartFilterBtn.style.display = 'none';
+                    const pubSearchInput = document.getElementById('pub-search');
+                    if (pubSearchInput) {
+                        pubSearchInput.value = '';
+                        pubSearchInput.dispatchEvent(new Event('input'));
+                    }
+                });
+            }
+        }
+    }
+
+    // ── Material Ink Ripple Effect ────────────────────────────────
+    const applyRippleEffect = () => {
+        const rippleTargets = document.querySelectorAll('.nav-link, .tab-btn, .collab-tab-btn, .color-dot, .contact-item, #view-cv-btn, #print-cv-btn, .page-btn');
+        rippleTargets.forEach(el => {
+            el.classList.add('ripple-effect');
+            el.addEventListener('click', function(e) {
+                const circle = document.createElement('span');
+                circle.classList.add('ripple');
+                
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                
+                circle.style.width = circle.style.height = `${size}px`;
+                
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                circle.style.left = `${x}px`;
+                circle.style.top = `${y}px`;
+                
+                const oldRipples = this.querySelectorAll('.ripple');
+                oldRipples.forEach(r => r.remove());
+                
+                this.appendChild(circle);
+                
+                setTimeout(() => circle.remove(), 500);
+            });
+        });
+    };
+    applyRippleEffect();
+
+    // ── Dynamic CV Viewer Logic ──────────────────────────────────
+    const viewCvBtn = document.getElementById('view-cv-btn');
+    const cvModal = document.getElementById('cv-viewer-modal');
+    const closeCvBtn = document.getElementById('close-cv-btn');
+    const printCvBtn = document.getElementById('print-cv-btn');
+    const cvContent = document.getElementById('cv-content-body');
+    
+    if (viewCvBtn && cvModal && closeCvBtn && printCvBtn && cvContent) {
+        viewCvBtn.addEventListener('click', () => {
+            let cvHtml = `
+                <div style="font-family:'Outfit',sans-serif;color:#333;line-height:1.5;max-width:800px;margin:0 auto;">
+                    <!-- HEADER SECTION -->
+                    <div style="text-align:center;border-bottom:2px solid var(--primary-color);padding-bottom:1.5rem;margin-bottom:2rem;">
+                        <h1 style="font-size:2.2rem;font-weight:800;color:#202124;margin:0 0 0.25rem 0;text-transform:uppercase;letter-spacing:0.5px;">Dr. Narassima M.S.</h1>
+                        <p style="font-size:1.1rem;color:var(--primary-color);font-weight:700;margin:0 0 0.5rem 0;letter-spacing:0.25px;">Assistant Professor of Operations</p>
+                        <p style="font-size:0.9rem;color:#5f6368;margin:0 0 0.75rem 0;font-weight:500;">Great Lakes Institute of Management, Chennai, India</p>
+                        <p style="font-size:0.85rem;color:#5f6368;margin:0;display:flex;justify-content:center;gap:0.75rem;flex-wrap:wrap;font-weight:500;">
+                            <span><i class="fas fa-envelope" style="color:var(--primary-color);"></i> msnarassima@gmail.com</span>
+                            <span>|</span>
+                            <span><i class="fab fa-linkedin" style="color:var(--primary-color);"></i> linkedin.com/in/narassima</span>
+                            <span>|</span>
+                            <span><i class="fas fa-graduation-cap" style="color:var(--primary-color);"></i> Scholar ID: RDFCAzYAAAAJ</span>
+                        </p>
+                    </div>
+
+                    <!-- DOUBLE COLUMN LAYOUT -->
+                    <div style="display:flex;flex-direction:column;gap:2rem;">
+                        
+                        <!-- EDUCATION -->
+                        <div class="cv-section" style="margin-bottom:1rem;">
+                            <h2 style="font-size:1.2rem;font-weight:700;color:var(--primary-color);border-bottom:1.5px solid var(--border-color);padding-bottom:0.4rem;margin:0 0 1rem 0;text-transform:uppercase;letter-spacing:0.5px;">Education</h2>
+                            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.75rem;">
+                                ${(portfolioData.education || []).map(edu => `
+                                    <li>
+                                        <div style="display:flex;justify-content:space-between;font-weight:700;font-size:0.95rem;color:#202124;">
+                                            <span>${edu.degree}</span>
+                                            <span>${edu.year || ''}</span>
+                                        </div>
+                                        <div style="font-size:0.88rem;color:#5f6368;font-weight:600;">${edu.institution}</div>
+                                        ${edu.details ? `<div style="font-size:0.85rem;color:#5f6368;font-style:italic;margin-top:0.1rem;">${edu.details}</div>` : ''}
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
+
+                        <!-- EXPERIENCE -->
+                        <div class="cv-section" style="margin-bottom:1rem;">
+                            <h2 style="font-size:1.2rem;font-weight:700;color:var(--primary-color);border-bottom:1.5px solid var(--border-color);padding-bottom:0.4rem;margin:0 0 1rem 0;text-transform:uppercase;letter-spacing:0.5px;">Experience</h2>
+                            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:1rem;">
+                                ${(portfolioData.experience || []).map(exp => `
+                                    <li>
+                                        <div style="display:flex;justify-content:space-between;font-weight:700;font-size:0.95rem;color:#202124;">
+                                            <span>${exp.title}</span>
+                                            <span>${exp.duration}</span>
+                                        </div>
+                                        <div style="font-size:0.88rem;color:#5f6368;font-weight:600;">${exp.company}</div>
+                                        <p style="font-size:0.85rem;color:#5f6368;margin:0.25rem 0 0 0;text-align:justify;line-height:1.4;">${exp.description}</p>
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
+
+                        <!-- PUBLICATIONS SUMMARY -->
+                        <div class="cv-section" style="margin-bottom:1rem;">
+                            <h2 style="font-size:1.2rem;font-weight:700;color:var(--primary-color);border-bottom:1.5px solid var(--border-color);padding-bottom:0.4rem;margin:0 0 1rem 0;text-transform:uppercase;letter-spacing:0.5px;">Selected Publications</h2>
+                            <ul style="list-style:decimal;padding-left:1.2rem;margin:0;display:flex;flex-direction:column;gap:0.75rem;font-size:0.85rem;color:#333;">
+                                ${(portfolioData.publications || []).slice(0, 10).map(pub => `
+                                    <li style="margin-bottom:0.25rem;text-align:justify;line-height:1.4;">
+                                        <strong>${pub.title}</strong> (${pub.year}). 
+                                        <span style="color:#5f6368;">${pub.authors}</span>. 
+                                        ${pub.journal ? `<span style="font-style:italic;">Published in: ${pub.journal}</span>` : ''}
+                                    </li>
+                                `).join('')}
+                            </ul>
+                            ${portfolioData.publications && portfolioData.publications.length > 10 ? `
+                                <p style="font-size:0.8rem;color:#5f6368;font-style:italic;margin-top:0.5rem;text-align:center;">And ${portfolioData.publications.length - 10} other publications listed on Google Scholar / website</p>
+                            ` : ''}
+                        </div>
+
+                        <!-- CERTIFICATIONS -->
+                        <div class="cv-section" style="margin-bottom:1rem;">
+                            <h2 style="font-size:1.2rem;font-weight:700;color:var(--primary-color);border-bottom:1.5px solid var(--border-color);padding-bottom:0.4rem;margin:0 0 1rem 0;text-transform:uppercase;letter-spacing:0.5px;">Certifications</h2>
+                            <ul style="list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(2, 1fr);gap:0.75rem 1rem;font-size:0.85rem;color:#333;">
+                                ${(portfolioData.certifications || []).map(cert => `
+                                    <li style="border-left:2.5px solid var(--primary-color);padding-left:0.6rem;margin-bottom:0.25rem;">
+                                        <div style="font-weight:700;color:#202124;">${cert.name}</div>
+                                        <div style="color:#5f6368;">${cert.issuer}</div>
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
+                        
+                    </div>
+                </div>
+            `;
+            
+            cvContent.innerHTML = cvHtml;
+            cvModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        });
+        
+        closeCvBtn.addEventListener('click', () => {
+            cvModal.style.display = 'none';
+            document.body.style.overflow = '';
+        });
+        
+        cvModal.addEventListener('click', (e) => {
+            if (e.target === cvModal) {
+                cvModal.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+        });
+        
+        printCvBtn.addEventListener('click', () => {
+            window.print();
+        });
+    }
 
 }); // end DOMContentLoaded

@@ -75,6 +75,12 @@
                 <a href="#experience" class="nav-link" data-target="experience">Experience</a>
                 <a href="#education" class="nav-link" data-target="education">Education</a>
                 <a href="#gallery" class="nav-link" data-target="gallery">Gallery</a>
+                <div class="color-picker-container" style="display: inline-flex; align-items: center; gap: 0.35rem; margin-right: 0.5rem; background: rgba(255,255,255,0.12); padding: 0.25rem 0.6rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.15);">
+                    <span class="color-dot active" data-color="blue" style="width: 12px; height: 12px; border-radius: 50%; background: #1a73e8; cursor: pointer; border: 1.5px solid white; display: inline-block;" title="Google Blue"></span>
+                    <span class="color-dot" data-color="red" style="width: 12px; height: 12px; border-radius: 50%; background: #ea4335; cursor: pointer; border: 1.5px solid transparent; display: inline-block;" title="Google Red"></span>
+                    <span class="color-dot" data-color="yellow" style="width: 12px; height: 12px; border-radius: 50%; background: #f29900; cursor: pointer; border: 1.5px solid transparent; display: inline-block;" title="Google Yellow"></span>
+                    <span class="color-dot" data-color="green" style="width: 12px; height: 12px; border-radius: 50%; background: #34a853; cursor: pointer; border: 1.5px solid transparent; display: inline-block;" title="Google Green"></span>
+                </div>
                 <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme" style="background: none; border: none; color: rgba(255, 255, 255, 0.85); font-size: 1.1rem; cursor: pointer; padding: 0.8rem 0.5rem; display: flex; align-items: center; justify-content: center; transition: var(--transition);" onmouseover="this.style.color='#FFFFFF'" onmouseout="this.style.color='rgba(255, 255, 255, 0.85)'">
                     <i class="fas fa-moon"></i>
                 </button>
@@ -108,6 +114,7 @@
                                     <a href="https://orcid.org/0000-0002-4113-430X" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.85rem;"><i class="fab fa-orcid" style="color: #A6CE39;"></i> ORCID Profile</a>
                                     <a href="https://www.scopus.com/authid/detail.uri?authorId=57193504360" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.85rem;"><i class="fas fa-book-reader" style="color: #FF7F00;"></i> Scopus ID</a>
                                 </div>
+                                <button id="view-cv-btn" class="contact-item" style="cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; width: 100%; border: 1px solid var(--border-color); background: var(--surface-color); border-radius: 20px; padding: 0.55rem 1rem; font-weight: 700; font-size: 0.9rem; color: var(--primary-color); transition: var(--transition); margin-top: 0.5rem;"><i class="fas fa-file-pdf"></i> View & Print CV</button>
                             </div>
                         </div>
                     </div>
@@ -356,6 +363,41 @@
                 <i class="fas fa-search" style="position: absolute; left: 1.25rem; color: var(--text-secondary); font-size: 1.1rem; pointer-events: none;"></i>
                 <input type="text" id="pub-search" placeholder="Search publications by title, co-author, or keywords..." style="width: 100%; padding: 0.85rem 1.5rem 0.85rem 3rem; border-radius: 30px; border: 1px solid var(--border-color); background: var(--glass-bg); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); color: var(--text-primary); font-family: var(--font-main); font-size: 1rem; outline: none; box-shadow: var(--shadow-sm); transition: var(--transition);">
                 <button id="pub-search-clear" style="position: absolute; right: 1.25rem; background: none; border: none; color: var(--text-secondary); font-size: 1.1rem; cursor: pointer; display: none; transition: var(--transition);"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <!-- Interactive Analytics & Research Metrics Grid -->
+            <div class="publications-analytics-grid" style="display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+                <!-- Timeline Chart Card -->
+                <div class="glass-card" style="padding: 1.5rem; display: flex; flex-direction: column;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <h3 style="font-size: 1.1rem; font-weight: 700; margin: 0; display: inline-flex; align-items: center; gap: 0.5rem; color: var(--text-primary);"><i class="fas fa-chart-bar" style="color: var(--primary-color);"></i> Publication Timeline</h3>
+                        <button id="reset-timeline-filter" style="display: none; background: rgba(26, 115, 232, 0.1); border: none; color: var(--primary-color); padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.75rem; font-weight: 600; cursor: pointer; transition: var(--transition);">Clear Filter</button>
+                    </div>
+                    <div id="publication-chart-container" style="flex: 1; min-height: 120px; display: flex; align-items: flex-end; justify-content: space-between; padding-top: 1rem;">
+                        <!-- Rendered dynamically by JS -->
+                    </div>
+                </div>
+                <!-- Research Impact Metrics Card -->
+                <div class="glass-card" style="padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between;">
+                    <h3 style="font-size: 1.1rem; font-weight: 700; margin: 0 0 1rem 0; display: inline-flex; align-items: center; gap: 0.5rem; color: var(--text-primary);"><i class="fas fa-graduation-cap" style="color: var(--primary-color);"></i> Research Impact</h3>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; text-align: center;">
+                        <div style="background: rgba(26,115,232,0.06); padding: 0.75rem 0.25rem; border-radius: 12px; border: 1px solid rgba(26,115,232,0.1);">
+                            <div style="font-size: 1.5rem; font-weight: 700; color: var(--primary-color);">200+</div>
+                            <div style="font-size: 0.7rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 0.25rem;">Citations</div>
+                        </div>
+                        <div style="background: rgba(52,168,83,0.06); padding: 0.75rem 0.25rem; border-radius: 12px; border: 1px solid rgba(52,168,83,0.1);">
+                            <div style="font-size: 1.5rem; font-weight: 700; color: #34A853;">8</div>
+                            <div style="font-size: 0.7rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 0.25rem;">h-index</div>
+                        </div>
+                        <div style="background: rgba(234,67,53,0.06); padding: 0.75rem 0.25rem; border-radius: 12px; border: 1px solid rgba(234,67,53,0.1);">
+                            <div style="font-size: 1.5rem; font-weight: 700; color: #EA4335;">6</div>
+                            <div style="font-size: 0.7rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 0.25rem;">i10-index</div>
+                        </div>
+                    </div>
+                    <div style="text-align: center; margin-top: 1rem;">
+                        <a href="https://scholar.google.com/citations?user=RDFCAzYAAAAJ&hl=en" target="_blank" style="font-size: 0.8rem; font-weight: 600; color: var(--primary-color); text-decoration: none; display: inline-flex; align-items: center; gap: 0.25rem;">Google Scholar Profile <i class="fas fa-external-link-alt" style="font-size: 0.7rem;"></i></a>
+                    </div>
+                </div>
             </div>
             
             <div class="glass-card content-card">
@@ -1189,6 +1231,27 @@
             <span class="lightbox-close">&times;</span>
             <img class="lightbox-content" id="lightbox-img">
             <a id="lightbox-download" class="lightbox-download-btn" download><i class="fas fa-download"></i> Download</a>
+        </div>
+
+        <!-- Dynamic CV Viewer Modal -->
+        <div id="cv-viewer-modal" style="display: none; position: fixed; z-index: 3000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); justify-content: center; padding: 2rem 1rem;">
+            <div style="background: var(--bg-color); width: 100%; max-width: 900px; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-hover); border: 1px solid var(--border-color); display: flex; flex-direction: column; height: 90vh; animation: zoomIn 0.3s ease;">
+                <!-- Header of modal with close and print buttons -->
+                <div style="background: var(--surface-color); border-bottom: 1px solid var(--border-color); padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; z-index: 10;">
+                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                        <i class="fas fa-file-pdf" style="font-size: 1.4rem; color: var(--primary-color);"></i>
+                        <span style="font-weight: 700; font-size: 1.1rem; color: var(--text-primary);">Interactive Curriculum Vitae</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                        <button id="print-cv-btn" style="background: var(--primary-color); color: white; border: none; padding: 0.5rem 1.25rem; border-radius: 20px; font-weight: 700; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; gap: 0.4rem; transition: var(--transition);"><i class="fas fa-print"></i> Print / Save PDF</button>
+                        <span id="close-cv-btn" style="font-size: 1.8rem; font-weight: bold; cursor: pointer; color: var(--text-secondary); transition: var(--transition); line-height: 1;" onmouseover="this.style.color='var(--primary-color)'" onmouseout="this.style.color='var(--text-secondary)'">&times;</span>
+                    </div>
+                </div>
+                <!-- Scrolling container for CV body -->
+                <div id="cv-content-body" style="padding: 3rem; overflow-y: auto; background: white; color: #333333; font-family: 'Outfit', 'Inter', sans-serif; flex: 1;">
+                    <!-- Dynamically populated printable curriculum vitae -->
+                </div>
+            </div>
         </div>
 
 
