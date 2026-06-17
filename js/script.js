@@ -514,37 +514,6 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
     }
 
-    // ── GLIM Clicks Collapsible Toggle ───────────────────────────
-    // Exposed globally so the inline onclick can reach it
-    window.toggleGlimClicks = function () {
-        const panel = document.getElementById('glim-grid-panel');
-        const chevron = document.getElementById('glim-chevron');
-        const btn = document.getElementById('glim-toggle-btn');
-        const isOpen = panel && panel.style.maxHeight !== '0px' && panel.style.maxHeight !== '';
-
-        if (!panel) return;
-
-        if (isOpen) {
-            panel.style.maxHeight = '0px';
-            panel.style.opacity = '0';
-            if (chevron) chevron.style.transform = 'rotate(0deg)';
-            if (btn) btn.style.borderColor = 'var(--border-color)';
-        } else {
-            panel.style.maxHeight = panel.scrollHeight + 'px';
-            panel.style.opacity = '1';
-            if (chevron) chevron.style.transform = 'rotate(180deg)';
-            if (btn) btn.style.borderColor = 'var(--primary-color)';
-        }
-    };
-
-    // Google Maps card: animate arrow on hover
-    const gmapsCard = document.getElementById('gmaps-photo-card');
-    const gmapsCta = document.getElementById('gmaps-cta');
-    if (gmapsCard && gmapsCta) {
-        gmapsCard.addEventListener('mouseenter', () => { gmapsCta.style.transform = 'scale(1.12) translateX(3px)'; });
-        gmapsCard.addEventListener('mouseleave', () => { gmapsCta.style.transform = ''; });
-    }
-
     // ── Research Collaborators Tab Switcher & Dynamic Floating Tooltip ──
     const initCollaboratorsTabs = () => {
         const btnNames = document.getElementById('btn-collab-names');

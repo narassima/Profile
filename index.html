@@ -74,7 +74,7 @@
                 <a href="#materials" class="nav-link" data-target="materials">Active Learning Tools</a>
                 <a href="#experience" class="nav-link" data-target="experience">Experience</a>
                 <a href="#education" class="nav-link" data-target="education">Education</a>
-                <a href="#gallery" class="nav-link" data-target="gallery">Gallery</a>
+                <a href="#gallery" class="nav-link" data-target="gallery">Photography</a>
                 <div class="color-picker-container" style="display: inline-flex; align-items: center; gap: 0.35rem; margin-right: 0.5rem; background: rgba(255,255,255,0.12); padding: 0.25rem 0.6rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.15);">
                     <span class="color-dot active" data-color="blue" style="width: 12px; height: 12px; border-radius: 50%; background: #1a73e8; cursor: pointer; border: 1.5px solid white; display: inline-block;" title="Google Blue"></span>
                     <span class="color-dot" data-color="red" style="width: 12px; height: 12px; border-radius: 50%; background: #ea4335; cursor: pointer; border: 1.5px solid transparent; display: inline-block;" title="Google Red"></span>
@@ -1107,16 +1107,16 @@
             </div>
         </section>
 
-        <!-- Gallery Section -->
+        <!-- Gallery Section (Rebranded to Photography & Geotags) -->
         <section id="gallery" class="page-section">
             <div class="section-header">
-                <h2>Gallery</h2>
+                <h2>Photography</h2>
                 <div class="section-underline"></div>
             </div>
 
-            <!-- Google Maps Photography Card (rebranded) -->
-            <div style="max-width: 740px; margin: 0 auto 3.5rem;">
-                <a href="https://www.google.com/maps/contrib/116477131380312566240/photos/@12.7197187,76.4221103,7z/data=!4m3!8m2!3m1!1e1?authuser=1&entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" id="gmaps-photo-card" style="text-decoration: none; color: inherit; display: flex; align-items: stretch; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 32px rgba(234,113,10,0.15); border: 1px solid rgba(234,113,10,0.18); transition: all 0.35s ease; background: var(--glass-bg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);">
+            <!-- Google Maps Photo Contributions Card -->
+            <div style="max-width: 1200px; margin: 0 auto 2.5rem; padding: 0 1rem;">
+                <a href="https://www.google.com/maps/contrib/116477131380312566240/photos" target="_blank" id="gmaps-photo-card" style="text-decoration: none; color: inherit; display: flex; align-items: stretch; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 32px rgba(234,113,10,0.15); border: 1px solid rgba(234,113,10,0.18); transition: all 0.35s ease; background: var(--glass-bg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);">
                     <!-- Left accent strip -->
                     <div style="width: 7px; background: linear-gradient(180deg, #e8710a, #f9ab00, #34a853, #4285F4); flex-shrink: 0;"></div>
                     <!-- Icon block -->
@@ -1133,11 +1133,11 @@
                     <!-- Text content -->
                     <div style="flex: 1; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; justify-content: center; gap: 0.4rem;">
                         <div style="display: flex; align-items: center; gap: 0.5rem;">
-                            <span style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #e8710a; background: rgba(234,113,10,0.1); padding: 0.2rem 0.6rem; border-radius: 6px;">Google Maps</span>
-                            <span style="font-size: 0.72rem; color: var(--text-secondary);">Photo Contributions</span>
+                            <span style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #e8710a; background: rgba(234,113,10,0.1); padding: 0.2rem 0.6rem; border-radius: 6px;">Google Maps Contributions</span>
+                            <span style="font-size: 0.72rem; color: var(--text-secondary);">Local Guide Level 8</span>
                         </div>
-                        <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--text-primary); margin: 0; line-height: 1.2;">Captured Through My Lens</h3>
-                        <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 0; line-height: 1.55;">Street photography, natural landscapes &amp; architectural captures — geotagged and published on Google Maps for the community.</p>
+                        <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--text-primary); margin: 0; line-height: 1.2;">Captured Through My Lens — 13.5 Million+ Views</h3>
+                        <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 0; line-height: 1.55;">Street photography, natural landscapes &amp; architectural captures — geotagged and published on Google Maps for the global community.</p>
                     </div>
                     <!-- CTA arrow -->
                     <div style="padding: 1.5rem 1.5rem 1.5rem 0.5rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
@@ -1148,82 +1148,49 @@
                 </a>
             </div>
 
-            <!-- GLIM Clicks Collapsible Section -->
-            <div class="glim-clicks-wrapper" style="max-width: 1200px; margin: 0 auto;">
+            <!-- Curated Masonry Photogrid from CDN (prevents repo bloat) -->
+            <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); grid-auto-rows: 240px; gap: 1rem; grid-auto-flow: dense; padding: 0 1rem 3.5rem;">
+                
+                <a href="https://www.google.com/maps/contrib/116477131380312566240/photos" target="_blank" class="gallery-item-card" style="grid-column: span 2; grid-row: span 2; border-radius: 16px; overflow: hidden; display: block; border: 1px solid var(--border-color); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
+                    <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80" alt="Street Photography" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; display: block;">
+                    <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); padding: 1.25rem; color: white; pointer-events: none;">
+                        <span style="font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #FBBC05;">Street & Architecture</span>
+                        <h4 style="margin: 0.2rem 0 0; font-size: 1.1rem; font-weight: 700;">Urban Geometry</h4>
+                    </div>
+                </a>
 
-                <!-- Collapsible Header / Toggle Button -->
-                <button id="glim-toggle-btn" onclick="toggleGlimClicks()" style="width: 100%; background: var(--glass-bg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid var(--border-color); border-radius: 16px; padding: 1.1rem 1.5rem; display: flex; align-items: center; gap: 1rem; cursor: pointer; transition: all 0.3s ease; text-align: left; margin-bottom: 1.25rem;">
-                    <div style="width: 42px; height: 42px; background: linear-gradient(135deg, #1a73e8, #1557b0); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 4px 12px rgba(26, 115, 232,0.3);">
-                        <i class="fas fa-images" style="color: white; font-size: 1.1rem;"></i>
+                <a href="https://www.google.com/maps/contrib/116477131380312566240/photos" target="_blank" class="gallery-item-card" style="grid-row: span 2; border-radius: 16px; overflow: hidden; display: block; border: 1px solid var(--border-color); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
+                    <img src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&w=600&q=80" alt="Nature and Landscape" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; display: block;">
+                    <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); padding: 1.25rem; color: white; pointer-events: none;">
+                        <span style="font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #34A853;">Landscape</span>
+                        <h4 style="margin: 0.2rem 0 0; font-size: 1.1rem; font-weight: 700;">Natural Sanctuary</h4>
                     </div>
-                    <div style="flex: 1;">
-                        <div style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary);">GLIM Clicks</div>
-                        <div style="font-size: 0.82rem; color: var(--text-secondary); margin-top: 0.1rem;">Campus life, events &amp; moments at Great Lakes Institute of Management</div>
-                    </div>
-                    <!-- Preview strip (first 4 thumbnails) -->
-                    <div class="glim-preview-strip" style="display: flex; gap: 6px; flex-shrink: 0;">
-                        <div style="width: 48px; height: 48px; border-radius: 8px; overflow: hidden; border: 2px solid var(--surface-color); box-shadow: 0 2px 6px rgba(0,0,0,0.12);"><img src="assets/img/gallery_new/gallery_img_0.jpg" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
-                        <div style="width: 48px; height: 48px; border-radius: 8px; overflow: hidden; border: 2px solid var(--surface-color); box-shadow: 0 2px 6px rgba(0,0,0,0.12);"><img src="assets/img/gallery_new/gallery_img_4.jpg" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
-                        <div style="width: 48px; height: 48px; border-radius: 8px; overflow: hidden; border: 2px solid var(--surface-color); box-shadow: 0 2px 6px rgba(0,0,0,0.12);"><img src="assets/img/gallery_new/gallery_img_8.jpg" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
-                        <div class="glim-preview-count" style="width: 48px; height: 48px; border-radius: 8px; background: linear-gradient(135deg, #1a73e8, #1557b0); display: flex; align-items: center; justify-content: center; color: white; font-size: 0.78rem; font-weight: 700; box-shadow: 0 2px 6px rgba(26, 115, 232,0.3);">+39</div>
-                    </div>
-                    <!-- Chevron icon -->
-                    <div id="glim-chevron" style="width: 34px; height: 34px; border-radius: 50%; background: rgba(26, 115, 232,0.08); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: transform 0.4s cubic-bezier(0.25,0.8,0.25,1); color: var(--primary-color); font-size: 0.95rem;">
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                </button>
+                </a>
 
-                <!-- Collapsible Grid Panel -->
-                <div id="glim-grid-panel" style="overflow: hidden; max-height: 0; transition: max-height 0.6s cubic-bezier(0.25,0.8,0.25,1), opacity 0.4s ease; opacity: 0;">
-                    <div class="masonry-grid" id="gallery-grid" style="padding-bottom: 1.5rem;">
-                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_0.jpg" alt="GLIM Clicks 1" loading="lazy"></div>
-                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_1.jpg" alt="GLIM Clicks 2" loading="lazy"></div>
-                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_2.jpg" alt="GLIM Clicks 3" loading="lazy"></div>
-                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_3.jpg" alt="GLIM Clicks 4" loading="lazy"></div>
-                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_4.jpg" alt="GLIM Clicks 5" loading="lazy"></div>
-                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_5.jpg" alt="GLIM Clicks 6" loading="lazy"></div>
-                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_6.jpg" alt="GLIM Clicks 7" loading="lazy"></div>
-                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_7.jpg" alt="GLIM Clicks 8" loading="lazy"></div>
-                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_8.jpg" alt="GLIM Clicks 9" loading="lazy"></div>
-                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_9.jpg" alt="GLIM Clicks 10" loading="lazy"></div>
-                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_10.jpg" alt="GLIM Clicks 11" loading="lazy"></div>
-                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_11.jpg" alt="GLIM Clicks 12" loading="lazy"></div>
-                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_12.jpg" alt="GLIM Clicks 13" loading="lazy"></div>
-                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_13.jpg" alt="GLIM Clicks 14" loading="lazy"></div>
-                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_14.jpg" alt="GLIM Clicks 15" loading="lazy"></div>
-                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_15.jpg" alt="GLIM Clicks 16" loading="lazy"></div>
-                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_16.jpg" alt="GLIM Clicks 17" loading="lazy"></div>
-                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_17.jpg" alt="GLIM Clicks 18" loading="lazy"></div>
-                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_18.jpg" alt="GLIM Clicks 19" loading="lazy"></div>
-                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_19.jpg" alt="GLIM Clicks 20" loading="lazy"></div>
-                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_20.jpg" alt="GLIM Clicks 21" loading="lazy"></div>
-                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_21.jpg" alt="GLIM Clicks 22" loading="lazy"></div>
-                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_22.jpg" alt="GLIM Clicks 23" loading="lazy"></div>
-                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_23.jpg" alt="GLIM Clicks 24" loading="lazy"></div>
-                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_24.jpg" alt="GLIM Clicks 25" loading="lazy"></div>
-                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_25.jpg" alt="GLIM Clicks 26" loading="lazy"></div>
-                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_26.jpg" alt="GLIM Clicks 27" loading="lazy"></div>
-                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_27.jpg" alt="GLIM Clicks 28" loading="lazy"></div>
-                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_28.jpg" alt="GLIM Clicks 29" loading="lazy"></div>
-                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_29.jpg" alt="GLIM Clicks 30" loading="lazy"></div>
-                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_30.jpg" alt="GLIM Clicks 31" loading="lazy"></div>
-                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_31.jpg" alt="GLIM Clicks 32" loading="lazy"></div>
-                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_32.jpg" alt="GLIM Clicks 33" loading="lazy"></div>
-                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_33.jpg" alt="GLIM Clicks 34" loading="lazy"></div>
-                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_34.jpg" alt="GLIM Clicks 35" loading="lazy"></div>
-                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_35.jpg" alt="GLIM Clicks 36" loading="lazy"></div>
-                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_36.jpg" alt="GLIM Clicks 37" loading="lazy"></div>
-                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_37.jpg" alt="GLIM Clicks 38" loading="lazy"></div>
-                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_38.jpg" alt="GLIM Clicks 39" loading="lazy"></div>
-                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_39.jpg" alt="GLIM Clicks 40" loading="lazy"></div>
-                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_40.jpg" alt="GLIM Clicks 41" loading="lazy"></div>
-                        <div class="gallery-item hover-lift"><img src="assets/img/gallery_new/gallery_img_41.jpg" alt="GLIM Clicks 42" loading="lazy"></div>
+                <a href="https://www.google.com/maps/contrib/116477131380312566240/photos" target="_blank" class="gallery-item-card" style="border-radius: 16px; overflow: hidden; display: block; border: 1px solid var(--border-color); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80" alt="Modern Architecture" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; display: block;">
+                    <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); padding: 0.85rem; color: white; pointer-events: none;">
+                        <h5 style="margin: 0; font-size: 0.95rem; font-weight: 700;">Structural Lines</h5>
                     </div>
-                </div>
+                </a>
+
+                <a href="https://www.google.com/maps/contrib/116477131380312566240/photos" target="_blank" class="gallery-item-card" style="grid-column: span 2; border-radius: 16px; overflow: hidden; display: block; border: 1px solid var(--border-color); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
+                    <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=800&q=80" alt="Travel Photography" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; display: block;">
+                    <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); padding: 0.85rem; color: white; pointer-events: none;">
+                        <h5 style="margin: 0; font-size: 0.95rem; font-weight: 700;">Urban Perspectives</h5>
+                    </div>
+                </a>
+
+                <a href="https://www.google.com/maps/contrib/116477131380312566240/photos" target="_blank" class="gallery-item-card" style="border-radius: 16px; overflow: hidden; display: block; border: 1px solid var(--border-color); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
+                    <img src="https://images.unsplash.com/photo-1472214222541-d510753a4907?auto=format&fit=crop&w=600&q=80" alt="Landscape Photography" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; display: block;">
+                    <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); padding: 0.85rem; color: white; pointer-events: none;">
+                        <h5 style="margin: 0; font-size: 0.95rem; font-weight: 700;">Golden Horizon</h5>
+                    </div>
+                </a>
+
             </div>
         </section>
 
-    
         <!-- Image Lightbox Modal -->
         <div id="image-lightbox" class="lightbox-modal">
             <span class="lightbox-close">&times;</span>
