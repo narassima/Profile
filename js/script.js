@@ -80,6 +80,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const rawChapters = Array.isArray(pubs.bookChapters) ? pubs.bookChapters : [];
     const rawCopyrights = Array.isArray(pubs.copyrights) ? pubs.copyrights : [];
 
+    const allPublications = [
+        ...rawJournals,
+        ...rawConfs,
+        ...rawBooks,
+        ...rawChapters,
+        ...rawCopyrights
+    ];
+
     const journalsList = document.getElementById('journal-list');
     const journalPagination = document.getElementById('journal-pagination');
     const conferenceList = document.getElementById('conference-list');
@@ -708,10 +716,22 @@ document.addEventListener('DOMContentLoaded', () => {
     if (colorPickerContainer) {
         const dots = colorPickerContainer.querySelectorAll('.color-dot');
         const colorPalette = {
-            blue: { light: { primary: '#1a73e8', hover: '#1557b0' }, dark: { primary: '#8ab4f8', hover: '#aecbfa' } },
-            red: { light: { primary: '#ea4335', hover: '#c5221f' }, dark: { primary: '#f28b82', hover: '#f6aea9' } },
-            yellow: { light: { primary: '#f29900', hover: '#d56e00' }, dark: { primary: '#fdd663', hover: '#ffe082' } },
-            green: { light: { primary: '#34a853', hover: '#137333' }, dark: { primary: '#81c995', hover: '#a8dab5' } }
+            blue: { 
+                light: { primary: '#1a73e8', hover: '#1557b0', rgb: '26, 115, 232', hoverRgb: '21, 87, 176' }, 
+                dark: { primary: '#8ab4f8', hover: '#aecbfa', rgb: '138, 180, 248', hoverRgb: '174, 203, 250' } 
+            },
+            red: { 
+                light: { primary: '#ea4335', hover: '#c5221f', rgb: '234, 67, 53', hoverRgb: '197, 34, 31' }, 
+                dark: { primary: '#f28b82', hover: '#f6aea9', rgb: '242, 139, 130', hoverRgb: '246, 174, 169' } 
+            },
+            yellow: { 
+                light: { primary: '#f29900', hover: '#d56e00', rgb: '242, 153, 0', hoverRgb: '213, 110, 0' }, 
+                dark: { primary: '#fdd663', hover: '#ffe082', rgb: '253, 214, 99', hoverRgb: '255, 224, 130' } 
+            },
+            green: { 
+                light: { primary: '#34a853', hover: '#137333', rgb: '52, 168, 83', hoverRgb: '19, 115, 51' }, 
+                dark: { primary: '#81c995', hover: '#a8dab5', rgb: '129, 201, 149', hoverRgb: '168, 218, 181' } 
+            }
         };
 
         const updateAccentColor = (colorName) => {
@@ -721,6 +741,8 @@ document.addEventListener('DOMContentLoaded', () => {
             
             document.documentElement.style.setProperty('--primary-color', activeColors.primary);
             document.documentElement.style.setProperty('--primary-hover', activeColors.hover);
+            document.documentElement.style.setProperty('--primary-rgb', activeColors.rgb);
+            document.documentElement.style.setProperty('--primary-hover-rgb', activeColors.hoverRgb);
             
             // Save state
             localStorage.setItem('theme-accent-color', colorName);
@@ -766,10 +788,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const chartContainer = document.getElementById('publication-chart-container');
     const resetChartFilterBtn = document.getElementById('reset-timeline-filter');
     
-    if (chartContainer && portfolioData.publications) {
+    if (chartContainer && allPublications.length > 0) {
         // Collect years from all publications
         const yearsMap = {};
-        portfolioData.publications.forEach(pub => {
+        allPublications.forEach(pub => {
             if (pub.year) {
                 yearsMap[pub.year] = (yearsMap[pub.year] || 0) + 1;
             }
@@ -954,7 +976,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="cv-section" style="margin-bottom:1rem;">
                             <h2 style="font-size:1.2rem;font-weight:700;color:var(--primary-color);border-bottom:1.5px solid var(--border-color);padding-bottom:0.4rem;margin:0 0 1rem 0;text-transform:uppercase;letter-spacing:0.5px;">Selected Publications</h2>
                             <ul style="list-style:decimal;padding-left:1.2rem;margin:0;display:flex;flex-direction:column;gap:0.75rem;font-size:0.85rem;color:#333;">
-                                ${(portfolioData.publications || []).slice(0, 10).map(pub => `
+                                ${(allPublications || []).slice(0, 10).map(pub => `
                                     <li style="margin-bottom:0.25rem;text-align:justify;line-height:1.4;">
                                         <strong>${pub.title}</strong> (${pub.year}). 
                                         <span style="color:#5f6368;">${pub.authors}</span>. 
@@ -962,8 +984,8 @@ document.addEventListener('DOMContentLoaded', () => {
                                     </li>
                                 `).join('')}
                             </ul>
-                            ${portfolioData.publications && portfolioData.publications.length > 10 ? `
-                                <p style="font-size:0.8rem;color:#5f6368;font-style:italic;margin-top:0.5rem;text-align:center;">And ${portfolioData.publications.length - 10} other publications listed on Google Scholar / website</p>
+                            ${allPublications && allPublications.length > 10 ? `
+                                <p style="font-size:0.8rem;color:#5f6368;font-style:italic;margin-top:0.5rem;text-align:center;">And ${allPublications.length - 10} other publications listed on Google Scholar / website</p>
                             ` : ''}
                         </div>
 
