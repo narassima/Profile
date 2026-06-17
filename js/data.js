@@ -1260,7 +1260,7 @@ const portfolioData = {
     certifications: [
         {
                 "name": "Training the Trainer Program on SAP HANA S4",
-                "issuer": "May 2026"
+                "issuer": "GLIM, May 2026"
         },
         {
                 "name": "Crash Course on Python",
