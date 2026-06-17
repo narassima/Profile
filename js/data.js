@@ -1277,6 +1277,11 @@ const portfolioData = {
 ],
     contributions: [
         {
+                "type": "Chief Guest",
+                "description": "Served as the Chief Guest for the SANMUN 2026 on 12 June, 2026 at Sri Sankara Senior Secondary School, Adyar, Chennai.",
+                "icon": "fa-user-tie"
+        },
+        {
                 "type": "Session Panel Chair",
                 "description": "Contributed as a Panel Chair in the International Conference on Emerging Practices in Business and Management (ICEPBM) conducted on May 22-23, 2025 at the Saveetha Engineering College, Chennai.",
                 "icon": "fa-chair"
