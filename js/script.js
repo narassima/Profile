@@ -270,7 +270,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (wordCloud && portfolioData.feedbackWords) {
         const maxCount = Math.max(...portfolioData.feedbackWords.map(w => w.count));
         const minCount = Math.min(...portfolioData.feedbackWords.map(w => w.count));
-        const colors = ['#0A66C2', '#004182', '#444444', '#137333', '#2a2a2a'];
+        const colors = ['#4285F4', '#EA4335', '#FBBC05', '#34A853', '#202124'];
         portfolioData.feedbackWords.forEach(wordObj => {
             const scale = (wordObj.count - minCount) / (maxCount - minCount || 1);
             const fontSize = (scale * 1.6) + 0.9;
@@ -430,14 +430,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const group = groupedRoles[roleName];
             const listItems = group.details.map(detail => `
                 <li style="margin-bottom: 0.6rem; display: flex; align-items: flex-start; gap: 0.6rem;">
-                    <i class="fas fa-chevron-right" style="font-size: 0.75rem; color: var(--primary-color); margin-top: 0.35rem; flex-shrink: 0;"></i>
+                    <i class="fas fa-check-circle" style="font-size: 0.85rem; color: var(--primary-color); margin-top: 0.35rem; flex-shrink: 0;"></i>
                     <span style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.4;">${detail}</span>
                 </li>
             `).join('');
 
             rolesGrid.innerHTML += `
                 <div class="glass-card role-list-card" style="padding: 1.5rem; border: 1px solid var(--border-color); border-radius: var(--radius-md); background: rgba(255, 255, 255, 0.45); box-shadow: var(--shadow-sm); display: flex; flex-direction: column;">
-                    <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; border-bottom: 1.5px solid rgba(10, 102, 194, 0.15); padding-bottom: 0.75rem;">
+                    <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; border-bottom: 1.5px solid rgba(26, 115, 232, 0.15); padding-bottom: 0.75rem;">
                         <i class="fas ${group.icon}" style="font-size: 1.3rem; color: var(--primary-color);"></i>
                         <h4 style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin: 0;">${roleName}</h4>
                     </div>
