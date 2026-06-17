@@ -407,14 +407,43 @@ document.addEventListener('DOMContentLoaded', () => {
     // ── Render Review & Editorial Roles ──────────────────────────
     const rolesGrid = document.getElementById('roles-grid');
     if (rolesGrid && portfolioData.roles) {
+        // Group roles by name (role type)
+        const groupedRoles = {};
         portfolioData.roles.forEach(role => {
+            if (!groupedRoles[role.name]) {
+                groupedRoles[role.name] = {
+                    icon: role.icon,
+                    details: []
+                };
+            }
+            groupedRoles[role.name].details.push(role.detail);
+        });
+
+        rolesGrid.innerHTML = ''; // Clear original grid
+        
+        // Customize grid structure for lists
+        rolesGrid.style.display = 'grid';
+        rolesGrid.style.gridTemplateColumns = 'repeat(auto-fit, minmax(320px, 1fr))';
+        rolesGrid.style.gap = '1.5rem';
+
+        Object.keys(groupedRoles).forEach(roleName => {
+            const group = groupedRoles[roleName];
+            const listItems = group.details.map(detail => `
+                <li style="margin-bottom: 0.6rem; display: flex; align-items: flex-start; gap: 0.6rem;">
+                    <i class="fas fa-chevron-right" style="font-size: 0.75rem; color: var(--primary-color); margin-top: 0.35rem; flex-shrink: 0;"></i>
+                    <span style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.4;">${detail}</span>
+                </li>
+            `).join('');
+
             rolesGrid.innerHTML += `
-                <div class="role-card" style="box-shadow: none; font-size: 0.85rem; line-height: 1.3;">
-                    <i class="fas ${role.icon} role-icon"></i>
-                    <div>
-                        <strong style="display: block; font-weight: 600; color: var(--text-primary);">${role.name}</strong>
-                        <span style="font-size: 0.8rem; color: var(--text-secondary);">${role.detail}</span>
+                <div class="glass-card role-list-card" style="padding: 1.5rem; border: 1px solid var(--border-color); border-radius: var(--radius-md); background: rgba(255, 255, 255, 0.45); box-shadow: var(--shadow-sm); display: flex; flex-direction: column;">
+                    <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; border-bottom: 1.5px solid rgba(10, 102, 194, 0.15); padding-bottom: 0.75rem;">
+                        <i class="fas ${group.icon}" style="font-size: 1.3rem; color: var(--primary-color);"></i>
+                        <h4 style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin: 0;">${roleName}</h4>
                     </div>
+                    <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column;">
+                        ${listItems}
+                    </ul>
                 </div>`;
         });
     }

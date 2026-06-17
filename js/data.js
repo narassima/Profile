@@ -1217,6 +1217,11 @@ const portfolioData = {
                 "icon": "fa-book-open"
         },
         {
+                "name": "Editorial Board Member",
+                "detail": "Journal of Intelligent Operations and Analytics",
+                "icon": "fa-book-open"
+        },
+        {
                 "name": "Peer Reviewer",
                 "detail": "Elsevier - Computers in Biology and Medicine",
                 "icon": "fa-check-double"
