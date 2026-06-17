@@ -802,34 +802,34 @@ document.addEventListener('DOMContentLoaded', () => {
         const maxPubs = Math.max(...Object.values(yearsMap));
         
         if (sortedYears.length > 0) {
-            let svgHtml = `<svg width="100%" height="110px" viewBox="0 0 400 110" preserveAspectRatio="none" style="overflow: visible;">`;
-            const barWidth = Math.floor(340 / sortedYears.length) - 8;
-            const startX = 30;
+            let svgHtml = `<svg width="100%" height="110px" viewBox="0 0 800 220" preserveAspectRatio="none" style="overflow: visible;">`;
+            const barWidth = Math.floor(680 / sortedYears.length) - 16;
+            const startX = 60;
             
             sortedYears.forEach((year, index) => {
                 const count = yearsMap[year];
-                const height = Math.max(12, Math.floor((count / maxPubs) * 80));
-                const x = startX + index * (barWidth + 8);
-                const y = 90 - height;
+                const height = Math.max(24, Math.floor((count / maxPubs) * 150));
+                const x = startX + index * (barWidth + 16);
+                const y = 180 - height;
                 
                 svgHtml += `
                     <g class="timeline-bar-group" data-year="${year}">
                         <!-- Invisible hover pad -->
-                        <rect x="${x - 2}" y="10" width="${barWidth + 4}" height="90" fill="transparent" style="cursor:pointer;" />
+                        <rect x="${x - 4}" y="20" width="${barWidth + 8}" height="180" fill="transparent" style="cursor:pointer;" />
                         <!-- Actual bar -->
-                        <rect class="timeline-bar" x="${x}" y="${y}" width="${barWidth}" height="${height}" rx="3" fill="var(--primary-color)" />
+                        <rect class="timeline-bar" x="${x}" y="${y}" width="${barWidth}" height="${height}" rx="6" fill="var(--primary-color)" />
                         <!-- Bar text count -->
-                        <text x="${x + barWidth/2}" y="${y - 6}" font-family="var(--font-main)" font-size="7.5" font-weight="700" fill="var(--text-secondary)" text-anchor="middle">${count}</text>
+                        <text x="${x + barWidth/2}" y="${y - 12}" font-size="14" font-weight="700" fill="var(--text-secondary)" text-anchor="middle" style="font-family:var(--font-main); text-rendering:geometricPrecision; -webkit-font-smoothing:antialiased;">${count}</text>
                         <!-- Year label -->
-                        <text x="${x + barWidth/2}" y="102" font-family="var(--font-main)" font-size="8.5" font-weight="600" fill="var(--text-secondary)" text-anchor="middle">${year}</text>
+                        <text x="${x + barWidth/2}" y="204" font-size="16" font-weight="600" fill="var(--text-secondary)" text-anchor="middle" style="font-family:var(--font-main); text-rendering:geometricPrecision; -webkit-font-smoothing:antialiased;">${year}</text>
                     </g>
                 `;
             });
             
             // Y-axis line
-            svgHtml += `<line x1="${startX - 6}" y1="10" x2="${startX - 6}" y2="92" stroke="var(--border-color)" stroke-width="1" />`;
+            svgHtml += `<line x1="${startX - 12}" y1="20" x2="${startX - 12}" y2="180" stroke="var(--border-color)" stroke-width="1.5" />`;
             // X-axis line
-            svgHtml += `<line x1="${startX - 6}" y1="92" x2="390" y2="92" stroke="var(--border-color)" stroke-width="1" />`;
+            svgHtml += `<line x1="${startX - 12}" y1="180" x2="780" y2="180" stroke="var(--border-color)" stroke-width="1.5" />`;
             
             svgHtml += `</svg>`;
             chartContainer.innerHTML = svgHtml;
