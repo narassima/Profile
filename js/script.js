@@ -514,40 +514,6 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
     }
 
-    // ── Theme Switcher ──────────────────────────────────────────
-    const themeToggleBtn = document.getElementById('theme-toggle');
-    const themeIcon = themeToggleBtn ? themeToggleBtn.querySelector('i') : null;
-    
-    // Check if user has a preference set
-    const currentTheme = localStorage.getItem('theme');
-    if (currentTheme === 'dark') {
-        document.body.classList.add('dark-theme');
-        if (themeIcon) {
-            themeIcon.className = 'fas fa-sun';
-            themeIcon.style.color = '#F9AB00'; // Golden sun color
-        }
-    }
-
-    if (themeToggleBtn) {
-        themeToggleBtn.addEventListener('click', () => {
-            document.body.classList.toggle('dark-theme');
-            let theme = 'light';
-            if (document.body.classList.contains('dark-theme')) {
-                theme = 'dark';
-                if (themeIcon) {
-                    themeIcon.className = 'fas fa-sun';
-                    themeIcon.style.color = '#F9AB00';
-                }
-            } else {
-                if (themeIcon) {
-                    themeIcon.className = 'fas fa-moon';
-                    themeIcon.style.color = '';
-                }
-            }
-            localStorage.setItem('theme', theme);
-        });
-    }
-
     // ── GLIM Clicks Collapsible Toggle ───────────────────────────
     // Exposed globally so the inline onclick can reach it
     window.toggleGlimClicks = function () {
@@ -735,9 +701,8 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         const updateAccentColor = (colorName) => {
-            const isDark = document.body.classList.contains('dark-theme');
             const palette = colorPalette[colorName] || colorPalette.blue;
-            const activeColors = isDark ? palette.dark : palette.light;
+            const activeColors = palette.light;
             
             document.documentElement.style.setProperty('--primary-color', activeColors.primary);
             document.documentElement.style.setProperty('--primary-hover', activeColors.hover);
@@ -772,16 +737,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const savedAccent = localStorage.getItem('theme-accent-color') || 'blue';
         updateAccentColor(savedAccent);
 
-        // Recheck on theme toggle
-        const toggleBtn = document.getElementById('theme-toggle');
-        if (toggleBtn) {
-            toggleBtn.addEventListener('click', () => {
-                setTimeout(() => {
-                    const currentAccent = localStorage.getItem('theme-accent-color') || 'blue';
-                    updateAccentColor(currentAccent);
-                }, 50);
-            });
-        }
+
     }
 
     // ── Publications Timeline SVG Chart ──────────────────────────

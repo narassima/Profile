@@ -25,44 +25,6 @@
     --font-main: 'Outfit', 'Inter', sans-serif;
 }
 
-/* Dark Theme Variables */
-body.dark-theme {
-    --bg-color: #202124; /* Google Dark */
-    --surface-color: #303134; /* Google Dark surface */
-    --text-primary: #e8eaed;
-    --text-secondary: #9aa0a6;
-    --border-color: #3c4043;
-    --glass-bg: rgba(48, 49, 52, 0.9);
-    --glass-border: rgba(60, 64, 67, 0.5);
-    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.35);
-    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.45);
-    --shadow-hover: 0 12px 32px rgba(0, 0, 0, 0.55);
-    --primary-color: #8ab4f8; /* Google Dark Blue */
-    --primary-hover: #aecbfa;
-    --secondary-color: #81c995; /* Google Dark Green */
-}
-
-/* Dark Theme Custom Overrides */
-body.dark-theme .publication-item {
-    background: var(--surface-color);
-    border-left-color: var(--primary-color);
-}
-body.dark-theme .score-badge {
-    color: #4ade80;
-}
-body.dark-theme .data-table tr:hover {
-    background: rgba(var(--primary-rgb, 26, 115, 232), 0.04);
-}
-body.dark-theme .tab-btn:hover {
-    background: rgba(var(--primary-rgb, 26, 115, 232), 0.08);
-}
-body.dark-theme .word-tag {
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-}
-body.dark-theme .word-tag:hover {
-    color: var(--primary-color) !important;
-    text-shadow: 0 4px 12px rgba(var(--primary-rgb, 26, 115, 232), 0.4) !important;
-}
 
 * {
     margin: 0;
@@ -1345,26 +1307,6 @@ body {
     border-radius: 4px;
     font-size: 0.72rem;
     font-weight: 700;
-}
-
-/* Dark theme support for floating tooltip */
-body.dark-theme #collab-floating-tooltip {
-    background: rgba(30, 41, 59, 0.96);
-    border-color: rgba(255, 255, 255, 0.15);
-    color: #f1f5f9;
-}
-
-body.dark-theme #collab-floating-tooltip strong {
-    color: #38bdf8;
-}
-
-body.dark-theme #collab-floating-tooltip p {
-    color: #cbd5e1;
-}
-
-body.dark-theme #collab-floating-tooltip .tooltip-badge {
-    background: rgba(56, 189, 248, 0.15);
-    color: #38bdf8;
 }
 
 .collab-tooltip strong {
