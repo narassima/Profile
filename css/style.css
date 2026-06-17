@@ -344,6 +344,10 @@ body {
     padding: 2rem;
 }
 
+.detail-card p {
+    text-align: justify;
+}
+
 .card-header {
     display: flex;
     align-items: center;
