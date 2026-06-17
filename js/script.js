@@ -801,38 +801,26 @@ document.addEventListener('DOMContentLoaded', () => {
         const sortedYears = Object.keys(yearsMap).map(Number).sort((a,b) => a - b);
         const maxPubs = Math.max(...Object.values(yearsMap));
         
-        if (sortedYears.length > 0) {
-            let svgHtml = `<svg width="100%" height="110px" viewBox="0 0 800 220" preserveAspectRatio="none" style="overflow: visible;">`;
-            const barWidth = Math.floor(680 / sortedYears.length) - 16;
-            const startX = 60;
+            let chartHtml = `<div class="timeline-chart-html" style="display: flex; align-items: flex-end; justify-content: space-between; height: 125px; padding: 20px 10px 25px 25px; border-bottom: 1.5px solid var(--border-color); border-left: 1.5px solid var(--border-color); position: relative; margin-top: 1rem; width: 100%;">`;
             
             sortedYears.forEach((year, index) => {
                 const count = yearsMap[year];
-                const height = Math.max(24, Math.floor((count / maxPubs) * 150));
-                const x = startX + index * (barWidth + 16);
-                const y = 180 - height;
+                const percentHeight = Math.max(15, Math.floor((count / maxPubs) * 75));
                 
-                svgHtml += `
-                    <g class="timeline-bar-group" data-year="${year}">
-                        <!-- Invisible hover pad -->
-                        <rect x="${x - 4}" y="20" width="${barWidth + 8}" height="180" fill="transparent" style="cursor:pointer;" />
-                        <!-- Actual bar -->
-                        <rect class="timeline-bar" x="${x}" y="${y}" width="${barWidth}" height="${height}" rx="6" fill="var(--primary-color)" />
-                        <!-- Bar text count -->
-                        <text x="${x + barWidth/2}" y="${y - 12}" font-size="14" font-weight="700" fill="var(--text-secondary)" text-anchor="middle" style="font-family:var(--font-main); text-rendering:geometricPrecision; -webkit-font-smoothing:antialiased;">${count}</text>
+                chartHtml += `
+                    <div class="timeline-bar-group" data-year="${year}" style="display: flex; flex-direction: column; align-items: center; flex: 1; height: 100%; justify-content: flex-end; position: relative; cursor: pointer; padding: 0 4px;">
+                        <!-- Count text -->
+                        <span class="timeline-bar-count" style="font-family: var(--font-main); font-size: 0.8rem; font-weight: 700; color: var(--text-secondary); margin-bottom: 4px; pointer-events: none; -webkit-font-smoothing: antialiased;">${count}</span>
+                        <!-- Bar -->
+                        <div class="timeline-bar" style="width: 100%; max-width: 32px; height: ${percentHeight}%; background: var(--primary-color); border-radius: 4px 4px 0 0; transition: var(--transition);" data-year="${year}"></div>
                         <!-- Year label -->
-                        <text x="${x + barWidth/2}" y="204" font-size="16" font-weight="600" fill="var(--text-secondary)" text-anchor="middle" style="font-family:var(--font-main); text-rendering:geometricPrecision; -webkit-font-smoothing:antialiased;">${year}</text>
-                    </g>
+                        <span class="timeline-bar-year" style="position: absolute; bottom: -22px; font-family: var(--font-main); font-size: 0.8rem; font-weight: 600; color: var(--text-secondary); pointer-events: none; -webkit-font-smoothing: antialiased;">${year}</span>
+                    </div>
                 `;
             });
             
-            // Y-axis line
-            svgHtml += `<line x1="${startX - 12}" y1="20" x2="${startX - 12}" y2="180" stroke="var(--border-color)" stroke-width="1.5" />`;
-            // X-axis line
-            svgHtml += `<line x1="${startX - 12}" y1="180" x2="780" y2="180" stroke="var(--border-color)" stroke-width="1.5" />`;
-            
-            svgHtml += `</svg>`;
-            chartContainer.innerHTML = svgHtml;
+            chartHtml += `</div>`;
+            chartContainer.innerHTML = chartHtml;
             
             const barGroups = chartContainer.querySelectorAll('.timeline-bar-group');
             
