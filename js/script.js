@@ -726,6 +726,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const sortedYears = Object.keys(yearsMap).map(Number).sort((a,b) => a - b);
         const maxPubs = Math.max(...Object.values(yearsMap));
         
+        if (sortedYears.length > 0) {
             let chartHtml = `<div class="timeline-chart-html" style="display: flex; align-items: flex-end; justify-content: space-between; height: 125px; padding: 20px 10px 25px 25px; border-bottom: 1.5px solid var(--border-color); border-left: 1.5px solid var(--border-color); position: relative; margin-top: 1rem; width: 100%;">`;
             
             sortedYears.forEach((year, index) => {
