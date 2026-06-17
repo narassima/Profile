@@ -1133,7 +1133,7 @@ const portfolioData = {
                 "degree": "B.Tech. in Mechanical Engineering",
                 "institution": "Amrita School of Engineering, Coimbatore, Amrita Vishwa Vidyapeetham, India",
                 "duration": "2010-2014",
-                "details": "CGPA: 8.41"
+                "details": "CGPA: 8.41 (Graduated with distinction)"
         },
         {
                 "degree": "Higher Secondary Education (Class XII)",
