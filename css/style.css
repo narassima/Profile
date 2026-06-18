@@ -1448,3 +1448,42 @@ body {
     transform: translateY(-4px);
     border-color: var(--primary-color) !important;
 }
+
+/* Photography Masonry Layout Sizes */
+.grid-span-1-1 {
+    grid-column: span 1;
+    grid-row: span 1;
+}
+.grid-span-2-2 {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+.grid-span-2-1 {
+    grid-column: span 2;
+    grid-row: span 1;
+}
+.grid-span-1-2 {
+    grid-column: span 1;
+    grid-row: span 2;
+}
+.instagram-overlay-icon {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    pointer-events: none;
+    z-index: 2;
+    transition: var(--transition);
+}
+.gallery-item-card:hover .instagram-overlay-icon {
+    background: #e1306c;
+    transform: scale(1.1);
+}

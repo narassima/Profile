@@ -652,31 +652,37 @@ document.addEventListener('DOMContentLoaded', () => {
         const dots = colorPickerContainer.querySelectorAll('.color-dot');
         const colorPalette = {
             blue: { 
-                light: { primary: '#1a73e8', hover: '#1557b0', rgb: '26, 115, 232', hoverRgb: '21, 87, 176' }, 
-                dark: { primary: '#8ab4f8', hover: '#aecbfa', rgb: '138, 180, 248', hoverRgb: '174, 203, 250' } 
+                primary: '#1a73e8', hover: '#1557b0', rgb: '26, 115, 232', hoverRgb: '21, 87, 176',
+                lightBg: 'rgba(26, 115, 232, 0.08)', border: 'rgba(26, 115, 232, 0.2)',
+                gradient: 'linear-gradient(135deg, #1a73e8, #1557b0)'
             },
             red: { 
-                light: { primary: '#ea4335', hover: '#c5221f', rgb: '234, 67, 53', hoverRgb: '197, 34, 31' }, 
-                dark: { primary: '#f28b82', hover: '#f6aea9', rgb: '242, 139, 130', hoverRgb: '246, 174, 169' } 
+                primary: '#ea4335', hover: '#c5221f', rgb: '234, 67, 53', hoverRgb: '197, 34, 31',
+                lightBg: 'rgba(234, 67, 53, 0.08)', border: 'rgba(234, 67, 53, 0.2)',
+                gradient: 'linear-gradient(135deg, #ea4335, #c5221f)'
             },
             yellow: { 
-                light: { primary: '#f29900', hover: '#d56e00', rgb: '242, 153, 0', hoverRgb: '213, 110, 0' }, 
-                dark: { primary: '#fdd663', hover: '#ffe082', rgb: '253, 214, 99', hoverRgb: '255, 224, 130' } 
+                primary: '#f29900', hover: '#d56e00', rgb: '242, 153, 0', hoverRgb: '213, 110, 0',
+                lightBg: 'rgba(242, 153, 0, 0.08)', border: 'rgba(242, 153, 0, 0.2)',
+                gradient: 'linear-gradient(135deg, #f29900, #d56e00)'
             },
             green: { 
-                light: { primary: '#34a853', hover: '#137333', rgb: '52, 168, 83', hoverRgb: '19, 115, 51' }, 
-                dark: { primary: '#81c995', hover: '#a8dab5', rgb: '129, 201, 149', hoverRgb: '168, 218, 181' } 
+                primary: '#34a853', hover: '#137333', rgb: '52, 168, 83', hoverRgb: '19, 115, 51',
+                lightBg: 'rgba(52, 168, 83, 0.08)', border: 'rgba(52, 168, 83, 0.2)',
+                gradient: 'linear-gradient(135deg, #34a853, #137333)'
             }
         };
 
         const updateAccentColor = (colorName) => {
             const palette = colorPalette[colorName] || colorPalette.blue;
-            const activeColors = palette.light;
             
-            document.documentElement.style.setProperty('--primary-color', activeColors.primary);
-            document.documentElement.style.setProperty('--primary-hover', activeColors.hover);
-            document.documentElement.style.setProperty('--primary-rgb', activeColors.rgb);
-            document.documentElement.style.setProperty('--primary-hover-rgb', activeColors.hoverRgb);
+            document.documentElement.style.setProperty('--primary-color', palette.primary);
+            document.documentElement.style.setProperty('--primary-hover', palette.hover);
+            document.documentElement.style.setProperty('--primary-rgb', palette.rgb);
+            document.documentElement.style.setProperty('--primary-hover-rgb', palette.hoverRgb);
+            document.documentElement.style.setProperty('--primary-light-bg', palette.lightBg);
+            document.documentElement.style.setProperty('--primary-border', palette.border);
+            document.documentElement.style.setProperty('--accent-gradient', palette.gradient);
             
             // Save state
             localStorage.setItem('theme-accent-color', colorName);
@@ -686,7 +692,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (dot.getAttribute('data-color') === colorName) {
                     dot.classList.add('active');
                     dot.style.border = '2px solid white';
-                    dot.style.boxShadow = '0 0 0 1.5px ' + activeColors.primary;
+                    dot.style.boxShadow = '0 0 0 1.5px ' + palette.primary;
                 } else {
                     dot.classList.remove('active');
                     dot.style.border = '1.5px solid transparent';
