@@ -833,6 +833,8 @@ document.addEventListener('DOMContentLoaded', () => {
             sections: {
                 education: true,
                 experience: true,
+                roles: true,
+                contributions: true,
                 publications: true,
                 certifications: true
             },
@@ -942,6 +944,40 @@ document.addEventListener('DOMContentLoaded', () => {
                 `;
             }
 
+            let rolesHtml = '';
+            if (cvConfig.sections.roles && portfolioData.roles && portfolioData.roles.length > 0) {
+                rolesHtml = `
+                    <div class="cv-section" style="margin-bottom: ${sectionSpacing}; page-break-inside: avoid;">
+                        <h2 class="cv-section-title">Review &amp; Editorial Boards</h2>
+                        <ul style="list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0.6rem 1.25rem; font-size: 0.82rem; color: #334155;">
+                            ${portfolioData.roles.map(role => `
+                                <li style="border-left: 2px solid ${titleColor}; padding-left: 0.5rem; margin-bottom: 0.1rem;">
+                                    <div style="font-weight: 700; color: #1e293b;">${role.name}</div>
+                                    <div style="color: #475569; font-size: 0.78rem;">${role.detail}</div>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                `;
+            }
+
+            let contributionsHtml = '';
+            if (cvConfig.sections.contributions && portfolioData.contributions && portfolioData.contributions.length > 0) {
+                contributionsHtml = `
+                    <div class="cv-section" style="margin-bottom: ${sectionSpacing}; page-break-inside: avoid;">
+                        <h2 class="cv-section-title">Academic Contributions &amp; Invited Talks</h2>
+                        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.6rem; font-size: 0.82rem; color: #334155;">
+                            ${portfolioData.contributions.map(contrib => `
+                                <li style="text-align: justify; line-height: 1.4;">
+                                    <span style="font-weight: 700; color: #1e293b; display: inline-block; min-width: 130px;">[${contrib.type}]</span>
+                                    <span>${contrib.description}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                `;
+            }
+
             let pubHtml = '';
             if (cvConfig.sections.publications && cvConfig.selectedPubIndices.length > 0) {
                 pubHtml = `
@@ -1015,6 +1051,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div style="display: flex; flex-direction: column; gap: 1.25rem;">
                         ${eduHtml}
                         ${expHtml}
+                        ${rolesHtml}
+                        ${contributionsHtml}
                         ${pubHtml}
                         ${certHtml}
                     </div>
@@ -1059,6 +1097,12 @@ document.addEventListener('DOMContentLoaded', () => {
                             </label>
                             <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;color:var(--text-secondary);cursor:pointer;font-weight:600;">
                                 <input type="checkbox" id="sec-experience" ${cvConfig.sections.experience ? 'checked' : ''} style="cursor:pointer;accent-color:var(--primary-color);"> Experience
+                            </label>
+                            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;color:var(--text-secondary);cursor:pointer;font-weight:600;">
+                                <input type="checkbox" id="sec-roles" ${cvConfig.sections.roles ? 'checked' : ''} style="cursor:pointer;accent-color:var(--primary-color);"> Editorial &amp; Review Boards
+                            </label>
+                            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;color:var(--text-secondary);cursor:pointer;font-weight:600;">
+                                <input type="checkbox" id="sec-contributions" ${cvConfig.sections.contributions ? 'checked' : ''} style="cursor:pointer;accent-color:var(--primary-color);"> Talks &amp; Contributions
                             </label>
                             <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;color:var(--text-secondary);cursor:pointer;font-weight:600;">
                                 <input type="checkbox" id="sec-publications" ${cvConfig.sections.publications ? 'checked' : ''} style="cursor:pointer;accent-color:var(--primary-color);"> Publications
@@ -1108,7 +1152,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
 
-            ['education', 'experience', 'publications', 'certifications'].forEach(sec => {
+            ['education', 'experience', 'roles', 'contributions', 'publications', 'certifications'].forEach(sec => {
                 const chk = customizePanel.querySelector(`#sec-${sec}`);
                 if (chk) {
                     chk.addEventListener('change', (e) => {
