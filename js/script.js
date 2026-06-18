@@ -499,11 +499,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalImg    = document.getElementById('lightbox-img');
     const downloadBtn = document.getElementById('lightbox-download');
     const closeBtn    = document.querySelector('.lightbox-close');
-    const galleryItems = document.querySelectorAll('.gallery-item img');
+    const galleryItems = document.querySelectorAll('.gallery-item img, .gallery-item-card img');
 
     if (modal && modalImg && closeBtn && downloadBtn) {
         galleryItems.forEach(img => {
-            img.addEventListener('click', function () {
+            img.addEventListener('click', function (e) {
+                // Prevent navigation to link if lightbox is desired, or let it work?
+                // Let's open lightbox modal
+                e.preventDefault();
                 modal.style.display = 'block';
                 modalImg.src = this.src;
                 downloadBtn.href = this.src;
