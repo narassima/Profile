@@ -817,102 +817,353 @@ document.addEventListener('DOMContentLoaded', () => {
     applyRippleEffect();
 
     // ── Dynamic CV Viewer Logic ──────────────────────────────────
+    // ── Dynamic CV Viewer Logic ──────────────────────────────────
     const viewCvBtn = document.getElementById('view-cv-btn');
     const cvModal = document.getElementById('cv-viewer-modal');
     const closeCvBtn = document.getElementById('close-cv-btn');
     const printCvBtn = document.getElementById('print-cv-btn');
     const cvContent = document.getElementById('cv-content-body');
+    const customizePanel = document.getElementById('cv-customize-panel');
     
-    if (viewCvBtn && cvModal && closeCvBtn && printCvBtn && cvContent) {
-        viewCvBtn.addEventListener('click', () => {
-            let cvHtml = `
-                <div style="font-family:'Outfit',sans-serif;color:#333;line-height:1.5;max-width:800px;margin:0 auto;">
+    if (viewCvBtn && cvModal && closeCvBtn && printCvBtn && cvContent && customizePanel) {
+        // Shared CV customizer configuration state
+        let cvConfig = {
+            theme: 'modern',
+            fontFamily: "'Outfit', 'Inter', sans-serif",
+            sections: {
+                education: true,
+                experience: true,
+                publications: true,
+                certifications: true
+            },
+            selectedPubIndices: (allPublications || []).slice(0, 10).map((_, idx) => idx)
+        };
+
+        const updateCVPreview = () => {
+            let themeStyles = '';
+            let titleColor = 'var(--primary-color)';
+            let sectionSpacing = '1.75rem';
+            
+            // Adjust styling based on theme
+            if (cvConfig.theme === 'modern') {
+                titleColor = 'var(--primary-color)';
+                themeStyles = `
+                    .cv-section-title {
+                        font-size: 1.15rem;
+                        font-weight: 700;
+                        color: ${titleColor};
+                        border-left: 4px solid ${titleColor};
+                        padding-left: 0.6rem;
+                        margin: 0 0 1rem 0;
+                        text-transform: uppercase;
+                        letter-spacing: 0.5px;
+                    }
+                    .cv-header-title {
+                        color: ${titleColor};
+                    }
+                `;
+            } else if (cvConfig.theme === 'academic') {
+                titleColor = '#1a1a1a';
+                themeStyles = `
+                    .cv-section-title {
+                        font-size: 1.15rem;
+                        font-weight: 700;
+                        color: ${titleColor};
+                        border-bottom: 2px solid #333;
+                        padding-bottom: 0.25rem;
+                        margin: 0 0 1rem 0;
+                        text-transform: uppercase;
+                        letter-spacing: 0.5px;
+                    }
+                    .cv-header-title {
+                        color: #1a1a1a;
+                    }
+                `;
+            } else if (cvConfig.theme === 'minimal') {
+                titleColor = '#475569';
+                themeStyles = `
+                    .cv-section-title {
+                        font-size: 1.05rem;
+                        font-weight: 600;
+                        color: ${titleColor};
+                        border-bottom: 1px dashed #cbd5e1;
+                        padding-bottom: 0.2rem;
+                        margin: 0 0 0.85rem 0;
+                        text-transform: capitalize;
+                        letter-spacing: 0.25px;
+                    }
+                    .cv-header-title {
+                        color: #1e293b;
+                    }
+                `;
+                sectionSpacing = '1.25rem';
+            }
+
+            // Generate content blocks
+            let eduHtml = '';
+            if (cvConfig.sections.education && portfolioData.education && portfolioData.education.length > 0) {
+                eduHtml = `
+                    <div class="cv-section" style="margin-bottom: ${sectionSpacing}; page-break-inside: avoid;">
+                        <h2 class="cv-section-title">Education</h2>
+                        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.6rem;">
+                            ${portfolioData.education.map(edu => `
+                                <li>
+                                    <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 0.92rem; color: #1e293b;">
+                                        <span>${edu.degree}</span>
+                                        <span>${edu.year || ''}</span>
+                                    </div>
+                                    <div style="font-size: 0.85rem; color: #475569; font-weight: 600;">${edu.institution}</div>
+                                    ${edu.details ? `<div style="font-size: 0.82rem; color: #64748b; font-style: italic; margin-top: 0.1rem;">${edu.details}</div>` : ''}
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                `;
+            }
+
+            let expHtml = '';
+            if (cvConfig.sections.experience && portfolioData.experience && portfolioData.experience.length > 0) {
+                expHtml = `
+                    <div class="cv-section" style="margin-bottom: ${sectionSpacing}; page-break-inside: avoid;">
+                        <h2 class="cv-section-title">Experience</h2>
+                        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.85rem;">
+                            ${portfolioData.experience.map(exp => `
+                                <li>
+                                    <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 0.92rem; color: #1e293b;">
+                                        <span>${exp.title}</span>
+                                        <span>${exp.duration}</span>
+                                    </div>
+                                    <div style="font-size: 0.85rem; color: #475569; font-weight: 600;">${exp.company}</div>
+                                    <p style="font-size: 0.82rem; color: #475569; margin: 0.2rem 0 0 0; text-align: justify; line-height: 1.45;">${exp.description}</p>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                `;
+            }
+
+            let pubHtml = '';
+            if (cvConfig.sections.publications && cvConfig.selectedPubIndices.length > 0) {
+                pubHtml = `
+                    <div class="cv-section" style="margin-bottom: ${sectionSpacing}; page-break-inside: avoid;">
+                        <h2 class="cv-section-title">Selected Publications</h2>
+                        <ol style="list-style: decimal; padding-left: 1.25rem; margin: 0; display: flex; flex-direction: column; gap: 0.65rem; font-size: 0.82rem; color: #334155;">
+                            ${cvConfig.selectedPubIndices.map(idx => {
+                                const pub = allPublications[idx];
+                                return `
+                                    <li style="margin-bottom: 0.1rem; text-align: justify; line-height: 1.4;">
+                                        <strong>${pub.title}</strong> (${pub.year}). 
+                                        <span style="color: #475569;">${pub.authors}</span>. 
+                                        ${pub.journal ? `<span style="font-style: italic; color: #64748b;">${pub.journal}</span>` : ''}
+                                    </li>
+                                `;
+                            }).join('')}
+                        </ol>
+                    </div>
+                `;
+            }
+
+            let certHtml = '';
+            if (cvConfig.sections.certifications && portfolioData.certifications && portfolioData.certifications.length > 0) {
+                certHtml = `
+                    <div class="cv-section" style="margin-bottom: ${sectionSpacing}; page-break-inside: avoid;">
+                        <h2 class="cv-section-title">Certifications</h2>
+                        <ul style="list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0.6rem 1.25rem; font-size: 0.82rem; color: #334155;">
+                            ${portfolioData.certifications.map(cert => `
+                                <li style="border-left: 2px solid ${titleColor}; padding-left: 0.5rem; margin-bottom: 0.1rem;">
+                                    <div style="font-weight: 700; color: #1e293b;">${cert.name}</div>
+                                    <div style="color: #475569; font-size: 0.78rem;">${cert.issuer}</div>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                `;
+            }
+
+            let previewHtml = `
+                <style>
+                    ${themeStyles}
+                    #cv-content-body ul, #cv-content-body ol {
+                        color: #334155;
+                    }
+                    @media print {
+                        #cv-content-body {
+                            padding: 0 !important;
+                            box-shadow: none !important;
+                            border-radius: 0 !important;
+                            width: 100% !important;
+                            max-width: 100% !important;
+                        }
+                    }
+                </style>
+                <div style="font-family: ${cvConfig.fontFamily}; color: #334155; line-height: 1.45;">
                     <!-- HEADER SECTION -->
-                    <div style="text-align:center;border-bottom:2px solid var(--primary-color);padding-bottom:1.5rem;margin-bottom:2rem;">
-                        <h1 style="font-size:2.2rem;font-weight:800;color:#202124;margin:0 0 0.25rem 0;text-transform:uppercase;letter-spacing:0.5px;">Dr. Narassima M.S.</h1>
-                        <p style="font-size:1.1rem;color:var(--primary-color);font-weight:700;margin:0 0 0.5rem 0;letter-spacing:0.25px;">Assistant Professor of Operations</p>
-                        <p style="font-size:0.9rem;color:#5f6368;margin:0 0 0.75rem 0;font-weight:500;">Great Lakes Institute of Management, Chennai, India</p>
-                        <p style="font-size:0.85rem;color:#5f6368;margin:0;display:flex;justify-content:center;gap:0.75rem;flex-wrap:wrap;font-weight:500;">
-                            <span><i class="fas fa-envelope" style="color:var(--primary-color);"></i> msnarassima@gmail.com</span>
+                    <div style="text-align: center; border-bottom: 2px solid ${titleColor}; padding-bottom: 1rem; margin-bottom: 1.5rem;">
+                        <h1 style="font-size: 1.9rem; font-weight: 800; color: #1e293b; margin: 0 0 0.25rem 0; text-transform: uppercase; letter-spacing: 0.5px;">Dr. Narassima M.S.</h1>
+                        <p style="font-size: 1rem; color: ${titleColor}; font-weight: 700; margin: 0 0 0.35rem 0; letter-spacing: 0.25px;" class="cv-header-title">Assistant Professor of Operations</p>
+                        <p style="font-size: 0.85rem; color: #475569; margin: 0 0 0.65rem 0; font-weight: 500;">Great Lakes Institute of Management, Chennai, India</p>
+                        <p style="font-size: 0.8rem; color: #64748b; margin: 0; display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap; font-weight: 500;">
+                            <span><i class="fas fa-envelope" style="color: ${titleColor};"></i> msnarassima@gmail.com</span>
                             <span>|</span>
-                            <span><i class="fab fa-linkedin" style="color:var(--primary-color);"></i> linkedin.com/in/narassima</span>
+                            <span><i class="fab fa-linkedin" style="color: ${titleColor};"></i> linkedin.com/in/narassima</span>
                             <span>|</span>
-                            <span><i class="fas fa-graduation-cap" style="color:var(--primary-color);"></i> Scholar ID: RDFCAzYAAAAJ</span>
+                            <span><i class="fas fa-graduation-cap" style="color: ${titleColor};"></i> Scholar ID: RDFCAzYAAAAJ</span>
                         </p>
                     </div>
 
-                    <!-- DOUBLE COLUMN LAYOUT -->
-                    <div style="display:flex;flex-direction:column;gap:2rem;">
-                        
-                        <!-- EDUCATION -->
-                        <div class="cv-section" style="margin-bottom:1rem;">
-                            <h2 style="font-size:1.2rem;font-weight:700;color:var(--primary-color);border-bottom:1.5px solid var(--border-color);padding-bottom:0.4rem;margin:0 0 1rem 0;text-transform:uppercase;letter-spacing:0.5px;">Education</h2>
-                            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.75rem;">
-                                ${(portfolioData.education || []).map(edu => `
-                                    <li>
-                                        <div style="display:flex;justify-content:space-between;font-weight:700;font-size:0.95rem;color:#202124;">
-                                            <span>${edu.degree}</span>
-                                            <span>${edu.year || ''}</span>
-                                        </div>
-                                        <div style="font-size:0.88rem;color:#5f6368;font-weight:600;">${edu.institution}</div>
-                                        ${edu.details ? `<div style="font-size:0.85rem;color:#5f6368;font-style:italic;margin-top:0.1rem;">${edu.details}</div>` : ''}
-                                    </li>
-                                `).join('')}
-                            </ul>
-                        </div>
-
-                        <!-- EXPERIENCE -->
-                        <div class="cv-section" style="margin-bottom:1rem;">
-                            <h2 style="font-size:1.2rem;font-weight:700;color:var(--primary-color);border-bottom:1.5px solid var(--border-color);padding-bottom:0.4rem;margin:0 0 1rem 0;text-transform:uppercase;letter-spacing:0.5px;">Experience</h2>
-                            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:1rem;">
-                                ${(portfolioData.experience || []).map(exp => `
-                                    <li>
-                                        <div style="display:flex;justify-content:space-between;font-weight:700;font-size:0.95rem;color:#202124;">
-                                            <span>${exp.title}</span>
-                                            <span>${exp.duration}</span>
-                                        </div>
-                                        <div style="font-size:0.88rem;color:#5f6368;font-weight:600;">${exp.company}</div>
-                                        <p style="font-size:0.85rem;color:#5f6368;margin:0.25rem 0 0 0;text-align:justify;line-height:1.4;">${exp.description}</p>
-                                    </li>
-                                `).join('')}
-                            </ul>
-                        </div>
-
-                        <!-- PUBLICATIONS SUMMARY -->
-                        <div class="cv-section" style="margin-bottom:1rem;">
-                            <h2 style="font-size:1.2rem;font-weight:700;color:var(--primary-color);border-bottom:1.5px solid var(--border-color);padding-bottom:0.4rem;margin:0 0 1rem 0;text-transform:uppercase;letter-spacing:0.5px;">Selected Publications</h2>
-                            <ul style="list-style:decimal;padding-left:1.2rem;margin:0;display:flex;flex-direction:column;gap:0.75rem;font-size:0.85rem;color:#333;">
-                                ${(allPublications || []).slice(0, 10).map(pub => `
-                                    <li style="margin-bottom:0.25rem;text-align:justify;line-height:1.4;">
-                                        <strong>${pub.title}</strong> (${pub.year}). 
-                                        <span style="color:#5f6368;">${pub.authors}</span>. 
-                                        ${pub.journal ? `<span style="font-style:italic;">Published in: ${pub.journal}</span>` : ''}
-                                    </li>
-                                `).join('')}
-                            </ul>
-                            ${allPublications && allPublications.length > 10 ? `
-                                <p style="font-size:0.8rem;color:#5f6368;font-style:italic;margin-top:0.5rem;text-align:center;">And ${allPublications.length - 10} other publications listed on Google Scholar / website</p>
-                            ` : ''}
-                        </div>
-
-                        <!-- CERTIFICATIONS -->
-                        <div class="cv-section" style="margin-bottom:1rem;">
-                            <h2 style="font-size:1.2rem;font-weight:700;color:var(--primary-color);border-bottom:1.5px solid var(--border-color);padding-bottom:0.4rem;margin:0 0 1rem 0;text-transform:uppercase;letter-spacing:0.5px;">Certifications</h2>
-                            <ul style="list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(2, 1fr);gap:0.75rem 1rem;font-size:0.85rem;color:#333;">
-                                ${(portfolioData.certifications || []).map(cert => `
-                                    <li style="border-left:2.5px solid var(--primary-color);padding-left:0.6rem;margin-bottom:0.25rem;">
-                                        <div style="font-weight:700;color:#202124;">${cert.name}</div>
-                                        <div style="color:#5f6368;">${cert.issuer}</div>
-                                    </li>
-                                `).join('')}
-                            </ul>
-                        </div>
-                        
+                    <!-- BODY SECTIONS -->
+                    <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+                        ${eduHtml}
+                        ${expHtml}
+                        ${pubHtml}
+                        ${certHtml}
                     </div>
                 </div>
             `;
             
-            cvContent.innerHTML = cvHtml;
+            cvContent.innerHTML = previewHtml;
+        };
+
+        const renderCustomizer = () => {
+            let html = `
+                <div style="font-family:'Outfit',sans-serif; display: flex; flex-direction: column; gap: 1.25rem;">
+                    <div>
+                        <h4 style="margin:0 0 0.75rem 0;font-size:0.88rem;font-weight:700;color:var(--text-primary);text-transform:uppercase;letter-spacing:0.5px;border-bottom:1px solid var(--border-color);padding-bottom:0.4rem;"><i class="fas fa-palette" style="margin-right:0.5rem;color:var(--primary-color);"></i>CV Style &amp; Theme</h4>
+                        <div style="display:flex;flex-direction:column;gap:0.5rem;">
+                            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;color:var(--text-secondary);cursor:pointer;font-weight:600;">
+                                <input type="radio" name="cv-theme" value="modern" ${cvConfig.theme === 'modern' ? 'checked' : ''} style="cursor:pointer;accent-color:var(--primary-color);"> Modern Professional
+                            </label>
+                            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;color:var(--text-secondary);cursor:pointer;font-weight:600;">
+                                <input type="radio" name="cv-theme" value="academic" ${cvConfig.theme === 'academic' ? 'checked' : ''} style="cursor:pointer;accent-color:var(--primary-color);"> Classic Academic
+                            </label>
+                            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;color:var(--text-secondary);cursor:pointer;font-weight:600;">
+                                <input type="radio" name="cv-theme" value="minimal" ${cvConfig.theme === 'minimal' ? 'checked' : ''} style="cursor:pointer;accent-color:var(--primary-color);"> Minimal Clean
+                            </label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 style="margin:0 0 0.75rem 0;font-size:0.88rem;font-weight:700;color:var(--text-primary);text-transform:uppercase;letter-spacing:0.5px;border-bottom:1px solid var(--border-color);padding-bottom:0.4rem;"><i class="fas fa-font" style="margin-right:0.5rem;color:var(--primary-color);"></i>Font Family</h4>
+                        <select id="cv-font" style="width:100%;padding:0.4rem 0.5rem;border-radius:6px;border:1px solid var(--border-color);background:var(--surface-color);color:var(--text-primary);font-size:0.8rem;font-weight:600;outline:none;cursor:pointer;">
+                            <option value="'Outfit', 'Inter', sans-serif" ${cvConfig.fontFamily.includes('Outfit') ? 'selected' : ''}>Sans-Serif (Outfit / Inter)</option>
+                            <option value="'Georgia', 'Times New Roman', serif" ${cvConfig.fontFamily.includes('Georgia') ? 'selected' : ''}>Serif (Georgia / Times)</option>
+                            <option value="'Roboto', 'Helvetica', Arial, sans-serif" ${cvConfig.fontFamily.includes('Roboto') ? 'selected' : ''}>Clean (Roboto / Helvetica)</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <h4 style="margin:0 0 0.75rem 0;font-size:0.88rem;font-weight:700;color:var(--text-primary);text-transform:uppercase;letter-spacing:0.5px;border-bottom:1px solid var(--border-color);padding-bottom:0.4rem;"><i class="fas fa-th-list" style="margin-right:0.5rem;color:var(--primary-color);"></i>Included Sections</h4>
+                        <div style="display:flex;flex-direction:column;gap:0.5rem;">
+                            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;color:var(--text-secondary);cursor:pointer;font-weight:600;">
+                                <input type="checkbox" id="sec-education" ${cvConfig.sections.education ? 'checked' : ''} style="cursor:pointer;accent-color:var(--primary-color);"> Education
+                            </label>
+                            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;color:var(--text-secondary);cursor:pointer;font-weight:600;">
+                                <input type="checkbox" id="sec-experience" ${cvConfig.sections.experience ? 'checked' : ''} style="cursor:pointer;accent-color:var(--primary-color);"> Experience
+                            </label>
+                            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;color:var(--text-secondary);cursor:pointer;font-weight:600;">
+                                <input type="checkbox" id="sec-publications" ${cvConfig.sections.publications ? 'checked' : ''} style="cursor:pointer;accent-color:var(--primary-color);"> Publications
+                            </label>
+                            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;color:var(--text-secondary);cursor:pointer;font-weight:600;">
+                                <input type="checkbox" id="sec-certifications" ${cvConfig.sections.certifications ? 'checked' : ''} style="cursor:pointer;accent-color:var(--primary-color);"> Certifications
+                            </label>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <h4 style="margin:0;font-size:0.88rem;font-weight:700;color:var(--text-primary);text-transform:uppercase;letter-spacing:0.5px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border-color);padding-bottom:0.4rem;">
+                            <span><i class="fas fa-book" style="margin-right:0.5rem;color:var(--primary-color);"></i>Publications</span>
+                            <span style="font-size:0.72rem;color:var(--primary-color);text-transform:none;font-weight:600;">(${cvConfig.selectedPubIndices.length} Selected)</span>
+                        </h4>
+                        <div style="display:flex;gap:0.35rem;margin-bottom:0.25rem;">
+                            <button id="pub-all" style="flex:1;background:var(--border-color);color:var(--text-primary);border:none;padding:0.25rem;font-size:0.72rem;font-weight:700;border-radius:4px;cursor:pointer;transition:var(--transition);">All</button>
+                            <button id="pub-none" style="flex:1;background:var(--border-color);color:var(--text-primary);border:none;padding:0.25rem;font-size:0.72rem;font-weight:700;border-radius:4px;cursor:pointer;transition:var(--transition);">None</button>
+                            <button id="pub-top10" style="flex:1.5;background:var(--border-color);color:var(--text-primary);border:none;padding:0.25rem;font-size:0.72rem;font-weight:700;border-radius:4px;cursor:pointer;transition:var(--transition);">Top 10</button>
+                        </div>
+                        <div id="pubs-checklist-container" style="max-height:200px;overflow-y:auto;border:1px solid var(--border-color);border-radius:6px;padding:0.4rem;background:var(--bg-color);display:flex;flex-direction:column;gap:0.4rem;">
+                            ${(allPublications || []).map((pub, idx) => `
+                                <label style="display:flex;align-items:flex-start;gap:0.35rem;font-size:0.72rem;color:var(--text-secondary);cursor:pointer;line-height:1.3;font-weight:500;padding:0.15rem;border-radius:3px;transition:var(--transition);" class="pub-check-item">
+                                    <input type="checkbox" class="pub-select-check" data-idx="${idx}" ${cvConfig.selectedPubIndices.includes(idx) ? 'checked' : ''} style="margin-top:0.1rem;cursor:pointer;accent-color:var(--primary-color);">
+                                    <span><strong>${pub.title}</strong> (${pub.year})</span>
+                                </label>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+            customizePanel.innerHTML = html;
+
+            // Bind Customizer Events
+            customizePanel.querySelectorAll('input[name="cv-theme"]').forEach(radio => {
+                radio.addEventListener('change', (e) => {
+                    cvConfig.theme = e.target.value;
+                    updateCVPreview();
+                });
+            });
+
+            const fontSelect = customizePanel.querySelector('#cv-font');
+            if (fontSelect) {
+                fontSelect.addEventListener('change', (e) => {
+                    cvConfig.fontFamily = e.target.value;
+                    updateCVPreview();
+                });
+            }
+
+            ['education', 'experience', 'publications', 'certifications'].forEach(sec => {
+                const chk = customizePanel.querySelector(`#sec-${sec}`);
+                if (chk) {
+                    chk.addEventListener('change', (e) => {
+                        cvConfig.sections[sec] = e.target.checked;
+                        updateCVPreview();
+                    });
+                }
+            });
+
+            const btnAll = customizePanel.querySelector('#pub-all');
+            const btnNone = customizePanel.querySelector('#pub-none');
+            const btnTop10 = customizePanel.querySelector('#pub-top10');
+
+            if (btnAll) {
+                btnAll.addEventListener('click', () => {
+                    cvConfig.selectedPubIndices = (allPublications || []).map((_, i) => i);
+                    renderCustomizer();
+                    updateCVPreview();
+                });
+            }
+            if (btnNone) {
+                btnNone.addEventListener('click', () => {
+                    cvConfig.selectedPubIndices = [];
+                    renderCustomizer();
+                    updateCVPreview();
+                });
+            }
+            if (btnTop10) {
+                btnTop10.addEventListener('click', () => {
+                    cvConfig.selectedPubIndices = (allPublications || []).slice(0, 10).map((_, i) => i);
+                    renderCustomizer();
+                    updateCVPreview();
+                });
+            }
+
+            customizePanel.querySelectorAll('.pub-select-check').forEach(chk => {
+                chk.addEventListener('change', (e) => {
+                    const idx = parseInt(e.target.getAttribute('data-idx'));
+                    if (e.target.checked) {
+                        if (!cvConfig.selectedPubIndices.includes(idx)) {
+                            cvConfig.selectedPubIndices.push(idx);
+                        }
+                    } else {
+                        cvConfig.selectedPubIndices = cvConfig.selectedPubIndices.filter(i => i !== idx);
+                    }
+                    const countEl = customizePanel.querySelector('h4 span');
+                    if (countEl) countEl.textContent = `(${cvConfig.selectedPubIndices.length} Selected)`;
+                    updateCVPreview();
+                });
+            });
+        };
+
+        viewCvBtn.addEventListener('click', () => {
+            renderCustomizer();
+            updateCVPreview();
             cvModal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
         });
