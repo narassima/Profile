@@ -27,7 +27,7 @@
     <!-- FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css?v=1.0.5">
+    <link rel="stylesheet" href="css/style.css?v=1.0.6">
 
     <!-- JSON-LD Structured Data for Google Search -->
     <script type="application/ld+json">
@@ -75,11 +75,11 @@
                 <a href="#experience" class="nav-link" data-target="experience">Experience</a>
                 <a href="#education" class="nav-link" data-target="education">Education</a>
                 <a href="#gallery" class="nav-link" data-target="gallery">Photography</a>
-                <div class="color-picker-container" style="display: inline-flex; align-items: center; gap: 0.35rem; margin-right: 0.5rem; background: rgba(255,255,255,0.12); padding: 0.25rem 0.6rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.15);">
-                    <span class="color-dot active" data-color="blue" style="width: 12px; height: 12px; border-radius: 50%; background: #1a73e8; cursor: pointer; border: 1.5px solid white; display: inline-block;" title="Google Blue"></span>
-                    <span class="color-dot" data-color="red" style="width: 12px; height: 12px; border-radius: 50%; background: #ea4335; cursor: pointer; border: 1.5px solid transparent; display: inline-block;" title="Google Red"></span>
-                    <span class="color-dot" data-color="yellow" style="width: 12px; height: 12px; border-radius: 50%; background: #f29900; cursor: pointer; border: 1.5px solid transparent; display: inline-block;" title="Google Yellow"></span>
-                    <span class="color-dot" data-color="green" style="width: 12px; height: 12px; border-radius: 50%; background: #34a853; cursor: pointer; border: 1.5px solid transparent; display: inline-block;" title="Google Green"></span>
+                <div class="color-picker-wrapper" style="display: inline-flex; align-items: center; gap: 0.5rem; margin-right: 0.5rem; background: rgba(255,255,255,0.12); padding: 0.25rem 0.75rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.15);">
+                    <label for="theme-color-input" style="font-size: 0.75rem; font-weight: 700; color: white; display: flex; align-items: center; gap: 0.35rem; cursor: pointer; margin: 0; line-height: 1;">
+                        <i class="fas fa-palette"></i> Theme
+                    </label>
+                    <input type="color" id="theme-color-input" value="#1a73e8" style="border: none; background: transparent; width: 22px; height: 22px; cursor: pointer; padding: 0; border-radius: 50%; overflow: hidden; -webkit-appearance: none; display: block;">
                 </div>
                 
             </nav>
@@ -1340,7 +1340,7 @@
         </div>
     </footer>
 
-    <script src="js/data.js?v=1.0.5"></script>
-    <script src="js/script.js?v=1.0.5"></script>
+    <script src="js/data.js?v=1.0.6"></script>
+    <script src="js/script.js?v=1.0.6"></script>
 </body>
 </html>

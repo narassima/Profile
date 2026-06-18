@@ -646,73 +646,56 @@ document.addEventListener('DOMContentLoaded', () => {
     
     runCountUpAnimation();
 
-    // ── Material You Theme Accent Picker ─────────────────────────
-    const colorPickerContainer = document.querySelector('.color-picker-container');
-    if (colorPickerContainer) {
-        const dots = colorPickerContainer.querySelectorAll('.color-dot');
-        const colorPalette = {
-            blue: { 
-                primary: '#1a73e8', hover: '#1557b0', rgb: '26, 115, 232', hoverRgb: '21, 87, 176',
-                lightBg: 'rgba(26, 115, 232, 0.08)', border: 'rgba(26, 115, 232, 0.2)',
-                gradient: 'linear-gradient(135deg, #1a73e8, #1557b0)'
-            },
-            red: { 
-                primary: '#ea4335', hover: '#c5221f', rgb: '234, 67, 53', hoverRgb: '197, 34, 31',
-                lightBg: 'rgba(234, 67, 53, 0.08)', border: 'rgba(234, 67, 53, 0.2)',
-                gradient: 'linear-gradient(135deg, #ea4335, #c5221f)'
-            },
-            yellow: { 
-                primary: '#f29900', hover: '#d56e00', rgb: '242, 153, 0', hoverRgb: '213, 110, 0',
-                lightBg: 'rgba(242, 153, 0, 0.08)', border: 'rgba(242, 153, 0, 0.2)',
-                gradient: 'linear-gradient(135deg, #f29900, #d56e00)'
-            },
-            green: { 
-                primary: '#34a853', hover: '#137333', rgb: '52, 168, 83', hoverRgb: '19, 115, 51',
-                lightBg: 'rgba(52, 168, 83, 0.08)', border: 'rgba(52, 168, 83, 0.2)',
-                gradient: 'linear-gradient(135deg, #34a853, #137333)'
+    // ── Material You Theme Accent Picker (Custom Color Input) ─────
+    const colorInput = document.getElementById('theme-color-input');
+    if (colorInput) {
+        const hexToRgb = (hex) => {
+            let c = hex.substring(1);
+            if (c.length === 3) {
+                c = c[0] + c[0] + c[1] + c[1] + c[2] + c[2];
             }
+            let rgb = parseInt(c, 16);
+            let r = (rgb >> 16) & 0xff;
+            let g = (rgb >> 8) & 0xff;
+            let b = rgb & 0xff;
+            return `${r}, ${g}, ${b}`;
         };
 
-        const updateAccentColor = (colorName) => {
-            const palette = colorPalette[colorName] || colorPalette.blue;
+        const darkenColor = (hex, percent) => {
+            let num = parseInt(hex.replace("#",""), 16),
+            amt = Math.round(2.55 * percent),
+            R = (num >> 16) - amt,
+            G = (num >> 8 & 0x00FF) - amt,
+            B = (num & 0x0000FF) - amt;
+            return "#" + (0x1000000 + (R<255?R<0?0:R:255)*0x10000 + (G<255?G<0?0:G:255)*0x100 + (B<255?B<0?0:B:255)).toString(16).slice(1);
+        };
+
+        const updateAccentColor = (colorHex) => {
+            const primary = colorHex;
+            const hover = darkenColor(colorHex, 15);
+            const rgb = hexToRgb(colorHex);
+            const hoverRgb = hexToRgb(hover);
             
-            document.documentElement.style.setProperty('--primary-color', palette.primary);
-            document.documentElement.style.setProperty('--primary-hover', palette.hover);
-            document.documentElement.style.setProperty('--primary-rgb', palette.rgb);
-            document.documentElement.style.setProperty('--primary-hover-rgb', palette.hoverRgb);
-            document.documentElement.style.setProperty('--primary-light-bg', palette.lightBg);
-            document.documentElement.style.setProperty('--primary-border', palette.border);
-            document.documentElement.style.setProperty('--accent-gradient', palette.gradient);
+            document.documentElement.style.setProperty('--primary-color', primary);
+            document.documentElement.style.setProperty('--primary-hover', hover);
+            document.documentElement.style.setProperty('--primary-rgb', rgb);
+            document.documentElement.style.setProperty('--primary-hover-rgb', hoverRgb);
+            document.documentElement.style.setProperty('--primary-light-bg', `rgba(${rgb}, 0.08)`);
+            document.documentElement.style.setProperty('--primary-border', `rgba(${rgb}, 0.2)`);
+            document.documentElement.style.setProperty('--accent-gradient', `linear-gradient(135deg, ${primary}, ${hover})`);
             
             // Save state
-            localStorage.setItem('theme-accent-color', colorName);
-            
-            // Update UI dots
-            dots.forEach(dot => {
-                if (dot.getAttribute('data-color') === colorName) {
-                    dot.classList.add('active');
-                    dot.style.border = '2px solid white';
-                    dot.style.boxShadow = '0 0 0 1.5px ' + palette.primary;
-                } else {
-                    dot.classList.remove('active');
-                    dot.style.border = '1.5px solid transparent';
-                    dot.style.boxShadow = 'none';
-                }
-            });
+            localStorage.setItem('theme-accent-color', primary);
+            colorInput.value = primary;
         };
 
-        dots.forEach(dot => {
-            dot.addEventListener('click', () => {
-                const color = dot.getAttribute('data-color');
-                updateAccentColor(color);
-            });
+        colorInput.addEventListener('input', (e) => {
+            updateAccentColor(e.target.value);
         });
 
         // Initialize from localStorage
-        const savedAccent = localStorage.getItem('theme-accent-color') || 'blue';
+        const savedAccent = localStorage.getItem('theme-accent-color') || '#1a73e8';
         updateAccentColor(savedAccent);
-
-
     }
 
     // ── Publications Timeline SVG Chart ──────────────────────────
