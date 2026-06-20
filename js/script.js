@@ -790,18 +790,47 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const updateAccentColor = (colorHex) => {
-        const primary = colorHex;
-        const hover = darkenColor(colorHex, 15);
-        const rgb = hexToRgb(colorHex);
-        const hoverRgb = hexToRgb(hover);
-        
-        document.documentElement.style.setProperty('--primary-color', primary);
-        document.documentElement.style.setProperty('--primary-hover', hover);
-        document.documentElement.style.setProperty('--primary-rgb', rgb);
-        document.documentElement.style.setProperty('--primary-hover-rgb', hoverRgb);
-        document.documentElement.style.setProperty('--primary-light-bg', `rgba(${rgb}, 0.08)`);
-        document.documentElement.style.setProperty('--primary-border', `rgba(${rgb}, 0.2)`);
-        document.documentElement.style.setProperty('--accent-gradient', `linear-gradient(135deg, ${primary}, ${hover})`);
+        if (colorHex.toLowerCase() === 'rasta') {
+            document.body.classList.add('theme-rasta');
+            document.body.classList.remove('theme-tricolour');
+            
+            // Set variables to safe fallbacks (e.g. Green #008a00)
+            document.documentElement.style.setProperty('--primary-color', '#008a00');
+            document.documentElement.style.setProperty('--primary-hover', '#007000');
+            document.documentElement.style.setProperty('--primary-rgb', '0, 138, 0');
+            document.documentElement.style.setProperty('--primary-hover-rgb', '0, 112, 0');
+            document.documentElement.style.setProperty('--primary-light-bg', 'rgba(0, 138, 0, 0.08)');
+            document.documentElement.style.setProperty('--primary-border', 'rgba(0, 138, 0, 0.2)');
+            document.documentElement.style.setProperty('--accent-gradient', 'linear-gradient(90deg, #e51400, #ffb900, #008a00)');
+        } else if (colorHex.toLowerCase() === 'tricolour') {
+            document.body.classList.remove('theme-rasta');
+            document.body.classList.add('theme-tricolour');
+            
+            // Set variables to safe fallbacks for Tricolour
+            document.documentElement.style.setProperty('--primary-color', '#000080'); // navy blue (Ashoka Chakra)
+            document.documentElement.style.setProperty('--primary-hover', '#000055');
+            document.documentElement.style.setProperty('--primary-rgb', '0, 0, 128');
+            document.documentElement.style.setProperty('--primary-hover-rgb', '0, 0, 85');
+            document.documentElement.style.setProperty('--primary-light-bg', 'rgba(0, 0, 128, 0.08)');
+            document.documentElement.style.setProperty('--primary-border', 'rgba(0, 0, 128, 0.2)');
+            document.documentElement.style.setProperty('--accent-gradient', 'linear-gradient(90deg, #FF9933 0%, #ffffff 50%, #128807 100%)');
+        } else {
+            document.body.classList.remove('theme-rasta');
+            document.body.classList.remove('theme-tricolour');
+            
+            const primary = colorHex;
+            const hover = darkenColor(colorHex, 15);
+            const rgb = hexToRgb(colorHex);
+            const hoverRgb = hexToRgb(hover);
+            
+            document.documentElement.style.setProperty('--primary-color', primary);
+            document.documentElement.style.setProperty('--primary-hover', hover);
+            document.documentElement.style.setProperty('--primary-rgb', rgb);
+            document.documentElement.style.setProperty('--primary-hover-rgb', hoverRgb);
+            document.documentElement.style.setProperty('--primary-light-bg', `rgba(${rgb}, 0.08)`);
+            document.documentElement.style.setProperty('--primary-border', `rgba(${rgb}, 0.2)`);
+            document.documentElement.style.setProperty('--accent-gradient', `linear-gradient(135deg, ${primary}, ${hover})`);
+        }
         
         // Highlight active tile
         colorTiles.forEach(tile => {

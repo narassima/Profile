@@ -151,11 +151,11 @@ body {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: var(--primary-color);
-    border: none; /* Microsoft style borderless chevrons */
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.45); /* outline of shape */
     width: 28px;
-    height: 100%;
-    border-radius: 0;
+    height: 28px;
+    border-radius: 50%; /* circular outline button */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -164,27 +164,28 @@ body {
     transition: var(--transition);
     z-index: 10;
     flex-shrink: 0;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
 }
 
 .nav-scroll-btn.scroll-left {
-    left: 0;
+    left: 4px;
 }
 
 .nav-scroll-btn.scroll-right {
-    right: 0;
+    right: 4px;
 }
 
 .nav-scroll-btn:hover {
     color: #ffffff;
-    background: var(--primary-hover);
+    background: rgba(255, 255, 255, 0.15); /* light fill on hover */
+    border-color: rgba(255, 255, 255, 0.95);
 }
 
 .nav-link {
     position: relative;
     text-decoration: none;
     color: rgba(255, 255, 255, 0.85); /* Semi-transparent white */
-    font-weight: 500; /* Reduced boldness */
+    font-weight: 700 !important; /* Bold for prominence */
     font-size: 0.78rem; /* Reduced size */
     letter-spacing: -0.01em;
     padding: 0.55rem 0.65rem;
@@ -435,7 +436,7 @@ body {
     border: none;
     padding: 0.75rem 0;
     font-size: 0.82rem;
-    font-weight: 400;
+    font-weight: 700 !important; /* Bold for prominence */
     color: var(--text-secondary);
     cursor: pointer;
     border-bottom: 2px solid transparent;
@@ -1250,29 +1251,55 @@ body {
 }
 
 .collab-tab-btn {
-    background: none;
-    border: none;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    background: transparent;
+    border: none !important;
     padding: 0.6rem 1.25rem;
     font-size: 0.82rem;
-    font-weight: 400;
+    font-weight: 700 !important; /* Bold for prominence */
     color: var(--text-secondary);
     cursor: pointer;
     border-radius: var(--radius-md);
-    transition: var(--transition);
+    transition: color 0.3s ease;
     display: flex;
     align-items: center;
     gap: 0.5rem;
     white-space: nowrap;
+    outline: none !important;
+}
+
+.collab-tab-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    z-index: -1;
+    opacity: 0;
+    background: var(--primary-color);
+    transition: opacity 0.35s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .collab-tab-btn:hover {
     color: var(--primary-color);
-    background: rgba(var(--primary-rgb, 26, 115, 232), 0.05);
+}
+
+.collab-tab-btn:hover::before {
+    opacity: 0.08;
 }
 
 .collab-tab-btn.active {
-    color: var(--surface-color);
-    background: var(--primary-color);
+    color: var(--surface-color) !important;
+    border: none !important;
+    outline: none !important;
+}
+
+.collab-tab-btn.active::before {
+    opacity: 1;
 }
 
 .collab-tab-content {
@@ -1698,6 +1725,405 @@ body {
     }
 }
 
+/* Custom Color Picker Input Swatch Styles */
+#theme-color-input::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+#theme-color-input::-webkit-color-swatch {
+    border: 1.5px solid white;
+    border-radius: 50%;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+}
 
+/* Ensure consistent icon margins across all tiles, tabs, headers, chips, and items */
+.card-header i,
+.collab-tab-btn i,
+.collab-chip i,
+.role-card i,
+.role-list-card i,
+.timeline-item i,
+.certification-list li i,
+.contact-item i,
+.nav-link i,
+.dropdown-link i,
+.theme-picker-toggle i,
+.btn-text i,
+.theme-palette-dropdown i,
+#theme-picker-toggle i,
+#tabs-dropdown-toggle i {
+    margin-right: 0.5rem !important;
+}
 
+/* Margin on the top and left for Review & Editorial Boards and Academic Contributions */
+.role-list-card {
+    margin-top: 1rem !important;
+    margin-left: 0.5rem !important;
+}
 
+.contribution-item-card {
+    margin-top: 1rem !important;
+    margin-left: 0.5rem !important;
+}
+
+/* Header picker white-text overrides for dark background */
+#theme-picker-toggle, 
+#tabs-dropdown-toggle {
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+#theme-picker-toggle i, 
+#tabs-dropdown-toggle i {
+    color: #ffffff !important;
+}
+
+.color-picker-wrapper {
+    background: rgba(255, 255, 255, 0.12) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Academic/Operations background decorations */
+.academic-bg-decorations {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+    opacity: 0.55;
+    transition: opacity 0.3s ease;
+}
+
+.decor-item {
+    position: absolute;
+    transition: all 0.5s ease;
+    pointer-events: auto; /* Allow hover effects */
+}
+
+.icon-decor {
+    color: var(--primary-color);
+    opacity: 0.08; /* Keep it subtle and non-intrusive */
+    transition: transform 0.3s ease, opacity 0.3s ease, color 0.3s ease;
+}
+
+.icon-decor:hover {
+    opacity: 0.25;
+    transform: scale(1.15) !important;
+}
+
+/* Responsive constraints for decor items */
+@media (max-width: 1400px) {
+    .academic-bg-decorations {
+        opacity: 0.35;
+    }
+}
+@media (max-width: 1100px) {
+    .academic-bg-decorations {
+        opacity: 0.2;
+    }
+    .icon-decor {
+        font-size: 1.8rem !important;
+    }
+}
+@media (max-width: 768px) {
+    .academic-bg-decorations {
+        display: none; /* Hide on mobile for performance and clean UI */
+    }
+}
+
+/* ── Bob Marley / Rasta Theme styles ──────────────────────── */
+.theme-rasta .navbar {
+    background: linear-gradient(90deg, #e51400 0%, #ffb900 50%, #008a00 100%) !important;
+}
+
+.theme-rasta .section-header h2,
+.theme-rasta .hero-name {
+    background: linear-gradient(90deg, #e51400, #d5a300, #008a00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.theme-rasta .timeline-title,
+.theme-rasta .roadmap-title,
+.theme-rasta .card-header h3,
+.theme-rasta .contribution-item-card strong {
+    color: #008a00 !important; /* Green primary highlight */
+}
+
+.theme-rasta .timeline-item::before {
+    border-left-color: #ffb900 !important; /* Yellow vertical line */
+}
+
+.theme-rasta .roadmap-dot {
+    background: #ffb900 !important; /* Yellow dot */
+    border-color: #e51400 !important; /* Red border */
+}
+
+.theme-rasta .roadmap-item::before {
+    background: #008a00 !important; /* Green roadmap line */
+}
+
+.theme-rasta .tab-btn.active {
+    border-bottom: 2px solid transparent !important;
+    border-image: linear-gradient(90deg, #e51400 0%, #ffb900 50%, #008a00 100%) 1 !important;
+    color: #008a00 !important;
+    background: none !important;
+    border-radius: 0 !important;
+    padding: 0.75rem 0 !important;
+}
+
+.theme-rasta .collab-tab-btn::before {
+    background: linear-gradient(90deg, #e51400 0%, #ffb900 50%, #008a00 100%) !important;
+}
+
+.theme-rasta .collab-tab-btn.active {
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: var(--radius-md) !important;
+    padding: 0.6rem 1.25rem !important;
+    font-weight: 700 !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    outline: none !important;
+}
+
+.theme-rasta .dropdown-link.active {
+    background: linear-gradient(90deg, #e51400 0%, #ffb900 50%, #008a00 100%) !important;
+    color: #ffffff !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    border-left: 3px solid #ffffff !important;
+}
+
+.theme-rasta #view-cv-btn,
+.theme-rasta #print-cv-btn {
+    background: linear-gradient(90deg, #e51400, #ffb900, #008a00) !important;
+    color: #ffffff !important;
+    border: none !important;
+}
+.theme-rasta #view-cv-btn:hover,
+.theme-rasta #print-cv-btn:hover {
+    filter: brightness(0.9);
+}
+
+.theme-rasta .score-badge {
+    color: #008a00 !important;
+}
+
+.theme-rasta .hero-title {
+    color: #e51400 !important; /* Red subtitle */
+}
+
+/* Alternating Rasta colors for tiles/cards on hover */
+.theme-rasta .glass-card:nth-of-type(3n+1):hover,
+.theme-rasta #simulations-grid a:nth-of-type(3n+1):hover,
+.theme-rasta #projects-container .glass-card:nth-of-type(3n+1):hover,
+.theme-rasta .role-list-card:nth-of-type(3n+1):hover,
+.theme-rasta .contribution-item-card:nth-of-type(3n+1):hover {
+    border-color: #e51400 !important;
+}
+
+.theme-rasta .glass-card:nth-of-type(3n+2):hover,
+.theme-rasta #simulations-grid a:nth-of-type(3n+2):hover,
+.theme-rasta #projects-container .glass-card:nth-of-type(3n+2):hover,
+.theme-rasta .role-list-card:nth-of-type(3n+2):hover,
+.theme-rasta .contribution-item-card:nth-of-type(3n+2):hover {
+    border-color: #ffb900 !important;
+}
+
+.theme-rasta .glass-card:nth-of-type(3n+3):hover,
+.theme-rasta #simulations-grid a:nth-of-type(3n+3):hover,
+.theme-rasta #projects-container .glass-card:nth-of-type(3n+3):hover,
+.theme-rasta .role-list-card:nth-of-type(3n+3):hover,
+.theme-rasta .contribution-item-card:nth-of-type(3n+3):hover {
+    border-color: #008a00 !important;
+}
+
+/* General collaborator chip hovers under Rasta theme */
+.theme-rasta .collab-chip:hover {
+    background: linear-gradient(90deg, #e51400 0%, #ffb900 50%, #008a00 100%) !important;
+    color: #ffffff !important;
+    border-color: transparent !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    box-shadow: var(--shadow-md) !important;
+}
+.theme-rasta .collab-chip:hover i {
+    color: #ffffff !important;
+}
+
+/* Page footer styling under Rasta theme */
+.theme-rasta .footer {
+    background: linear-gradient(90deg, #e51400 0%, #ffb900 50%, #008a00 100%) !important;
+    border-top: none !important;
+}
+.theme-rasta .footer p {
+    color: #ffffff !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    font-weight: 600;
+}
+
+/* ── Indian Flag / Tricolour Theme styles ──────────────────────── */
+.theme-tricolour .navbar {
+    background: linear-gradient(90deg, #FF9933 0%, #ffffff 50%, #128807 100%) !important;
+    border-bottom: 2px solid #000080 !important;
+}
+
+.theme-tricolour .navbar .navbar-brand,
+.theme-tricolour .navbar .nav-link,
+.theme-tricolour #theme-picker-toggle,
+.theme-tricolour #tabs-dropdown-toggle,
+.theme-tricolour .mobile-menu-btn {
+    color: #000080 !important;
+}
+
+.theme-tricolour .navbar .navbar-brand i,
+.theme-tricolour .navbar .nav-link i,
+.theme-tricolour #theme-picker-toggle i,
+.theme-tricolour #tabs-dropdown-toggle i,
+.theme-tricolour .mobile-menu-btn i {
+    color: #000080 !important;
+}
+
+.theme-tricolour .navbar .nav-link:hover {
+    color: #000055 !important;
+    background: rgba(0, 0, 128, 0.05) !important;
+}
+
+.theme-tricolour .navbar .nav-link::after {
+    background-color: #000080 !important;
+}
+
+.theme-tricolour .navbar .nav-link.active::after {
+    background-color: #000080 !important;
+}
+
+.theme-tricolour .section-header h2,
+.theme-tricolour .hero-name {
+    background: linear-gradient(90deg, #FF9933, #000080, #128807);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.theme-tricolour .timeline-title,
+.theme-tricolour .roadmap-title,
+.theme-tricolour .card-header h3,
+.theme-tricolour .contribution-item-card strong {
+    color: #000080 !important; /* Navy Blue highlight resembling Ashoka Chakra */
+}
+
+.theme-tricolour .timeline-item::before {
+    border-left-color: #FF9933 !important; /* Saffron timeline line */
+}
+
+.theme-tricolour .roadmap-dot {
+    background: #ffffff !important; /* White dot */
+    border-color: #000080 !important; /* Navy border */
+}
+
+.theme-tricolour .roadmap-item::before {
+    background: #128807 !important; /* Green roadmap line */
+}
+
+.theme-tricolour .tab-btn.active {
+    border-bottom: 2px solid transparent !important;
+    border-image: linear-gradient(90deg, #FF9933 0%, #000080 50%, #128807 100%) 1 !important;
+    color: #000080 !important;
+    background: none !important;
+    border-radius: 0 !important;
+    padding: 0.75rem 0 !important;
+}
+
+.theme-tricolour .collab-tab-btn::before {
+    background: linear-gradient(90deg, #FF9933 0%, #ffffff 50%, #128807 100%) !important;
+    border: 1px solid #000080 !important;
+}
+
+.theme-tricolour .collab-tab-btn.active {
+    color: #000080 !important;
+    border: none !important;
+    border-radius: var(--radius-md) !important;
+    padding: 0.6rem 1.25rem !important;
+    font-weight: 700 !important;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.8);
+    outline: none !important;
+}
+
+.theme-tricolour .dropdown-link.active {
+    background: linear-gradient(90deg, #FF9933 0%, #ffffff 50%, #128807 100%) !important;
+    color: #000080 !important;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.8);
+    border-left: 3px solid #000080 !important;
+}
+
+.theme-tricolour #view-cv-btn,
+.theme-tricolour #print-cv-btn {
+    background: linear-gradient(90deg, #FF9933, #ffffff, #128807) !important;
+    color: #000080 !important;
+    border: 1px solid #000080 !important;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.8);
+}
+
+.theme-tricolour #view-cv-btn:hover,
+.theme-tricolour #print-cv-btn:hover {
+    filter: brightness(0.9);
+}
+
+.theme-tricolour .score-badge {
+    color: #128807 !important;
+}
+
+.theme-tricolour .hero-title {
+    color: #FF9933 !important; /* Saffron subtitle */
+}
+
+/* Alternating Tricolour colors for tiles/cards on hover */
+.theme-tricolour .glass-card:nth-of-type(3n+1):hover,
+.theme-tricolour #simulations-grid a:nth-of-type(3n+1):hover,
+.theme-tricolour #projects-container .glass-card:nth-of-type(3n+1):hover,
+.theme-tricolour .role-list-card:nth-of-type(3n+1):hover,
+.theme-tricolour .contribution-item-card:nth-of-type(3n+1):hover {
+    border-color: #FF9933 !important; /* Saffron */
+}
+
+.theme-tricolour .glass-card:nth-of-type(3n+2):hover,
+.theme-tricolour #simulations-grid a:nth-of-type(3n+2):hover,
+.theme-tricolour #projects-container .glass-card:nth-of-type(3n+2):hover,
+.theme-tricolour .role-list-card:nth-of-type(3n+2):hover,
+.theme-tricolour .contribution-item-card:nth-of-type(3n+2):hover {
+    border-color: #000080 !important; /* Navy Blue */
+}
+
+.theme-tricolour .glass-card:nth-of-type(3n+3):hover,
+.theme-tricolour #simulations-grid a:nth-of-type(3n+3):hover,
+.theme-tricolour #projects-container .glass-card:nth-of-type(3n+3):hover,
+.theme-tricolour .role-list-card:nth-of-type(3n+3):hover,
+.theme-tricolour .contribution-item-card:nth-of-type(3n+3):hover {
+    border-color: #128807 !important; /* Green */
+}
+
+/* General collaborator chip hovers under Tricolour theme */
+.theme-tricolour .collab-chip:hover {
+    background: linear-gradient(90deg, #FF9933 0%, #ffffff 50%, #128807 100%) !important;
+    color: #000080 !important;
+    border-color: #000080 !important;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.8);
+    box-shadow: var(--shadow-md) !important;
+}
+
+.theme-tricolour .collab-chip:hover i {
+    color: #000080 !important;
+}
+
+/* Page footer styling under Tricolour theme */
+.theme-tricolour .footer {
+    background: linear-gradient(90deg, #FF9933 0%, #ffffff 50%, #128807 100%) !important;
+    border-top: none !important;
+}
+
+.theme-tricolour .footer p {
+    color: #000080 !important;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.8);
+    font-weight: 600;
+}
