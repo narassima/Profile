@@ -27,7 +27,7 @@
     <!-- FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css?v=1.0.7">
+    <link rel="stylesheet" href="css/style.css?v=2.1.1">
 
     <!-- JSON-LD Structured Data for Google Search -->
     <script type="application/ld+json">
@@ -63,26 +63,89 @@
     <header class="navbar">
         <div class="nav-container">
             <a href="#home" class="nav-logo">Dr. Narassima M.S.</a>
-            <button class="mobile-menu-btn" aria-label="Toggle menu">
-                <i class="fas fa-bars"></i>
-            </button>
-            <nav class="nav-links">
-                <a href="#home" class="nav-link active" data-target="home">Home</a>
-                <a href="#publications" class="nav-link" data-target="publications">Research</a>
-                <a href="#teaching" class="nav-link" data-target="teaching">Teaching</a>
-                <a href="#projects" class="nav-link" data-target="projects">Mentorship</a>
-                <a href="#materials" class="nav-link" data-target="materials">Active Learning Tools</a>
-                <a href="#experience" class="nav-link" data-target="experience">Experience</a>
-                <a href="#education" class="nav-link" data-target="education">Education</a>
-                <a href="#gallery" class="nav-link" data-target="gallery">Photography</a>
-                <div class="color-picker-wrapper" style="display: inline-flex; align-items: center; gap: 0.5rem; margin-right: 0.5rem; background: rgba(255,255,255,0.12); padding: 0.25rem 0.75rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.15);">
-                    <label for="theme-color-input" style="font-size: 0.75rem; font-weight: 700; color: white; display: flex; align-items: center; gap: 0.35rem; cursor: pointer; margin: 0; line-height: 1;">
+            
+            <div class="nav-scroll-container">
+                <button class="nav-scroll-btn scroll-left" id="nav-scroll-left" aria-label="Scroll left">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <nav class="nav-links" id="nav-links-scrollable">
+                    <a href="#home" class="nav-link active" data-target="home">Home</a>
+                    <a href="#publications" class="nav-link" data-target="publications">Research</a>
+                    <a href="#teaching" class="nav-link" data-target="teaching">Teaching</a>
+                    <a href="#projects" class="nav-link" data-target="projects">Mentorship</a>
+                    <a href="#materials" class="nav-link" data-target="materials">Active Learning Tools</a>
+                    <a href="#experience" class="nav-link" data-target="experience">Academic Appointments</a>
+                    <a href="#education" class="nav-link" data-target="education">Academic Qualifications</a>
+                    <a href="#gallery" class="nav-link" data-target="gallery">Photography</a>
+                </nav>
+                <button class="nav-scroll-btn scroll-right" id="nav-scroll-right" aria-label="Scroll right">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <div class="nav-right-actions" style="position: relative;">
+                <div class="color-picker-wrapper" style="display: inline-flex; align-items: center; background: rgba(15, 23, 42, 0.05); padding: 0.4rem 0.75rem; border: 1px solid rgba(15, 23, 42, 0.08); border-radius: 0; position: relative;">
+                    <button id="theme-picker-toggle" style="background: none; border: none; font-size: 0.82rem; font-weight: 700; color: var(--text-primary); cursor: pointer; display: flex; align-items: center; gap: 0.35rem; padding: 0; outline: none;" aria-label="Toggle theme palette">
                         <i class="fas fa-palette"></i> Theme
-                    </label>
-                    <input type="color" id="theme-color-input" value="#1a73e8" style="border: none; background: transparent; width: 22px; height: 22px; cursor: pointer; padding: 0; border-radius: 50%; overflow: hidden; -webkit-appearance: none; display: block;">
+                    </button>
+                    
+                    <div class="theme-palette-dropdown" id="theme-palette-dropdown" style="display: none; position: absolute; right: -1px; top: calc(100% + 5px); background: var(--surface-color); border: 2px solid var(--border-color); padding: 0.6rem; box-shadow: var(--shadow-md); z-index: 1000; width: 154px; border-radius: 0;">
+                        <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.3rem;">
+                            <!-- Row 1 -->
+                            <button class="color-tile" data-color="#0050ef" style="background:#0050ef; width:22px; height:22px; border:none; cursor:pointer;" title="Cobalt"></button>
+                            <button class="color-tile" data-color="#e51400" style="background:#e51400; width:22px; height:22px; border:none; cursor:pointer;" title="Crimson"></button>
+                            <button class="color-tile" data-color="#d80073" style="background:#d80073; width:22px; height:22px; border:none; cursor:pointer;" title="Magenta"></button>
+                            <button class="color-tile" data-color="#aa00ff" style="background:#aa00ff; width:22px; height:22px; border:none; cursor:pointer;" title="Violet"></button>
+                            <button class="color-tile" data-color="#008a00" style="background:#008a00; width:22px; height:22px; border:none; cursor:pointer;" title="Emerald"></button>
+                            
+                            <!-- Row 2 -->
+                            <button class="color-tile" data-color="#00aba9" style="background:#00aba9; width:22px; height:22px; border:none; cursor:pointer;" title="Teal"></button>
+                            <button class="color-tile" data-color="#fa6800" style="background:#fa6800; width:22px; height:22px; border:none; cursor:pointer;" title="Orange"></button>
+                            <button class="color-tile" data-color="#800020" style="background:#800020; width:22px; height:22px; border:none; cursor:pointer;" title="Burgundy"></button>
+                            <button class="color-tile" data-color="#6b21a8" style="background:#6b21a8; width:22px; height:22px; border:none; cursor:pointer;" title="Deep Purple"></button>
+                            <button class="color-tile" data-color="#1e3a8a" style="background:#1e3a8a; width:22px; height:22px; border:none; cursor:pointer;" title="Navy"></button>
+                            
+                            <!-- Row 3 -->
+                            <button class="color-tile" data-color="#064e3b" style="background:#064e3b; width:22px; height:22px; border:none; cursor:pointer;" title="Forest Green"></button>
+                            <button class="color-tile" data-color="#c2410c" style="background:#c2410c; width:22px; height:22px; border:none; cursor:pointer;" title="Terracotta"></button>
+                            <button class="color-tile" data-color="#4a3728" style="background:#4a3728; width:22px; height:22px; border:none; cursor:pointer;" title="Chocolate"></button>
+                            <button class="color-tile" data-color="#be123c" style="background:#be123c; width:22px; height:22px; border:none; cursor:pointer;" title="Rose Red"></button>
+                            <button class="color-tile" data-color="#4c1d95" style="background:#4c1d95; width:22px; height:22px; border:none; cursor:pointer;" title="Plum"></button>
+                            
+                            <!-- Row 4 -->
+                            <button class="color-tile" data-color="#0f172a" style="background:#0f172a; width:22px; height:22px; border:none; cursor:pointer;" title="Midnight Blue"></button>
+                            <button class="color-tile" data-color="#1e293b" style="background:#1e293b; width:22px; height:22px; border:none; cursor:pointer;" title="Dark Charcoal"></button>
+                            <button class="color-tile" data-color="#7f1d1d" style="background:#7f1d1d; width:22px; height:22px; border:none; cursor:pointer;" title="Maroon"></button>
+                            <button class="color-tile" data-color="#14532d" style="background:#14532d; width:22px; height:22px; border:none; cursor:pointer;" title="Dark Olive"></button>
+                            <button class="color-tile" data-color="#164e63" style="background:#164e63; width:22px; height:22px; border:none; cursor:pointer;" title="Deep Cyan"></button>
+
+                            <!-- Row 5 -->
+                            <button class="color-tile" data-color="#312e81" style="background:#312e81; width:22px; height:22px; border:none; cursor:pointer;" title="Dark Indigo"></button>
+                            <button class="color-tile" data-color="#881337" style="background:#881337; width:22px; height:22px; border:none; cursor:pointer;" title="Dark Crimson"></button>
+                            <button class="color-tile" data-color="#7c2d12" style="background:#7c2d12; width:22px; height:22px; border:none; cursor:pointer;" title="Burnt Orange"></button>
+                            <button class="color-tile" data-color="#022c22" style="background:#022c22; width:22px; height:22px; border:none; cursor:pointer;" title="Spruce"></button>
+                            <button class="color-tile" data-color="#3b0764" style="background:#3b0764; width:22px; height:22px; border:none; cursor:pointer;" title="Royal Purple"></button>
+                        </div>
+                        <div id="theme-color-name" style="text-align: center; margin-top: 0.6rem; font-size: 0.72rem; font-weight: 700; color: var(--text-secondary); min-height: 1rem; border-top: 1px solid var(--border-color); padding-top: 0.4rem; text-transform: uppercase; font-family: var(--font-main);">Hover a color</div>
+                    </div>
                 </div>
                 
-            </nav>
+                <div class="nav-dropdown-wrapper" style="position: relative; display: inline-block;">
+                    <button class="mobile-menu-btn" id="tabs-dropdown-toggle" aria-label="Toggle all tabs" style="display: flex; align-items: center; justify-content: center; background: none; border: 1px solid rgba(15, 23, 42, 0.08); padding: 0.4rem 0.6rem; color: var(--text-primary); cursor: pointer; font-size: 0.92rem; font-weight: 600; gap: 0.35rem; height: 32px; border-radius: 0;">
+                        <i class="fas fa-bars"></i> <span class="btn-text" style="font-size: 0.82rem; font-weight: 700; font-family: var(--font-main);">Tabs</span> <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i>
+                    </button>
+                    <div class="nav-dropdown-menu" id="nav-dropdown-menu" style="display: none; position: absolute; right: 0; top: calc(100% + 5px); background: var(--surface-color); border: 2px solid var(--border-color); box-shadow: var(--shadow-md); z-index: 1000; min-width: 200px; padding: 0.5rem 0; border-radius: 0;">
+                        <a href="#home" class="dropdown-link active" data-target="home" style="display: block; padding: 0.6rem 1.2rem; text-decoration: none; color: var(--text-primary); font-size: 0.82rem; font-weight: 600; transition: var(--transition); border-left: 3px solid transparent; font-family: var(--font-main);">Home</a>
+                        <a href="#publications" class="dropdown-link" data-target="publications" style="display: block; padding: 0.6rem 1.2rem; text-decoration: none; color: var(--text-primary); font-size: 0.82rem; font-weight: 600; transition: var(--transition); border-left: 3px solid transparent; font-family: var(--font-main);">Research</a>
+                        <a href="#teaching" class="dropdown-link" data-target="teaching" style="display: block; padding: 0.6rem 1.2rem; text-decoration: none; color: var(--text-primary); font-size: 0.82rem; font-weight: 600; transition: var(--transition); border-left: 3px solid transparent; font-family: var(--font-main);">Teaching</a>
+                        <a href="#projects" class="dropdown-link" data-target="projects" style="display: block; padding: 0.6rem 1.2rem; text-decoration: none; color: var(--text-primary); font-size: 0.82rem; font-weight: 600; transition: var(--transition); border-left: 3px solid transparent; font-family: var(--font-main);">Mentorship</a>
+                        <a href="#materials" class="dropdown-link" data-target="materials" style="display: block; padding: 0.6rem 1.2rem; text-decoration: none; color: var(--text-primary); font-size: 0.82rem; font-weight: 600; transition: var(--transition); border-left: 3px solid transparent; font-family: var(--font-main);">Active Learning Tools</a>
+                        <a href="#experience" class="dropdown-link" data-target="experience" style="display: block; padding: 0.6rem 1.2rem; text-decoration: none; color: var(--text-primary); font-size: 0.82rem; font-weight: 600; transition: var(--transition); border-left: 3px solid transparent; font-family: var(--font-main);">Academic Appointments</a>
+                        <a href="#education" class="dropdown-link" data-target="education" style="display: block; padding: 0.6rem 1.2rem; text-decoration: none; color: var(--text-primary); font-size: 0.82rem; font-weight: 600; transition: var(--transition); border-left: 3px solid transparent; font-family: var(--font-main);">Academic Qualifications</a>
+                        <a href="#gallery" class="dropdown-link" data-target="gallery" style="display: block; padding: 0.6rem 1.2rem; text-decoration: none; color: var(--text-primary); font-size: 0.82rem; font-weight: 600; transition: var(--transition); border-left: 3px solid transparent; font-family: var(--font-main);">Photography</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </header>
 
@@ -1094,15 +1157,21 @@
         <!-- Experience Section -->
         <section id="experience" class="page-section">
             <div class="section-header">
-                <h2>Experience & Professional Positions</h2>
+                <h2>Academic Appointments</h2>
                 <div class="section-underline"></div>
             </div>
 
-            <div class="timeline-container glass-card" id="experience-timeline">
-                <!-- Populated by JS -->
+            <div class="glass-card content-card" style="margin-bottom: 2rem; padding: 0 0 1.5rem 0;">
+                <div class="card-header" style="padding: 2rem 2rem 1rem; margin-bottom: 0;">
+                    <i class="fas fa-briefcase"></i>
+                    <h3>Academic Appointments</h3>
+                </div>
+                <div id="experience-timeline">
+                    <!-- Populated by JS -->
+                </div>
             </div>
 
-            <div class="professional-roles glass-card mt-2">
+            <div class="glass-card content-card mt-2">
                 <div class="card-header">
                     <i class="fas fa-users"></i>
                     <h3>Review & Editorial Boards</h3>
@@ -1112,12 +1181,12 @@
                 </div>
             </div>
 
-            <div class="professional-roles glass-card mt-2">
+            <div class="glass-card content-card mt-2">
                 <div class="card-header">
                     <i class="fas fa-chalkboard-teacher"></i>
                     <h3>Academic Contributions & Invited Talks</h3>
                 </div>
-                <div id="contributions-list" style="padding: 0 2rem 2rem; display: grid; grid-template-columns: 1fr; gap: 1rem; margin-top: 1rem;">
+                <div id="contributions-list" style="display: grid; grid-template-columns: 1fr; gap: 1rem; margin-top: 1rem;">
                     <!-- Populated by JS -->
                 </div>
             </div>
@@ -1126,7 +1195,7 @@
         <!-- Education & Certifications Section -->
         <section id="education" class="page-section">
             <div class="section-header">
-                <h2>Education & Certifications</h2>
+                <h2>Academic Qualifications & Certifications</h2>
                 <div class="section-underline"></div>
             </div>
 
@@ -1134,7 +1203,7 @@
                 <div class="glass-card content-card">
                     <div class="card-header">
                         <i class="fas fa-user-graduate"></i>
-                        <h3>Educational Qualification</h3>
+                        <h3>Academic Qualifications</h3>
                     </div>
                     <div class="timeline" id="education-timeline">
                         <!-- Populated by JS -->
@@ -1173,15 +1242,15 @@
             <!-- Google Maps, Pexels, & Instagram Photo Contributions Cards -->
             <div style="max-width: 1200px; margin: 0 auto 2rem; padding: 0 1rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
                 <!-- Google Maps Card -->
-                <a href="https://www.google.com/maps/contrib/116477131380312566240/photos" target="_blank" class="hover-lift" style="text-decoration: none; color: inherit; display: flex; align-items: stretch; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 32px rgba(234,113,10,0.12); border: 1px solid rgba(234,113,10,0.18); transition: all 0.35s ease; background: var(--glass-bg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);">
+                <a href="https://www.google.com/maps/contrib/116477131380312566240/photos" target="_blank" class="hover-lift" style="text-decoration: none; color: inherit; display: flex; align-items: stretch; border-radius: 0px; overflow: hidden; box-shadow: 0 8px 32px rgba(234,113,10,0.12); border: 1px solid rgba(234,113,10,0.18); transition: all 0.35s ease; background: var(--glass-bg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);">
                     <!-- Accent strip -->
                     <div style="width: 7px; background: linear-gradient(180deg, #e8710a, #f9ab00, #34a853, #4285F4); flex-shrink: 0;"></div>
                     <div style="background: linear-gradient(135deg, #e8710a15, #f9ab0010); padding: 1.5rem 1.25rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
                         <div style="position: relative; width: 52px; height: 52px;">
-                            <div style="width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg, #e8710a, #f9ab00); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: white; box-shadow: 0 4px 12px rgba(234,113,10,0.3);">
+                            <div style="width: 52px; height: 52px; border-radius: 0px; background: linear-gradient(135deg, #e8710a, #f9ab00); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: white; box-shadow: 0 4px 12px rgba(234,113,10,0.3);">
                                 <i class="fas fa-map-marked-alt"></i>
                             </div>
-                            <div style="position: absolute; bottom: -2px; right: -2px; width: 18px; height: 18px; border-radius: 50%; background: white; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 6px rgba(0,0,0,0.15);">
+                            <div style="position: absolute; bottom: -2px; right: -2px; width: 18px; height: 18px; border-radius: 0px; background: white; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 6px rgba(0,0,0,0.15);">
                                 <i class="fas fa-camera" style="font-size: 0.6rem; color: #e8710a;"></i>
                             </div>
                         </div>
@@ -1194,12 +1263,12 @@
                 </a>
 
                 <!-- Pexels Card -->
-                <a href="https://www.pexels.com/@narassima-m-s-2701006/" target="_blank" class="hover-lift" style="text-decoration: none; color: inherit; display: flex; align-items: stretch; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 32px rgba(5,165,133,0.12); border: 1px solid rgba(5,165,133,0.18); transition: all 0.35s ease; background: var(--glass-bg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);">
+                <a href="https://www.pexels.com/@narassima-m-s-2701006/" target="_blank" class="hover-lift" style="text-decoration: none; color: inherit; display: flex; align-items: stretch; border-radius: 0px; overflow: hidden; box-shadow: 0 8px 32px rgba(5,165,133,0.12); border: 1px solid rgba(5,165,133,0.18); transition: all 0.35s ease; background: var(--glass-bg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);">
                     <!-- Accent strip -->
                     <div style="width: 7px; background: linear-gradient(180deg, #05a585, #00b0ff); flex-shrink: 0;"></div>
                     <div style="background: linear-gradient(135deg, #05a58515, #00b0ff10); padding: 1.5rem 1.25rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
                         <div style="position: relative; width: 52px; height: 52px;">
-                            <div style="width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg, #05a585, #00b0ff); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: white; box-shadow: 0 4px 12px rgba(5,165,133,0.3);">
+                            <div style="width: 52px; height: 52px; border-radius: 0px; background: linear-gradient(135deg, #05a585, #00b0ff); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: white; box-shadow: 0 4px 12px rgba(5,165,133,0.3);">
                                 <i class="fas fa-images"></i>
                             </div>
                         </div>
@@ -1212,12 +1281,12 @@
                 </a>
 
                 <!-- Instagram Card -->
-                <a href="https://www.instagram.com/narassima_ms/" target="_blank" class="hover-lift" style="text-decoration: none; color: inherit; display: flex; align-items: stretch; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 32px rgba(225,48,108,0.12); border: 1px solid rgba(225,48,108,0.18); transition: all 0.35s ease; background: var(--glass-bg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);">
+                <a href="https://www.instagram.com/narassima_ms/" target="_blank" class="hover-lift" style="text-decoration: none; color: inherit; display: flex; align-items: stretch; border-radius: 0px; overflow: hidden; box-shadow: 0 8px 32px rgba(225,48,108,0.12); border: 1px solid rgba(225,48,108,0.18); transition: all 0.35s ease; background: var(--glass-bg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);">
                     <!-- Accent strip -->
                     <div style="width: 7px; background: linear-gradient(180deg, #e1306c, #f77737, #fcaf45); flex-shrink: 0;"></div>
                     <div style="background: linear-gradient(135deg, #e1306c15, #fcaf4510); padding: 1.5rem 1.25rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
                         <div style="position: relative; width: 52px; height: 52px;">
-                            <div style="width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg, #e1306c, #f77737, #fcaf45); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: white; box-shadow: 0 4px 12px rgba(225,48,108,0.3);">
+                            <div style="width: 52px; height: 52px; border-radius: 0px; background: linear-gradient(135deg, #e1306c, #f77737, #fcaf45); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: white; box-shadow: 0 4px 12px rgba(225,48,108,0.3);">
                                 <i class="fab fa-instagram"></i>
                             </div>
                         </div>
@@ -1232,114 +1301,114 @@
 
             <!-- Curated Masonry Photogrid (Varying Sizes) -->
             <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); grid-auto-rows: 130px; gap: 0.6rem; grid-auto-flow: dense; padding: 0 1rem 3.5rem;">
-                <a href="https://www.pexels.com/photo/6658866/" target="_blank" class="gallery-item-card grid-span-2-2" style="border-radius: 10px; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
+                <a href="https://www.pexels.com/photo/6658866/" target="_blank" class="gallery-item-card grid-span-2-2" style="border-radius: 0; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
                     <img src="assets/img/gallery_new/pexels_6658866.jpg" alt="Ancient Brihadeeswara Temple, Tanjavur" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block;">
                 </a>
-                <a href="https://www.pexels.com/photo/6658825/" target="_blank" class="gallery-item-card grid-span-1-1" style="border-radius: 10px; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
+                <a href="https://www.pexels.com/photo/6658825/" target="_blank" class="gallery-item-card grid-span-1-1" style="border-radius: 0; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
                     <img src="assets/img/gallery_new/pexels_6658825.jpg" alt="Tanjavur Temple Gopuram architecture detail" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block;">
                 </a>
-                <a href="https://www.pexels.com/photo/4354293/" target="_blank" class="gallery-item-card grid-span-1-2" style="border-radius: 10px; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
+                <a href="https://www.pexels.com/photo/4354293/" target="_blank" class="gallery-item-card grid-span-1-2" style="border-radius: 0; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
                     <img src="assets/img/gallery_new/pexels_4354293.jpg" alt="Pondicherry Beach waves close-up" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block;">
                 </a>
-                <a href="https://www.pexels.com/photo/4345345/" target="_blank" class="gallery-item-card grid-span-1-1" style="border-radius: 10px; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
+                <a href="https://www.pexels.com/photo/4345345/" target="_blank" class="gallery-item-card grid-span-1-1" style="border-radius: 0; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
                     <img src="assets/img/gallery_new/pexels_4345345.jpg" alt="Vibrant garden flowers macro shot" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block;">
                 </a>
-                <a href="https://www.pexels.com/photo/4345349/" target="_blank" class="gallery-item-card grid-span-2-1" style="border-radius: 10px; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
+                <a href="https://www.pexels.com/photo/4345349/" target="_blank" class="gallery-item-card grid-span-2-1" style="border-radius: 0; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
                     <img src="assets/img/gallery_new/pexels_4345349.jpg" alt="Landscape scenic horizon" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block;">
                 </a>
-                <a href="https://www.pexels.com/photo/4345339/" target="_blank" class="gallery-item-card grid-span-1-1" style="border-radius: 10px; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
+                <a href="https://www.pexels.com/photo/4345339/" target="_blank" class="gallery-item-card grid-span-1-1" style="border-radius: 0; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
                     <img src="assets/img/gallery_new/pexels_4345339.jpg" alt="Lotus pond garden capture" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block;">
                 </a>
-                <a href="https://www.pexels.com/photo/4345336/" target="_blank" class="gallery-item-card grid-span-1-1" style="border-radius: 10px; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
+                <a href="https://www.pexels.com/photo/4345336/" target="_blank" class="gallery-item-card grid-span-1-1" style="border-radius: 0; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
                     <img src="assets/img/gallery_new/pexels_4345336.jpg" alt="Creative macro leaf geometry" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block;">
                 </a>
-                <a href="https://www.pexels.com/photo/4343854/" target="_blank" class="gallery-item-card grid-span-1-2" style="border-radius: 10px; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
+                <a href="https://www.pexels.com/photo/4343854/" target="_blank" class="gallery-item-card grid-span-1-2" style="border-radius: 0; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
                     <img src="assets/img/gallery_new/pexels_4343854.jpg" alt="Sunset over college campus grounds" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block;">
                 </a>
-                <a href="https://www.pexels.com/photo/4343850/" target="_blank" class="gallery-item-card grid-span-2-1" style="border-radius: 10px; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
+                <a href="https://www.pexels.com/photo/4343850/" target="_blank" class="gallery-item-card grid-span-2-1" style="border-radius: 0; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
                     <img src="assets/img/gallery_new/pexels_4343850.jpg" alt="Academic block corridors and lines" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block;">
                 </a>
-                <a href="https://www.pexels.com/photo/4343843/" target="_blank" class="gallery-item-card grid-span-1-1" style="border-radius: 10px; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
+                <a href="https://www.pexels.com/photo/4343843/" target="_blank" class="gallery-item-card grid-span-1-1" style="border-radius: 0; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
                     <img src="assets/img/gallery_new/pexels_4343843.jpg" alt="Green campus gardens" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block;">
                 </a>
-                <a href="https://www.pexels.com/photo/4342685/" target="_blank" class="gallery-item-card grid-span-1-1" style="border-radius: 10px; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
+                <a href="https://www.pexels.com/photo/4342685/" target="_blank" class="gallery-item-card grid-span-1-1" style="border-radius: 0; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
                     <img src="assets/img/gallery_new/pexels_4342685.jpg" alt="Coastal ocean shoreline Pondicherry" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block;">
                 </a>
-                <a href="https://www.pexels.com/photo/4342610/" target="_blank" class="gallery-item-card grid-span-1-1" style="border-radius: 10px; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
+                <a href="https://www.pexels.com/photo/4342610/" target="_blank" class="gallery-item-card grid-span-1-1" style="border-radius: 0; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
                     <img src="assets/img/gallery_new/pexels_4342610.jpg" alt="Beach shoreline shell detail" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block;">
                 </a>
-                <a href="https://www.pexels.com/photo/4342579/" target="_blank" class="gallery-item-card grid-span-2-2" style="border-radius: 10px; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
+                <a href="https://www.pexels.com/photo/4342579/" target="_blank" class="gallery-item-card grid-span-2-2" style="border-radius: 0; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
                     <img src="assets/img/gallery_new/pexels_4342579.jpg" alt="Prag Mahal historic palace archways" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block;">
                 </a>
-                <a href="https://www.pexels.com/photo/4314536/" target="_blank" class="gallery-item-card grid-span-1-1" style="border-radius: 10px; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
+                <a href="https://www.pexels.com/photo/4314536/" target="_blank" class="gallery-item-card grid-span-1-1" style="border-radius: 0; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
                     <img src="assets/img/gallery_new/pexels_4314536.jpg" alt="Palace architecture wall carvings" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block;">
                 </a>
-                <a href="https://www.pexels.com/photo/4314531/" target="_blank" class="gallery-item-card grid-span-1-1" style="border-radius: 10px; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
+                <a href="https://www.pexels.com/photo/4314531/" target="_blank" class="gallery-item-card grid-span-1-1" style="border-radius: 0; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
                     <img src="assets/img/gallery_new/pexels_4314531.jpg" alt="Prag Mahal structural columns" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block;">
                 </a>
-                <a href="https://www.pexels.com/photo/4314509/" target="_blank" class="gallery-item-card grid-span-1-2" style="border-radius: 10px; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
+                <a href="https://www.pexels.com/photo/4314509/" target="_blank" class="gallery-item-card grid-span-1-2" style="border-radius: 0; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
                     <img src="assets/img/gallery_new/pexels_4314509.jpg" alt="Historic palace watchtower Prag Mahal" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block;">
                 </a>
-                <a href="https://www.pexels.com/photo/4314501/" target="_blank" class="gallery-item-card grid-span-2-1" style="border-radius: 10px; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
+                <a href="https://www.pexels.com/photo/4314501/" target="_blank" class="gallery-item-card grid-span-2-1" style="border-radius: 0; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
                     <img src="assets/img/gallery_new/pexels_4314501.jpg" alt="Prag Mahal wide courtyard perspective" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block;">
                 </a>
-                <a href="https://www.pexels.com/photo/4314497/" target="_blank" class="gallery-item-card grid-span-1-1" style="border-radius: 10px; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
+                <a href="https://www.pexels.com/photo/4314497/" target="_blank" class="gallery-item-card grid-span-1-1" style="border-radius: 0; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
                     <img src="assets/img/gallery_new/pexels_4314497.jpg" alt="Ornate window geometry Prag Mahal" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block;">
                 </a>
-                <a href="https://www.pexels.com/photo/4314483/" target="_blank" class="gallery-item-card grid-span-1-1" style="border-radius: 10px; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
+                <a href="https://www.pexels.com/photo/4314483/" target="_blank" class="gallery-item-card grid-span-1-1" style="border-radius: 0; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
                     <img src="assets/img/gallery_new/pexels_4314483.jpg" alt="Clock tower details and clocks" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block;">
                 </a>
-                <a href="https://www.pexels.com/photo/4314474/" target="_blank" class="gallery-item-card grid-span-1-1" style="border-radius: 10px; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
+                <a href="https://www.pexels.com/photo/4314474/" target="_blank" class="gallery-item-card grid-span-1-1" style="border-radius: 0; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
                     <img src="assets/img/gallery_new/pexels_4314474.jpg" alt="Kutch palace design architecture" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block;">
                 </a>
-                <a href="https://www.pexels.com/photo/4314349/" target="_blank" class="gallery-item-card grid-span-1-1" style="border-radius: 10px; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
+                <a href="https://www.pexels.com/photo/4314349/" target="_blank" class="gallery-item-card grid-span-1-1" style="border-radius: 0; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
                     <img src="assets/img/gallery_new/pexels_4314349.jpg" alt="Temple complex structural pillars" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block;">
                 </a>
-                <a href="https://www.pexels.com/photo/4314338/" target="_blank" class="gallery-item-card grid-span-1-1" style="border-radius: 10px; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
+                <a href="https://www.pexels.com/photo/4314338/" target="_blank" class="gallery-item-card grid-span-1-1" style="border-radius: 0; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
                     <img src="assets/img/gallery_new/pexels_4314338.jpg" alt="Palace tower low angle sky perspective" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block;">
                 </a>
-                <a href="https://www.pexels.com/photo/4314324/" target="_blank" class="gallery-item-card grid-span-2-2" style="border-radius: 10px; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
+                <a href="https://www.pexels.com/photo/4314324/" target="_blank" class="gallery-item-card grid-span-2-2" style="border-radius: 0; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
                     <img src="assets/img/gallery_new/pexels_4314324.jpg" alt="Prag Mahal tower low angle grand view" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block;">
                 </a>
-                <a href="https://www.pexels.com/photo/4314307/" target="_blank" class="gallery-item-card grid-span-1-1" style="border-radius: 10px; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
+                <a href="https://www.pexels.com/photo/4314307/" target="_blank" class="gallery-item-card grid-span-1-1" style="border-radius: 0; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
                     <img src="assets/img/gallery_new/pexels_4314307.jpg" alt="Kutch architecture designs" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block;">
                 </a>
-                <a href="https://www.pexels.com/photo/4314305/" target="_blank" class="gallery-item-card grid-span-1-1" style="border-radius: 10px; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
+                <a href="https://www.pexels.com/photo/4314305/" target="_blank" class="gallery-item-card grid-span-1-1" style="border-radius: 0; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
                     <img src="assets/img/gallery_new/pexels_4314305.jpg" alt="Sunset horizon over Kutch" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block;">
                 </a>
-                <a href="https://www.pexels.com/photo/4314295/" target="_blank" class="gallery-item-card grid-span-2-1" style="border-radius: 10px; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
+                <a href="https://www.pexels.com/photo/4314295/" target="_blank" class="gallery-item-card grid-span-2-1" style="border-radius: 0; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
                     <img src="assets/img/gallery_new/pexels_4314295.jpg" alt="Wide landscape mountains and valley Kutch" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block;">
                 </a>
-                <a href="https://www.pexels.com/photo/4314266/" target="_blank" class="gallery-item-card grid-span-1-1" style="border-radius: 10px; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
+                <a href="https://www.pexels.com/photo/4314266/" target="_blank" class="gallery-item-card grid-span-1-1" style="border-radius: 0; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
                     <img src="assets/img/gallery_new/pexels_4314266.jpg" alt="Rocky mountain terrain click" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block;">
                 </a>
-                <a href="https://www.pexels.com/photo/4314261/" target="_blank" class="gallery-item-card grid-span-1-1" style="border-radius: 10px; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
+                <a href="https://www.pexels.com/photo/4314261/" target="_blank" class="gallery-item-card grid-span-1-1" style="border-radius: 0; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
                     <img src="assets/img/gallery_new/pexels_4314261.jpg" alt="Stone temple detailing" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block;">
                 </a>
-                <a href="https://www.pexels.com/photo/6658866/" target="_blank" class="gallery-item-card grid-span-2-2" style="border-radius: 10px; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
+                <a href="https://www.pexels.com/photo/6658866/" target="_blank" class="gallery-item-card grid-span-2-2" style="border-radius: 0; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
                     <img src="assets/img/gallery_new/pexels_6658866.jpg" alt="Goddess Kali Durga deity statue Tanjavur" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block;">
                 </a>
-                <a href="https://www.instagram.com/saisimtales/p/DWWn34KEbmV/" target="_blank" class="gallery-item-card grid-span-1-1" style="border-radius: 10px; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
+                <a href="https://www.instagram.com/saisimtales/p/DWWn34KEbmV/" target="_blank" class="gallery-item-card grid-span-1-1" style="border-radius: 0; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
                     <img src="assets/img/gallery_new/insta_4345345.jpg" alt="Instagram post by saisimtales" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block;">
                     <div class="instagram-overlay-icon"><i class="fab fa-instagram"></i></div>
                 </a>
-                <a href="https://www.instagram.com/narassima_ms/p/DWnCz5pEvvYuxUbamITrWpW2kTuSEXiG9ueTeo0/" target="_blank" class="gallery-item-card grid-span-1-1" style="border-radius: 10px; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
+                <a href="https://www.instagram.com/narassima_ms/p/DWnCz5pEvvYuxUbamITrWpW2kTuSEXiG9ueTeo0/" target="_blank" class="gallery-item-card grid-span-1-1" style="border-radius: 0; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
                     <img src="assets/img/gallery_new/insta_4345339.jpg" alt="Instagram post by narassima_ms" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block;">
                     <div class="instagram-overlay-icon"><i class="fab fa-instagram"></i></div>
                 </a>
-                <a href="https://www.instagram.com/narassima_ms/p/DP4D2B0EjPvtcuHmGSO9szGfOSNWKfGXXr5Ux00/" target="_blank" class="gallery-item-card grid-span-1-1" style="border-radius: 10px; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
+                <a href="https://www.instagram.com/narassima_ms/p/DP4D2B0EjPvtcuHmGSO9szGfOSNWKfGXXr5Ux00/" target="_blank" class="gallery-item-card grid-span-1-1" style="border-radius: 0; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
                     <img src="assets/img/gallery_new/insta_4345349.jpg" alt="Instagram post by narassima_ms" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block;">
                     <div class="instagram-overlay-icon"><i class="fab fa-instagram"></i></div>
                 </a>
-                <a href="https://www.instagram.com/narassima_ms/p/DPotxnikifCKKFOGCKN5n6lAXlq9SYUevg5tsk0/" target="_blank" class="gallery-item-card grid-span-1-1" style="border-radius: 10px; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
+                <a href="https://www.instagram.com/narassima_ms/p/DPotxnikifCKKFOGCKN5n6lAXlq9SYUevg5tsk0/" target="_blank" class="gallery-item-card grid-span-1-1" style="border-radius: 0; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
                     <img src="assets/img/gallery_new/insta_DPotxnikif.jpg" alt="Instagram post by narassima_ms" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block;">
                     <div class="instagram-overlay-icon"><i class="fab fa-instagram"></i></div>
                 </a>
-                <a href="https://www.instagram.com/narassima_ms/p/DPRi0ApEoMk1wygdbewt3wjEFO7mqYEsIPjFA00/" target="_blank" class="gallery-item-card grid-span-1-1" style="border-radius: 10px; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
+                <a href="https://www.instagram.com/narassima_ms/p/DPRi0ApEoMk1wygdbewt3wjEFO7mqYEsIPjFA00/" target="_blank" class="gallery-item-card grid-span-1-1" style="border-radius: 0; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
                     <img src="assets/img/gallery_new/insta_4343850.jpg" alt="Instagram post by narassima_ms" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block;">
                     <div class="instagram-overlay-icon"><i class="fab fa-instagram"></i></div>
                 </a>
-                <a href="https://www.instagram.com/narassima_ms/p/DOgkpsEEgklKU6OS5cVD11EGnavr3Fvpwx7DcE0/" target="_blank" class="gallery-item-card grid-span-1-1" style="border-radius: 10px; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
+                <a href="https://www.instagram.com/narassima_ms/p/DOgkpsEEgklKU6OS5cVD11EGnavr3Fvpwx7DcE0/" target="_blank" class="gallery-item-card grid-span-1-1" style="border-radius: 0; overflow: hidden; display: block; border: 1px solid var(--primary-border, var(--border-color)); box-shadow: var(--shadow-sm); position: relative; transition: var(--transition);">
                     <img src="assets/img/gallery_new/insta_4342579.jpg" alt="Instagram post by narassima_ms" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block;">
                     <div class="instagram-overlay-icon"><i class="fab fa-instagram"></i></div>
                 </a>
@@ -1393,7 +1462,7 @@
         </div>
     </footer>
 
-    <script src="js/data.js?v=1.0.7"></script>
-    <script src="js/script.js?v=1.0.7"></script>
+    <script src="js/data.js?v=2.1.1"></script>
+    <script src="js/script.js?v=2.1.1"></script>
 </body>
 </html>

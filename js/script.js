@@ -1,30 +1,91 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // ── Mobile Menu Toggle ──────────────────────────────────────
-    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-    const navLinksContainer = document.querySelector('.nav-links');
-    if (mobileMenuBtn) {
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinksContainer.classList.toggle('show');
+    // ── Mobile/Tabs Menu Dropdown Toggle ────────────────────────
+    const tabsDropdownToggle = document.getElementById('tabs-dropdown-toggle');
+    const navDropdownMenu = document.getElementById('nav-dropdown-menu');
+    
+    if (tabsDropdownToggle && navDropdownMenu) {
+        tabsDropdownToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isOpen = navDropdownMenu.style.display === 'block';
+            navDropdownMenu.style.display = isOpen ? 'none' : 'block';
+        });
+        
+        document.addEventListener('click', (e) => {
+            if (!navDropdownMenu.contains(e.target) && e.target !== tabsDropdownToggle) {
+                navDropdownMenu.style.display = 'none';
+            }
         });
     }
 
-    // ── Page Navigation ─────────────────────────────────────────
+    // ── Page Navigation (Syncing Horizontal & Dropdown links) ─────
     const navLinks = document.querySelectorAll('.nav-link');
+    const dropdownLinks = document.querySelectorAll('.dropdown-link');
     const sections = document.querySelectorAll('.page-section');
 
+    const activateTab = (targetId) => {
+        // Sync active class on nav links
+        navLinks.forEach(l => {
+            if (l.getAttribute('data-target') === targetId) {
+                l.classList.add('active');
+                // Scroll horizontal container to keep it in view
+                const navScrollLinks = document.getElementById('nav-links-scrollable');
+                if (navScrollLinks) {
+                    const containerWidth = navScrollLinks.clientWidth;
+                    const linkLeft = l.offsetLeft;
+                    const linkWidth = l.clientWidth;
+                    const targetScroll = linkLeft - (containerWidth / 2) + (linkWidth / 2);
+                    navScrollLinks.scrollTo({ left: targetScroll, behavior: 'smooth' });
+                }
+            } else {
+                l.classList.remove('active');
+            }
+        });
+
+        // Sync active class on dropdown links
+        dropdownLinks.forEach(dl => {
+            if (dl.getAttribute('data-target') === targetId) {
+                dl.classList.add('active');
+            } else {
+                dl.classList.remove('active');
+            }
+        });
+
+        // Toggle active section
+        sections.forEach(sec => {
+            if (sec.id === targetId) {
+                sec.classList.add('active-section');
+            } else {
+                sec.classList.remove('active-section');
+            }
+        });
+
+        // Hide dropdown menu
+        if (navDropdownMenu) {
+            navDropdownMenu.style.display = 'none';
+        }
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    // Bind horizontal links
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             const targetId = link.getAttribute('data-target');
             if (targetId) {
                 e.preventDefault();
-                navLinks.forEach(l => l.classList.remove('active'));
-                link.classList.add('active');
-                sections.forEach(sec => sec.classList.remove('active-section'));
-                const target = document.getElementById(targetId);
-                if (target) target.classList.add('active-section');
-                if (navLinksContainer) navLinksContainer.classList.remove('show');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                activateTab(targetId);
+            }
+        });
+    });
+
+    // Bind dropdown links
+    dropdownLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const targetId = link.getAttribute('data-target');
+            if (targetId) {
+                e.preventDefault();
+                activateTab(targetId);
             }
         });
     });
@@ -441,16 +502,16 @@ document.addEventListener('DOMContentLoaded', () => {
         Object.keys(groupedRoles).forEach(roleName => {
             const group = groupedRoles[roleName];
             const listItems = group.details.map(detail => `
-                <li style="margin-bottom: 0.6rem; display: flex; align-items: flex-start; gap: 0.6rem;">
-                    <i class="fas fa-check-circle" style="font-size: 0.85rem; color: var(--primary-color); margin-top: 0.35rem; flex-shrink: 0;"></i>
+                <li style="margin-bottom: 0.6rem; display: flex; align-items: flex-start;">
+                    <i class="fas fa-check-circle" style="font-size: 0.85rem; color: var(--primary-color); margin-top: 0.35rem; flex-shrink: 0; margin-right: 0.6rem !important;"></i>
                     <span style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.4;">${detail}</span>
                 </li>
             `).join('');
 
             rolesGrid.innerHTML += `
                 <div class="glass-card role-list-card" style="padding: 1.5rem; border: 1px solid var(--border-color); border-radius: var(--radius-md); background: rgba(255, 255, 255, 0.45); box-shadow: var(--shadow-sm); display: flex; flex-direction: column;">
-                    <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; border-bottom: 1.5px solid rgba(26, 115, 232, 0.15); padding-bottom: 0.75rem;">
-                        <i class="fas ${group.icon}" style="font-size: 1.3rem; color: var(--primary-color);"></i>
+                    <div style="display: flex; align-items: center; margin-bottom: 1rem; border-bottom: 1.5px solid rgba(26, 115, 232, 0.15); padding-bottom: 0.75rem;">
+                        <i class="fas ${group.icon}" style="font-size: 1.3rem; color: var(--primary-color); margin-right: 0.75rem !important;"></i>
                         <h4 style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin: 0;">${roleName}</h4>
                     </div>
                     <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column;">
@@ -463,11 +524,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // ── Render Academic Contributions ────────────────────────────
     const contributionsList = document.getElementById('contributions-list');
     if (contributionsList && portfolioData.contributions) {
+        contributionsList.innerHTML = '';
         portfolioData.contributions.forEach(contrib => {
             contributionsList.innerHTML += `
-                <div style="background: rgba(255, 255, 255, 0.6); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1rem 1.25rem; display: flex; align-items: flex-start; gap: 1rem; transition: var(--transition);" class="hover-lift">
-                    <div style="background: #e8f4fd; color: var(--primary-color); width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.1rem;">
-                        <i class="fas ${contrib.icon}"></i>
+                <div style="background: rgba(255, 255, 255, 0.6); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1rem 1.25rem; display: flex; align-items: flex-start; transition: var(--transition);" class="hover-lift contribution-item-card">
+                    <div style="background: #e8f4fd; color: var(--primary-color); width: 36px; height: 36px; border-radius: 0px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.1rem; margin-right: 0.75rem !important;">
+                        <i class="fas ${contrib.icon}" style="margin: 0 !important;"></i>
                     </div>
                     <div>
                         <strong style="display: block; font-size: 0.95rem; color: var(--primary-color); margin-bottom: 0.25rem;">${contrib.type}</strong>
@@ -649,57 +711,83 @@ document.addEventListener('DOMContentLoaded', () => {
     
     runCountUpAnimation();
 
-    // ── Material You Theme Accent Picker (Custom Color Input) ─────
-    const colorInput = document.getElementById('theme-color-input');
-    if (colorInput) {
-        const hexToRgb = (hex) => {
-            let c = hex.substring(1);
-            if (c.length === 3) {
-                c = c[0] + c[0] + c[1] + c[1] + c[2] + c[2];
+    // ── Microsoft Lumia Theme Accent Picker (Metro Tile Picker) ─────
+    const colorTiles = document.querySelectorAll('.color-tile');
+    
+    const hexToRgb = (hex) => {
+        let c = hex.substring(1);
+        if (c.length === 3) {
+            c = c[0] + c[0] + c[1] + c[1] + c[2] + c[2];
+        }
+        let rgb = parseInt(c, 16);
+        let r = (rgb >> 16) & 0xff;
+        let g = (rgb >> 8) & 0xff;
+        let b = rgb & 0xff;
+        return `${r}, ${g}, ${b}`;
+    };
+
+    const darkenColor = (hex, percent) => {
+        let num = parseInt(hex.replace("#",""), 16),
+        amt = Math.round(2.55 * percent),
+        R = (num >> 16) - amt,
+        G = (num >> 8 & 0x00FF) - amt,
+        B = (num & 0x0000FF) - amt;
+        return "#" + (0x1000000 + (R<255?R<0?0:R:255)*0x10000 + (G<255?G<0?0:G:255)*0x100 + (B<255?B<0?0:B:255)).toString(16).slice(1);
+    };
+
+    const updateAccentColor = (colorHex) => {
+        const primary = colorHex;
+        const hover = darkenColor(colorHex, 15);
+        const rgb = hexToRgb(colorHex);
+        const hoverRgb = hexToRgb(hover);
+        
+        document.documentElement.style.setProperty('--primary-color', primary);
+        document.documentElement.style.setProperty('--primary-hover', hover);
+        document.documentElement.style.setProperty('--primary-rgb', rgb);
+        document.documentElement.style.setProperty('--primary-hover-rgb', hoverRgb);
+        document.documentElement.style.setProperty('--primary-light-bg', `rgba(${rgb}, 0.08)`);
+        document.documentElement.style.setProperty('--primary-border', `rgba(${rgb}, 0.2)`);
+        document.documentElement.style.setProperty('--accent-gradient', `linear-gradient(135deg, ${primary}, ${hover})`);
+        
+        // Highlight active tile
+        colorTiles.forEach(tile => {
+            if (tile.getAttribute('data-color').toLowerCase() === primary.toLowerCase()) {
+                tile.style.outline = '2px solid var(--text-primary)';
+                tile.style.transform = 'scale(1.1)';
+            } else {
+                tile.style.outline = 'none';
+                tile.style.transform = 'scale(1)';
             }
-            let rgb = parseInt(c, 16);
-            let r = (rgb >> 16) & 0xff;
-            let g = (rgb >> 8) & 0xff;
-            let b = rgb & 0xff;
-            return `${r}, ${g}, ${b}`;
-        };
-
-        const darkenColor = (hex, percent) => {
-            let num = parseInt(hex.replace("#",""), 16),
-            amt = Math.round(2.55 * percent),
-            R = (num >> 16) - amt,
-            G = (num >> 8 & 0x00FF) - amt,
-            B = (num & 0x0000FF) - amt;
-            return "#" + (0x1000000 + (R<255?R<0?0:R:255)*0x10000 + (G<255?G<0?0:G:255)*0x100 + (B<255?B<0?0:B:255)).toString(16).slice(1);
-        };
-
-        const updateAccentColor = (colorHex) => {
-            const primary = colorHex;
-            const hover = darkenColor(colorHex, 15);
-            const rgb = hexToRgb(colorHex);
-            const hoverRgb = hexToRgb(hover);
-            
-            document.documentElement.style.setProperty('--primary-color', primary);
-            document.documentElement.style.setProperty('--primary-hover', hover);
-            document.documentElement.style.setProperty('--primary-rgb', rgb);
-            document.documentElement.style.setProperty('--primary-hover-rgb', hoverRgb);
-            document.documentElement.style.setProperty('--primary-light-bg', `rgba(${rgb}, 0.08)`);
-            document.documentElement.style.setProperty('--primary-border', `rgba(${rgb}, 0.2)`);
-            document.documentElement.style.setProperty('--accent-gradient', `linear-gradient(135deg, ${primary}, ${hover})`);
-            
-            // Save state
-            localStorage.setItem('theme-accent-color', primary);
-            colorInput.value = primary;
-        };
-
-        colorInput.addEventListener('input', (e) => {
-            updateAccentColor(e.target.value);
         });
 
-        // Initialize from localStorage
-        const savedAccent = localStorage.getItem('theme-accent-color') || '#1a73e8';
-        updateAccentColor(savedAccent);
-    }
+        // Save state
+        localStorage.setItem('theme-accent-color', primary);
+    };
+
+    const colorNameDisplay = document.getElementById('theme-color-name');
+
+    colorTiles.forEach(tile => {
+        tile.addEventListener('click', (e) => {
+            updateAccentColor(e.currentTarget.getAttribute('data-color'));
+        });
+        
+        tile.addEventListener('mouseenter', () => {
+            if (colorNameDisplay) {
+                const title = tile.getAttribute('title') || 'Color';
+                colorNameDisplay.textContent = title;
+            }
+        });
+        
+        tile.addEventListener('mouseleave', () => {
+            if (colorNameDisplay) {
+                colorNameDisplay.textContent = 'Hover a color';
+            }
+        });
+    });
+
+    // Initialize from localStorage (Lumia Cobalt #0050ef as default)
+    const savedAccent = localStorage.getItem('theme-accent-color') || '#0050ef';
+    updateAccentColor(savedAccent);
 
     // ── Publications Timeline SVG Chart ──────────────────────────
     const chartContainer = document.getElementById('publication-chart-container');
@@ -1082,7 +1170,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     <div>
                         <h4 style="margin:0 0 0.75rem 0;font-size:0.88rem;font-weight:700;color:var(--text-primary);text-transform:uppercase;letter-spacing:0.5px;border-bottom:1px solid var(--border-color);padding-bottom:0.4rem;"><i class="fas fa-font" style="margin-right:0.5rem;color:var(--primary-color);"></i>Font Family</h4>
-                        <select id="cv-font" style="width:100%;padding:0.4rem 0.5rem;border-radius:6px;border:1px solid var(--border-color);background:var(--surface-color);color:var(--text-primary);font-size:0.8rem;font-weight:600;outline:none;cursor:pointer;">
+                        <select id="cv-font" style="width:100%;padding:0.4rem 0.5rem;border-radius:0;border:1px solid var(--border-color);background:var(--surface-color);color:var(--text-primary);font-size:0.8rem;font-weight:600;outline:none;cursor:pointer;">
                             <option value="'Outfit', 'Inter', sans-serif" ${cvConfig.fontFamily.includes('Outfit') ? 'selected' : ''}>Sans-Serif (Outfit / Inter)</option>
                             <option value="'Georgia', 'Times New Roman', serif" ${cvConfig.fontFamily.includes('Georgia') ? 'selected' : ''}>Serif (Georgia / Times)</option>
                             <option value="'Roboto', 'Helvetica', Arial, sans-serif" ${cvConfig.fontFamily.includes('Roboto') ? 'selected' : ''}>Clean (Roboto / Helvetica)</option>
@@ -1226,6 +1314,87 @@ document.addEventListener('DOMContentLoaded', () => {
         
         printCvBtn.addEventListener('click', () => {
             window.print();
+        });
+    }
+
+    // ── Floating Navbar Horizontal Scroll Logic ──────────────────
+    const navScrollLinks = document.getElementById('nav-links-scrollable');
+    const scrollLeftBtn = document.getElementById('nav-scroll-left');
+    const scrollRightBtn = document.getElementById('nav-scroll-right');
+    
+    if (navScrollLinks && scrollLeftBtn && scrollRightBtn) {
+        const updateScrollArrows = () => {
+            const scrollLeft = navScrollLinks.scrollLeft;
+            const maxScrollLeft = navScrollLinks.scrollWidth - navScrollLinks.clientWidth;
+            
+            // Transition controls
+            scrollLeftBtn.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+            scrollRightBtn.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+            
+            // Show/hide left arrow based on scroll position
+            if (scrollLeft <= 2) {
+                scrollLeftBtn.style.opacity = '0';
+                scrollLeftBtn.style.pointerEvents = 'none';
+            } else {
+                scrollLeftBtn.style.opacity = '1';
+                scrollLeftBtn.style.pointerEvents = 'auto';
+            }
+            
+            // Show/hide right arrow based on scroll position
+            if (scrollLeft >= maxScrollLeft - 2) {
+                scrollRightBtn.style.opacity = '0';
+                scrollRightBtn.style.pointerEvents = 'none';
+            } else {
+                scrollRightBtn.style.opacity = '1';
+                scrollRightBtn.style.pointerEvents = 'auto';
+            }
+        };
+
+        // Scroll actions
+        scrollLeftBtn.addEventListener('click', () => {
+            navScrollLinks.scrollBy({ left: -200, behavior: 'smooth' });
+        });
+
+        scrollRightBtn.addEventListener('click', () => {
+            navScrollLinks.scrollBy({ left: 200, behavior: 'smooth' });
+        });
+
+        navScrollLinks.addEventListener('scroll', updateScrollArrows);
+        window.addEventListener('resize', updateScrollArrows);
+        
+        // Dynamic initial checks
+        setTimeout(updateScrollArrows, 300);
+        
+        // Auto-center active link on click
+        navScrollLinks.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const linkElement = e.currentTarget;
+                setTimeout(() => {
+                    const containerWidth = navScrollLinks.clientWidth;
+                    const linkLeft = linkElement.offsetLeft;
+                    const linkWidth = linkElement.clientWidth;
+                    const targetScroll = linkLeft - (containerWidth / 2) + (linkWidth / 2);
+                    navScrollLinks.scrollTo({ left: targetScroll, behavior: 'smooth' });
+                }, 50);
+            });
+        });
+    }
+
+    // ── Lumia Theme Palette Dropdown Toggle ──────────────────────
+    const themePickerToggle = document.getElementById('theme-picker-toggle');
+    const themePaletteDropdown = document.getElementById('theme-palette-dropdown');
+    
+    if (themePickerToggle && themePaletteDropdown) {
+        themePickerToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isOpen = themePaletteDropdown.style.display === 'block';
+            themePaletteDropdown.style.display = isOpen ? 'none' : 'block';
+        });
+        
+        document.addEventListener('click', (e) => {
+            if (!themePaletteDropdown.contains(e.target) && e.target !== themePickerToggle) {
+                themePaletteDropdown.style.display = 'none';
+            }
         });
     }
 
