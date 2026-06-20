@@ -1,6 +1,6 @@
 :root {
-    --primary-color: #0067b8; /* Microsoft Cobalt Blue */
-    --primary-hover: #005a9e;
+    --primary-color: #0050ef; /* Cobalt default */
+    --primary-hover: #002ac9;
     --secondary-color: #107c41; /* Microsoft Fluent Green */
     --google-blue: #0067b8;
     --google-red: #e81123; /* Windows Close Red */
@@ -39,11 +39,9 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: rgba(var(--primary-rgb, 0, 103, 184), 0.05); /* Light dynamic accent background tint */
-    background-image: 
-        linear-gradient(rgba(var(--primary-rgb, 0, 103, 184), 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(var(--primary-rgb, 0, 103, 184), 0.03) 1px, transparent 1px);
-    background-size: 24px 24px;
+    background-color: rgba(var(--primary-rgb, 0, 80, 239), 0.04); /* Light dynamic accent background tint */
+    background-image: radial-gradient(rgba(var(--primary-rgb, 0, 80, 239), 0.08) 1.5px, transparent 1.5px);
+    background-size: 32px 32px;
     color: var(--text-primary);
     line-height: 1.5;
     overflow-x: hidden;
@@ -457,7 +455,7 @@ body {
 
 .tab-content {
     display: none;
-    animation: fadeIn 0.3s ease;
+    animation: slideUp 0.45s cubic-bezier(0.19, 1, 0.22, 1) forwards;
 }
 
 .tab-content.active {
@@ -1279,7 +1277,7 @@ body {
 
 .collab-tab-content {
     display: none;
-    animation: fadeIn 0.3s ease;
+    animation: slideUp 0.45s cubic-bezier(0.19, 1, 0.22, 1) forwards;
 }
 
 .collab-tab-content.active {
@@ -1460,49 +1458,74 @@ body {
 }
 
 /* Dynamic CV Modal Print Styles */
+@page {
+    margin: 15mm !important;
+}
+
 @media print {
-    body * {
-        visibility: hidden;
+    /* Hide everything on the body except the CV builder modal */
+    body > *:not(#cv-viewer-modal) {
+        display: none !important;
     }
-    #cv-viewer-modal, #cv-viewer-modal * {
-        visibility: visible;
-    }
+    /* Make sure the modal behaves as a standard visible document block and takes full A4 page width */
     #cv-viewer-modal {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: auto;
-        padding: 0 !important;
-        margin: 0 !important;
-        background: transparent !important;
-        backdrop-filter: none !important;
         display: block !important;
-        overflow: visible !important;
-    }
-    #cv-viewer-modal > div {
-        border: none !important;
-        box-shadow: none !important;
+        position: relative !important;
         width: 100% !important;
         max-width: 100% !important;
         height: auto !important;
-        overflow: visible !important;
         margin: 0 !important;
         padding: 0 !important;
         background: transparent !important;
+        overflow: visible !important;
+    }
+    #cv-viewer-modal > div {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        border: none !important;
+        box-shadow: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: transparent !important;
+        overflow: visible !important;
     }
     #cv-viewer-modal > div > div:first-child {
         display: none !important; /* Hide close bar */
     }
-    #cv-content-body {
+    #cv-customize-panel {
+        display: none !important; /* Hide customization options sidebar */
+    }
+    #cv-preview-container {
+        display: block !important;
         padding: 0 !important;
+        margin: 0 !important;
+        background: transparent !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
         overflow: visible !important;
+    }
+    #cv-content-body {
+        display: block !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
         background: white !important;
         color: #000000 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        overflow: visible !important;
     }
     /* Simple page breaks */
     .cv-section {
-        page-break-inside: avoid;
+        page-break-inside: auto !important;
+    }
+    .cv-section li {
+        page-break-inside: avoid !important;
     }
 }
 
@@ -1623,3 +1646,58 @@ body {
     background: rgba(255, 255, 255, 0.12) !important;
     border-color: rgba(255, 255, 255, 0.2) !important;
 }
+
+/* Academic/Operations background decorations */
+.academic-bg-decorations {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+    opacity: 0.55;
+    transition: opacity 0.3s ease;
+}
+
+.decor-item {
+    position: absolute;
+    transition: all 0.5s ease;
+    pointer-events: auto; /* Allow hover effects */
+}
+
+.icon-decor {
+    color: var(--primary-color);
+    opacity: 0.08; /* Keep it subtle and non-intrusive */
+    transition: transform 0.3s ease, opacity 0.3s ease, color 0.3s ease;
+}
+
+.icon-decor:hover {
+    opacity: 0.25;
+    transform: scale(1.15) !important;
+}
+
+/* Responsive constraints for decor items */
+@media (max-width: 1400px) {
+    .academic-bg-decorations {
+        opacity: 0.35;
+    }
+}
+@media (max-width: 1100px) {
+    .academic-bg-decorations {
+        opacity: 0.2;
+    }
+    .icon-decor {
+        font-size: 1.8rem !important;
+    }
+}
+@media (max-width: 768px) {
+    .academic-bg-decorations {
+        display: none; /* Hide on mobile for performance and clean UI */
+    }
+}
+
+
+
+

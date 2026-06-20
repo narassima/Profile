@@ -27,7 +27,7 @@
     <!-- FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css?v=2.1.1">
+    <link rel="stylesheet" href="css/style.css?v=2.2.8">
 
     <!-- JSON-LD Structured Data for Google Search -->
     <script type="application/ld+json">
@@ -59,6 +59,68 @@
     </script>
 </head>
 <body>
+    <!-- Academic/Operations Background Decorations -->
+    <div class="academic-bg-decorations" aria-hidden="true">
+        <!-- LEFT COLUMN ICONS -->
+        <!-- Pen -->
+        <div class="decor-item icon-decor" style="top: 6%; left: 1.5%; transform: rotate(-15deg); font-size: 2.2rem; color: var(--primary-color);">
+            <i class="fas fa-pen-fancy"></i>
+        </div>
+        <!-- Factory/Operations -->
+        <div class="decor-item icon-decor" style="top: 14%; left: 3%; transform: rotate(20deg); font-size: 2.4rem; color: var(--secondary-color);">
+            <i class="fas fa-industry"></i>
+        </div>
+        <!-- Graduation Cap -->
+        <div class="decor-item icon-decor" style="top: 22%; left: 1%; transform: rotate(-5deg); font-size: 2.6rem; color: var(--primary-hover);">
+            <i class="fas fa-graduation-cap"></i>
+        </div>
+        <!-- Decision network -->
+        <div class="decor-item icon-decor" style="top: 30%; left: 2.5%; transform: rotate(30deg); font-size: 2.5rem; color: var(--primary-color);">
+            <i class="fas fa-share-nodes"></i>
+        </div>
+        <!-- Lightbulb -->
+        <div class="decor-item icon-decor" style="top: 38%; left: 1.5%; transform: rotate(-25deg); font-size: 2.2rem; color: var(--secondary-color);">
+            <i class="fas fa-lightbulb"></i>
+        </div>
+        <!-- Pencil -->
+        <div class="decor-item icon-decor" style="top: 46%; left: 3%; transform: rotate(15deg); font-size: 2.3rem; color: var(--primary-hover);">
+            <i class="fas fa-pencil"></i>
+        </div>
+        <!-- University Building -->
+        <div class="decor-item icon-decor" style="top: 54%; left: 2%; transform: rotate(-10deg); font-size: 2.4rem; color: var(--primary-color);">
+            <i class="fas fa-building"></i>
+        </div>
+
+        <!-- RIGHT COLUMN ICONS -->
+        <!-- Truck/Logistics -->
+        <div class="decor-item icon-decor" style="top: 8%; right: 2%; transform: rotate(10deg); font-size: 2.5rem; color: var(--secondary-color);">
+            <i class="fas fa-truck"></i>
+        </div>
+        <!-- Research/Book -->
+        <div class="decor-item icon-decor" style="top: 16%; right: 1%; transform: rotate(-10deg); font-size: 2.4rem; color: var(--primary-hover);">
+            <i class="fas fa-book-open"></i>
+        </div>
+        <!-- Chart/Analytics -->
+        <div class="decor-item icon-decor" style="top: 24%; right: 2.5%; transform: rotate(15deg); font-size: 2.3rem; color: var(--primary-color);">
+            <i class="fas fa-chart-line"></i>
+        </div>
+        <!-- Gears/Operations -->
+        <div class="decor-item icon-decor" style="top: 32%; right: 1.5%; transform: rotate(-20deg); font-size: 2.5rem; color: var(--secondary-color);">
+            <i class="fas fa-cogs"></i>
+        </div>
+        <!-- Envelope/Mail -->
+        <div class="decor-item icon-decor" style="top: 40%; right: 3%; transform: rotate(5deg); font-size: 2.2rem; color: var(--primary-hover);">
+            <i class="fas fa-envelope"></i>
+        </div>
+        <!-- Wrench/Tools -->
+        <div class="decor-item icon-decor" style="top: 48%; right: 2%; transform: rotate(25deg); font-size: 2.4rem; color: var(--primary-color);">
+            <i class="fas fa-wrench"></i>
+        </div>
+        <!-- Academic Award -->
+        <div class="decor-item icon-decor" style="top: 56%; right: 1.5%; transform: rotate(-15deg); font-size: 2.3rem; color: var(--secondary-color);">
+            <i class="fas fa-award"></i>
+        </div>
+    </div>
     <!-- Navbar -->
     <header class="navbar">
         <div class="nav-container">
@@ -73,9 +135,9 @@
                     <a href="#publications" class="nav-link" data-target="publications">Research</a>
                     <a href="#teaching" class="nav-link" data-target="teaching">Teaching</a>
                     <a href="#projects" class="nav-link" data-target="projects">Mentorship</a>
-                    <a href="#materials" class="nav-link" data-target="materials">Active Learning Tools</a>
-                    <a href="#experience" class="nav-link" data-target="experience">Academic Appointments</a>
-                    <a href="#education" class="nav-link" data-target="education">Academic Qualifications</a>
+                    <a href="#materials" class="nav-link" data-target="materials">Simulations</a>
+                    <a href="#experience" class="nav-link" data-target="experience">Experience</a>
+                    <a href="#education" class="nav-link" data-target="education">Qualifications & Awards</a>
                     <a href="#gallery" class="nav-link" data-target="gallery">Photography</a>
                 </nav>
                 <button class="nav-scroll-btn scroll-right" id="nav-scroll-right" aria-label="Scroll right">
@@ -125,6 +187,9 @@
                             <button class="color-tile" data-color="#7c2d12" style="background:#7c2d12; width:22px; height:22px; border:none; cursor:pointer;" title="Burnt Orange"></button>
                             <button class="color-tile" data-color="#022c22" style="background:#022c22; width:22px; height:22px; border:none; cursor:pointer;" title="Spruce"></button>
                             <button class="color-tile" data-color="#3b0764" style="background:#3b0764; width:22px; height:22px; border:none; cursor:pointer;" title="Royal Purple"></button>
+
+                            <!-- Row 6 -->
+                            <button class="color-tile" data-color="#3f4448" style="background:#3f4448; width:22px; height:22px; border:none; cursor:pointer;" title="Metallic Grey"></button>
                         </div>
                         <div id="theme-color-name" style="text-align: center; margin-top: 0.6rem; font-size: 0.72rem; font-weight: 700; color: var(--text-secondary); min-height: 1rem; border-top: 1px solid var(--border-color); padding-top: 0.4rem; text-transform: uppercase; font-family: var(--font-main);">Hover a color</div>
                     </div>
@@ -139,9 +204,9 @@
                         <a href="#publications" class="dropdown-link" data-target="publications" style="display: block; padding: 0.6rem 1.2rem; text-decoration: none; color: var(--text-primary); font-size: 0.82rem; font-weight: 600; transition: var(--transition); border-left: 3px solid transparent; font-family: var(--font-main);">Research</a>
                         <a href="#teaching" class="dropdown-link" data-target="teaching" style="display: block; padding: 0.6rem 1.2rem; text-decoration: none; color: var(--text-primary); font-size: 0.82rem; font-weight: 600; transition: var(--transition); border-left: 3px solid transparent; font-family: var(--font-main);">Teaching</a>
                         <a href="#projects" class="dropdown-link" data-target="projects" style="display: block; padding: 0.6rem 1.2rem; text-decoration: none; color: var(--text-primary); font-size: 0.82rem; font-weight: 600; transition: var(--transition); border-left: 3px solid transparent; font-family: var(--font-main);">Mentorship</a>
-                        <a href="#materials" class="dropdown-link" data-target="materials" style="display: block; padding: 0.6rem 1.2rem; text-decoration: none; color: var(--text-primary); font-size: 0.82rem; font-weight: 600; transition: var(--transition); border-left: 3px solid transparent; font-family: var(--font-main);">Active Learning Tools</a>
-                        <a href="#experience" class="dropdown-link" data-target="experience" style="display: block; padding: 0.6rem 1.2rem; text-decoration: none; color: var(--text-primary); font-size: 0.82rem; font-weight: 600; transition: var(--transition); border-left: 3px solid transparent; font-family: var(--font-main);">Academic Appointments</a>
-                        <a href="#education" class="dropdown-link" data-target="education" style="display: block; padding: 0.6rem 1.2rem; text-decoration: none; color: var(--text-primary); font-size: 0.82rem; font-weight: 600; transition: var(--transition); border-left: 3px solid transparent; font-family: var(--font-main);">Academic Qualifications</a>
+                        <a href="#materials" class="dropdown-link" data-target="materials" style="display: block; padding: 0.6rem 1.2rem; text-decoration: none; color: var(--text-primary); font-size: 0.82rem; font-weight: 600; transition: var(--transition); border-left: 3px solid transparent; font-family: var(--font-main);">Simulations</a>
+                        <a href="#experience" class="dropdown-link" data-target="experience" style="display: block; padding: 0.6rem 1.2rem; text-decoration: none; color: var(--text-primary); font-size: 0.82rem; font-weight: 600; transition: var(--transition); border-left: 3px solid transparent; font-family: var(--font-main);">Experience</a>
+                        <a href="#education" class="dropdown-link" data-target="education" style="display: block; padding: 0.6rem 1.2rem; text-decoration: none; color: var(--text-primary); font-size: 0.82rem; font-weight: 600; transition: var(--transition); border-left: 3px solid transparent; font-family: var(--font-main);">Qualifications & Awards</a>
                         <a href="#gallery" class="dropdown-link" data-target="gallery" style="display: block; padding: 0.6rem 1.2rem; text-decoration: none; color: var(--text-primary); font-size: 0.82rem; font-weight: 600; transition: var(--transition); border-left: 3px solid transparent; font-family: var(--font-main);">Photography</a>
                     </div>
                 </div>
@@ -416,7 +481,7 @@
         <!-- Publications Section -->
         <section id="publications" class="page-section">
             <div class="section-header">
-                <h2>Research & Publications</h2>
+                <h2>Research</h2>
                 <div class="section-underline"></div>
             </div>
             
@@ -994,10 +1059,10 @@
             </div>
         </section>
 
-        <!-- Active Learning Tools Section -->
+        <!-- Simulations Section -->
         <section id="materials" class="page-section">
             <div class="section-header">
-                <h2>Active Learning Tools</h2>
+                <h2>Simulations</h2>
                 <div class="section-underline"></div>
             </div>
             
@@ -1005,7 +1070,13 @@
                 Welcome to the Operations & Policy Analytics Portal. Below are the custom-engineered interactive web platforms, scientific calculators, and simulation dashboards. These state-of-the-art analytical tools were designed to bridge the gap between theoretical optimization models and real-world implementation, offering robust solutions for business workflow planning, public health epidemiological analysis, and macroeconomic policy formulation.
             </p>
 
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; max-width: 1200px; margin: 0 auto 2.5rem;">
+            <div style="max-width: 600px; margin: 0 auto 2.5rem; display: flex; align-items: center; position: relative; gap: 0.5rem; z-index: 2;">
+                <i class="fas fa-search" style="position: absolute; left: 1.25rem; color: var(--text-secondary); font-size: 1.1rem; pointer-events: none;"></i>
+                <input type="text" id="sim-search" placeholder="Search simulations by title, description, or keywords..." style="width: 100%; padding: 0.85rem 1.5rem 0.85rem 3rem; border-radius: 30px; border: 1px solid var(--border-color); background: var(--glass-bg); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); color: var(--text-primary); font-family: var(--font-main); font-size: 1rem; outline: none; box-shadow: var(--shadow-sm); transition: var(--transition);">
+                <button id="sim-search-clear" style="position: absolute; right: 1.25rem; background: none; border: none; color: var(--text-secondary); font-size: 1.1rem; cursor: pointer; display: none; transition: var(--transition);"><i class="fas fa-times"></i></button>
+            </div>
+
+            <div id="simulations-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; max-width: 1200px; margin: 0 auto 2.5rem;">
                 <!-- Card 1: Flexible Job Shop Scheduler -->
                 <a href="https://narassima.github.io/Job-Shop-Scheduler/" target="_blank" class="glass-card hover-lift" style="text-decoration: none; color: inherit; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; border: 1px solid var(--border-color); border-radius: var(--radius-lg); height: 100%; transition: all 0.3s ease;">
                     <div style="background: rgba(66, 133, 244, 0.12); color: #4285F4; width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem;">
@@ -1157,14 +1228,14 @@
         <!-- Experience Section -->
         <section id="experience" class="page-section">
             <div class="section-header">
-                <h2>Academic Appointments</h2>
+                <h2>Experience</h2>
                 <div class="section-underline"></div>
             </div>
 
             <div class="glass-card content-card" style="margin-bottom: 2rem; padding: 0 0 1.5rem 0;">
                 <div class="card-header" style="padding: 2rem 2rem 1rem; margin-bottom: 0;">
                     <i class="fas fa-briefcase"></i>
-                    <h3>Academic Appointments</h3>
+                    <h3>Work Experience</h3>
                 </div>
                 <div id="experience-timeline">
                     <!-- Populated by JS -->
@@ -1195,7 +1266,7 @@
         <!-- Education & Certifications Section -->
         <section id="education" class="page-section">
             <div class="section-header">
-                <h2>Academic Qualifications & Certifications</h2>
+                <h2>Qualifications &amp; Awards</h2>
                 <div class="section-underline"></div>
             </div>
 
@@ -1422,38 +1493,6 @@
             <a id="lightbox-download" class="lightbox-download-btn" download><i class="fas fa-download"></i> Download</a>
         </div>
 
-        <!-- Dynamic CV Viewer Modal -->
-        <div id="cv-viewer-modal" style="display: none; position: fixed; z-index: 3000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); justify-content: center; padding: 2rem 1rem;">
-            <div style="background: var(--bg-color); width: 100%; max-width: 1200px; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-hover); border: 1px solid var(--border-color); display: flex; flex-direction: column; height: 90vh; animation: zoomIn 0.3s ease;">
-                <!-- Header of modal with close and print buttons -->
-                <div style="background: var(--surface-color); border-bottom: 1px solid var(--border-color); padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; z-index: 10;">
-                    <div style="display: flex; align-items: center; gap: 0.75rem;">
-                        <i class="fas fa-file-pdf" style="font-size: 1.4rem; color: var(--primary-color);"></i>
-                        <span style="font-weight: 700; font-size: 1.1rem; color: var(--text-primary);">Interactive &amp; Customizable CV Builder</span>
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 0.75rem;">
-                        <button id="print-cv-btn" style="background: var(--primary-color); color: white; border: none; padding: 0.5rem 1.25rem; border-radius: 20px; font-weight: 700; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; gap: 0.4rem; transition: var(--transition);"><i class="fas fa-print"></i> Print / Save PDF</button>
-                        <span id="close-cv-btn" style="font-size: 1.8rem; font-weight: bold; cursor: pointer; color: var(--text-secondary); transition: var(--transition); line-height: 1;" onmouseover="this.style.color='var(--primary-color)'" onmouseout="this.style.color='var(--text-secondary)'">&times;</span>
-                    </div>
-                </div>
-                <!-- Interactive layout body -->
-                <div style="display: flex; flex: 1; overflow: hidden; flex-direction: row;">
-                    <!-- Left Customization Sidebar -->
-                    <div id="cv-customize-panel" style="width: 320px; border-right: 1px solid var(--border-color); background: var(--surface-color); padding: 1.5rem; overflow-y: auto; display: flex; flex-direction: column; gap: 1.5rem; box-sizing: border-box; user-select: none;">
-                        <!-- Configuration options dynamically built via JS -->
-                    </div>
-                    <!-- Right Live Sheet Preview Area -->
-                    <div id="cv-preview-container" style="flex: 1; padding: 2rem; overflow-y: auto; background: var(--bg-color); display: flex; justify-content: center;">
-                        <div id="cv-content-body" style="background: white; width: 100%; max-width: 800px; padding: 3rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1); min-height: 297mm; border-radius: 4px; box-sizing: border-box; color: #333; font-family: 'Outfit', 'Inter', sans-serif; transition: all 0.3s ease;">
-                            <!-- Dynamically populated printable curriculum vitae -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
     </main>
 
     <footer class="footer">
@@ -1462,7 +1501,37 @@
         </div>
     </footer>
 
-    <script src="js/data.js?v=2.1.1"></script>
-    <script src="js/script.js?v=2.1.1"></script>
+    <!-- Dynamic CV Viewer Modal (Direct child of body for proper print layouts) -->
+    <div id="cv-viewer-modal" style="display: none; position: fixed; z-index: 3000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); justify-content: center; padding: 2rem 1rem;">
+        <div style="background: var(--bg-color); width: 100%; max-width: 1200px; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-hover); border: 1px solid var(--border-color); display: flex; flex-direction: column; height: 90vh; animation: zoomIn 0.3s ease;">
+            <!-- Header of modal with close and print buttons -->
+            <div style="background: var(--surface-color); border-bottom: 1px solid var(--border-color); padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; z-index: 10;">
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <i class="fas fa-file-pdf" style="font-size: 1.4rem; color: var(--primary-color);"></i>
+                    <span style="font-weight: 700; font-size: 1.1rem; color: var(--text-primary);">Interactive &amp; Customizable CV Builder</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <button id="print-cv-btn" style="background: var(--primary-color); color: white; border: none; padding: 0.5rem 1.25rem; border-radius: 20px; font-weight: 700; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; gap: 0.4rem; transition: var(--transition);"><i class="fas fa-print"></i> Print / Save PDF</button>
+                    <span id="close-cv-btn" style="font-size: 1.8rem; font-weight: bold; cursor: pointer; color: var(--text-secondary); transition: var(--transition); line-height: 1;" onmouseover="this.style.color='var(--primary-color)'" onmouseout="this.style.color='var(--text-secondary)'">&times;</span>
+                </div>
+            </div>
+            <!-- Interactive layout body -->
+            <div style="display: flex; flex: 1; overflow: hidden; flex-direction: row;">
+                <!-- Left Customization Sidebar -->
+                <div id="cv-customize-panel" style="width: 320px; border-right: 1px solid var(--border-color); background: var(--surface-color); padding: 1.5rem; overflow-y: auto; display: flex; flex-direction: column; gap: 1.5rem; box-sizing: border-box; user-select: none;">
+                    <!-- Configuration options dynamically built via JS -->
+                </div>
+                <!-- Right Live Sheet Preview Area -->
+                <div id="cv-preview-container" style="flex: 1; padding: 2rem; overflow-y: auto; background: var(--bg-color); display: flex; justify-content: center;">
+                    <div id="cv-content-body" style="background: white; width: 100%; max-width: 800px; padding: 3rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1); min-height: 297mm; border-radius: 4px; box-sizing: border-box; color: #333; font-family: 'Outfit', 'Inter', sans-serif; transition: all 0.3s ease;">
+                        <!-- Dynamically populated printable curriculum vitae -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/data.js?v=2.2.8"></script>
+    <script src="js/script.js?v=2.2.8"></script>
 </body>
 </html>

@@ -427,6 +427,60 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // ── Simulations Search & Filtering ───────────────────
+    const simSearch = document.getElementById('sim-search');
+    const simSearchClear = document.getElementById('sim-search-clear');
+    const simGrid = document.getElementById('simulations-grid');
+    
+    if (simSearch && simGrid) {
+        const simCards = simGrid.querySelectorAll('a');
+        
+        const filterSimulations = () => {
+            const query = simSearch.value.toLowerCase().trim();
+            if (simSearchClear) {
+                simSearchClear.style.display = query.length > 0 ? 'block' : 'none';
+            }
+            
+            let anyVisible = false;
+            simCards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const desc = card.querySelector('p').textContent.toLowerCase();
+                const matches = title.includes(query) || desc.includes(query);
+                
+                if (matches) {
+                    card.style.display = 'flex';
+                    anyVisible = true;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            // Handle "No results" message
+            let noResultsMsg = document.getElementById('sim-no-results');
+            if (!anyVisible) {
+                if (!noResultsMsg) {
+                    noResultsMsg = document.createElement('p');
+                    noResultsMsg.id = 'sim-no-results';
+                    noResultsMsg.style.cssText = 'color:var(--text-secondary);padding:3rem;text-align:center;font-style:italic;grid-column: 1 / -1;';
+                    noResultsMsg.innerHTML = '<i class="fas fa-search-minus" style="font-size:1.8rem;display:block;margin-bottom:0.75rem;color:var(--primary-color);"></i> No simulations matching your search.';
+                    simGrid.appendChild(noResultsMsg);
+                }
+            } else {
+                if (noResultsMsg) {
+                    noResultsMsg.remove();
+                }
+            }
+        };
+        
+        simSearch.addEventListener('input', filterSimulations);
+        if (simSearchClear) {
+            simSearchClear.addEventListener('click', () => {
+                simSearch.value = '';
+                filterSimulations();
+                simSearch.focus();
+            });
+        }
+    }
 
     // ── Render Experience Timeline (Horizontal Roadmap) ──────────
     const expTimeline = document.getElementById('experience-timeline');
@@ -751,7 +805,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Highlight active tile
         colorTiles.forEach(tile => {
-            if (tile.getAttribute('data-color').toLowerCase() === primary.toLowerCase()) {
+            if (tile.getAttribute('data-color').toLowerCase() === colorHex.toLowerCase()) {
                 tile.style.outline = '2px solid var(--text-primary)';
                 tile.style.transform = 'scale(1.1)';
             } else {
@@ -761,7 +815,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Save state
-        localStorage.setItem('theme-accent-color', primary);
+        localStorage.setItem('theme-accent-color', colorHex);
     };
 
     const colorNameDisplay = document.getElementById('theme-color-name');
@@ -785,8 +839,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Initialize from localStorage (Lumia Cobalt #0050ef as default)
-    const savedAccent = localStorage.getItem('theme-accent-color') || '#0050ef';
+    // Initialize from localStorage (Cobalt #0050ef as default)
+    let savedAccent = localStorage.getItem('theme-accent-color');
+    if (!savedAccent || savedAccent === '#0067b8' || savedAccent === 'rainbow' || savedAccent === '#8d9096' || savedAccent === '#3f4448') {
+        savedAccent = '#0050ef';
+    }
     updateAccentColor(savedAccent);
 
     // ── Publications Timeline SVG Chart ──────────────────────────
@@ -993,14 +1050,14 @@ document.addEventListener('DOMContentLoaded', () => {
             let eduHtml = '';
             if (cvConfig.sections.education && portfolioData.education && portfolioData.education.length > 0) {
                 eduHtml = `
-                    <div class="cv-section" style="margin-bottom: ${sectionSpacing}; page-break-inside: avoid;">
+                    <div class="cv-section" style="margin-bottom: ${sectionSpacing}; page-break-inside: auto;">
                         <h2 class="cv-section-title">Education</h2>
                         <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.6rem;">
                             ${portfolioData.education.map(edu => `
                                 <li>
                                     <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 0.92rem; color: #1e293b;">
                                         <span>${edu.degree}</span>
-                                        <span>${edu.year || ''}</span>
+                                        <span>${edu.duration || ''}</span>
                                     </div>
                                     <div style="font-size: 0.85rem; color: #475569; font-weight: 600;">${edu.institution}</div>
                                     ${edu.details ? `<div style="font-size: 0.82rem; color: #64748b; font-style: italic; margin-top: 0.1rem;">${edu.details}</div>` : ''}
@@ -1014,8 +1071,8 @@ document.addEventListener('DOMContentLoaded', () => {
             let expHtml = '';
             if (cvConfig.sections.experience && portfolioData.experience && portfolioData.experience.length > 0) {
                 expHtml = `
-                    <div class="cv-section" style="margin-bottom: ${sectionSpacing}; page-break-inside: avoid;">
-                        <h2 class="cv-section-title">Experience</h2>
+                    <div class="cv-section" style="margin-bottom: ${sectionSpacing}; page-break-inside: auto;">
+                        <h2 class="cv-section-title">Work Experience</h2>
                         <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.85rem;">
                             ${portfolioData.experience.map(exp => `
                                 <li>
@@ -1023,7 +1080,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                         <span>${exp.title}</span>
                                         <span>${exp.duration}</span>
                                     </div>
-                                    <div style="font-size: 0.85rem; color: #475569; font-weight: 600;">${exp.company}</div>
+                                    <div style="font-size: 0.85rem; color: #475569; font-weight: 600;">${exp.organization}</div>
                                     <p style="font-size: 0.82rem; color: #475569; margin: 0.2rem 0 0 0; text-align: justify; line-height: 1.45;">${exp.description}</p>
                                 </li>
                             `).join('')}
@@ -1035,7 +1092,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let rolesHtml = '';
             if (cvConfig.sections.roles && portfolioData.roles && portfolioData.roles.length > 0) {
                 rolesHtml = `
-                    <div class="cv-section" style="margin-bottom: ${sectionSpacing}; page-break-inside: avoid;">
+                    <div class="cv-section" style="margin-bottom: ${sectionSpacing}; page-break-inside: auto;">
                         <h2 class="cv-section-title">Review &amp; Editorial Boards</h2>
                         <ul style="list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0.6rem 1.25rem; font-size: 0.82rem; color: #334155;">
                             ${portfolioData.roles.map(role => `
@@ -1052,7 +1109,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let contributionsHtml = '';
             if (cvConfig.sections.contributions && portfolioData.contributions && portfolioData.contributions.length > 0) {
                 contributionsHtml = `
-                    <div class="cv-section" style="margin-bottom: ${sectionSpacing}; page-break-inside: avoid;">
+                    <div class="cv-section" style="margin-bottom: ${sectionSpacing}; page-break-inside: auto;">
                         <h2 class="cv-section-title">Academic Contributions &amp; Invited Talks</h2>
                         <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.6rem; font-size: 0.82rem; color: #334155;">
                             ${portfolioData.contributions.map(contrib => `
@@ -1069,8 +1126,8 @@ document.addEventListener('DOMContentLoaded', () => {
             let pubHtml = '';
             if (cvConfig.sections.publications && cvConfig.selectedPubIndices.length > 0) {
                 pubHtml = `
-                    <div class="cv-section" style="margin-bottom: ${sectionSpacing}; page-break-inside: avoid;">
-                        <h2 class="cv-section-title">Selected Publications</h2>
+                    <div class="cv-section" style="margin-bottom: ${sectionSpacing}; page-break-inside: auto;">
+                        <h2 class="cv-section-title">Publications</h2>
                         <ol style="list-style: decimal; padding-left: 1.25rem; margin: 0; display: flex; flex-direction: column; gap: 0.65rem; font-size: 0.82rem; color: #334155;">
                             ${cvConfig.selectedPubIndices.map(idx => {
                                 const pub = allPublications[idx];
@@ -1088,20 +1145,41 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             let certHtml = '';
-            if (cvConfig.sections.certifications && portfolioData.certifications && portfolioData.certifications.length > 0) {
-                certHtml = `
-                    <div class="cv-section" style="margin-bottom: ${sectionSpacing}; page-break-inside: avoid;">
-                        <h2 class="cv-section-title">Certifications</h2>
-                        <ul style="list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0.6rem 1.25rem; font-size: 0.82rem; color: #334155;">
-                            ${portfolioData.certifications.map(cert => `
-                                <li style="border-left: 2px solid ${titleColor}; padding-left: 0.5rem; margin-bottom: 0.1rem;">
-                                    <div style="font-weight: 700; color: #1e293b;">${cert.name}</div>
-                                    <div style="color: #475569; font-size: 0.78rem;">${cert.issuer}</div>
-                                </li>
-                            `).join('')}
-                        </ul>
-                    </div>
-                `;
+            if (cvConfig.sections.certifications) {
+                const hasCerts = portfolioData.certifications && portfolioData.certifications.length > 0;
+                const hasAwards = portfolioData.achievements && portfolioData.achievements.length > 0;
+                
+                if (hasCerts || hasAwards) {
+                    let certListHtml = '';
+                    if (hasCerts) {
+                        certListHtml = portfolioData.certifications.map(cert => `
+                            <li style="border-left: 2px solid ${titleColor}; padding-left: 0.5rem; margin-bottom: 0.1rem;">
+                                <div style="font-weight: 700; color: #1e293b;">${cert.name}</div>
+                                <div style="color: #475569; font-size: 0.78rem;">${cert.issuer}</div>
+                            </li>
+                        `).join('');
+                    }
+                    
+                    let awardsListHtml = '';
+                    if (hasAwards) {
+                        awardsListHtml = portfolioData.achievements.map(ach => `
+                            <li style="border-left: 2px solid ${titleColor}; padding-left: 0.5rem; margin-bottom: 0.1rem;">
+                                <div style="font-weight: 700; color: #1e293b;">${ach.name}</div>
+                                <div style="color: #475569; font-size: 0.78rem;">${ach.issuer}</div>
+                            </li>
+                        `).join('');
+                    }
+                    
+                    certHtml = `
+                        <div class="cv-section" style="margin-bottom: ${sectionSpacing}; page-break-inside: auto;">
+                            <h2 class="cv-section-title">Certifications &amp; Awards</h2>
+                            <ul style="list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0.6rem 1.25rem; font-size: 0.82rem; color: #334155;">
+                                ${certListHtml}
+                                ${awardsListHtml}
+                            </ul>
+                        </div>
+                    `;
+                }
             }
 
             let previewHtml = `
@@ -1184,7 +1262,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <input type="checkbox" id="sec-education" ${cvConfig.sections.education ? 'checked' : ''} style="cursor:pointer;accent-color:var(--primary-color);"> Education
                             </label>
                             <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;color:var(--text-secondary);cursor:pointer;font-weight:600;">
-                                <input type="checkbox" id="sec-experience" ${cvConfig.sections.experience ? 'checked' : ''} style="cursor:pointer;accent-color:var(--primary-color);"> Experience
+                                <input type="checkbox" id="sec-experience" ${cvConfig.sections.experience ? 'checked' : ''} style="cursor:pointer;accent-color:var(--primary-color);"> Work Experience
                             </label>
                             <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;color:var(--text-secondary);cursor:pointer;font-weight:600;">
                                 <input type="checkbox" id="sec-roles" ${cvConfig.sections.roles ? 'checked' : ''} style="cursor:pointer;accent-color:var(--primary-color);"> Editorial &amp; Review Boards
@@ -1196,7 +1274,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <input type="checkbox" id="sec-publications" ${cvConfig.sections.publications ? 'checked' : ''} style="cursor:pointer;accent-color:var(--primary-color);"> Publications
                             </label>
                             <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;color:var(--text-secondary);cursor:pointer;font-weight:600;">
-                                <input type="checkbox" id="sec-certifications" ${cvConfig.sections.certifications ? 'checked' : ''} style="cursor:pointer;accent-color:var(--primary-color);"> Certifications
+                                <input type="checkbox" id="sec-certifications" ${cvConfig.sections.certifications ? 'checked' : ''} style="cursor:pointer;accent-color:var(--primary-color);"> Certifications &amp; Awards
                             </label>
                         </div>
                     </div>
