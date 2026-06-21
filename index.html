@@ -242,7 +242,7 @@
                                     <a href="https://orcid.org/0000-0002-4113-430X" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.85rem;"><i class="fab fa-orcid" style="color: #A6CE39;"></i> ORCID Profile</a>
                                     <a href="https://www.scopus.com/authid/detail.uri?authorId=57193504360" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.85rem;"><i class="fas fa-book-reader" style="color: #FF7F00;"></i> Scopus ID</a>
                                 </div>
-                                <button id="view-cv-btn" class="contact-item" style="cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; width: 100%; border: 1px solid var(--border-color); background: var(--surface-color); border-radius: 20px; padding: 0.55rem 1rem; font-weight: 700; font-size: 0.9rem; color: var(--primary-color); transition: var(--transition); margin-top: 0.5rem;"><i class="fas fa-file-pdf"></i> View & Print CV</button>
+                                <button id="view-cv-btn" style="cursor: pointer; display: flex; align-items: center; justify-content: center; width: 100%; padding: 0.6rem; background: rgba(26, 115, 232, 0.06); color: var(--primary-color); text-decoration: none; border-radius: 0; font-size: 0.85rem; font-weight: 600; transition: all 0.3s ease; border: 1px solid rgba(26, 115, 232, 0.1); outline: none; font-family: var(--font-main);" onmouseover="this.style.background='var(--primary-color)'; this.style.color='white';" onmouseout="this.style.background='rgba(26, 115, 232, 0.06)'; this.style.color='var(--primary-color)';"><i class="fas fa-file-pdf"></i> View & Print CV</button>
                             </div>
                         </div>
                     </div>
@@ -322,7 +322,7 @@
 
                         </div>
                         
-                        <a href="#experience" onclick="document.querySelector('[data-target=\'experience\']').click();" style="display: flex; align-items: center; justify-content: center; width: 100%; padding: 0.6rem; background: rgba(26, 115, 232, 0.06); color: var(--primary-color); text-decoration: none; border-radius: 20px; font-size: 0.85rem; font-weight: 600; transition: all 0.3s ease; border: 1px solid rgba(26, 115, 232, 0.1);" onmouseover="this.style.background='var(--primary-color)'; this.style.color='white';" onmouseout="this.style.background='rgba(26, 115, 232, 0.06)'; this.style.color='var(--primary-color)';">
+                        <a href="#experience" onclick="document.querySelector('[data-target=\'experience\']').click();" style="display: flex; align-items: center; justify-content: center; width: 100%; padding: 0.6rem; background: rgba(26, 115, 232, 0.06); color: var(--primary-color); text-decoration: none; border-radius: 0; font-size: 0.85rem; font-weight: 600; transition: all 0.3s ease; border: 1px solid rgba(26, 115, 232, 0.1);" onmouseover="this.style.background='var(--primary-color)'; this.style.color='white';" onmouseout="this.style.background='rgba(26, 115, 232, 0.06)'; this.style.color='var(--primary-color)';">
                             View Full Roadmap Details <i class="fas fa-arrow-right" style="margin-left: 0.35rem;"></i>
                         </a>
                     </div>
@@ -393,7 +393,7 @@
                             </div>
                             <div>
                                 <!-- The ID 'scholar-citations' is used by the GitHub Action to auto-update this number -->
-                                <h4 id="scholar-citations" class="stat-number" data-target="498" style="font-size: 1.3rem; font-weight: 800; color: var(--text-primary); margin: 0; line-height: 1.2;">498</h4>
+                                <h4 id="scholar-citations" class="stat-number" data-target="500" style="font-size: 1.3rem; font-weight: 800; color: var(--text-primary); margin: 0; line-height: 1.2;">500</h4>
                                 <p style="font-size: 0.7rem; color: var(--text-secondary); font-weight: 700; margin: 0.15rem 0 0; text-transform: uppercase; letter-spacing: 0.5px;">Citations</p>
                             </div>
                         </div>
@@ -510,15 +510,15 @@
                     <h3 style="font-size: 1.1rem; font-weight: 700; margin: 0 0 1rem 0; display: inline-flex; align-items: center; gap: 0.5rem; color: var(--text-primary);"><i class="fas fa-graduation-cap" style="color: var(--primary-color);"></i> Research Impact</h3>
                     <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; text-align: center;">
                         <div style="background: rgba(26,115,232,0.06); padding: 0.75rem 0.25rem; border-radius: 12px; border: 1px solid rgba(26,115,232,0.1);">
-                            <div style="font-size: 1.5rem; font-weight: 700; color: var(--primary-color);">498</div>
+                            <div id="scholar-citations-impact" style="font-size: 1.5rem; font-weight: 700; color: var(--primary-color);">500</div>
                             <div style="font-size: 0.7rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 0.25rem;">Citations</div>
                         </div>
                         <div style="background: rgba(52,168,83,0.06); padding: 0.75rem 0.25rem; border-radius: 12px; border: 1px solid rgba(52,168,83,0.1);">
-                            <div style="font-size: 1.5rem; font-weight: 700; color: #34A853;">13</div>
+                            <div id="scholar-hindex-impact" style="font-size: 1.5rem; font-weight: 700; color: #34A853;">13</div>
                             <div style="font-size: 0.7rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 0.25rem;">h-index</div>
                         </div>
                         <div style="background: rgba(234,67,53,0.06); padding: 0.75rem 0.25rem; border-radius: 12px; border: 1px solid rgba(234,67,53,0.1);">
-                            <div style="font-size: 1.5rem; font-weight: 700; color: #EA4335;">18</div>
+                            <div id="scholar-i10index-impact" style="font-size: 1.5rem; font-weight: 700; color: #EA4335;">18</div>
                             <div style="font-size: 0.7rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 0.25rem;">i10-index</div>
                         </div>
                     </div>
@@ -1513,7 +1513,7 @@
                     <span style="font-weight: 700; font-size: 1.1rem; color: var(--text-primary);">Interactive &amp; Customizable CV Builder</span>
                 </div>
                 <div style="display: flex; align-items: center; gap: 0.75rem;">
-                    <button id="print-cv-btn" style="background: var(--primary-color); color: white; border: none; padding: 0.5rem 1.25rem; border-radius: 20px; font-weight: 700; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; gap: 0.4rem; transition: var(--transition);"><i class="fas fa-print"></i> Print / Save PDF</button>
+                    <button id="print-cv-btn" style="background: var(--primary-color); color: white; border: none; padding: 0.5rem 1.25rem; border-radius: 0; font-weight: 700; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; gap: 0.4rem; transition: var(--transition);"><i class="fas fa-print"></i> Print / Save PDF</button>
                     <span id="close-cv-btn" style="font-size: 1.8rem; font-weight: bold; cursor: pointer; color: var(--text-secondary); transition: var(--transition); line-height: 1;" onmouseover="this.style.color='var(--primary-color)'" onmouseout="this.style.color='var(--text-secondary)'">&times;</span>
                 </div>
             </div>
