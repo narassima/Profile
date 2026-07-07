@@ -793,6 +793,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (colorHex.toLowerCase() === 'rasta') {
             document.body.classList.add('theme-rasta');
             document.body.classList.remove('theme-tricolour');
+            document.body.classList.remove('theme-metallic');
             
             // Set variables to safe fallbacks (e.g. Green #008a00)
             document.documentElement.style.setProperty('--primary-color', '#008a00');
@@ -805,6 +806,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (colorHex.toLowerCase() === 'tricolour') {
             document.body.classList.remove('theme-rasta');
             document.body.classList.add('theme-tricolour');
+            document.body.classList.remove('theme-metallic');
             
             // Set variables to safe fallbacks for Tricolour
             document.documentElement.style.setProperty('--primary-color', '#000080'); // navy blue (Ashoka Chakra)
@@ -814,9 +816,23 @@ document.addEventListener('DOMContentLoaded', () => {
             document.documentElement.style.setProperty('--primary-light-bg', 'rgba(0, 0, 128, 0.08)');
             document.documentElement.style.setProperty('--primary-border', 'rgba(0, 0, 128, 0.2)');
             document.documentElement.style.setProperty('--accent-gradient', 'linear-gradient(90deg, #FF9933 0%, #ffffff 50%, #128807 100%)');
+        } else if (colorHex.toLowerCase() === 'metallic') {
+            document.body.classList.remove('theme-rasta');
+            document.body.classList.remove('theme-tricolour');
+            document.body.classList.add('theme-metallic');
+            
+            // Set premium corporate tech blue variables
+            document.documentElement.style.setProperty('--primary-color', '#0064e0'); // Premium tech blue
+            document.documentElement.style.setProperty('--primary-hover', '#004ec2');
+            document.documentElement.style.setProperty('--primary-rgb', '0, 100, 224');
+            document.documentElement.style.setProperty('--primary-hover-rgb', '0, 78, 194');
+            document.documentElement.style.setProperty('--primary-light-bg', 'rgba(0, 100, 224, 0.05)');
+            document.documentElement.style.setProperty('--primary-border', '#e2e8f0');
+            document.documentElement.style.setProperty('--accent-gradient', 'linear-gradient(135deg, #0064e0 0%, #004ec2 100%)');
         } else {
             document.body.classList.remove('theme-rasta');
             document.body.classList.remove('theme-tricolour');
+            document.body.classList.remove('theme-metallic');
             
             const primary = colorHex;
             const hover = darkenColor(colorHex, 15);
@@ -868,10 +884,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Initialize from localStorage (Cobalt #0050ef as default)
+    // Initialize from localStorage (Metallic Chrome theme as default)
     let savedAccent = localStorage.getItem('theme-accent-color');
-    if (!savedAccent || savedAccent === '#0067b8' || savedAccent === 'rainbow' || savedAccent === '#8d9096' || savedAccent === '#3f4448') {
-        savedAccent = '#0050ef';
+    if (!savedAccent || savedAccent === '#0050ef' || savedAccent === '#0067b8' || savedAccent === 'rainbow' || savedAccent === '#8d9096' || savedAccent === '#3f4448') {
+        savedAccent = 'metallic';
     }
     updateAccentColor(savedAccent);
 
