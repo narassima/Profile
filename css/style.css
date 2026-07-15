@@ -185,8 +185,8 @@ body {
     position: relative;
     text-decoration: none;
     color: rgba(255, 255, 255, 0.85); /* Semi-transparent white */
-    font-weight: 700 !important; /* Bold for prominence */
-    font-size: 0.78rem; /* Reduced size */
+    font-weight: 600 !important; /* Semi-bold for consistency */
+    font-size: 0.85rem; /* Consistent size across all themes */
     letter-spacing: -0.01em;
     padding: 0.55rem 0.65rem;
     border-radius: 0;
@@ -2192,6 +2192,7 @@ body {
     text-shadow: none !important;
     font-weight: 600 !important;
 }
+
 
 .theme-metallic .navbar .nav-logo i,
 .theme-metallic .navbar .nav-link i,
