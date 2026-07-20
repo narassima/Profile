@@ -1079,8 +1079,7 @@ const portfolioData = {
                         "Manufacturing Flow Tools & Value Stream Mapping (VSM)",
                         "Lean Office System & Four Field Mapping",
                         "Leadership Excellence (Seven leadership wastes, leader standard work)"
-                ]
-        },
+                },
         {
                 "course": "Application Building using AI",
                 "description": "An interactive, project-based curriculum focused on developing autonomous agentic workflows, custom workspace skills, and custom AI applications powered by Antigravity.",
