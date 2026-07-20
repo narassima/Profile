@@ -180,19 +180,27 @@ const portfolioData = {
                 },
                 {
                         "title": "An integrated Lean-IoT-business intelligence model of iS success on the manufacturing shop floor",
-                        "authors": "MS Narassima, A Gunasekaran, M Thenarasu, VV Gedam, K Karuppiah",
+                        "authors": "Narassima, M. S., Gunasekaran, A., Thenarasu, M., Gedam, V. V., & Karuppiah, K.",
                         "year": "2026",
-                        "journal": "Production Planning & Control, 1-24, 2026",
-                        "metrics": "Google Scholar",
+                        "journal": "Production Planning & Control, 1-24",
+                        "metrics": "Scopus – Q1, ABDC – A",
                         "url": "https://doi.org/10.1080/09537287.2026.2667344"
                 },
                 {
                         "title": "Redesigning an FDA-compliant medical device Corrective action & preventive action process utilizing design for Lean Six Sigma",
-                        "authors": "J Curran, O McDermott, A Trubetskaya, A Zouggar Amrani, M Thenarasu, ...",
+                        "authors": "Curran, J., McDermott, O., Trubetskaya, A., Zouggar Amrani, A., Thenarasu, M., & Narassima, M. S.",
                         "year": "2026",
-                        "journal": "Quality Management Journal, 1-16, 2026",
-                        "metrics": "Google Scholar",
+                        "journal": "Quality Management Journal, 1-16",
+                        "metrics": "ABDC – B",
                         "url": "https://doi.org/10.1080/10686967.2026.2657268"
+                },
+                {
+                        "title": "A lean smart framework for predictive agility in manufacturing using action research",
+                        "authors": "Diaz, A., Huallpamayta, S., Tarazona, I., Narassima, M. S., & Thenarasu, M.",
+                        "year": "2026",
+                        "journal": "Scientific Reports",
+                        "metrics": "Scopus – Q1",
+                        "url": "https://doi.org/10.1038/s41598-026-59190-7"
                 },
                 {
                         "title": "Comparative Study on Thermal Behaviour, Tool Wear and Surface Roughness in Milling EN8 Steel for Sustainable Machining",
@@ -758,6 +766,30 @@ const portfolioData = {
 },
     teaching: [
         {
+                "course": "Business Excellence for Competitive Advantage",
+                "term": "2024-2026",
+                "score": 4.79,
+                "students": 0
+        },
+        {
+                "course": "Optimisation Techniques for Decision Making",
+                "term": "2024-2026",
+                "score": 4.91,
+                "students": 0
+        },
+        {
+                "course": "AI for Business",
+                "term": "2024-2026",
+                "score": 4.85,
+                "students": 0
+        },
+        {
+                "course": "Application Building using AI",
+                "term": "2025-26",
+                "score": "-",
+                "students": 0
+        },
+        {
                 "course": "Productions and Operations Management",
                 "term": "2025-26",
                 "score": 4.83,
@@ -1023,6 +1055,39 @@ const portfolioData = {
                         "Abstract Thinking Techniques",
                         "Problem-Solving Frameworks",
                         "Case-based Competitions & Analysis"
+                ]
+        },
+        {
+                "course": "AI for Business",
+                "description": "Introduces predictive and generative AI models, hyperparameter tuning, ensemble techniques, and their strategic applications to automate and optimize business operations.",
+                "topics": [
+                        "Model Fitting (Right fit, underfit, overfit, bias-variance errors)",
+                        "Model Hyperparameters (Linear Regression, Decision Tree, KNN)",
+                        "Hyperparameter Tuning (GridSearch, RandomSearch)",
+                        "Ensemble Techniques (Bagging, Boosting)",
+                        "Language Modelling & Word Vectorization (Statistical language models, document classification)",
+                        "Large Language Models (LLMs) & Prompt Design/Engineering"
+                ]
+        },
+        {
+                "course": "Business Excellence for Competitive Advantage",
+                "description": "Equips students with Quality and Lean tools/frameworks to eliminate waste, design value stream flows, and initiate excellence journeys in manufacturing and service enterprises.",
+                "topics": [
+                        "Quality in Business (Seven QC Tools, Seven Management Tools, COPQ, Six Sigma)",
+                        "Advanced Quality Tools (Quality Function Deployment [QFD], Malcolm Baldrige Quality Award [MBQA] Model)",
+                        "Manufacturing Lean Tools & 8 Wastes Identification",
+                        "Manufacturing Flow Tools & Value Stream Mapping (VSM)",
+                        "Lean Office System & Four Field Mapping",
+                        "Leadership Excellence (Seven leadership wastes, leader standard work)"
+                ]
+        },
+        {
+                "course": "Application Building using AI",
+                "description": "An interactive, project-based curriculum focused on developing autonomous agentic workflows, custom workspace skills, and custom AI applications powered by Antigravity.",
+                "topics": [
+                        "Agentic AI Architecture & Capabilities (Autonomous decision loops, planning mechanics, memory systems, and multi-agent coordination)",
+                        "AI Application Development (Designing, building, and deploying interactive web applications to solve business and operational problems)",
+                        "Intelligent AI Extensions (Creating custom plugins, browser agents, customized gems, and workspace-scoped skills)"
                 ]
         }
 ],

@@ -185,8 +185,8 @@ body {
     position: relative;
     text-decoration: none;
     color: rgba(255, 255, 255, 0.85); /* Semi-transparent white */
-    font-weight: 700 !important; /* Bold for prominence */
-    font-size: 0.78rem; /* Reduced size */
+    font-weight: 600 !important; /* Semi-bold for consistency */
+    font-size: 0.85rem; /* Consistent size across all themes */
     letter-spacing: -0.01em;
     padding: 0.55rem 0.65rem;
     border-radius: 0;
@@ -1484,6 +1484,13 @@ body {
     box-shadow: 0 4px 10px rgba(var(--primary-rgb, 26, 115, 232), 0.3);
 }
 
+/* CV View and Print Buttons Hover Styling */
+
+#print-cv-btn:hover {
+    background: var(--primary-hover) !important;
+    opacity: 0.95;
+}
+
 /* Dynamic CV Modal Print Styles */
 @page {
     margin: 15mm !important;
@@ -1491,7 +1498,7 @@ body {
 
 @media print {
     /* Hide everything on the body except the CV builder modal */
-    body > *:not(#cv-viewer-modal) {
+    body > *:not(#cv-viewer-modal), footer, .footer, .academic-bg-decorations {
         display: none !important;
     }
     /* Make sure the modal behaves as a standard visible document block and takes full A4 page width */
@@ -1835,14 +1842,46 @@ body {
 
 /* ── Bob Marley / Rasta Theme styles ──────────────────────── */
 .theme-rasta .navbar {
-    background: linear-gradient(90deg, #e51400 0%, #ffb900 50%, #008a00 100%) !important;
+    background: linear-gradient(-45deg, #e51400 0%, #ffb900 50%, #008a00 100%) !important;
+}
+
+.theme-rasta .navbar .nav-logo,
+.theme-rasta .navbar .navbar-brand,
+.theme-rasta .navbar .nav-link,
+.theme-rasta #theme-picker-toggle,
+.theme-rasta #tabs-dropdown-toggle,
+.theme-rasta .mobile-menu-btn {
+    color: #000000 !important;
+}
+
+.theme-rasta .navbar .nav-logo i,
+.theme-rasta .navbar .navbar-brand i,
+.theme-rasta .navbar .nav-link i,
+.theme-rasta #theme-picker-toggle i,
+.theme-rasta #tabs-dropdown-toggle i,
+.theme-rasta .mobile-menu-btn i {
+    color: #000000 !important;
+}
+
+.theme-rasta .navbar .nav-link:hover {
+    color: #000000 !important;
+    background: rgba(0, 0, 0, 0.08) !important;
+}
+
+.theme-rasta .navbar .nav-link::after {
+    background-color: #000000 !important;
+}
+
+.theme-rasta .navbar .nav-link.active::after {
+    background-color: #000000 !important;
 }
 
 .theme-rasta .section-header h2,
 .theme-rasta .hero-name {
-    background: linear-gradient(90deg, #e51400, #d5a300, #008a00);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #000000 !important;
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    -webkit-text-fill-color: initial !important;
     display: inline-block;
 }
 
@@ -1868,7 +1907,7 @@ body {
 
 .theme-rasta .tab-btn.active {
     border-bottom: 2px solid transparent !important;
-    border-image: linear-gradient(90deg, #e51400 0%, #ffb900 50%, #008a00 100%) 1 !important;
+    border-image: linear-gradient(-45deg, #e51400 0%, #ffb900 50%, #008a00 100%) 1 !important;
     color: #008a00 !important;
     background: none !important;
     border-radius: 0 !important;
@@ -1876,7 +1915,7 @@ body {
 }
 
 .theme-rasta .collab-tab-btn::before {
-    background: linear-gradient(90deg, #e51400 0%, #ffb900 50%, #008a00 100%) !important;
+    background: linear-gradient(-45deg, #e51400 0%, #ffb900 50%, #008a00 100%) !important;
 }
 
 .theme-rasta .collab-tab-btn.active {
@@ -1885,24 +1924,24 @@ body {
     border-radius: var(--radius-md) !important;
     padding: 0.6rem 1.25rem !important;
     font-weight: 700 !important;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    text-shadow: none !important;
     outline: none !important;
 }
 
 .theme-rasta .dropdown-link.active {
-    background: linear-gradient(90deg, #e51400 0%, #ffb900 50%, #008a00 100%) !important;
+    background: linear-gradient(-45deg, #e51400 0%, #ffb900 50%, #008a00 100%) !important;
     color: #ffffff !important;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    text-shadow: none !important;
     border-left: 3px solid #ffffff !important;
 }
 
-.theme-rasta #view-cv-btn,
+
 .theme-rasta #print-cv-btn {
-    background: linear-gradient(90deg, #e51400, #ffb900, #008a00) !important;
+    background: linear-gradient(-45deg, #e51400, #ffb900, #008a00) !important;
     color: #ffffff !important;
     border: none !important;
+    text-shadow: none !important;
 }
-.theme-rasta #view-cv-btn:hover,
 .theme-rasta #print-cv-btn:hover {
     filter: brightness(0.9);
 }
@@ -1942,10 +1981,10 @@ body {
 
 /* General collaborator chip hovers under Rasta theme */
 .theme-rasta .collab-chip:hover {
-    background: linear-gradient(90deg, #e51400 0%, #ffb900 50%, #008a00 100%) !important;
+    background: linear-gradient(-45deg, #e51400 0%, #ffb900 50%, #008a00 100%) !important;
     color: #ffffff !important;
     border-color: transparent !important;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    text-shadow: none !important;
     box-shadow: var(--shadow-md) !important;
 }
 .theme-rasta .collab-chip:hover i {
@@ -1954,7 +1993,7 @@ body {
 
 /* Page footer styling under Rasta theme */
 .theme-rasta .footer {
-    background: linear-gradient(90deg, #e51400 0%, #ffb900 50%, #008a00 100%) !important;
+    background: linear-gradient(-45deg, #e51400 0%, #ffb900 50%, #008a00 100%) !important;
     border-top: none !important;
 }
 .theme-rasta .footer p {
@@ -1965,10 +2004,11 @@ body {
 
 /* ── Indian Flag / Tricolour Theme styles ──────────────────────── */
 .theme-tricolour .navbar {
-    background: linear-gradient(90deg, #FF9933 0%, #ffffff 50%, #128807 100%) !important;
-    border-bottom: 2px solid #000080 !important;
+    background: linear-gradient(135deg, #FF671F 0%, #ffffff 50%, #046A38 100%) !important;
+    border-bottom: none !important;
 }
 
+.theme-tricolour .navbar .nav-logo,
 .theme-tricolour .navbar .navbar-brand,
 .theme-tricolour .navbar .nav-link,
 .theme-tricolour #theme-picker-toggle,
@@ -1977,6 +2017,7 @@ body {
     color: #000080 !important;
 }
 
+.theme-tricolour .navbar .nav-logo i,
 .theme-tricolour .navbar .navbar-brand i,
 .theme-tricolour .navbar .nav-link i,
 .theme-tricolour #theme-picker-toggle i,
@@ -2000,10 +2041,12 @@ body {
 
 .theme-tricolour .section-header h2,
 .theme-tricolour .hero-name {
-    background: linear-gradient(90deg, #FF9933, #000080, #128807);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #000080 !important;
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    -webkit-text-fill-color: initial !important;
     display: inline-block;
+    text-shadow: none !important;
 }
 
 .theme-tricolour .timeline-title,
@@ -2014,7 +2057,7 @@ body {
 }
 
 .theme-tricolour .timeline-item::before {
-    border-left-color: #FF9933 !important; /* Saffron timeline line */
+    border-left-color: #FF671F !important; /* Saffron timeline line */
 }
 
 .theme-tricolour .roadmap-dot {
@@ -2023,12 +2066,11 @@ body {
 }
 
 .theme-tricolour .roadmap-item::before {
-    background: #128807 !important; /* Green roadmap line */
+    background: #046A38 !important; /* Green roadmap line */
 }
 
 .theme-tricolour .tab-btn.active {
-    border-bottom: 2px solid transparent !important;
-    border-image: linear-gradient(90deg, #FF9933 0%, #000080 50%, #128807 100%) 1 !important;
+    border: none !important;
     color: #000080 !important;
     background: none !important;
     border-radius: 0 !important;
@@ -2036,8 +2078,8 @@ body {
 }
 
 .theme-tricolour .collab-tab-btn::before {
-    background: linear-gradient(90deg, #FF9933 0%, #ffffff 50%, #128807 100%) !important;
-    border: 1px solid #000080 !important;
+    background: linear-gradient(135deg, #FF671F 0%, #ffffff 50%, #046A38 100%) !important;
+    border: none !important;
 }
 
 .theme-tricolour .collab-tab-btn.active {
@@ -2046,36 +2088,34 @@ body {
     border-radius: var(--radius-md) !important;
     padding: 0.6rem 1.25rem !important;
     font-weight: 700 !important;
-    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.8);
+    text-shadow: none !important;
     outline: none !important;
 }
 
 .theme-tricolour .dropdown-link.active {
-    background: linear-gradient(90deg, #FF9933 0%, #ffffff 50%, #128807 100%) !important;
+    background: linear-gradient(135deg, #FF671F 0%, #ffffff 50%, #046A38 100%) !important;
     color: #000080 !important;
-    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.8);
-    border-left: 3px solid #000080 !important;
+    text-shadow: none !important;
+    border-left: none !important;
 }
 
-.theme-tricolour #view-cv-btn,
+
 .theme-tricolour #print-cv-btn {
-    background: linear-gradient(90deg, #FF9933, #ffffff, #128807) !important;
+    background: linear-gradient(135deg, #FF671F, #ffffff, #046A38) !important;
     color: #000080 !important;
-    border: 1px solid #000080 !important;
-    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.8);
+    border: none !important;
+    text-shadow: none !important;
 }
-
-.theme-tricolour #view-cv-btn:hover,
 .theme-tricolour #print-cv-btn:hover {
-    filter: brightness(0.9);
+    filter: brightness(0.95);
 }
 
 .theme-tricolour .score-badge {
-    color: #128807 !important;
+    color: #046A38 !important;
 }
 
 .theme-tricolour .hero-title {
-    color: #FF9933 !important; /* Saffron subtitle */
+    color: #FF671F !important; /* Saffron subtitle */
 }
 
 /* Alternating Tricolour colors for tiles/cards on hover */
@@ -2084,7 +2124,7 @@ body {
 .theme-tricolour #projects-container .glass-card:nth-of-type(3n+1):hover,
 .theme-tricolour .role-list-card:nth-of-type(3n+1):hover,
 .theme-tricolour .contribution-item-card:nth-of-type(3n+1):hover {
-    border-color: #FF9933 !important; /* Saffron */
+    border-color: #FF671F !important; /* Saffron */
 }
 
 .theme-tricolour .glass-card:nth-of-type(3n+2):hover,
@@ -2100,15 +2140,15 @@ body {
 .theme-tricolour #projects-container .glass-card:nth-of-type(3n+3):hover,
 .theme-tricolour .role-list-card:nth-of-type(3n+3):hover,
 .theme-tricolour .contribution-item-card:nth-of-type(3n+3):hover {
-    border-color: #128807 !important; /* Green */
+    border-color: #046A38 !important; /* Green */
 }
 
 /* General collaborator chip hovers under Tricolour theme */
 .theme-tricolour .collab-chip:hover {
-    background: linear-gradient(90deg, #FF9933 0%, #ffffff 50%, #128807 100%) !important;
+    background: linear-gradient(135deg, #FF671F 0%, #ffffff 50%, #046A38 100%) !important;
     color: #000080 !important;
-    border-color: #000080 !important;
-    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.8);
+    border-color: transparent !important;
+    text-shadow: none !important;
     box-shadow: var(--shadow-md) !important;
 }
 
@@ -2118,7 +2158,7 @@ body {
 
 /* Page footer styling under Tricolour theme */
 .theme-tricolour .footer {
-    background: linear-gradient(90deg, #FF9933 0%, #ffffff 50%, #128807 100%) !important;
+    background: linear-gradient(135deg, #FF671F 0%, #ffffff 50%, #046A38 100%) !important;
     border-top: none !important;
 }
 
@@ -2127,3 +2167,189 @@ body {
     text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.8);
     font-weight: 600;
 }
+
+/* ── Tech Corporate / Metallic Theme styles (Google, Meta, MS inspired) ─ */
+.theme-metallic body {
+    background-color: #f8fafc !important; /* Premium light slate off-white for crisp readability */
+    background-image: none !important; /* Clear out busy gradients for professional content focusing */
+    color: #0f172a !important; /* Deep charcoal slate for maximum readable contrast */
+}
+
+.theme-metallic .navbar {
+    background: rgba(255, 255, 255, 0.85) !important; /* Frosted glass white header, standard at Microsoft/Google */
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border-bottom: 1px solid #e2e8f0 !important; /* Crisp divider border */
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05) !important;
+}
+
+.theme-metallic .navbar .nav-logo,
+.theme-metallic .navbar .nav-link,
+.theme-metallic #theme-picker-toggle,
+.theme-metallic #tabs-dropdown-toggle,
+.theme-metallic .mobile-menu-btn {
+    color: #334155 !important; /* Clean charcoal gray menu texts */
+    text-shadow: none !important;
+    font-weight: 600 !important;
+}
+
+
+.theme-metallic .navbar .nav-logo i,
+.theme-metallic .navbar .nav-link i,
+.theme-metallic #theme-picker-toggle i,
+.theme-metallic #tabs-dropdown-toggle i,
+.theme-metallic #nav-scroll-left i,
+.theme-metallic #nav-scroll-right i,
+.theme-metallic .mobile-menu-btn i {
+    color: #64748b !important;
+}
+
+.theme-metallic .navbar .nav-link:hover {
+    color: var(--primary-color) !important; /* Highlight on hover using tech-blue */
+    background: transparent !important;
+}
+
+.theme-metallic .navbar .nav-link::after {
+    background-color: var(--primary-color) !important;
+}
+
+.theme-metallic .navbar .nav-link.active {
+    color: var(--primary-color) !important; /* Clean highlight color */
+}
+
+.theme-metallic .navbar .nav-link.active::after {
+    background-color: var(--primary-color) !important;
+}
+
+.theme-metallic .section-header h2 {
+    color: #0f172a !important;
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    -webkit-text-fill-color: initial !important;
+    text-shadow: none !important;
+    font-weight: 700 !important;
+    display: inline-block;
+}
+
+.theme-metallic .section-underline {
+    background: var(--primary-color) !important;
+    box-shadow: none !important;
+}
+
+.theme-metallic .hero-name {
+    color: #0f172a !important;
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    -webkit-text-fill-color: initial !important;
+    text-shadow: none !important;
+    font-weight: 700 !important;
+}
+
+.theme-metallic .glass-card {
+    background: #ffffff !important; /* Solid high-contrast white card body */
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: 1px solid #e2e8f0 !important; /* Thin clean border */
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.03) !important; /* High-quality soft shadows */
+}
+
+.theme-metallic .glass-card:hover {
+    border-color: #cbd5e1 !important;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.05) !important;
+    transform: translateY(-2px);
+}
+
+.theme-metallic .hero-image-wrapper {
+    border: 4px solid #ffffff !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06) !important;
+}
+
+.theme-metallic .timeline-title,
+.theme-metallic .roadmap-title,
+.theme-metallic .card-header h3,
+.theme-metallic .contribution-item-card strong {
+    color: #0f172a !important;
+}
+
+.theme-metallic .timeline-date,
+.theme-metallic .timeline-desc,
+.theme-metallic .timeline-subtitle {
+    color: #475569 !important;
+}
+
+.theme-metallic .timeline-item::before {
+    border-left-color: #e2e8f0 !important;
+}
+
+.theme-metallic .roadmap-dot {
+    background: #ffffff !important;
+    border-color: var(--primary-color) !important;
+    box-shadow: none !important;
+}
+
+.theme-metallic .roadmap-item::before {
+    background: #e2e8f0 !important;
+}
+
+.theme-metallic .tab-btn.active {
+    color: var(--primary-color) !important;
+    border-bottom: 2px solid var(--primary-color) !important;
+}
+
+.theme-metallic .collab-tab-btn::before {
+    background: var(--primary-color) !important;
+}
+
+.theme-metallic .collab-tab-btn.active {
+    color: #ffffff !important;
+    background: var(--primary-color) !important;
+    border: none !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+    text-shadow: none !important;
+}
+
+.theme-metallic .dropdown-link.active {
+    background: rgba(0, 100, 224, 0.05) !important;
+    color: var(--primary-color) !important;
+    border-left: 3px solid var(--primary-color) !important;
+}
+
+.theme-metallic #print-cv-btn {
+    background: var(--primary-color) !important;
+    color: #ffffff !important;
+    border: none !important;
+    text-shadow: none !important;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05) !important;
+}
+
+.theme-metallic #print-cv-btn:hover {
+    background: var(--primary-hover) !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08) !important;
+}
+
+.theme-metallic .score-badge {
+    color: var(--primary-color) !important;
+}
+
+.theme-metallic .hero-title {
+    color: #475569 !important;
+}
+
+.theme-metallic .collab-chip:hover {
+    background: var(--primary-color) !important;
+    color: #ffffff !important;
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08) !important;
+}
+
+.theme-metallic .footer {
+    background: #f1f5f9 !important;
+    border-top: 1px solid #e2e8f0 !important;
+}
+
+.theme-metallic .footer p {
+    color: #475569 !important;
+    text-shadow: none !important;
+    font-weight: 500;
+}
+
