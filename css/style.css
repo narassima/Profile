@@ -452,31 +452,28 @@ body {
     padding: 0.55rem 1.25rem !important;
     font-size: 0.84rem !important;
     font-weight: 600 !important;
-    color: var(--text-secondary) !important;
+    color: var(--text-primary) !important;
     cursor: pointer;
-    transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease !important;
     white-space: nowrap;
-    position: relative;
-    z-index: 1;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03) !important;
+    transform: none !important;
+    outline: none !important;
 }
 
 .tab-btn:hover {
-    transform: translateY(-4px) scale(1.04) !important;
-    z-index: 10 !important;
     color: var(--primary-color) !important;
     border-color: var(--primary-color) !important;
-    outline: 1.5px solid var(--primary-color) !important;
-    box-shadow: 0 8px 20px rgba(var(--primary-rgb, 0, 80, 239), 0.18) !important;
-    background: rgba(var(--primary-rgb, 0, 80, 239), 0.06) !important;
+    background: rgba(var(--primary-rgb, 0, 80, 239), 0.08) !important;
 }
 
-.tab-btn.active {
+.tab-btn.active,
+.tab-btn.active:hover {
     background: var(--primary-color) !important;
     color: #ffffff !important;
     border-color: var(--primary-color) !important;
+    transform: none !important;
     outline: none !important;
-    box-shadow: 0 6px 16px rgba(var(--primary-rgb, 0, 80, 239), 0.3) !important;
+    box-shadow: 0 4px 12px rgba(var(--primary-rgb, 0, 80, 239), 0.25) !important;
 }
 
 .tab-content {
