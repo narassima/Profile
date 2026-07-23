@@ -51,9 +51,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Toggle active section
+        // Toggle active section with fluid animation
         sections.forEach(sec => {
             if (sec.id === targetId) {
+                sec.classList.remove('active-section');
+                void sec.offsetWidth; // Force reflow for silky smooth re-trigger
                 sec.classList.add('active-section');
             } else {
                 sec.classList.remove('active-section');
