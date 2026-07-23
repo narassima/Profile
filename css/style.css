@@ -2353,279 +2353,122 @@ body {
     font-weight: 500;
 }
 
-/* ── Simulations Tab Premium Light Pastel Cards & Micro-Animations ───────────────── */
-#simulations-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 1.75rem;
-    max-width: 1250px;
-    margin: 0 auto 3rem;
-}
+/* ── Universal Profile Modern Component & Card Design System (Theme-Adaptive) ── */
 
+/* 1. Global Card Base Styling across all tabs */
+.glass-card,
+.detail-card,
+.content-card,
+.pub-card,
+.course-topic-card,
+.mentorship-card,
+.project-card,
+.timeline-card,
+.contribution-item-card,
+.role-card,
 #simulations-grid .glass-card {
     border-radius: 16px !important;
-    padding: 1.6rem 1.4rem !important;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    border: 1px solid var(--border-color) !important;
+    background: var(--surface-color) !important;
+    box-shadow: var(--shadow-sm) !important;
+    transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
     position: relative;
     overflow: hidden;
-    transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04) !important;
 }
 
+/* 2. Global Hover Lift & Elevation Shadow for all cards */
+.glass-card:hover,
+.detail-card:hover,
+.pub-card:hover,
+.course-topic-card:hover,
+.mentorship-card:hover,
+.project-card:hover,
+.timeline-card:hover,
+.contribution-item-card:hover,
+.role-card:hover,
 #simulations-grid .glass-card:hover {
-    transform: translateY(-7px) scale(1.01) !important;
+    transform: translateY(-6px) scale(1.005) !important;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.09) !important;
+    border-color: var(--primary-color) !important;
 }
 
-/* Icon Badge Squircle Micro-animation */
-#simulations-grid .sim-icon-badge {
-    width: 52px;
-    height: 52px;
+/* 3. Floating Squircle Icon Badges */
+.sim-icon-badge,
+.card-icon-badge,
+.pub-icon-badge {
+    width: 50px;
+    height: 50px;
     border-radius: 14px;
+    background: rgba(var(--primary-rgb, 0, 80, 239), 0.08) !important;
+    color: var(--primary-color) !important;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.45rem;
+    font-size: 1.4rem;
     transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(var(--primary-rgb, 0, 80, 239), 0.15);
 }
 
-#simulations-grid .glass-card:hover .sim-icon-badge {
-    transform: scale(1.12) rotate(-4deg);
+.glass-card:hover .sim-icon-badge,
+.glass-card:hover .card-icon-badge,
+.pub-card:hover .pub-icon-badge,
+.detail-card:hover .card-icon-badge {
+    transform: scale(1.1) rotate(-3deg);
+    background: var(--primary-color) !important;
+    color: #ffffff !important;
 }
 
-/* Action Button Pill micro-animation */
-#simulations-grid .sim-action-btn {
+/* 4. Action Pill Buttons */
+.sim-action-btn,
+.card-action-btn,
+.pub-link-btn {
     font-size: 0.84rem;
-    font-weight: 700;
+    font-weight: 600;
     display: inline-flex;
     align-items: center;
     gap: 0.45rem;
-    padding: 0.55rem 1.15rem;
+    padding: 0.5rem 1.1rem;
     border-radius: 30px;
+    background: rgba(var(--primary-rgb, 0, 80, 239), 0.06) !important;
+    color: var(--primary-color) !important;
+    border: 1px solid rgba(var(--primary-rgb, 0, 80, 239), 0.2) !important;
+    transition: all 0.3s ease;
+    text-decoration: none;
     margin-top: auto;
     width: fit-content;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
 }
 
-#simulations-grid .sim-action-btn i {
+.sim-action-btn i,
+.card-action-btn i,
+.pub-link-btn i {
     transition: transform 0.3s ease;
 }
 
-#simulations-grid .glass-card:hover .sim-action-btn i {
-    transform: translateX(5px);
+.glass-card:hover .sim-action-btn,
+.glass-card:hover .card-action-btn,
+.pub-card:hover .pub-link-btn,
+.sim-action-btn:hover {
+    background: var(--primary-color) !important;
+    color: #ffffff !important;
+    border-color: var(--primary-color) !important;
 }
 
-/* Individual Card Color Themes */
+.glass-card:hover .sim-action-btn i,
+.glass-card:hover .card-action-btn i,
+.pub-card:hover .pub-link-btn i {
+    transform: translateX(4px);
+}
 
-/* Card 1: Studio Pro (Mint Emerald) */
-#simulations-grid .sim-card-1 {
-    background: linear-gradient(145deg, #e6fcf5 0%, #c3f7e2 100%) !important;
-    border: 1px solid rgba(16, 185, 129, 0.45) !important;
+/* Metallic Theme Overrides for squircle badges and pill buttons */
+.theme-metallic .sim-icon-badge,
+.theme-metallic .card-icon-badge {
+    background: rgba(0, 80, 239, 0.08) !important;
+    color: var(--primary-color) !important;
 }
-#simulations-grid .sim-card-1:hover {
-    box-shadow: 0 14px 28px rgba(16, 185, 129, 0.25) !important;
-    border-color: rgba(16, 185, 129, 0.7) !important;
-}
-#simulations-grid .sim-card-1 .sim-icon-badge { background: #10b981; color: #ffffff; }
-#simulations-grid .sim-card-1 .sim-action-btn { background: rgba(16, 185, 129, 0.18); color: #047857; border: 1px solid rgba(16, 185, 129, 0.35); }
-#simulations-grid .sim-card-1:hover .sim-action-btn { background: #10b981; color: #ffffff; }
 
-/* Card 2: Flexible Job Shop (Sky Blue) */
-#simulations-grid .sim-card-2 {
-    background: linear-gradient(145deg, #ebf5ff 0%, #c7e2fe 100%) !important;
-    border: 1px solid rgba(59, 130, 246, 0.45) !important;
+.theme-metallic .glass-card:hover .sim-icon-badge,
+.theme-metallic .glass-card:hover .card-icon-badge {
+    background: var(--primary-color) !important;
+    color: #ffffff !important;
 }
-#simulations-grid .sim-card-2:hover {
-    box-shadow: 0 14px 28px rgba(59, 130, 246, 0.25) !important;
-    border-color: rgba(59, 130, 246, 0.7) !important;
-}
-#simulations-grid .sim-card-2 .sim-icon-badge { background: #3b82f6; color: #ffffff; }
-#simulations-grid .sim-card-2 .sim-action-btn { background: rgba(59, 130, 246, 0.18); color: #1d4ed8; border: 1px solid rgba(59, 130, 246, 0.35); }
-#simulations-grid .sim-card-2:hover .sim-action-btn { background: #3b82f6; color: #ffffff; }
-
-/* Card 3: Hospital Scheduler (Sunshine Amber Gold) */
-#simulations-grid .sim-card-3 {
-    background: linear-gradient(145deg, #fffbeb 0%, #fde047 100%) !important;
-    border: 1px solid rgba(245, 158, 11, 0.5) !important;
-}
-#simulations-grid .sim-card-3:hover {
-    box-shadow: 0 14px 28px rgba(245, 158, 11, 0.28) !important;
-    border-color: rgba(245, 158, 11, 0.75) !important;
-}
-#simulations-grid .sim-card-3 .sim-icon-badge { background: #f59e0b; color: #ffffff; }
-#simulations-grid .sim-card-3 .sim-action-btn { background: rgba(245, 158, 11, 0.22); color: #92400e; border: 1px solid rgba(245, 158, 11, 0.4); }
-#simulations-grid .sim-card-3:hover .sim-action-btn { background: #f59e0b; color: #ffffff; }
-
-/* Card 4: OM PGPM Planning (Soft Coral Rose) */
-#simulations-grid .sim-card-4 {
-    background: linear-gradient(145deg, #fff1f1 0%, #fca5a5 100%) !important;
-    border: 1px solid rgba(239, 68, 68, 0.45) !important;
-}
-#simulations-grid .sim-card-4:hover {
-    box-shadow: 0 14px 28px rgba(239, 68, 68, 0.25) !important;
-    border-color: rgba(239, 68, 68, 0.7) !important;
-}
-#simulations-grid .sim-card-4 .sim-icon-badge { background: #ef4444; color: #ffffff; }
-#simulations-grid .sim-card-4 .sim-action-btn { background: rgba(239, 68, 68, 0.18); color: #b91c1c; border: 1px solid rgba(239, 68, 68, 0.35); }
-#simulations-grid .sim-card-4:hover .sim-action-btn { background: #ef4444; color: #ffffff; }
-
-/* Card 5: ERPSim (Royal Purple Lavender) */
-#simulations-grid .sim-card-5 {
-    background: linear-gradient(145deg, #faf5ff 0%, #d8b4fe 100%) !important;
-    border: 1px solid rgba(168, 85, 247, 0.45) !important;
-}
-#simulations-grid .sim-card-5:hover {
-    box-shadow: 0 14px 28px rgba(168, 85, 247, 0.25) !important;
-    border-color: rgba(168, 85, 247, 0.7) !important;
-}
-#simulations-grid .sim-card-5 .sim-icon-badge { background: #a855f7; color: #ffffff; }
-#simulations-grid .sim-card-5 .sim-action-btn { background: rgba(168, 85, 247, 0.18); color: #6b21a8; border: 1px solid rgba(168, 85, 247, 0.35); }
-#simulations-grid .sim-card-5:hover .sim-action-btn { background: #a855f7; color: #ffffff; }
-
-/* Card 6: COVID-19 DALY (Ocean Aqua Teal) */
-#simulations-grid .sim-card-6 {
-    background: linear-gradient(145deg, #f0f9ff 0%, #7dd3fc 100%) !important;
-    border: 1px solid rgba(14, 165, 233, 0.45) !important;
-}
-#simulations-grid .sim-card-6:hover {
-    box-shadow: 0 14px 28px rgba(14, 165, 233, 0.25) !important;
-    border-color: rgba(14, 165, 233, 0.7) !important;
-}
-#simulations-grid .sim-card-6 .sim-icon-badge { background: #0ea5e9; color: #ffffff; }
-#simulations-grid .sim-card-6 .sim-action-btn { background: rgba(14, 165, 233, 0.18); color: #0369a1; border: 1px solid rgba(14, 165, 233, 0.35); }
-#simulations-grid .sim-card-6:hover .sim-action-btn { background: #0ea5e9; color: #ffffff; }
-
-/* Card 7: Non-Health GDP (Apricot Peach) */
-#simulations-grid .sim-card-7 {
-    background: linear-gradient(145deg, #fff7ed 0%, #fdba74 100%) !important;
-    border: 1px solid rgba(249, 115, 22, 0.45) !important;
-}
-#simulations-grid .sim-card-7:hover {
-    box-shadow: 0 14px 28px rgba(249, 115, 22, 0.25) !important;
-    border-color: rgba(249, 115, 22, 0.7) !important;
-}
-#simulations-grid .sim-card-7 .sim-icon-badge { background: #f97316; color: #ffffff; }
-#simulations-grid .sim-card-7 .sim-action-btn { background: rgba(249, 115, 22, 0.18); color: #c2410c; border: 1px solid rgba(249, 115, 22, 0.35); }
-#simulations-grid .sim-card-7:hover .sim-action-btn { background: #f97316; color: #ffffff; }
-
-/* Card 8: 7 QC Tools (Periwinkle Indigo) */
-#simulations-grid .sim-card-8 {
-    background: linear-gradient(145deg, #eef2ff 0%, #c7d2fe 100%) !important;
-    border: 1px solid rgba(99, 102, 241, 0.45) !important;
-}
-#simulations-grid .sim-card-8:hover {
-    box-shadow: 0 14px 28px rgba(99, 102, 241, 0.25) !important;
-    border-color: rgba(99, 102, 241, 0.7) !important;
-}
-#simulations-grid .sim-card-8 .sim-icon-badge { background: #6366f1; color: #ffffff; }
-#simulations-grid .sim-card-8 .sim-action-btn { background: rgba(99, 102, 241, 0.18); color: #3730a3; border: 1px solid rgba(99, 102, 241, 0.35); }
-#simulations-grid .sim-card-8:hover .sim-action-btn { background: #6366f1; color: #ffffff; }
-
-/* Card 9: QFD House of Quality (Blush Pink) */
-#simulations-grid .sim-card-9 {
-    background: linear-gradient(145deg, #fdf2f8 0%, #f472b6 100%) !important;
-    border: 1px solid rgba(236, 72, 153, 0.45) !important;
-}
-#simulations-grid .sim-card-9:hover {
-    box-shadow: 0 14px 28px rgba(236, 72, 153, 0.25) !important;
-    border-color: rgba(236, 72, 153, 0.7) !important;
-}
-#simulations-grid .sim-card-9 .sim-icon-badge { background: #ec4899; color: #ffffff; }
-#simulations-grid .sim-card-9 .sim-action-btn { background: rgba(236, 72, 153, 0.18); color: #9d174d; border: 1px solid rgba(236, 72, 153, 0.35); }
-#simulations-grid .sim-card-9:hover .sim-action-btn { background: #ec4899; color: #ffffff; }
-
-/* Card 10: SMED Optimizer (Emerald Sage Green) */
-#simulations-grid .sim-card-10 {
-    background: linear-gradient(145deg, #f0fdf4 0%, #86efac 100%) !important;
-    border: 1px solid rgba(34, 197, 94, 0.45) !important;
-}
-#simulations-grid .sim-card-10:hover {
-    box-shadow: 0 14px 28px rgba(34, 197, 94, 0.25) !important;
-    border-color: rgba(34, 197, 94, 0.7) !important;
-}
-#simulations-grid .sim-card-10 .sim-icon-badge { background: #22c55e; color: #ffffff; }
-#simulations-grid .sim-card-10 .sim-action-btn { background: rgba(34, 197, 94, 0.18); color: #14532d; border: 1px solid rgba(34, 197, 94, 0.35); }
-#simulations-grid .sim-card-10:hover .sim-action-btn { background: #22c55e; color: #ffffff; }
-
-/* Card 11: VSM Architect (Royal Violet Lilac) */
-#simulations-grid .sim-card-11 {
-    background: linear-gradient(145deg, #f5f3ff 0%, #c4b5fd 100%) !important;
-    border: 1px solid rgba(139, 92, 246, 0.45) !important;
-}
-#simulations-grid .sim-card-11:hover {
-    box-shadow: 0 14px 28px rgba(139, 92, 246, 0.25) !important;
-    border-color: rgba(139, 92, 246, 0.7) !important;
-}
-#simulations-grid .sim-card-11 .sim-icon-badge { background: #8b5cf6; color: #ffffff; }
-#simulations-grid .sim-card-11 .sim-action-btn { background: rgba(139, 92, 246, 0.18); color: #5b21b6; border: 1px solid rgba(139, 92, 246, 0.35); }
-#simulations-grid .sim-card-11:hover .sim-action-btn { background: #8b5cf6; color: #ffffff; }
-
-/* Card 12: Self-Harm DEB (Plum Purple) */
-#simulations-grid .sim-card-12 {
-    background: linear-gradient(145deg, #fcf5ff 0%, #e9d5ff 100%) !important;
-    border: 1px solid rgba(192, 132, 252, 0.45) !important;
-}
-#simulations-grid .sim-card-12:hover {
-    box-shadow: 0 14px 28px rgba(192, 132, 252, 0.25) !important;
-    border-color: rgba(192, 132, 252, 0.7) !important;
-}
-#simulations-grid .sim-card-12 .sim-icon-badge { background: #c084fc; color: #ffffff; }
-#simulations-grid .sim-card-12 .sim-action-btn { background: rgba(192, 132, 252, 0.18); color: #6b21a8; border: 1px solid rgba(192, 132, 252, 0.35); }
-#simulations-grid .sim-card-12:hover .sim-action-btn { background: #c084fc; color: #ffffff; }
-
-/* Card 13: Cancer DEB (Strawberry Pink Rose) */
-#simulations-grid .sim-card-13 {
-    background: linear-gradient(145deg, #fff1f2 0%, #fda4af 100%) !important;
-    border: 1px solid rgba(244, 63, 94, 0.45) !important;
-}
-#simulations-grid .sim-card-13:hover {
-    box-shadow: 0 14px 28px rgba(244, 63, 94, 0.25) !important;
-    border-color: rgba(244, 63, 94, 0.7) !important;
-}
-#simulations-grid .sim-card-13 .sim-icon-badge { background: #f43f5e; color: #ffffff; }
-#simulations-grid .sim-card-13 .sim-action-btn { background: rgba(244, 63, 94, 0.18); color: #9f1239; border: 1px solid rgba(244, 63, 94, 0.35); }
-#simulations-grid .sim-card-13:hover .sim-action-btn { background: #f43f5e; color: #ffffff; }
-
-/* Card 14: Low Back Pain DEB (Butter Cream Gold) */
-#simulations-grid .sim-card-14 {
-    background: linear-gradient(145deg, #fefce8 0%, #fef08a 100%) !important;
-    border: 1px solid rgba(234, 179, 8, 0.45) !important;
-}
-#simulations-grid .sim-card-14:hover {
-    box-shadow: 0 14px 28px rgba(234, 179, 8, 0.25) !important;
-    border-color: rgba(234, 179, 8, 0.7) !important;
-}
-#simulations-grid .sim-card-14 .sim-icon-badge { background: #eab308; color: #ffffff; }
-#simulations-grid .sim-card-14 .sim-action-btn { background: rgba(234, 179, 8, 0.18); color: #854d0e; border: 1px solid rgba(234, 179, 8, 0.35); }
-#simulations-grid .sim-card-14:hover .sim-action-btn { background: #eab308; color: #ffffff; }
-
-/* Card 15: Oral Conditions DEB (Seafoam Cyan) */
-#simulations-grid .sim-card-15 {
-    background: linear-gradient(145deg, #ecfeff 0%, #a5f3fc 100%) !important;
-    border: 1px solid rgba(6, 182, 212, 0.45) !important;
-}
-#simulations-grid .sim-card-15:hover {
-    box-shadow: 0 14px 28px rgba(6, 182, 212, 0.25) !important;
-    border-color: rgba(6, 182, 212, 0.7) !important;
-}
-#simulations-grid .sim-card-15 .sim-icon-badge { background: #06b6d4; color: #ffffff; }
-#simulations-grid .sim-card-15 .sim-action-btn { background: rgba(6, 182, 212, 0.18); color: #164e63; border: 1px solid rgba(6, 182, 212, 0.35); }
-#simulations-grid .sim-card-15:hover .sim-action-btn { background: #06b6d4; color: #ffffff; }
-
-/* Card 16: 23 Cancers ASMR (Deep Mint Emerald) */
-#simulations-grid .sim-card-16 {
-    background: linear-gradient(145deg, #f0fdf4 0%, #6ee7b7 100%) !important;
-    border: 1px solid rgba(16, 185, 129, 0.45) !important;
-}
-#simulations-grid .sim-card-16:hover {
-    box-shadow: 0 14px 28px rgba(16, 185, 129, 0.25) !important;
-    border-color: rgba(16, 185, 129, 0.7) !important;
-}
-#simulations-grid .sim-card-16 .sim-icon-badge { background: #10b981; color: #ffffff; }
-#simulations-grid .sim-card-16 .sim-action-btn { background: rgba(16, 185, 129, 0.18); color: #064e3b; border: 1px solid rgba(16, 185, 129, 0.35); }
-#simulations-grid .sim-card-16:hover .sim-action-btn { background: #10b981; color: #ffffff; }
 
