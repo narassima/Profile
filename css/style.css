@@ -2556,7 +2556,6 @@ body {
 .hero-contact a,
 .profile-ids-grid a,
 .page-btn,
-#view-cv-btn,
 .btn-pill,
 .reset-btn,
 #reset-timeline-filter {
@@ -2573,12 +2572,45 @@ body {
 .hero-contact a:hover,
 .profile-ids-grid a:hover,
 .page-btn:hover,
-#view-cv-btn:hover,
 #reset-timeline-filter:hover {
     transform: none !important;
     outline: none !important;
     border-color: var(--primary-color) !important;
     color: var(--primary-color) !important;
+}
+
+/* Dedicated View & Print CV Primary Action Button Styling */
+.btn-primary-cv,
+#view-cv-btn {
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.5rem !important;
+    width: 100% !important;
+    padding: 0.65rem 1rem !important;
+    background: var(--primary-color) !important;
+    color: #ffffff !important;
+    border: 1px solid var(--primary-color) !important;
+    border-radius: 8px !important;
+    font-size: 0.88rem !important;
+    font-weight: 700 !important;
+    transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease !important;
+    outline: none !important;
+    margin-top: 0.5rem !important;
+}
+
+.btn-primary-cv:hover,
+#view-cv-btn:hover {
+    background: var(--primary-hover, #003db3) !important;
+    color: #ffffff !important;
+    border-color: var(--primary-hover, #003db3) !important;
+    box-shadow: 0 4px 14px rgba(var(--primary-rgb, 0, 80, 239), 0.3) !important;
+}
+
+.btn-primary-cv i,
+#view-cv-btn i {
+    color: #ffffff !important;
 }
 
 /* C. Color Tiles in Theme Dropdown */
