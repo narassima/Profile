@@ -2382,16 +2382,19 @@ body {
 
 /* 1. Global Card Base Styling across all tabs */
 .glass-card,
-.stat-card,
+.hero-profile,
 .detail-card,
+.stat-card,
 .content-card,
 .pub-card,
+.publication-item,
 .course-topic-card,
 .mentorship-card,
 .project-card,
 .timeline-card,
 .contribution-item-card,
 .role-card,
+.material-card,
 #simulations-grid .glass-card {
     border-radius: 16px !important;
     border: 1px solid var(--border-color) !important;
@@ -2402,21 +2405,26 @@ body {
     overflow: hidden;
 }
 
-/* 2. Global Hover Lift & Elevation Shadow for all cards */
+/* 2. Global Hover Lift, Coming-to-Front & Outline Glow for About, Objective & all section cards */
 .glass-card:hover,
-.stat-card:hover,
+.hero-profile:hover,
 .detail-card:hover,
+.stat-card:hover,
 .pub-card:hover,
+.publication-item:hover,
 .course-topic-card:hover,
 .mentorship-card:hover,
 .project-card:hover,
 .timeline-card:hover,
 .contribution-item-card:hover,
 .role-card:hover,
+.material-card:hover,
 #simulations-grid .glass-card:hover {
-    transform: translateY(-6px) scale(1.005) !important;
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.09) !important;
+    transform: translateY(-6px) scale(1.008) !important;
+    z-index: 10 !important;
+    outline: 1.5px solid var(--primary-color) !important;
     border-color: var(--primary-color) !important;
+    box-shadow: 0 14px 30px rgba(var(--primary-rgb, 0, 80, 239), 0.15) !important;
 }
 
 /* Stat Card Specific Alignment Fix */
@@ -2526,29 +2534,7 @@ body {
     color: #ffffff !important;
 }
 
-/* ── Universal Hover Lift, Coming-to-Front & Outline Glow System for Interactive Elements ── */
-
-/* A. Header Navigation Links & Buttons (.nav-link, .dropdown-link, #tabs-dropdown-toggle, #theme-picker-toggle) */
-.nav-link,
-.dropdown-link,
-#tabs-dropdown-toggle,
-#theme-picker-toggle {
-    transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
-    position: relative;
-}
-
-.nav-link:hover,
-.dropdown-link:hover,
-#tabs-dropdown-toggle:hover,
-#theme-picker-toggle:hover {
-    transform: translateY(-3px) scale(1.03) !important;
-    z-index: 20 !important;
-    color: var(--primary-color) !important;
-    border-color: var(--primary-color) !important;
-    outline: 1.5px solid var(--primary-color) !important;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12) !important;
-    border-radius: 8px !important;
-}
+/* ── Universal Hover Lift, Coming-to-Front & Outline Glow System for Cards & Interactive Elements ── */
 
 /* B. All Interactive Action Buttons, Links & Contact Pills across all tabs */
 .sim-action-btn,
