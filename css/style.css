@@ -2400,12 +2400,14 @@ body {
     border: 1px solid var(--border-color) !important;
     background: var(--surface-color) !important;
     box-shadow: var(--shadow-sm) !important;
-    transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease, border-color 0.3s ease !important;
     position: relative;
     overflow: hidden;
+    will-change: transform, box-shadow;
+    backface-visibility: hidden;
 }
 
-/* 2. Global Hover Lift, Coming-to-Front & Outline Glow for About, Objective & all section cards */
+/* 2. Zero-Lag GPU Hover Lift, Coming-to-Front & Border Glow for All Cards & Sub-Sections */
 .glass-card:hover,
 .hero-profile:hover,
 .detail-card:hover,
@@ -2420,11 +2422,23 @@ body {
 .role-card:hover,
 .material-card:hover,
 #simulations-grid .glass-card:hover {
-    transform: translateY(-6px) scale(1.008) !important;
+    transform: translateY(-5px) scale(1.006) !important;
     z-index: 10 !important;
-    outline: 1.5px solid var(--primary-color) !important;
     border-color: var(--primary-color) !important;
-    box-shadow: 0 14px 30px rgba(var(--primary-rgb, 0, 80, 239), 0.15) !important;
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.09), 0 0 0 1px var(--primary-color) !important;
+}
+
+/* 3. Career Roadmap Timeline Items */
+.mini-timeline-item {
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease !important;
+    border-radius: 8px !important;
+    padding: 0.4rem 0.6rem !important;
+}
+
+.mini-timeline-item:hover {
+    transform: translateX(4px) translateY(-2px) !important;
+    background: rgba(var(--primary-rgb, 0, 80, 239), 0.05) !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06), 0 0 0 1px var(--primary-color) !important;
 }
 
 /* Stat Card Specific Alignment Fix */
@@ -2534,7 +2548,7 @@ body {
     color: #ffffff !important;
 }
 
-/* ── Universal Hover Lift, Coming-to-Front & Outline Glow System for Cards & Interactive Elements ── */
+/* ── Universal Hover Lift, Coming-to-Front & Border Glow System for Interactive Elements ── */
 
 /* B. All Interactive Action Buttons, Links & Contact Pills across all tabs */
 .sim-action-btn,
@@ -2549,8 +2563,9 @@ body {
 .btn-pill,
 .reset-btn,
 #reset-timeline-filter {
-    transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
     position: relative;
+    will-change: transform, box-shadow;
 }
 
 .sim-action-btn:hover,
@@ -2562,23 +2577,21 @@ body {
 .page-btn:hover,
 #view-cv-btn:hover,
 #reset-timeline-filter:hover {
-    transform: translateY(-4px) scale(1.03) !important;
+    transform: translateY(-3px) scale(1.02) !important;
     z-index: 10 !important;
     border-color: var(--primary-color) !important;
-    outline: 1.5px solid var(--primary-color) !important;
-    box-shadow: 0 10px 24px rgba(var(--primary-rgb, 0, 80, 239), 0.2) !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08), 0 0 0 1px var(--primary-color) !important;
 }
 
 /* C. Color Tiles in Theme Dropdown */
 .color-tile {
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease !important;
     border-radius: 4px !important;
 }
 
 .color-tile:hover {
-    transform: translateY(-4px) scale(1.25) !important;
+    transform: translateY(-3px) scale(1.2) !important;
     z-index: 20 !important;
-    outline: 2px solid var(--primary-color) !important;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25) !important;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25), 0 0 0 2px var(--primary-color) !important;
 }
 
