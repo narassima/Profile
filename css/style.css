@@ -439,33 +439,44 @@ body {
 .tabs {
     display: flex;
     flex-wrap: wrap;
-    gap: 1.5rem;
-    border-bottom: 1px solid var(--border-color);
+    gap: 0.75rem;
+    border-bottom: none;
     margin-bottom: 1.8rem;
     width: 100%;
 }
 
 .tab-btn {
-    background: none;
-    border: none;
-    padding: 0.75rem 0;
-    font-size: 0.82rem;
-    font-weight: 700 !important; /* Bold for prominence */
-    color: var(--text-secondary);
+    background: var(--surface-color) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 30px !important;
+    padding: 0.55rem 1.25rem !important;
+    font-size: 0.84rem !important;
+    font-weight: 600 !important;
+    color: var(--text-secondary) !important;
     cursor: pointer;
-    border-bottom: 2px solid transparent;
-    transition: var(--transition);
+    transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
     white-space: nowrap;
-    margin-bottom: -1px;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03) !important;
 }
 
 .tab-btn:hover {
-    color: var(--text-primary);
+    transform: translateY(-4px) scale(1.04) !important;
+    z-index: 10 !important;
+    color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+    outline: 1.5px solid var(--primary-color) !important;
+    box-shadow: 0 8px 20px rgba(var(--primary-rgb, 0, 80, 239), 0.18) !important;
+    background: rgba(var(--primary-rgb, 0, 80, 239), 0.06) !important;
 }
 
 .tab-btn.active {
-    color: var(--primary-color) !important;
-    border-bottom: 2px solid var(--primary-color);
+    background: var(--primary-color) !important;
+    color: #ffffff !important;
+    border-color: var(--primary-color) !important;
+    outline: none !important;
+    box-shadow: 0 6px 16px rgba(var(--primary-rgb, 0, 80, 239), 0.3) !important;
 }
 
 .tab-content {
@@ -2513,5 +2524,75 @@ body {
 .theme-metallic .glass-card:hover .card-icon-badge {
     background: var(--primary-color) !important;
     color: #ffffff !important;
+}
+
+/* ── Universal Hover Lift, Coming-to-Front & Outline Glow System for Interactive Elements ── */
+
+/* A. Header Navigation Links & Buttons (.nav-link, .dropdown-link, #tabs-dropdown-toggle, #theme-picker-toggle) */
+.nav-link,
+.dropdown-link,
+#tabs-dropdown-toggle,
+#theme-picker-toggle {
+    transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    position: relative;
+}
+
+.nav-link:hover,
+.dropdown-link:hover,
+#tabs-dropdown-toggle:hover,
+#theme-picker-toggle:hover {
+    transform: translateY(-3px) scale(1.03) !important;
+    z-index: 20 !important;
+    color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+    outline: 1.5px solid var(--primary-color) !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12) !important;
+    border-radius: 8px !important;
+}
+
+/* B. All Interactive Action Buttons, Links & Contact Pills across all tabs */
+.sim-action-btn,
+.card-action-btn,
+.pub-link-btn,
+.pub-link,
+.contact-item,
+.hero-contact a,
+.profile-ids-grid a,
+.page-btn,
+#view-cv-btn,
+.btn-pill,
+.reset-btn,
+#reset-timeline-filter {
+    transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    position: relative;
+}
+
+.sim-action-btn:hover,
+.card-action-btn:hover,
+.pub-link-btn:hover,
+.contact-item:hover,
+.hero-contact a:hover,
+.profile-ids-grid a:hover,
+.page-btn:hover,
+#view-cv-btn:hover,
+#reset-timeline-filter:hover {
+    transform: translateY(-4px) scale(1.03) !important;
+    z-index: 10 !important;
+    border-color: var(--primary-color) !important;
+    outline: 1.5px solid var(--primary-color) !important;
+    box-shadow: 0 10px 24px rgba(var(--primary-rgb, 0, 80, 239), 0.2) !important;
+}
+
+/* C. Color Tiles in Theme Dropdown */
+.color-tile {
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+    border-radius: 4px !important;
+}
+
+.color-tile:hover {
+    transform: translateY(-4px) scale(1.25) !important;
+    z-index: 20 !important;
+    outline: 2px solid var(--primary-color) !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25) !important;
 }
 
