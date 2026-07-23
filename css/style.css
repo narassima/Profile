@@ -1927,13 +1927,11 @@ body {
     background: #008a00 !important; /* Green roadmap line */
 }
 
-.theme-rasta .tab-btn.active {
-    border-bottom: 2px solid transparent !important;
-    border-image: linear-gradient(-45deg, #e51400 0%, #ffb900 50%, #008a00 100%) 1 !important;
-    color: #008a00 !important;
-    background: none !important;
-    border-radius: 0 !important;
-    padding: 0.75rem 0 !important;
+.theme-rasta .tab-btn.active,
+.theme-rasta .tab-btn.active:hover {
+    color: #ffffff !important;
+    background: #008a00 !important;
+    border-color: #008a00 !important;
 }
 
 .theme-rasta .collab-tab-btn::before {
@@ -2091,12 +2089,11 @@ body {
     background: #046A38 !important; /* Green roadmap line */
 }
 
-.theme-tricolour .tab-btn.active {
-    border: none !important;
-    color: #000080 !important;
-    background: none !important;
-    border-radius: 0 !important;
-    padding: 0.75rem 0 !important;
+.theme-tricolour .tab-btn.active,
+.theme-tricolour .tab-btn.active:hover {
+    color: #ffffff !important;
+    background: #000080 !important;
+    border-color: #000080 !important;
 }
 
 .theme-tricolour .collab-tab-btn::before {
@@ -2313,9 +2310,11 @@ body {
     background: #e2e8f0 !important;
 }
 
-.theme-metallic .tab-btn.active {
-    color: var(--primary-color) !important;
-    border-bottom: 2px solid var(--primary-color) !important;
+.theme-metallic .tab-btn.active,
+.theme-metallic .tab-btn.active:hover {
+    color: #ffffff !important;
+    background: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
 }
 
 .theme-metallic .collab-tab-btn::before {
