@@ -256,13 +256,26 @@ body {
     padding: 0 2rem;
 }
 
+@keyframes sectionSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(18px) scale(0.995);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
 .page-section {
     display: none;
-    animation: fadeIn 0.4s ease forwards;
+    opacity: 0;
+    will-change: transform, opacity;
 }
 
 .page-section.active-section {
     display: block;
+    animation: sectionSlideIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
 }
 
 /* Section Headers */
@@ -288,12 +301,13 @@ body {
     border-radius: 0;
 }
 
-/* Hero Section */
+/* Hero Section / Home Tab Fluid Layout */
 .hero-container {
     display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 2rem;
-    margin-top: 2rem;
+    grid-template-columns: minmax(320px, 360px) 1fr;
+    gap: 2.25rem;
+    margin-top: 1.5rem;
+    align-items: start;
 }
 
 .hero-profile {
@@ -425,33 +439,41 @@ body {
 .tabs {
     display: flex;
     flex-wrap: wrap;
-    gap: 1.5rem;
-    border-bottom: 1px solid var(--border-color);
+    gap: 0.75rem;
+    border-bottom: none;
     margin-bottom: 1.8rem;
     width: 100%;
 }
 
 .tab-btn {
-    background: none;
-    border: none;
-    padding: 0.75rem 0;
-    font-size: 0.82rem;
-    font-weight: 700 !important; /* Bold for prominence */
-    color: var(--text-secondary);
+    background: var(--surface-color) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 30px !important;
+    padding: 0.55rem 1.25rem !important;
+    font-size: 0.84rem !important;
+    font-weight: 600 !important;
+    color: var(--text-primary) !important;
     cursor: pointer;
-    border-bottom: 2px solid transparent;
-    transition: var(--transition);
+    transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease !important;
     white-space: nowrap;
-    margin-bottom: -1px;
+    transform: none !important;
+    outline: none !important;
 }
 
 .tab-btn:hover {
-    color: var(--text-primary);
+    color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+    background: rgba(var(--primary-rgb, 0, 80, 239), 0.08) !important;
 }
 
-.tab-btn.active {
-    color: var(--primary-color) !important;
-    border-bottom: 2px solid var(--primary-color);
+.tab-btn.active,
+.tab-btn.active:hover {
+    background: var(--primary-color) !important;
+    color: #ffffff !important;
+    border-color: var(--primary-color) !important;
+    transform: none !important;
+    outline: none !important;
+    box-shadow: 0 4px 12px rgba(var(--primary-rgb, 0, 80, 239), 0.25) !important;
 }
 
 .tab-content {
@@ -1905,13 +1927,11 @@ body {
     background: #008a00 !important; /* Green roadmap line */
 }
 
-.theme-rasta .tab-btn.active {
-    border-bottom: 2px solid transparent !important;
-    border-image: linear-gradient(-45deg, #e51400 0%, #ffb900 50%, #008a00 100%) 1 !important;
-    color: #008a00 !important;
-    background: none !important;
-    border-radius: 0 !important;
-    padding: 0.75rem 0 !important;
+.theme-rasta .tab-btn.active,
+.theme-rasta .tab-btn.active:hover {
+    color: #ffffff !important;
+    background: #008a00 !important;
+    border-color: #008a00 !important;
 }
 
 .theme-rasta .collab-tab-btn::before {
@@ -2069,12 +2089,11 @@ body {
     background: #046A38 !important; /* Green roadmap line */
 }
 
-.theme-tricolour .tab-btn.active {
-    border: none !important;
-    color: #000080 !important;
-    background: none !important;
-    border-radius: 0 !important;
-    padding: 0.75rem 0 !important;
+.theme-tricolour .tab-btn.active,
+.theme-tricolour .tab-btn.active:hover {
+    color: #ffffff !important;
+    background: #000080 !important;
+    border-color: #000080 !important;
 }
 
 .theme-tricolour .collab-tab-btn::before {
@@ -2291,9 +2310,11 @@ body {
     background: #e2e8f0 !important;
 }
 
-.theme-metallic .tab-btn.active {
-    color: var(--primary-color) !important;
-    border-bottom: 2px solid var(--primary-color) !important;
+.theme-metallic .tab-btn.active,
+.theme-metallic .tab-btn.active:hover {
+    color: #ffffff !important;
+    background: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
 }
 
 .theme-metallic .collab-tab-btn::before {
@@ -2351,5 +2372,255 @@ body {
     color: #475569 !important;
     text-shadow: none !important;
     font-weight: 500;
+}
+
+/* ── Universal Profile Modern Component & Card Design System (Theme-Adaptive) ── */
+
+/* 1. Global Card Base Styling across all tabs */
+.glass-card,
+.hero-profile,
+.detail-card,
+.stat-card,
+.content-card,
+.pub-card,
+.publication-item,
+.course-topic-card,
+.mentorship-card,
+.project-card,
+.timeline-card,
+.contribution-item-card,
+.role-card,
+.material-card,
+#simulations-grid .glass-card {
+    border-radius: 16px !important;
+    border: 1px solid var(--border-color) !important;
+    background: var(--surface-color) !important;
+    box-shadow: var(--shadow-sm) !important;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease !important;
+    position: relative;
+    overflow: hidden;
+    transform: none !important;
+    outline: none !important;
+}
+
+/* 2. Clean Uniform Card Hover (NO scaling, NO outlines, NO overlaps) */
+.glass-card:hover,
+.hero-profile:hover,
+.detail-card:hover,
+.stat-card:hover,
+.pub-card:hover,
+.publication-item:hover,
+.course-topic-card:hover,
+.mentorship-card:hover,
+.project-card:hover,
+.timeline-card:hover,
+.contribution-item-card:hover,
+.role-card:hover,
+.material-card:hover,
+#simulations-grid .glass-card:hover {
+    transform: none !important;
+    outline: none !important;
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07) !important;
+}
+
+/* 3. Career Roadmap Timeline Items (Clean & Uniform) */
+.mini-timeline-item {
+    transition: background 0.25s ease, border-color 0.25s ease !important;
+    border-radius: 8px !important;
+    padding: 0.4rem 0.6rem !important;
+    transform: none !important;
+}
+
+.mini-timeline-item:hover {
+    transform: none !important;
+    outline: none !important;
+    background: rgba(var(--primary-rgb, 0, 80, 239), 0.05) !important;
+}
+
+/* Stat Card Specific Alignment Fix */
+.stat-card {
+    padding: 0.85rem 1.1rem !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 0.85rem !important;
+    min-height: 76px !important;
+    box-sizing: border-box !important;
+}
+
+.stat-card .stat-icon-badge {
+    width: 42px !important;
+    height: 42px !important;
+    border-radius: 12px !important;
+    font-size: 1.15rem !important;
+    flex-shrink: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.stat-card > div:last-child {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    min-width: 0 !important;
+}
+
+/* 3. Floating Squircle Icon Badges */
+.sim-icon-badge,
+.card-icon-badge,
+.pub-icon-badge {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.glass-card:hover .sim-icon-badge,
+.stat-card:hover .stat-icon-badge,
+.glass-card:hover .card-icon-badge,
+.pub-card:hover .pub-icon-badge,
+.detail-card:hover .card-icon-badge {
+    transform: scale(1.12) rotate(-3deg);
+}
+
+/* 4. Action Pill Buttons */
+.sim-action-btn,
+.card-action-btn,
+.pub-link-btn {
+    font-size: 0.84rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.5rem 1.1rem;
+    border-radius: 30px;
+    background: rgba(var(--primary-rgb, 0, 80, 239), 0.06) !important;
+    color: var(--primary-color) !important;
+    border: 1px solid rgba(var(--primary-rgb, 0, 80, 239), 0.2) !important;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    margin-top: auto;
+    width: fit-content;
+}
+
+.sim-action-btn i,
+.card-action-btn i,
+.pub-link-btn i {
+    transition: transform 0.3s ease;
+}
+
+.glass-card:hover .sim-action-btn,
+.glass-card:hover .card-action-btn,
+.pub-card:hover .pub-link-btn,
+.sim-action-btn:hover {
+    background: var(--primary-color) !important;
+    color: #ffffff !important;
+    border-color: var(--primary-color) !important;
+}
+
+.glass-card:hover .sim-action-btn i,
+.glass-card:hover .card-action-btn i,
+.pub-card:hover .pub-link-btn i {
+    transform: translateX(4px);
+}
+
+/* Metallic Theme Overrides for squircle badges and pill buttons */
+.theme-metallic .sim-icon-badge,
+.theme-metallic .card-icon-badge {
+    background: rgba(0, 80, 239, 0.08) !important;
+    color: var(--primary-color) !important;
+}
+
+.theme-metallic .glass-card:hover .sim-icon-badge,
+.theme-metallic .glass-card:hover .card-icon-badge {
+    background: var(--primary-color) !important;
+    color: #ffffff !important;
+}
+
+/* ── Universal Clean & Uniform Hover System for Interactive Elements (NO Overlaps) ── */
+
+/* B. All Interactive Action Buttons, Links & Contact Pills across all tabs */
+.sim-action-btn,
+.card-action-btn,
+.pub-link-btn,
+.pub-link,
+.contact-item,
+.hero-contact a,
+.profile-ids-grid a,
+.page-btn,
+.btn-pill,
+.reset-btn,
+#reset-timeline-filter {
+    transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease !important;
+    position: relative;
+    transform: none !important;
+    outline: none !important;
+}
+
+.sim-action-btn:hover,
+.card-action-btn:hover,
+.pub-link-btn:hover,
+.contact-item:hover,
+.hero-contact a:hover,
+.profile-ids-grid a:hover,
+.page-btn:hover,
+#reset-timeline-filter:hover {
+    transform: none !important;
+    outline: none !important;
+    border-color: var(--primary-color) !important;
+    color: var(--primary-color) !important;
+}
+
+/* Dedicated View & Print CV Primary Action Button Styling */
+.btn-primary-cv,
+#view-cv-btn {
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.5rem !important;
+    width: 100% !important;
+    padding: 0.65rem 1rem !important;
+    background: var(--primary-color) !important;
+    color: #ffffff !important;
+    border: 1px solid var(--primary-color) !important;
+    border-radius: 8px !important;
+    font-size: 0.88rem !important;
+    font-weight: 700 !important;
+    transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease !important;
+    outline: none !important;
+    margin-top: 0.5rem !important;
+}
+
+.btn-primary-cv:hover,
+#view-cv-btn:hover {
+    background: var(--primary-hover, #003db3) !important;
+    color: #ffffff !important;
+    border-color: var(--primary-hover, #003db3) !important;
+    box-shadow: 0 4px 14px rgba(var(--primary-rgb, 0, 80, 239), 0.3) !important;
+}
+
+.btn-primary-cv i,
+#view-cv-btn i {
+    color: #ffffff !important;
+}
+
+/* C. Color Tiles in Theme Dropdown */
+.color-tile {
+    transition: border-color 0.2s ease, transform 0.2s ease !important;
+    border-radius: 4px !important;
+}
+
+.color-tile:hover {
+    transform: scale(1.1) !important;
+    outline: none !important;
 }
 
