@@ -2408,9 +2408,37 @@ body {
     border-color: var(--primary-color) !important;
 }
 
+/* Stat Card Specific Alignment Fix */
+.stat-card {
+    padding: 0.85rem 1.1rem !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 0.85rem !important;
+    min-height: 76px !important;
+    box-sizing: border-box !important;
+}
+
+.stat-card .stat-icon-badge {
+    width: 42px !important;
+    height: 42px !important;
+    border-radius: 12px !important;
+    font-size: 1.15rem !important;
+    flex-shrink: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.stat-card > div:last-child {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    min-width: 0 !important;
+}
+
 /* 3. Floating Squircle Icon Badges */
 .sim-icon-badge,
-.stat-icon-badge,
 .card-icon-badge,
 .pub-icon-badge {
     width: 48px;
