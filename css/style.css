@@ -2370,11 +2370,11 @@ body {
 }
 
 .theme-metallic .navbar {
-    background: #0050ef !important; /* Cobalt blue — matches the theme accent */
+    background: #2563EB !important; /* Vibrant modern blue — matches the CV button reference */
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
     border-bottom: none !important;
-    box-shadow: 0 2px 12px rgba(0, 80, 239, 0.25), 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 2px 12px rgba(37, 99, 235, 0.28), 0 1px 3px rgba(0, 0, 0, 0.1) !important;
 }
 
 .theme-metallic .navbar .nav-logo,
@@ -3032,7 +3032,7 @@ p, li, span, td, th {
 }
 
 .theme-metallic .navbar {
-    box-shadow: 0 2px 16px rgba(0, 80, 239, 0.30), 0 1px 4px rgba(0, 0, 0, 0.12) !important;
+    box-shadow: 0 2px 16px rgba(37, 99, 235, 0.30), 0 1px 4px rgba(0, 0, 0, 0.12) !important;
 }
 
 /* Metallic section header refinement */
