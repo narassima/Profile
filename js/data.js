@@ -1320,6 +1320,11 @@ const portfolioData = {
                 "name": "Peer Reviewer",
                 "detail": "MDPI - Healthcare",
                 "icon": "fa-check-double"
+        },
+        {
+                "name": "Peer Reviewer",
+                "detail": "SN Business & Economics",
+                "icon": "fa-check-double"
         }
 ],
     certifications: [
