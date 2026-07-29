@@ -2370,49 +2370,47 @@ body {
 }
 
 .theme-metallic .navbar {
-    background: rgba(255, 255, 255, 0.85) !important; /* Frosted glass white header, standard at Microsoft/Google */
-    backdrop-filter: blur(12px) !important;
-    -webkit-backdrop-filter: blur(12px) !important;
-    border-bottom: 1px solid #e2e8f0 !important; /* Crisp divider border */
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05) !important;
+    background: #0050ef !important; /* Cobalt blue — matches the theme accent */
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border-bottom: none !important;
+    box-shadow: 0 2px 12px rgba(0, 80, 239, 0.25), 0 1px 3px rgba(0, 0, 0, 0.1) !important;
 }
 
 .theme-metallic .navbar .nav-logo,
 .theme-metallic .navbar .nav-link,
-.theme-metallic #theme-picker-toggle,
 .theme-metallic #tabs-dropdown-toggle,
 .theme-metallic .mobile-menu-btn {
-    color: #334155 !important; /* Clean charcoal gray menu texts */
+    color: rgba(255, 255, 255, 0.88) !important;
     text-shadow: none !important;
     font-weight: 600 !important;
 }
 
-
 .theme-metallic .navbar .nav-logo i,
 .theme-metallic .navbar .nav-link i,
-.theme-metallic #theme-picker-toggle i,
 .theme-metallic #tabs-dropdown-toggle i,
 .theme-metallic #nav-scroll-left i,
 .theme-metallic #nav-scroll-right i,
 .theme-metallic .mobile-menu-btn i {
-    color: #64748b !important;
+    color: rgba(255, 255, 255, 0.75) !important;
 }
 
 .theme-metallic .navbar .nav-link:hover {
-    color: var(--primary-color) !important; /* Highlight on hover using tech-blue */
-    background: transparent !important;
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.12) !important;
 }
 
 .theme-metallic .navbar .nav-link::after {
-    background-color: var(--primary-color) !important;
+    background-color: #ffffff !important;
 }
 
 .theme-metallic .navbar .nav-link.active {
-    color: var(--primary-color) !important; /* Clean highlight color */
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.15) !important;
 }
 
 .theme-metallic .navbar .nav-link.active::after {
-    background-color: var(--primary-color) !important;
+    background-color: #ffffff !important;
 }
 
 .theme-metallic .section-header h2 {
@@ -3034,7 +3032,7 @@ p, li, span, td, th {
 }
 
 .theme-metallic .navbar {
-    box-shadow: 0 1px 0 rgba(0,0,0,0.06), 0 2px 8px rgba(0,0,0,0.04) !important;
+    box-shadow: 0 2px 16px rgba(0, 80, 239, 0.30), 0 1px 4px rgba(0, 0, 0, 0.12) !important;
 }
 
 /* Metallic section header refinement */
