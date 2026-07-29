@@ -1287,6 +1287,11 @@ const portfolioData = {
                 "icon": "fa-book-open"
         },
         {
+                "name": "Editorial Board Member",
+                "detail": "SN Business & Economics",
+                "icon": "fa-book-open"
+        },
+        {
                 "name": "Peer Reviewer",
                 "detail": "Elsevier - Computers in Biology and Medicine",
                 "icon": "fa-check-double"
@@ -1319,11 +1324,6 @@ const portfolioData = {
         {
                 "name": "Peer Reviewer",
                 "detail": "MDPI - Healthcare",
-                "icon": "fa-check-double"
-        },
-        {
-                "name": "Peer Reviewer",
-                "detail": "SN Business & Economics",
                 "icon": "fa-check-double"
         }
 ],
