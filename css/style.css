@@ -3133,3 +3133,448 @@ p, li, span, td, th {
     font-size: 0.72rem !important;
     padding: 0.2rem 0.65rem !important;
 }
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   ✦ BATMAN DARK THEME  — Dark mode · Gold accent · Premium drama
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── Design tokens override ─────────────────────────────────────── */
+.theme-batman {
+    --primary-color:  #FFD700;   /* Iconic Batman gold */
+    --primary-hover:  #FFC200;   /* Slightly deeper gold on hover */
+    --primary-rgb:    255, 215, 0;
+    --bg-color:       #0E0E10;   /* Near-black background */
+    --surface-color:  #1A1A1D;   /* Dark charcoal card surface */
+    --text-primary:   #F0F0F0;   /* Off-white primary text */
+    --text-secondary: #9CA3AF;   /* Muted grey secondary text */
+    --border-color:   rgba(255, 215, 0, 0.10); /* Subtle gold border */
+    --glass-bg:       rgba(26, 26, 29, 0.92);
+    --glass-border:   rgba(255, 215, 0, 0.12);
+    --shadow-sm:      0 1px 3px rgba(0,0,0,0.5),  0 1px 2px rgba(0,0,0,0.4);
+    --shadow-md:      0 4px 16px rgba(0,0,0,0.55), 0 2px 6px rgba(0,0,0,0.4);
+    --shadow-lg:      0 12px 40px rgba(0,0,0,0.65), 0 4px 16px rgba(0,0,0,0.5);
+    --shadow-hover:   0 20px 50px rgba(0,0,0,0.7), 0 8px 24px rgba(0,0,0,0.5);
+    --shadow-card:    0 2px 10px rgba(0,0,0,0.5),  0 0 0 1px rgba(255,215,0,0.06);
+}
+
+/* ── Body & page background ─────────────────────────────────────── */
+.theme-batman body {
+    background-color: #0E0E10 !important;
+    background-image:
+        radial-gradient(ellipse at 20% 10%, rgba(255, 215, 0, 0.03) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 90%, rgba(255, 215, 0, 0.025) 0%, transparent 55%),
+        radial-gradient(rgba(255, 215, 0, 0.025) 1px, transparent 1px) !important;
+    background-size: 100% 100%, 100% 100%, 30px 30px !important;
+    color: #F0F0F0 !important;
+}
+
+/* ── Background decoration icons → gold ─────────────────────────── */
+.theme-batman .icon-decor {
+    color: #FFD700 !important;
+    opacity: 0.06 !important;
+}
+.theme-batman .icon-decor:hover {
+    opacity: 0.18 !important;
+}
+
+/* ── Navbar ─────────────────────────────────────────────────────── */
+.theme-batman .navbar {
+    background: rgba(8, 8, 10, 0.96) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.15) !important;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.6), 0 0 40px rgba(255, 215, 0, 0.04) !important;
+}
+
+.theme-batman .navbar .nav-logo {
+    color: #FFD700 !important;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.3) !important;
+    font-weight: 800 !important;
+}
+
+.theme-batman .navbar .nav-link {
+    color: rgba(240, 240, 240, 0.75) !important;
+    font-weight: 600 !important;
+}
+.theme-batman .navbar .nav-link:hover {
+    color: #FFD700 !important;
+    background: rgba(255, 215, 0, 0.08) !important;
+}
+.theme-batman .navbar .nav-link::after {
+    background: #FFD700 !important;
+}
+.theme-batman .navbar .nav-link.active {
+    color: #FFD700 !important;
+    background: rgba(255, 215, 0, 0.10) !important;
+    font-weight: 700 !important;
+}
+.theme-batman .navbar .nav-link.active::after {
+    background: #FFD700 !important;
+}
+
+.theme-batman #tabs-dropdown-toggle,
+.theme-batman .mobile-menu-btn {
+    color: rgba(240, 240, 240, 0.8) !important;
+    border-color: rgba(255, 215, 0, 0.2) !important;
+}
+.theme-batman #tabs-dropdown-toggle i,
+.theme-batman #nav-scroll-left i,
+.theme-batman #nav-scroll-right i,
+.theme-batman .mobile-menu-btn i {
+    color: rgba(255, 215, 0, 0.7) !important;
+}
+
+/* ── Tabs dropdown menu ─────────────────────────────────────────── */
+.theme-batman .nav-dropdown-menu {
+    background: #111113 !important;
+    border-color: rgba(255, 215, 0, 0.18) !important;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.7) !important;
+}
+.theme-batman .dropdown-link {
+    color: #D1D5DB !important;
+    border-left-color: transparent !important;
+}
+.theme-batman .dropdown-link:hover {
+    background: rgba(255, 215, 0, 0.08) !important;
+    color: #FFD700 !important;
+}
+.theme-batman .dropdown-link.active {
+    background: rgba(255, 215, 0, 0.10) !important;
+    color: #FFD700 !important;
+    border-left-color: #FFD700 !important;
+}
+
+/* ── Glass cards ─────────────────────────────────────────────────── */
+.theme-batman .glass-card,
+.theme-batman .detail-card,
+.theme-batman .stat-card,
+.theme-batman .pub-card,
+.theme-batman .publication-item,
+.theme-batman .course-topic-card,
+.theme-batman .mentorship-card,
+.theme-batman .project-card,
+.theme-batman .timeline-card,
+.theme-batman .contribution-item-card,
+.theme-batman .role-card,
+.theme-batman .material-card,
+.theme-batman #simulations-grid .glass-card {
+    background: rgba(26, 26, 29, 0.95) !important;
+    border: 1px solid rgba(255, 215, 0, 0.10) !important;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,215,0,0.04) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+}
+.theme-batman .glass-card::before {
+    background: linear-gradient(90deg, transparent, rgba(255,215,0,0.06) 30%, rgba(255,215,0,0.09) 50%, rgba(255,215,0,0.06) 70%, transparent) !important;
+}
+.theme-batman .glass-card:hover,
+.theme-batman .detail-card:hover,
+.theme-batman .stat-card:hover,
+.theme-batman .pub-card:hover,
+.theme-batman .publication-item:hover,
+.theme-batman .course-topic-card:hover,
+.theme-batman .role-card:hover {
+    border-color: rgba(255, 215, 0, 0.28) !important;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.6), 0 0 16px rgba(255,215,0,0.06) !important;
+    transform: translateY(-3px) !important;
+}
+
+/* ── Hero profile card ───────────────────────────────────────────── */
+.theme-batman .hero-profile {
+    background: rgba(20, 20, 22, 0.97) !important;
+    border: 1px solid rgba(255, 215, 0, 0.14) !important;
+}
+.theme-batman .hero-image-wrapper {
+    border-color: rgba(255, 215, 0, 0.6) !important;
+    box-shadow:
+        0 4px 20px rgba(0,0,0,0.6),
+        0 0 0 5px rgba(255, 215, 0, 0.10),
+        0 0 0 10px rgba(255, 215, 0, 0.04) !important;
+}
+.theme-batman .hero-image-wrapper:hover {
+    box-shadow:
+        0 8px 30px rgba(0,0,0,0.7),
+        0 0 0 6px rgba(255, 215, 0, 0.20),
+        0 0 0 12px rgba(255, 215, 0, 0.07) !important;
+}
+.theme-batman .hero-name {
+    color: #FFD700 !important;
+    text-shadow: 0 0 30px rgba(255, 215, 0, 0.25) !important;
+    background: none !important;
+    -webkit-text-fill-color: initial !important;
+}
+.theme-batman .hero-title {
+    color: #9CA3AF !important;
+    letter-spacing: 0.08em !important;
+}
+.theme-batman .hero-institution {
+    color: #FFD700 !important;
+    opacity: 0.9;
+}
+
+/* ── Section headers ─────────────────────────────────────────────── */
+.theme-batman .section-header h2 {
+    color: #FFD700 !important;
+    background: none !important;
+    -webkit-text-fill-color: initial !important;
+    text-shadow: 0 0 40px rgba(255, 215, 0, 0.20) !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.03em !important;
+}
+.theme-batman .section-underline {
+    background: #FFD700 !important;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.4) !important;
+}
+.theme-batman .section-underline::after {
+    background: #FFD700 !important;
+    opacity: 0.15 !important;
+}
+
+/* ── Typography ─────────────────────────────────────────────────── */
+.theme-batman .card-header h3,
+.theme-batman .timeline-title,
+.theme-batman .roadmap-title {
+    color: #F0F0F0 !important;
+}
+.theme-batman .card-header i {
+    color: #FFD700 !important;
+}
+.theme-batman .timeline-date {
+    color: #FFD700 !important;
+    opacity: 0.85 !important;
+}
+.theme-batman .timeline-subtitle,
+.theme-batman .timeline-desc {
+    color: #9CA3AF !important;
+}
+
+/* ── Timeline line & dots ───────────────────────────────────────── */
+.theme-batman .timeline::before {
+    background: linear-gradient(to bottom, #FFD700, rgba(255, 215, 0, 0.08)) !important;
+}
+.theme-batman .timeline-item::before {
+    background: #FFD700 !important;
+    border-color: #0E0E10 !important;
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2), 0 0 12px rgba(255, 215, 0, 0.15) !important;
+}
+.theme-batman .timeline-item:hover::before {
+    box-shadow: 0 0 0 4px rgba(255, 215, 0, 0.35), 0 0 20px rgba(255, 215, 0, 0.25) !important;
+}
+
+/* ── Tab buttons ─────────────────────────────────────────────────── */
+.theme-batman .tab-btn {
+    background: rgba(255, 215, 0, 0.05) !important;
+    border: 1.5px solid rgba(255, 215, 0, 0.14) !important;
+    color: #9CA3AF !important;
+}
+.theme-batman .tab-btn:hover {
+    background: rgba(255, 215, 0, 0.10) !important;
+    border-color: rgba(255, 215, 0, 0.35) !important;
+    color: #FFD700 !important;
+}
+.theme-batman .tab-btn.active,
+.theme-batman .tab-btn.active:hover {
+    background: #FFD700 !important;
+    border-color: #FFD700 !important;
+    color: #0E0E10 !important;
+    font-weight: 700 !important;
+    box-shadow: 0 4px 14px rgba(255, 215, 0, 0.35) !important;
+}
+
+/* ── Collab tab buttons ─────────────────────────────────────────── */
+.theme-batman .collab-tab-btn {
+    color: #9CA3AF !important;
+    border-color: rgba(255, 215, 0, 0.14) !important;
+    background: rgba(255, 215, 0, 0.04) !important;
+}
+.theme-batman .collab-tab-btn.active {
+    background: #FFD700 !important;
+    color: #0E0E10 !important;
+    border-color: #FFD700 !important;
+    box-shadow: 0 3px 10px rgba(255, 215, 0, 0.3) !important;
+    text-shadow: none !important;
+}
+.theme-batman .collab-tab-btn::before {
+    background: #FFD700 !important;
+}
+
+/* ── Publication items ───────────────────────────────────────────── */
+.theme-batman .publication-item {
+    background: rgba(26, 26, 29, 0.95) !important;
+    border-left-color: #FFD700 !important;
+}
+.theme-batman .publication-item::before {
+    background: #FFD700 !important;
+}
+.theme-batman .publication-item:hover {
+    background: rgba(30, 30, 33, 0.98) !important;
+}
+
+/* ── Action pill buttons ─────────────────────────────────────────── */
+.theme-batman .sim-action-btn,
+.theme-batman .card-action-btn,
+.theme-batman .pub-link-btn {
+    background: rgba(255, 215, 0, 0.07) !important;
+    color: #FFD700 !important;
+    border-color: rgba(255, 215, 0, 0.22) !important;
+}
+.theme-batman .glass-card:hover .sim-action-btn,
+.theme-batman .glass-card:hover .card-action-btn,
+.theme-batman .pub-card:hover .pub-link-btn,
+.theme-batman .sim-action-btn:hover {
+    background: #FFD700 !important;
+    color: #0E0E10 !important;
+    border-color: #FFD700 !important;
+}
+
+/* ── Icon badges ─────────────────────────────────────────────────── */
+.theme-batman .sim-icon-badge,
+.theme-batman .card-icon-badge,
+.theme-batman .pub-icon-badge,
+.theme-batman .stat-card .stat-icon-badge {
+    background: rgba(255, 215, 0, 0.10) !important;
+    color: #FFD700 !important;
+}
+.theme-batman .glass-card:hover .sim-icon-badge,
+.theme-batman .glass-card:hover .card-icon-badge,
+.theme-batman .stat-card:hover .stat-icon-badge {
+    background: #FFD700 !important;
+    color: #0E0E10 !important;
+}
+
+/* ── Primary CV button ───────────────────────────────────────────── */
+.theme-batman .btn-primary-cv,
+.theme-batman #view-cv-btn,
+.theme-batman #print-cv-btn {
+    background: #FFD700 !important;
+    color: #0E0E10 !important;
+    border-color: #FFD700 !important;
+    font-weight: 700 !important;
+    text-shadow: none !important;
+}
+.theme-batman .btn-primary-cv:hover,
+.theme-batman #view-cv-btn:hover,
+.theme-batman #print-cv-btn:hover {
+    background: #FFC200 !important;
+    border-color: #FFC200 !important;
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.40) !important;
+}
+.theme-batman .btn-primary-cv i,
+.theme-batman #view-cv-btn i {
+    color: #0E0E10 !important;
+}
+
+/* ── Page buttons & pagination ───────────────────────────────────── */
+.theme-batman .page-btn {
+    background: rgba(255, 215, 0, 0.06) !important;
+    border-color: rgba(255, 215, 0, 0.18) !important;
+    color: #9CA3AF !important;
+}
+.theme-batman .page-btn:hover,
+.theme-batman .page-btn.active {
+    background: #FFD700 !important;
+    color: #0E0E10 !important;
+    border-color: #FFD700 !important;
+}
+
+/* ── Contact items ───────────────────────────────────────────────── */
+.theme-batman .contact-item {
+    color: #D1D5DB !important;
+}
+.theme-batman .contact-item:hover {
+    background: rgba(255, 215, 0, 0.08) !important;
+    color: #FFD700 !important;
+}
+.theme-batman .profile-ids-grid a {
+    color: #D1D5DB !important;
+    border-color: rgba(255, 215, 0, 0.12) !important;
+    background: rgba(255, 215, 0, 0.04) !important;
+}
+.theme-batman .profile-ids-grid a:hover {
+    border-color: #FFD700 !important;
+    color: #FFD700 !important;
+    background: rgba(255, 215, 0, 0.10) !important;
+}
+
+/* ── Score badge & chips ─────────────────────────────────────────── */
+.theme-batman .score-badge {
+    color: #FFD700 !important;
+}
+.theme-batman .collab-chip {
+    border-color: rgba(255, 215, 0, 0.18) !important;
+    color: #D1D5DB !important;
+    background: rgba(255, 215, 0, 0.04) !important;
+}
+.theme-batman .collab-chip:hover {
+    background: #FFD700 !important;
+    color: #0E0E10 !important;
+    border-color: #FFD700 !important;
+}
+
+/* ── Roadmap ─────────────────────────────────────────────────────── */
+.theme-batman .roadmap-dot {
+    background: #0E0E10 !important;
+    border-color: #FFD700 !important;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.3) !important;
+}
+.theme-batman .roadmap-item::before {
+    background: rgba(255, 215, 0, 0.15) !important;
+}
+.theme-batman .roadmap-title {
+    color: #F0F0F0 !important;
+}
+
+/* ── Word cloud tags ─────────────────────────────────────────────── */
+.theme-batman .word-tag {
+    color: rgba(255, 215, 0, var(--word-opacity, 0.7)) !important;
+}
+
+/* ── Footer ──────────────────────────────────────────────────────── */
+.theme-batman .footer {
+    background: rgba(6, 6, 8, 0.98) !important;
+    border-top: 1px solid rgba(255, 215, 0, 0.12) !important;
+}
+.theme-batman .footer p {
+    color: #6B7280 !important;
+    text-shadow: none !important;
+}
+
+/* ── Scrollbar ───────────────────────────────────────────────────── */
+.theme-batman ::-webkit-scrollbar-thumb {
+    background: rgba(255, 215, 0, 0.20) !important;
+}
+.theme-batman ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 215, 0, 0.40) !important;
+}
+
+/* ── Focus ring ──────────────────────────────────────────────────── */
+.theme-batman :focus-visible {
+    outline-color: rgba(255, 215, 0, 0.65) !important;
+}
+
+/* ── Data tables ─────────────────────────────────────────────────── */
+.theme-batman .data-table {
+    border-color: rgba(255, 215, 0, 0.12) !important;
+}
+.theme-batman .data-table thead tr {
+    background: rgba(255, 215, 0, 0.06) !important;
+}
+.theme-batman .data-table th {
+    color: #FFD700 !important;
+}
+.theme-batman .data-table tr:hover td {
+    background: rgba(255, 215, 0, 0.03) !important;
+}
+
+/* ── Mini timeline items ─────────────────────────────────────────── */
+.theme-batman .mini-timeline-item:hover {
+    background: rgba(255, 215, 0, 0.06) !important;
+}
+
+/* ── Pub metrics ─────────────────────────────────────────────────── */
+.theme-batman .pub-metrics {
+    background: rgba(255, 215, 0, 0.08) !important;
+    color: #FFD700 !important;
+    border-color: rgba(255, 215, 0, 0.18) !important;
+}
