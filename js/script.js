@@ -862,6 +862,17 @@ document.addEventListener('DOMContentLoaded', () => {
             document.documentElement.style.setProperty('--primary-color', '#6366F1');
             document.documentElement.style.setProperty('--primary-hover', '#4F46E5');
             document.documentElement.style.setProperty('--primary-rgb', '99, 102, 241');
+        } else if (colorHex.toLowerCase() === 'editorial') {
+            document.body.classList.remove('theme-rasta');
+            document.body.classList.remove('theme-tricolour');
+            document.body.classList.remove('theme-metallic');
+            document.body.classList.remove('theme-nature');
+            document.body.classList.remove('theme-batman');
+            document.body.classList.remove('theme-vivid');
+            document.body.classList.add('theme-editorial');
+            document.documentElement.style.setProperty('--primary-color', '#064E3B');
+            document.documentElement.style.setProperty('--primary-hover', '#022C22');
+            document.documentElement.style.setProperty('--primary-rgb', '6, 78, 59');
         } else {
             document.body.classList.remove('theme-rasta');
             document.body.classList.remove('theme-tricolour');
@@ -917,11 +928,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Initialize — Nature theme as default (override any stale localStorage)
+    // Initialize — Squarespace Editorial Fellow theme as default
     let savedAccent = localStorage.getItem('theme-accent-color');
-    const legacyAccents = ['#0050ef','#0067b8','rainbow','#8d9096','#3f4448'];
-    if (!savedAccent || legacyAccents.includes(savedAccent) || savedAccent === 'metallic') {
-        savedAccent = 'nature';
+    const legacyAccents = ['#0050ef','#0067b8','rainbow','#8d9096','#3f4448','nature','metallic','vivid'];
+    if (!savedAccent || legacyAccents.includes(savedAccent)) {
+        savedAccent = 'editorial';
     }
     updateAccentColor(savedAccent);
     localStorage.setItem('theme-accent-color', savedAccent);

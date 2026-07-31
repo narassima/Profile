@@ -4577,3 +4577,220 @@ p, li, span, td, th {
 .timeline-item:nth-child(4n+2)::before { background: #059669 !important; box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.25) !important; }
 .timeline-item:nth-child(4n+3)::before { background: #D97706 !important; box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.25) !important; }
 .timeline-item:nth-child(4n+4)::before { background: #8B5CF6 !important; box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.25) !important; }
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   ✦ SQUARESPACE EDITORIAL FELLOW THEME (.theme-editorial)
+   Inspired by Squarespace 7.1 'Fellow' & 'Palmer' Academic Templates
+   Ivy League Editorial Aesthetic · Serif Headings · Warm Linen Canvas
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── 1. Design Tokens ────────────────────────────────────────────── */
+.theme-editorial {
+    --primary-color:  #064E3B; /* Royal Forest Emerald */
+    --primary-hover:  #022C22;
+    --primary-rgb:    6, 78, 59;
+    --bg-color:       #F9F8F6; /* Warm Linen */
+    --surface-color:  #FFFFFF; /* Warm Ivory Card */
+    --text-primary:   #1C1917; /* Deep Charcoal Stone */
+    --text-secondary: #57534E; /* Warm Slate Charcoal */
+    --border-color:   #E7E5E4; /* Warm Stone Divider */
+    --glass-bg:       rgba(255, 255, 255, 0.94);
+    --glass-border:   #E7E5E4;
+    --shadow-sm:      0 1px 3px rgba(28, 25, 23, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+    --shadow-md:      0 4px 16px rgba(28, 25, 23, 0.07), 0 2px 6px rgba(0, 0, 0, 0.04);
+    --shadow-lg:      0 12px 36px rgba(28, 25, 23, 0.10), 0 4px 12px rgba(0, 0, 0, 0.05);
+    --shadow-hover:   0 20px 48px rgba(28, 25, 23, 0.13), 0 8px 20px rgba(0, 0, 0, 0.06);
+    --shadow-card:    0 2px 8px rgba(28, 25, 23, 0.05), 0 0 0 1px #E7E5E4;
+}
+
+/* ── 2. Typography & Canvas ──────────────────────────────────────── */
+.theme-editorial body {
+    background-color: #F9F8F6 !important;
+    background-image:
+        radial-gradient(ellipse at 10% 0%,   rgba(6, 78, 59, 0.04) 0%, transparent 50%),
+        radial-gradient(ellipse at 90% 100%, rgba(197, 168, 128, 0.06) 0%, transparent 50%),
+        radial-gradient(rgba(28, 25, 23, 0.025) 1px, transparent 1px) !important;
+    background-size: 100% 100%, 100% 100%, 30px 30px !important;
+    color: #1C1917 !important;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+/* Serif Headings (Squarespace Editorial Signature) */
+.theme-editorial h1,
+.theme-editorial h2,
+.theme-editorial h3,
+.theme-editorial .hero-name,
+.theme-editorial .section-header h2,
+.theme-editorial .navbar .nav-logo,
+.theme-editorial .card-header h3,
+.theme-editorial .timeline-title,
+.theme-editorial .roadmap-title {
+    font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.015em !important;
+}
+
+/* ── 3. Navbar (Floating Warm Ivory Glass) ───────────────────────── */
+.theme-editorial .navbar {
+    background: rgba(250, 249, 246, 0.94) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border-bottom: 1px solid #E7E5E4 !important;
+    box-shadow: 0 2px 14px rgba(28, 25, 23, 0.05), 0 1px 3px rgba(0, 0, 0, 0.03) !important;
+}
+
+.theme-editorial .navbar .nav-logo {
+    color: #1C1917 !important;
+    font-size: 1.38rem !important;
+    font-weight: 700 !important;
+}
+
+.theme-editorial .navbar .nav-link {
+    color: #44403C !important;
+    font-weight: 600 !important;
+    font-size: 0.86rem !important;
+}
+.theme-editorial .navbar .nav-link:hover {
+    color: #064E3B !important;
+    background: rgba(6, 78, 59, 0.06) !important;
+}
+.theme-editorial .navbar .nav-link::after {
+    background: #064E3B !important;
+}
+.theme-editorial .navbar .nav-link.active {
+    color: #064E3B !important;
+    background: rgba(6, 78, 59, 0.09) !important;
+    font-weight: 700 !important;
+}
+.theme-editorial .navbar .nav-link.active::after {
+    background: #064E3B !important;
+}
+
+.theme-editorial #tabs-dropdown-toggle,
+.theme-editorial .mobile-menu-btn {
+    color: #1C1917 !important;
+    border-color: #E7E5E4 !important;
+    background: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* ── 4. Section Headers ──────────────────────────────────────────── */
+.theme-editorial .section-header h2 {
+    color: #1C1917 !important;
+    font-size: 2.2rem !important;
+    background: none !important;
+    -webkit-text-fill-color: initial !important;
+}
+
+.theme-editorial .section-underline {
+    background: linear-gradient(90deg, #064E3B 0%, #C5A880 100%) !important;
+    height: 3px !important;
+    width: 60px !important;
+    border-radius: 9999px !important;
+    box-shadow: none !important;
+}
+
+/* ── 5. Cards & Glass Surfaces ───────────────────────────────────── */
+.theme-editorial .glass-card,
+.theme-editorial .detail-card,
+.theme-editorial .stat-card,
+.theme-editorial .pub-card,
+.theme-editorial .publication-item,
+.theme-editorial .course-topic-card,
+.theme-editorial .mentorship-card,
+.theme-editorial .project-card,
+.theme-editorial .timeline-card,
+.theme-editorial .contribution-item-card,
+.theme-editorial .role-card,
+.theme-editorial .material-card,
+.theme-editorial #simulations-grid .glass-card {
+    background: #FFFFFF !important;
+    border: 1px solid #E7E5E4 !important;
+    box-shadow: 0 2px 10px rgba(28, 25, 23, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02) !important;
+    border-radius: var(--radius-md) !important;
+}
+
+.theme-editorial .glass-card:hover,
+.theme-editorial .detail-card:hover,
+.theme-editorial .stat-card:hover,
+.theme-editorial .pub-card:hover,
+.theme-editorial .publication-item:hover,
+.theme-editorial .course-topic-card:hover,
+.theme-editorial .role-card:hover {
+    border-color: #C5A880 !important;
+    box-shadow: 0 8px 24px rgba(28, 25, 23, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04) !important;
+    transform: translateY(-3px) !important;
+}
+
+/* ── 6. Hero Profile Card ────────────────────────────────────────── */
+.theme-editorial .hero-profile {
+    background: #FFFFFF !important;
+    border: 1px solid #E7E5E4 !important;
+    box-shadow: 0 4px 20px rgba(28, 25, 23, 0.06) !important;
+}
+
+.theme-editorial .hero-image-wrapper {
+    border: 4px solid #064E3B !important;
+    box-shadow:
+        0 4px 16px rgba(6, 78, 59, 0.15),
+        0 0 0 5px rgba(197, 168, 128, 0.25) !important;
+}
+
+.theme-editorial .hero-name {
+    color: #1C1917 !important;
+    font-size: 2.1rem !important;
+    background: none !important;
+    -webkit-text-fill-color: initial !important;
+}
+
+.theme-editorial .hero-title {
+    color: #57534E !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    letter-spacing: 0.06em !important;
+}
+
+.theme-editorial .hero-institution {
+    color: #064E3B !important;
+    font-weight: 700 !important;
+}
+
+/* ── 7. Primary CV & Action Buttons ──────────────────────────────── */
+.theme-editorial .btn-primary-cv,
+.theme-editorial #view-cv-btn,
+.theme-editorial #print-cv-btn {
+    background: #064E3B !important;
+    color: #FFFFFF !important;
+    border-color: #064E3B !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.02em !important;
+}
+.theme-editorial .btn-primary-cv:hover,
+.theme-editorial #view-cv-btn:hover,
+.theme-editorial #print-cv-btn:hover {
+    background: #022C22 !important;
+    border-color: #022C22 !important;
+    box-shadow: 0 6px 20px rgba(6, 78, 59, 0.30) !important;
+}
+
+.theme-editorial .tab-btn.active,
+.theme-editorial .tab-btn.active:hover {
+    background: #064E3B !important;
+    border-color: #064E3B !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 4px 14px rgba(6, 78, 59, 0.28) !important;
+}
+
+/* ── 8. Footer (Deep Charcoal Stone) ─────────────────────────────── */
+.theme-editorial .footer {
+    background: #1C1917 !important;
+    border-top: 2px solid #C5A880 !important;
+}
+.theme-editorial .footer p {
+    color: #A8A29E !important;
+}
+
+/* ── 9. Background Icons ─────────────────────────────────────────── */
+.theme-editorial .icon-decor {
+    color: #064E3B !important;
+    opacity: 0.05 !important;
+}
