@@ -3133,3 +3133,1736 @@ p, li, span, td, th {
     font-size: 0.72rem !important;
     padding: 0.2rem 0.65rem !important;
 }
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   ✦ BATMAN DARK THEME  — Dark mode · Gold accent · Premium drama
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── Design tokens override ─────────────────────────────────────── */
+.theme-batman {
+    --primary-color:  #FFD700;   /* Iconic Batman gold */
+    --primary-hover:  #FFC200;   /* Slightly deeper gold on hover */
+    --primary-rgb:    255, 215, 0;
+    --bg-color:       #0E0E10;   /* Near-black background */
+    --surface-color:  #1A1A1D;   /* Dark charcoal card surface */
+    --text-primary:   #F0F0F0;   /* Off-white primary text */
+    --text-secondary: #9CA3AF;   /* Muted grey secondary text */
+    --border-color:   rgba(255, 215, 0, 0.10); /* Subtle gold border */
+    --glass-bg:       rgba(26, 26, 29, 0.92);
+    --glass-border:   rgba(255, 215, 0, 0.12);
+    --shadow-sm:      0 1px 3px rgba(0,0,0,0.5),  0 1px 2px rgba(0,0,0,0.4);
+    --shadow-md:      0 4px 16px rgba(0,0,0,0.55), 0 2px 6px rgba(0,0,0,0.4);
+    --shadow-lg:      0 12px 40px rgba(0,0,0,0.65), 0 4px 16px rgba(0,0,0,0.5);
+    --shadow-hover:   0 20px 50px rgba(0,0,0,0.7), 0 8px 24px rgba(0,0,0,0.5);
+    --shadow-card:    0 2px 10px rgba(0,0,0,0.5),  0 0 0 1px rgba(255,215,0,0.06);
+}
+
+/* ── Body & page background ─────────────────────────────────────── */
+.theme-batman body {
+    background-color: #0E0E10 !important;
+    background-image:
+        radial-gradient(ellipse at 20% 10%, rgba(255, 215, 0, 0.03) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 90%, rgba(255, 215, 0, 0.025) 0%, transparent 55%),
+        radial-gradient(rgba(255, 215, 0, 0.025) 1px, transparent 1px) !important;
+    background-size: 100% 100%, 100% 100%, 30px 30px !important;
+    color: #F0F0F0 !important;
+}
+
+/* ── Background decoration icons → gold ─────────────────────────── */
+.theme-batman .icon-decor {
+    color: #FFD700 !important;
+    opacity: 0.06 !important;
+}
+.theme-batman .icon-decor:hover {
+    opacity: 0.18 !important;
+}
+
+/* ── Navbar ─────────────────────────────────────────────────────── */
+.theme-batman .navbar {
+    background: rgba(8, 8, 10, 0.96) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.15) !important;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.6), 0 0 40px rgba(255, 215, 0, 0.04) !important;
+}
+
+.theme-batman .navbar .nav-logo {
+    color: #FFD700 !important;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.3) !important;
+    font-weight: 800 !important;
+}
+
+.theme-batman .navbar .nav-link {
+    color: rgba(240, 240, 240, 0.75) !important;
+    font-weight: 600 !important;
+}
+.theme-batman .navbar .nav-link:hover {
+    color: #FFD700 !important;
+    background: rgba(255, 215, 0, 0.08) !important;
+}
+.theme-batman .navbar .nav-link::after {
+    background: #FFD700 !important;
+}
+.theme-batman .navbar .nav-link.active {
+    color: #FFD700 !important;
+    background: rgba(255, 215, 0, 0.10) !important;
+    font-weight: 700 !important;
+}
+.theme-batman .navbar .nav-link.active::after {
+    background: #FFD700 !important;
+}
+
+.theme-batman #tabs-dropdown-toggle,
+.theme-batman .mobile-menu-btn {
+    color: rgba(240, 240, 240, 0.8) !important;
+    border-color: rgba(255, 215, 0, 0.2) !important;
+}
+.theme-batman #tabs-dropdown-toggle i,
+.theme-batman #nav-scroll-left i,
+.theme-batman #nav-scroll-right i,
+.theme-batman .mobile-menu-btn i {
+    color: rgba(255, 215, 0, 0.7) !important;
+}
+
+/* ── Tabs dropdown menu ─────────────────────────────────────────── */
+.theme-batman .nav-dropdown-menu {
+    background: #111113 !important;
+    border-color: rgba(255, 215, 0, 0.18) !important;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.7) !important;
+}
+.theme-batman .dropdown-link {
+    color: #D1D5DB !important;
+    border-left-color: transparent !important;
+}
+.theme-batman .dropdown-link:hover {
+    background: rgba(255, 215, 0, 0.08) !important;
+    color: #FFD700 !important;
+}
+.theme-batman .dropdown-link.active {
+    background: rgba(255, 215, 0, 0.10) !important;
+    color: #FFD700 !important;
+    border-left-color: #FFD700 !important;
+}
+
+/* ── Glass cards ─────────────────────────────────────────────────── */
+.theme-batman .glass-card,
+.theme-batman .detail-card,
+.theme-batman .stat-card,
+.theme-batman .pub-card,
+.theme-batman .publication-item,
+.theme-batman .course-topic-card,
+.theme-batman .mentorship-card,
+.theme-batman .project-card,
+.theme-batman .timeline-card,
+.theme-batman .contribution-item-card,
+.theme-batman .role-card,
+.theme-batman .material-card,
+.theme-batman #simulations-grid .glass-card {
+    background: rgba(26, 26, 29, 0.95) !important;
+    border: 1px solid rgba(255, 215, 0, 0.10) !important;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,215,0,0.04) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+}
+.theme-batman .glass-card::before {
+    background: linear-gradient(90deg, transparent, rgba(255,215,0,0.06) 30%, rgba(255,215,0,0.09) 50%, rgba(255,215,0,0.06) 70%, transparent) !important;
+}
+.theme-batman .glass-card:hover,
+.theme-batman .detail-card:hover,
+.theme-batman .stat-card:hover,
+.theme-batman .pub-card:hover,
+.theme-batman .publication-item:hover,
+.theme-batman .course-topic-card:hover,
+.theme-batman .role-card:hover {
+    border-color: rgba(255, 215, 0, 0.28) !important;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.6), 0 0 16px rgba(255,215,0,0.06) !important;
+    transform: translateY(-3px) !important;
+}
+
+/* ── Hero profile card ───────────────────────────────────────────── */
+.theme-batman .hero-profile {
+    background: rgba(20, 20, 22, 0.97) !important;
+    border: 1px solid rgba(255, 215, 0, 0.14) !important;
+}
+.theme-batman .hero-image-wrapper {
+    border-color: rgba(255, 215, 0, 0.6) !important;
+    box-shadow:
+        0 4px 20px rgba(0,0,0,0.6),
+        0 0 0 5px rgba(255, 215, 0, 0.10),
+        0 0 0 10px rgba(255, 215, 0, 0.04) !important;
+}
+.theme-batman .hero-image-wrapper:hover {
+    box-shadow:
+        0 8px 30px rgba(0,0,0,0.7),
+        0 0 0 6px rgba(255, 215, 0, 0.20),
+        0 0 0 12px rgba(255, 215, 0, 0.07) !important;
+}
+.theme-batman .hero-name {
+    color: #FFD700 !important;
+    text-shadow: 0 0 30px rgba(255, 215, 0, 0.25) !important;
+    background: none !important;
+    -webkit-text-fill-color: initial !important;
+}
+.theme-batman .hero-title {
+    color: #9CA3AF !important;
+    letter-spacing: 0.08em !important;
+}
+.theme-batman .hero-institution {
+    color: #FFD700 !important;
+    opacity: 0.9;
+}
+
+/* ── Section headers ─────────────────────────────────────────────── */
+.theme-batman .section-header h2 {
+    color: #FFD700 !important;
+    background: none !important;
+    -webkit-text-fill-color: initial !important;
+    text-shadow: 0 0 40px rgba(255, 215, 0, 0.20) !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.03em !important;
+}
+.theme-batman .section-underline {
+    background: #FFD700 !important;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.4) !important;
+}
+.theme-batman .section-underline::after {
+    background: #FFD700 !important;
+    opacity: 0.15 !important;
+}
+
+/* ── Typography ─────────────────────────────────────────────────── */
+.theme-batman .card-header h3,
+.theme-batman .timeline-title,
+.theme-batman .roadmap-title {
+    color: #F0F0F0 !important;
+}
+.theme-batman .card-header i {
+    color: #FFD700 !important;
+}
+.theme-batman .timeline-date {
+    color: #FFD700 !important;
+    opacity: 0.85 !important;
+}
+.theme-batman .timeline-subtitle,
+.theme-batman .timeline-desc {
+    color: #9CA3AF !important;
+}
+
+/* ── Timeline line & dots ───────────────────────────────────────── */
+.theme-batman .timeline::before {
+    background: linear-gradient(to bottom, #FFD700, rgba(255, 215, 0, 0.08)) !important;
+}
+.theme-batman .timeline-item::before {
+    background: #FFD700 !important;
+    border-color: #0E0E10 !important;
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2), 0 0 12px rgba(255, 215, 0, 0.15) !important;
+}
+.theme-batman .timeline-item:hover::before {
+    box-shadow: 0 0 0 4px rgba(255, 215, 0, 0.35), 0 0 20px rgba(255, 215, 0, 0.25) !important;
+}
+
+/* ── Tab buttons ─────────────────────────────────────────────────── */
+.theme-batman .tab-btn {
+    background: rgba(255, 215, 0, 0.05) !important;
+    border: 1.5px solid rgba(255, 215, 0, 0.14) !important;
+    color: #9CA3AF !important;
+}
+.theme-batman .tab-btn:hover {
+    background: rgba(255, 215, 0, 0.10) !important;
+    border-color: rgba(255, 215, 0, 0.35) !important;
+    color: #FFD700 !important;
+}
+.theme-batman .tab-btn.active,
+.theme-batman .tab-btn.active:hover {
+    background: #FFD700 !important;
+    border-color: #FFD700 !important;
+    color: #0E0E10 !important;
+    font-weight: 700 !important;
+    box-shadow: 0 4px 14px rgba(255, 215, 0, 0.35) !important;
+}
+
+/* ── Collab tab buttons ─────────────────────────────────────────── */
+.theme-batman .collab-tab-btn {
+    color: #9CA3AF !important;
+    border-color: rgba(255, 215, 0, 0.14) !important;
+    background: rgba(255, 215, 0, 0.04) !important;
+}
+.theme-batman .collab-tab-btn.active {
+    background: #FFD700 !important;
+    color: #0E0E10 !important;
+    border-color: #FFD700 !important;
+    box-shadow: 0 3px 10px rgba(255, 215, 0, 0.3) !important;
+    text-shadow: none !important;
+}
+.theme-batman .collab-tab-btn::before {
+    background: #FFD700 !important;
+}
+
+/* ── Publication items ───────────────────────────────────────────── */
+.theme-batman .publication-item {
+    background: rgba(26, 26, 29, 0.95) !important;
+    border-left-color: #FFD700 !important;
+}
+.theme-batman .publication-item::before {
+    background: #FFD700 !important;
+}
+.theme-batman .publication-item:hover {
+    background: rgba(30, 30, 33, 0.98) !important;
+}
+
+/* ── Action pill buttons ─────────────────────────────────────────── */
+.theme-batman .sim-action-btn,
+.theme-batman .card-action-btn,
+.theme-batman .pub-link-btn {
+    background: rgba(255, 215, 0, 0.07) !important;
+    color: #FFD700 !important;
+    border-color: rgba(255, 215, 0, 0.22) !important;
+}
+.theme-batman .glass-card:hover .sim-action-btn,
+.theme-batman .glass-card:hover .card-action-btn,
+.theme-batman .pub-card:hover .pub-link-btn,
+.theme-batman .sim-action-btn:hover {
+    background: #FFD700 !important;
+    color: #0E0E10 !important;
+    border-color: #FFD700 !important;
+}
+
+/* ── Icon badges ─────────────────────────────────────────────────── */
+.theme-batman .sim-icon-badge,
+.theme-batman .card-icon-badge,
+.theme-batman .pub-icon-badge,
+.theme-batman .stat-card .stat-icon-badge {
+    background: rgba(255, 215, 0, 0.10) !important;
+    color: #FFD700 !important;
+}
+.theme-batman .glass-card:hover .sim-icon-badge,
+.theme-batman .glass-card:hover .card-icon-badge,
+.theme-batman .stat-card:hover .stat-icon-badge {
+    background: #FFD700 !important;
+    color: #0E0E10 !important;
+}
+
+/* ── Primary CV button ───────────────────────────────────────────── */
+.theme-batman .btn-primary-cv,
+.theme-batman #view-cv-btn,
+.theme-batman #print-cv-btn {
+    background: #FFD700 !important;
+    color: #0E0E10 !important;
+    border-color: #FFD700 !important;
+    font-weight: 700 !important;
+    text-shadow: none !important;
+}
+.theme-batman .btn-primary-cv:hover,
+.theme-batman #view-cv-btn:hover,
+.theme-batman #print-cv-btn:hover {
+    background: #FFC200 !important;
+    border-color: #FFC200 !important;
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.40) !important;
+}
+.theme-batman .btn-primary-cv i,
+.theme-batman #view-cv-btn i {
+    color: #0E0E10 !important;
+}
+
+/* ── Page buttons & pagination ───────────────────────────────────── */
+.theme-batman .page-btn {
+    background: rgba(255, 215, 0, 0.06) !important;
+    border-color: rgba(255, 215, 0, 0.18) !important;
+    color: #9CA3AF !important;
+}
+.theme-batman .page-btn:hover,
+.theme-batman .page-btn.active {
+    background: #FFD700 !important;
+    color: #0E0E10 !important;
+    border-color: #FFD700 !important;
+}
+
+/* ── Contact items ───────────────────────────────────────────────── */
+.theme-batman .contact-item {
+    color: #D1D5DB !important;
+}
+.theme-batman .contact-item:hover {
+    background: rgba(255, 215, 0, 0.08) !important;
+    color: #FFD700 !important;
+}
+.theme-batman .profile-ids-grid a {
+    color: #D1D5DB !important;
+    border-color: rgba(255, 215, 0, 0.12) !important;
+    background: rgba(255, 215, 0, 0.04) !important;
+}
+.theme-batman .profile-ids-grid a:hover {
+    border-color: #FFD700 !important;
+    color: #FFD700 !important;
+    background: rgba(255, 215, 0, 0.10) !important;
+}
+
+/* ── Score badge & chips ─────────────────────────────────────────── */
+.theme-batman .score-badge {
+    color: #FFD700 !important;
+}
+.theme-batman .collab-chip {
+    border-color: rgba(255, 215, 0, 0.18) !important;
+    color: #D1D5DB !important;
+    background: rgba(255, 215, 0, 0.04) !important;
+}
+.theme-batman .collab-chip:hover {
+    background: #FFD700 !important;
+    color: #0E0E10 !important;
+    border-color: #FFD700 !important;
+}
+
+/* ── Roadmap ─────────────────────────────────────────────────────── */
+.theme-batman .roadmap-dot {
+    background: #0E0E10 !important;
+    border-color: #FFD700 !important;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.3) !important;
+}
+.theme-batman .roadmap-item::before {
+    background: rgba(255, 215, 0, 0.15) !important;
+}
+.theme-batman .roadmap-title {
+    color: #F0F0F0 !important;
+}
+
+/* ── Word cloud tags ─────────────────────────────────────────────── */
+.theme-batman .word-tag {
+    color: rgba(255, 215, 0, var(--word-opacity, 0.7)) !important;
+}
+
+/* ── Footer ──────────────────────────────────────────────────────── */
+.theme-batman .footer {
+    background: rgba(6, 6, 8, 0.98) !important;
+    border-top: 1px solid rgba(255, 215, 0, 0.12) !important;
+}
+.theme-batman .footer p {
+    color: #6B7280 !important;
+    text-shadow: none !important;
+}
+
+/* ── Scrollbar ───────────────────────────────────────────────────── */
+.theme-batman ::-webkit-scrollbar-thumb {
+    background: rgba(255, 215, 0, 0.20) !important;
+}
+.theme-batman ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 215, 0, 0.40) !important;
+}
+
+/* ── Focus ring ──────────────────────────────────────────────────── */
+.theme-batman :focus-visible {
+    outline-color: rgba(255, 215, 0, 0.65) !important;
+}
+
+/* ── Data tables ─────────────────────────────────────────────────── */
+.theme-batman .data-table {
+    border-color: rgba(255, 215, 0, 0.12) !important;
+}
+.theme-batman .data-table thead tr {
+    background: rgba(255, 215, 0, 0.06) !important;
+}
+.theme-batman .data-table th {
+    color: #FFD700 !important;
+}
+.theme-batman .data-table tr:hover td {
+    background: rgba(255, 215, 0, 0.03) !important;
+}
+
+/* ── Mini timeline items ─────────────────────────────────────────── */
+.theme-batman .mini-timeline-item:hover {
+    background: rgba(255, 215, 0, 0.06) !important;
+}
+
+/* ── Pub metrics ─────────────────────────────────────────────────── */
+.theme-batman .pub-metrics {
+    background: rgba(255, 215, 0, 0.08) !important;
+    color: #FFD700 !important;
+    border-color: rgba(255, 215, 0, 0.18) !important;
+}
+
+
+/* -------------------------------------------------------------------
+   ? VIVID INDIGO THEME  �  Vibrant � Readable � High-Contrast
+   All text: dark (#0F172A) on light surfaces � WCAG AAA throughout
+   ------------------------------------------------------------------- */
+
+/* -- Design tokens ------------------------------------------------ */
+.theme-vivid {
+    --primary-color:  #6366F1;
+    --primary-hover:  #4F46E5;
+    --primary-rgb:    99, 102, 241;
+    --bg-color:       #F0F4FF;
+    --surface-color:  #FFFFFF;
+    --text-primary:   #0F172A;
+    --text-secondary: #374151;
+    --border-color:   #DDE3F5;
+    --glass-bg:       rgba(255,255,255,0.92);
+    --glass-border:   rgba(99,102,241,0.15);
+    --shadow-sm:      0 1px 3px rgba(99,102,241,0.06), 0 1px 2px rgba(0,0,0,0.04);
+    --shadow-md:      0 4px 16px rgba(99,102,241,0.10), 0 2px 6px rgba(0,0,0,0.05);
+    --shadow-lg:      0 12px 36px rgba(99,102,241,0.13), 0 4px 12px rgba(0,0,0,0.06);
+    --shadow-hover:   0 20px 48px rgba(99,102,241,0.16), 0 8px 20px rgba(0,0,0,0.07);
+    --shadow-card:    0 2px 8px rgba(99,102,241,0.08), 0 0 0 1px rgba(99,102,241,0.06);
+}
+
+/* -- Page body ---------------------------------------------------- */
+.theme-vivid body {
+    background-color: #F0F4FF !important;
+    background-image:
+        radial-gradient(ellipse at 10% 0%,   rgba(99,102,241,0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 90% 100%, rgba(168,85,247,0.06) 0%, transparent 50%),
+        radial-gradient(rgba(99,102,241,0.04) 1px, transparent 1px) !important;
+    background-size: 100% 100%, 100% 100%, 28px 28px !important;
+    color: #0F172A !important;
+}
+
+/* -- Background icons --------------------------------------------- */
+.theme-vivid .icon-decor {
+    color: #6366F1 !important;
+    opacity: 0.06 !important;
+}
+.theme-vivid .icon-decor:hover { opacity: 0.18 !important; }
+
+/* -- Navbar ------------------------------------------------------- */
+.theme-vivid .navbar {
+    background: linear-gradient(135deg, #1E1B4B 0%, #312E81 100%) !important;
+    backdrop-filter: none !important;
+    border-bottom: none !important;
+    box-shadow: 0 4px 24px rgba(30,27,75,0.35), 0 1px 4px rgba(0,0,0,0.15) !important;
+}
+.theme-vivid .navbar .nav-logo {
+    color: #FFFFFF !important;
+    font-weight: 800 !important;
+    text-shadow: none !important;
+    letter-spacing: -0.02em !important;
+}
+.theme-vivid .navbar .nav-link {
+    color: rgba(255,255,255,0.78) !important;
+    font-weight: 600 !important;
+}
+.theme-vivid .navbar .nav-link:hover {
+    color: #FFFFFF !important;
+    background: rgba(255,255,255,0.12) !important;
+}
+.theme-vivid .navbar .nav-link::after { background: #A5B4FC !important; }
+.theme-vivid .navbar .nav-link.active {
+    color: #FFFFFF !important;
+    background: rgba(255,255,255,0.15) !important;
+    font-weight: 700 !important;
+}
+.theme-vivid .navbar .nav-link.active::after { background: #FFFFFF !important; }
+
+.theme-vivid #tabs-dropdown-toggle,
+.theme-vivid .mobile-menu-btn {
+    color: rgba(255,255,255,0.85) !important;
+    border-color: rgba(255,255,255,0.2) !important;
+}
+.theme-vivid #tabs-dropdown-toggle i,
+.theme-vivid #nav-scroll-left i,
+.theme-vivid #nav-scroll-right i,
+.theme-vivid .mobile-menu-btn i {
+    color: rgba(255,255,255,0.7) !important;
+}
+
+/* -- Tabs dropdown ------------------------------------------------ */
+.theme-vivid .nav-dropdown-menu {
+    background: #FFFFFF !important;
+    border: 1.5px solid #DDE3F5 !important;
+    box-shadow: 0 8px 32px rgba(99,102,241,0.15) !important;
+}
+.theme-vivid .dropdown-link {
+    color: #374151 !important;
+    border-left-color: transparent !important;
+}
+.theme-vivid .dropdown-link:hover {
+    background: #EEF2FF !important;
+    color: #4F46E5 !important;
+}
+.theme-vivid .dropdown-link.active {
+    background: #EEF2FF !important;
+    color: #4F46E5 !important;
+    border-left-color: #6366F1 !important;
+}
+
+/* -- Section headers ----------------------------------------------- */
+.theme-vivid .section-header h2 {
+    color: #1E1B4B !important;
+    background: none !important;
+    -webkit-text-fill-color: initial !important;
+    text-shadow: none !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.035em !important;
+}
+.theme-vivid .section-underline {
+    background: linear-gradient(90deg, #6366F1, #A78BFA) !important;
+    box-shadow: none !important;
+    height: 3px !important;
+    width: 55px !important;
+    border-radius: 9999px !important;
+}
+.theme-vivid .section-underline::after {
+    background: linear-gradient(90deg, #6366F1, #A78BFA) !important;
+    opacity: 0.18 !important;
+}
+
+/* -- Glass cards � white, deep shadow, vibrant accent border ------- */
+.theme-vivid .glass-card,
+.theme-vivid .detail-card,
+.theme-vivid .stat-card,
+.theme-vivid .pub-card,
+.theme-vivid .publication-item,
+.theme-vivid .course-topic-card,
+.theme-vivid .mentorship-card,
+.theme-vivid .project-card,
+.theme-vivid .timeline-card,
+.theme-vivid .contribution-item-card,
+.theme-vivid .role-card,
+.theme-vivid .material-card,
+.theme-vivid #simulations-grid .glass-card {
+    background: #FFFFFF !important;
+    border: 1px solid #DDE3F5 !important;
+    box-shadow: 0 2px 10px rgba(99,102,241,0.07), 0 1px 3px rgba(0,0,0,0.04) !important;
+    backdrop-filter: none !important;
+}
+.theme-vivid .glass-card::before {
+    background: linear-gradient(90deg, transparent, rgba(99,102,241,0.06) 30%, rgba(99,102,241,0.09) 50%, rgba(99,102,241,0.06) 70%, transparent) !important;
+}
+.theme-vivid .glass-card:hover,
+.theme-vivid .detail-card:hover,
+.theme-vivid .stat-card:hover,
+.theme-vivid .pub-card:hover,
+.theme-vivid .publication-item:hover,
+.theme-vivid .course-topic-card:hover,
+.theme-vivid .role-card:hover {
+    border-color: #A5B4FC !important;
+    box-shadow: 0 8px 28px rgba(99,102,241,0.13), 0 2px 8px rgba(0,0,0,0.05) !important;
+    transform: translateY(-3px) !important;
+}
+
+/* -- Hero profile -------------------------------------------------- */
+.theme-vivid .hero-profile {
+    background: #FFFFFF !important;
+    border: 1px solid #DDE3F5 !important;
+}
+.theme-vivid .hero-image-wrapper {
+    border: 4px solid #6366F1 !important;
+    box-shadow:
+        0 4px 20px rgba(99,102,241,0.20),
+        0 0 0 6px rgba(99,102,241,0.10),
+        0 0 0 10px rgba(99,102,241,0.04) !important;
+}
+.theme-vivid .hero-image-wrapper:hover {
+    box-shadow:
+        0 8px 30px rgba(99,102,241,0.28),
+        0 0 0 7px rgba(99,102,241,0.18),
+        0 0 0 13px rgba(99,102,241,0.06) !important;
+}
+.theme-vivid .hero-name {
+    color: #1E1B4B !important;
+    background: none !important;
+    -webkit-text-fill-color: initial !important;
+    text-shadow: none !important;
+    font-weight: 800 !important;
+}
+.theme-vivid .hero-title {
+    color: #6B7280 !important;
+    letter-spacing: 0.07em !important;
+}
+.theme-vivid .hero-institution {
+    color: #4F46E5 !important;
+    font-weight: 600 !important;
+}
+
+/* -- Typography throughout ----------------------------------------- */
+.theme-vivid .card-header h3,
+.theme-vivid .timeline-title,
+.theme-vivid .roadmap-title {
+    color: #1E1B4B !important;
+}
+.theme-vivid .card-header i { color: #6366F1 !important; }
+.theme-vivid .timeline-date {
+    color: #6366F1 !important;
+    opacity: 1 !important;
+    font-weight: 700 !important;
+}
+.theme-vivid .timeline-subtitle { color: #374151 !important; }
+.theme-vivid .timeline-desc    { color: #4B5563 !important; }
+
+/* -- Timeline ------------------------------------------------------ */
+.theme-vivid .timeline::before {
+    background: linear-gradient(to bottom, #6366F1, rgba(99,102,241,0.12)) !important;
+}
+.theme-vivid .timeline-item::before {
+    background: #6366F1 !important;
+    border-color: #F0F4FF !important;
+    box-shadow: 0 0 0 3px rgba(99,102,241,0.18), 0 0 0 5px rgba(99,102,241,0.06) !important;
+}
+.theme-vivid .timeline-item:hover::before {
+    box-shadow: 0 0 0 4px rgba(99,102,241,0.30), 0 0 0 8px rgba(99,102,241,0.09) !important;
+}
+
+/* -- Tab buttons --------------------------------------------------- */
+.theme-vivid .tab-btn {
+    background: rgba(99,102,241,0.05) !important;
+    border: 1.5px solid rgba(99,102,241,0.15) !important;
+    color: #374151 !important;
+}
+.theme-vivid .tab-btn:hover {
+    background: rgba(99,102,241,0.09) !important;
+    border-color: rgba(99,102,241,0.35) !important;
+    color: #4F46E5 !important;
+}
+.theme-vivid .tab-btn.active,
+.theme-vivid .tab-btn.active:hover {
+    background: #6366F1 !important;
+    border-color: #6366F1 !important;
+    color: #FFFFFF !important;
+    font-weight: 700 !important;
+    box-shadow: 0 4px 14px rgba(99,102,241,0.32) !important;
+}
+
+/* -- Collab tabs --------------------------------------------------- */
+.theme-vivid .collab-tab-btn {
+    color: #374151 !important;
+    border-color: rgba(99,102,241,0.15) !important;
+    background: rgba(99,102,241,0.04) !important;
+}
+.theme-vivid .collab-tab-btn.active {
+    background: #6366F1 !important;
+    color: #FFFFFF !important;
+    border-color: #6366F1 !important;
+    box-shadow: 0 3px 10px rgba(99,102,241,0.28) !important;
+    text-shadow: none !important;
+}
+.theme-vivid .collab-tab-btn::before { background: #6366F1 !important; }
+
+/* -- Publications -------------------------------------------------- */
+.theme-vivid .publication-item {
+    background: #FFFFFF !important;
+    border-left-color: #6366F1 !important;
+}
+.theme-vivid .publication-item::before { background: #6366F1 !important; }
+.theme-vivid .publication-item:hover { background: #FAFBFF !important; }
+
+/* -- Action buttons ------------------------------------------------ */
+.theme-vivid .sim-action-btn,
+.theme-vivid .card-action-btn,
+.theme-vivid .pub-link-btn {
+    background: rgba(99,102,241,0.07) !important;
+    color: #4F46E5 !important;
+    border-color: rgba(99,102,241,0.22) !important;
+}
+.theme-vivid .glass-card:hover .sim-action-btn,
+.theme-vivid .glass-card:hover .card-action-btn,
+.theme-vivid .pub-card:hover .pub-link-btn,
+.theme-vivid .sim-action-btn:hover {
+    background: #6366F1 !important;
+    color: #FFFFFF !important;
+    border-color: #6366F1 !important;
+}
+
+/* -- Icon badges --------------------------------------------------- */
+.theme-vivid .sim-icon-badge,
+.theme-vivid .card-icon-badge,
+.theme-vivid .pub-icon-badge,
+.theme-vivid .stat-card .stat-icon-badge {
+    background: rgba(99,102,241,0.10) !important;
+    color: #6366F1 !important;
+}
+.theme-vivid .glass-card:hover .sim-icon-badge,
+.theme-vivid .glass-card:hover .card-icon-badge,
+.theme-vivid .stat-card:hover .stat-icon-badge {
+    background: #6366F1 !important;
+    color: #FFFFFF !important;
+}
+
+/* -- Primary CV/Print button --------------------------------------- */
+.theme-vivid .btn-primary-cv,
+.theme-vivid #view-cv-btn,
+.theme-vivid #print-cv-btn {
+    background: #6366F1 !important;
+    color: #FFFFFF !important;
+    border-color: #6366F1 !important;
+    font-weight: 700 !important;
+    text-shadow: none !important;
+}
+.theme-vivid .btn-primary-cv:hover,
+.theme-vivid #view-cv-btn:hover,
+.theme-vivid #print-cv-btn:hover {
+    background: #4F46E5 !important;
+    border-color: #4F46E5 !important;
+    box-shadow: 0 6px 20px rgba(99,102,241,0.38) !important;
+}
+.theme-vivid .btn-primary-cv i,
+.theme-vivid #view-cv-btn i { color: #FFFFFF !important; }
+
+/* -- Page buttons -------------------------------------------------- */
+.theme-vivid .page-btn {
+    background: #FFFFFF !important;
+    border-color: #DDE3F5 !important;
+    color: #374151 !important;
+}
+.theme-vivid .page-btn:hover,
+.theme-vivid .page-btn.active {
+    background: #6366F1 !important;
+    color: #FFFFFF !important;
+    border-color: #6366F1 !important;
+}
+
+/* -- Contact items ------------------------------------------------- */
+.theme-vivid .contact-item { color: #374151 !important; }
+.theme-vivid .contact-item:hover {
+    background: #EEF2FF !important;
+    color: #4F46E5 !important;
+    border-color: #A5B4FC !important;
+}
+.theme-vivid .profile-ids-grid a {
+    color: #374151 !important;
+    border-color: #DDE3F5 !important;
+    background: #FFFFFF !important;
+}
+.theme-vivid .profile-ids-grid a:hover {
+    border-color: #6366F1 !important;
+    color: #4F46E5 !important;
+    background: #EEF2FF !important;
+}
+
+/* -- Chips & badges ------------------------------------------------ */
+.theme-vivid .score-badge    { color: #6366F1 !important; }
+.theme-vivid .collab-chip {
+    border-color: rgba(99,102,241,0.18) !important;
+    color: #374151 !important;
+    background: #FFFFFF !important;
+}
+.theme-vivid .collab-chip:hover {
+    background: #6366F1 !important;
+    color: #FFFFFF !important;
+    border-color: #6366F1 !important;
+}
+.theme-vivid .pub-metrics {
+    background: rgba(99,102,241,0.08) !important;
+    color: #4F46E5 !important;
+    border-color: rgba(99,102,241,0.20) !important;
+}
+
+/* -- Roadmap ------------------------------------------------------- */
+.theme-vivid .roadmap-dot {
+    background: #FFFFFF !important;
+    border-color: #6366F1 !important;
+    box-shadow: 0 0 0 3px rgba(99,102,241,0.15) !important;
+}
+.theme-vivid .roadmap-item::before { background: #DDE3F5 !important; }
+.theme-vivid .roadmap-title        { color: #1E1B4B !important; }
+.theme-vivid .roadmap-item:hover .roadmap-card {
+    border-color: rgba(99,102,241,0.30) !important;
+}
+
+/* -- Data tables --------------------------------------------------- */
+.theme-vivid .data-table          { border-color: #DDE3F5 !important; }
+.theme-vivid .data-table thead tr { background: #EEF2FF !important; }
+.theme-vivid .data-table th       { color: #4F46E5 !important; }
+.theme-vivid .data-table tr:hover td {
+    background: rgba(99,102,241,0.03) !important;
+}
+
+/* -- Word cloud ---------------------------------------------------- */
+.theme-vivid .word-tag { color: #4F46E5 !important; }
+
+/* -- Footer -------------------------------------------------------- */
+.theme-vivid .footer {
+    background: #1E1B4B !important;
+    border-top: none !important;
+}
+.theme-vivid .footer p {
+    color: rgba(255,255,255,0.6) !important;
+    text-shadow: none !important;
+}
+
+/* -- Scrollbar ----------------------------------------------------- */
+.theme-vivid ::-webkit-scrollbar-thumb {
+    background: rgba(99,102,241,0.22) !important;
+}
+.theme-vivid ::-webkit-scrollbar-thumb:hover {
+    background: rgba(99,102,241,0.42) !important;
+}
+
+/* -- Mini timeline hover ------------------------------------------- */
+.theme-vivid .mini-timeline-item:hover {
+    background: rgba(99,102,241,0.05) !important;
+}
+
+/* -- Focus ring ---------------------------------------------------- */
+.theme-vivid :focus-visible {
+    outline-color: rgba(99,102,241,0.65) !important;
+}
+
+
+/* -------------------------------------------------------------------
+   ? NATURE THEME  � Forest green � Sage white � Peaceful & vibrant
+   All text: dark (#1A2E22) on light surfaces � WCAG AAA throughout
+   ------------------------------------------------------------------- */
+
+/* -- Design tokens ------------------------------------------------ */
+.theme-nature {
+    --primary-color:  #2D6A4F;
+    --primary-hover:  #1B4332;
+    --primary-rgb:    45, 106, 79;
+    --bg-color:       #F0F7F4;
+    --surface-color:  #FFFFFF;
+    --text-primary:   #1A2E22;
+    --text-secondary: #3D5A47;
+    --border-color:   #C8DDD2;
+    --glass-bg:       rgba(255,255,255,0.92);
+    --glass-border:   rgba(45,106,79,0.14);
+    --shadow-sm:      0 1px 3px rgba(45,106,79,0.07), 0 1px 2px rgba(0,0,0,0.04);
+    --shadow-md:      0 4px 16px rgba(45,106,79,0.10), 0 2px 6px rgba(0,0,0,0.05);
+    --shadow-lg:      0 12px 36px rgba(45,106,79,0.13), 0 4px 12px rgba(0,0,0,0.06);
+    --shadow-hover:   0 20px 48px rgba(45,106,79,0.16), 0 8px 20px rgba(0,0,0,0.07);
+    --shadow-card:    0 2px 8px rgba(45,106,79,0.08), 0 0 0 1px rgba(45,106,79,0.05);
+}
+
+/* -- Page body � organic sage background --------------------------- */
+.theme-nature body {
+    background-color: #F0F7F4 !important;
+    background-image:
+        radial-gradient(ellipse at 8%  5%,  rgba(45,106,79,0.07)  0%, transparent 45%),
+        radial-gradient(ellipse at 92% 95%, rgba(52,134,60,0.05)  0%, transparent 45%),
+        radial-gradient(ellipse at 50% 50%, rgba(45,106,79,0.02)  0%, transparent 70%),
+        radial-gradient(rgba(45,106,79,0.035) 1px, transparent 1px) !important;
+    background-size: 100% 100%, 100% 100%, 100% 100%, 26px 26px !important;
+    color: #1A2E22 !important;
+}
+
+/* -- Organic leaf watermark decorations (CSS only) ----------------- */
+.theme-nature .academic-bg-decorations::before {
+    content: '';
+    position: fixed;
+    top: -10%;
+    left: -8%;
+    width: 45vw;
+    height: 45vw;
+    background: radial-gradient(ellipse, rgba(45,106,79,0.06) 0%, transparent 65%);
+    border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
+    pointer-events: none;
+    z-index: 0;
+    animation: leafDrift 18s ease-in-out infinite alternate;
+}
+.theme-nature .academic-bg-decorations::after {
+    content: '';
+    position: fixed;
+    bottom: -8%;
+    right: -6%;
+    width: 38vw;
+    height: 38vw;
+    background: radial-gradient(ellipse, rgba(52,134,60,0.05) 0%, transparent 65%);
+    border-radius: 40% 60% 30% 70% / 60% 40% 55% 45%;
+    pointer-events: none;
+    z-index: 0;
+    animation: leafDrift 22s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes leafDrift {
+    0%   { transform: translate(0, 0)    rotate(0deg)   scale(1);    }
+    50%  { transform: translate(2%, 2%)  rotate(5deg)   scale(1.04); }
+    100% { transform: translate(-1%, 1%) rotate(-3deg)  scale(0.97); }
+}
+
+/* -- Background icon colour ? forest green ------------------------- */
+.theme-nature .icon-decor {
+    color: #2D6A4F !important;
+    opacity: 0.07 !important;
+}
+.theme-nature .icon-decor:hover { opacity: 0.20 !important; }
+
+/* -- Navbar � deep forest green ------------------------------------ */
+.theme-nature .navbar {
+    background: linear-gradient(135deg, #1B4332 0%, #2D6A4F 100%) !important;
+    backdrop-filter: none !important;
+    border-bottom: none !important;
+    box-shadow: 0 4px 24px rgba(27,67,50,0.35), 0 1px 4px rgba(0,0,0,0.12) !important;
+}
+.theme-nature .navbar .nav-logo {
+    color: #FFFFFF !important;
+    font-weight: 800 !important;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.15) !important;
+}
+.theme-nature .navbar .nav-link {
+    color: rgba(255,255,255,0.80) !important;
+    font-weight: 600 !important;
+}
+.theme-nature .navbar .nav-link:hover {
+    color: #FFFFFF !important;
+    background: rgba(255,255,255,0.12) !important;
+}
+.theme-nature .navbar .nav-link::after { background: #95D5B2 !important; }
+.theme-nature .navbar .nav-link.active {
+    color: #FFFFFF !important;
+    background: rgba(255,255,255,0.15) !important;
+    font-weight: 700 !important;
+}
+.theme-nature .navbar .nav-link.active::after { background: #FFFFFF !important; }
+
+.theme-nature #tabs-dropdown-toggle,
+.theme-nature .mobile-menu-btn {
+    color: rgba(255,255,255,0.85) !important;
+    border-color: rgba(255,255,255,0.22) !important;
+}
+.theme-nature #tabs-dropdown-toggle i,
+.theme-nature #nav-scroll-left i,
+.theme-nature #nav-scroll-right i,
+.theme-nature .mobile-menu-btn i {
+    color: rgba(255,255,255,0.70) !important;
+}
+
+/* -- Tabs dropdown ------------------------------------------------ */
+.theme-nature .nav-dropdown-menu {
+    background: #FFFFFF !important;
+    border: 1.5px solid #C8DDD2 !important;
+    box-shadow: 0 8px 32px rgba(45,106,79,0.14) !important;
+}
+.theme-nature .dropdown-link { color: #3D5A47 !important; }
+.theme-nature .dropdown-link:hover {
+    background: #EDFAF3 !important;
+    color: #1B4332 !important;
+}
+.theme-nature .dropdown-link.active {
+    background: #D8F3E8 !important;
+    color: #1B4332 !important;
+    border-left-color: #2D6A4F !important;
+}
+
+/* -- Section headers ----------------------------------------------- */
+.theme-nature .section-header h2 {
+    color: #1B4332 !important;
+    background: none !important;
+    -webkit-text-fill-color: initial !important;
+    text-shadow: none !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.03em !important;
+}
+.theme-nature .section-underline {
+    background: linear-gradient(90deg, #2D6A4F, #52B788) !important;
+    box-shadow: 0 0 10px rgba(45,106,79,0.25) !important;
+    height: 3px !important;
+    width: 55px !important;
+    border-radius: 9999px !important;
+}
+.theme-nature .section-underline::after {
+    background: linear-gradient(90deg, #2D6A4F, #52B788) !important;
+    opacity: 0.18 !important;
+}
+
+/* -- Glass cards --------------------------------------------------- */
+.theme-nature .glass-card,
+.theme-nature .detail-card,
+.theme-nature .stat-card,
+.theme-nature .pub-card,
+.theme-nature .publication-item,
+.theme-nature .course-topic-card,
+.theme-nature .mentorship-card,
+.theme-nature .project-card,
+.theme-nature .timeline-card,
+.theme-nature .contribution-item-card,
+.theme-nature .role-card,
+.theme-nature .material-card,
+.theme-nature #simulations-grid .glass-card {
+    background: #FFFFFF !important;
+    border: 1px solid #C8DDD2 !important;
+    box-shadow: 0 2px 10px rgba(45,106,79,0.07), 0 1px 3px rgba(0,0,0,0.04) !important;
+    backdrop-filter: none !important;
+}
+/* Subtle sage shimmer top edge on cards */
+.theme-nature .glass-card::before {
+    background: linear-gradient(90deg, transparent, rgba(82,183,136,0.12) 30%, rgba(82,183,136,0.18) 50%, rgba(82,183,136,0.12) 70%, transparent) !important;
+}
+.theme-nature .glass-card:hover,
+.theme-nature .detail-card:hover,
+.theme-nature .stat-card:hover,
+.theme-nature .pub-card:hover,
+.theme-nature .publication-item:hover,
+.theme-nature .course-topic-card:hover,
+.theme-nature .role-card:hover {
+    border-color: #74C69D !important;
+    box-shadow: 0 8px 28px rgba(45,106,79,0.13), 0 2px 8px rgba(0,0,0,0.05) !important;
+    transform: translateY(-3px) !important;
+}
+
+/* -- Hero card & profile image ------------------------------------- */
+.theme-nature .hero-profile {
+    background: #FFFFFF !important;
+    border: 1px solid #C8DDD2 !important;
+}
+.theme-nature .hero-image-wrapper {
+    border: 4px solid #52B788 !important;
+    box-shadow:
+        0 4px 20px rgba(45,106,79,0.18),
+        0 0 0 6px rgba(82,183,136,0.12),
+        0 0 0 10px rgba(45,106,79,0.04) !important;
+}
+.theme-nature .hero-image-wrapper:hover {
+    box-shadow:
+        0 8px 30px rgba(45,106,79,0.25),
+        0 0 0 7px rgba(82,183,136,0.22),
+        0 0 0 13px rgba(45,106,79,0.07) !important;
+}
+.theme-nature .hero-name {
+    color: #1B4332 !important;
+    background: none !important;
+    -webkit-text-fill-color: initial !important;
+    text-shadow: none !important;
+    font-weight: 800 !important;
+}
+.theme-nature .hero-title {
+    color: #5A7A65 !important;
+    letter-spacing: 0.07em !important;
+}
+.theme-nature .hero-institution {
+    color: #2D6A4F !important;
+    font-weight: 600 !important;
+}
+
+/* -- General typography -------------------------------------------- */
+.theme-nature .card-header h3,
+.theme-nature .timeline-title,
+.theme-nature .roadmap-title { color: #1B4332 !important; }
+.theme-nature .timeline-date {
+    color: #2D6A4F !important;
+    font-weight: 700 !important;
+    opacity: 1 !important;
+}
+.theme-nature .timeline-subtitle { color: #3D5A47 !important; }
+.theme-nature .timeline-desc     { color: #4B6B57 !important; }
+
+/* -- Timeline � vine-like gradient line ---------------------------- */
+.theme-nature .timeline::before {
+    background: linear-gradient(to bottom, #2D6A4F, rgba(82,183,136,0.15)) !important;
+}
+.theme-nature .timeline-item::before {
+    background: #52B788 !important;
+    border-color: #F0F7F4 !important;
+    box-shadow:
+        0 0 0 3px rgba(82,183,136,0.20),
+        0 0 0 5px rgba(45,106,79,0.06) !important;
+}
+.theme-nature .timeline-item:hover::before {
+    background: #2D6A4F !important;
+    transform: scale(1.35) !important;
+    box-shadow:
+        0 0 0 4px rgba(82,183,136,0.30),
+        0 0 14px rgba(45,106,79,0.20) !important;
+}
+
+/* -- Tab buttons --------------------------------------------------- */
+.theme-nature .tab-btn {
+    background: rgba(45,106,79,0.05) !important;
+    border: 1.5px solid rgba(45,106,79,0.15) !important;
+    color: #3D5A47 !important;
+}
+.theme-nature .tab-btn:hover {
+    background: rgba(45,106,79,0.09) !important;
+    border-color: rgba(45,106,79,0.35) !important;
+    color: #1B4332 !important;
+}
+.theme-nature .tab-btn.active,
+.theme-nature .tab-btn.active:hover {
+    background: #2D6A4F !important;
+    border-color: #2D6A4F !important;
+    color: #FFFFFF !important;
+    font-weight: 700 !important;
+    box-shadow: 0 4px 14px rgba(45,106,79,0.32) !important;
+}
+
+/* -- Collab tabs --------------------------------------------------- */
+.theme-nature .collab-tab-btn {
+    color: #3D5A47 !important;
+    border-color: rgba(45,106,79,0.15) !important;
+    background: rgba(45,106,79,0.04) !important;
+}
+.theme-nature .collab-tab-btn.active {
+    background: #2D6A4F !important;
+    color: #FFFFFF !important;
+    border-color: #2D6A4F !important;
+    box-shadow: 0 3px 10px rgba(45,106,79,0.28) !important;
+    text-shadow: none !important;
+}
+.theme-nature .collab-tab-btn::before { background: #2D6A4F !important; }
+
+/* -- Publications -------------------------------------------------- */
+.theme-nature .publication-item {
+    background: #FFFFFF !important;
+    border-left-color: #52B788 !important;
+}
+.theme-nature .publication-item::before { background: #52B788 !important; }
+.theme-nature .publication-item:hover   { background: #FAFFFC !important; }
+
+/* -- Action pill buttons ------------------------------------------- */
+.theme-nature .sim-action-btn,
+.theme-nature .card-action-btn,
+.theme-nature .pub-link-btn {
+    background: rgba(45,106,79,0.07) !important;
+    color: #1B4332 !important;
+    border-color: rgba(45,106,79,0.22) !important;
+}
+.theme-nature .glass-card:hover .sim-action-btn,
+.theme-nature .glass-card:hover .card-action-btn,
+.theme-nature .pub-card:hover .pub-link-btn,
+.theme-nature .sim-action-btn:hover {
+    background: #2D6A4F !important;
+    color: #FFFFFF !important;
+    border-color: #2D6A4F !important;
+}
+
+/* -- Icon squircle badges (Nature Theme fallback) ------------------ */
+.theme-nature .sim-icon-badge,
+.theme-nature .card-icon-badge,
+.theme-nature .pub-icon-badge {
+    background: rgba(45,106,79,0.08);
+    color: #2D6A4F;
+}
+
+/* -- Primary CV button --------------------------------------------- */
+.theme-nature .btn-primary-cv,
+.theme-nature #view-cv-btn,
+.theme-nature #print-cv-btn {
+    background: #2D6A4F !important;
+    color: #FFFFFF !important;
+    border-color: #2D6A4F !important;
+    font-weight: 700 !important;
+    text-shadow: none !important;
+}
+.theme-nature .btn-primary-cv:hover,
+.theme-nature #view-cv-btn:hover,
+.theme-nature #print-cv-btn:hover {
+    background: #1B4332 !important;
+    border-color: #1B4332 !important;
+    box-shadow: 0 6px 20px rgba(45,106,79,0.36) !important;
+}
+.theme-nature .btn-primary-cv i,
+.theme-nature #view-cv-btn i { color: #FFFFFF !important; }
+
+/* -- Page buttons -------------------------------------------------- */
+.theme-nature .page-btn {
+    background: #FFFFFF !important;
+    border-color: #C8DDD2 !important;
+    color: #3D5A47 !important;
+}
+.theme-nature .page-btn:hover,
+.theme-nature .page-btn.active {
+    background: #2D6A4F !important;
+    color: #FFFFFF !important;
+    border-color: #2D6A4F !important;
+}
+
+/* -- Contact items ------------------------------------------------- */
+.theme-nature .contact-item { color: #3D5A47 !important; }
+.theme-nature .contact-item:hover {
+    background: #EDFAF3 !important;
+    color: #1B4332 !important;
+    border-color: #74C69D !important;
+}
+.theme-nature .profile-ids-grid a {
+    color: #3D5A47 !important;
+    border-color: #C8DDD2 !important;
+    background: #FFFFFF !important;
+}
+.theme-nature .profile-ids-grid a:hover {
+    border-color: #2D6A4F !important;
+    color: #1B4332 !important;
+    background: #EDFAF3 !important;
+}
+
+/* -- Chips, badges, scores ----------------------------------------- */
+.theme-nature .score-badge { color: #2D6A4F !important; }
+.theme-nature .collab-chip {
+    border-color: rgba(45,106,79,0.18) !important;
+    color: #3D5A47 !important;
+    background: #FFFFFF !important;
+}
+.theme-nature .collab-chip:hover {
+    background: #2D6A4F !important;
+    color: #FFFFFF !important;
+    border-color: #2D6A4F !important;
+}
+.theme-nature .pub-metrics {
+    background: rgba(45,106,79,0.08) !important;
+    color: #1B4332 !important;
+    border-color: rgba(45,106,79,0.20) !important;
+}
+
+/* -- Roadmap ------------------------------------------------------- */
+.theme-nature .roadmap-dot {
+    background: #FFFFFF !important;
+    border-color: #52B788 !important;
+    box-shadow: 0 0 0 3px rgba(82,183,136,0.18) !important;
+}
+.theme-nature .roadmap-item::before { background: #C8DDD2 !important; }
+.theme-nature .roadmap-title        { color: #1B4332 !important; }
+
+/* -- Word cloud ---------------------------------------------------- */
+.theme-nature .word-tag { color: #2D6A4F !important; }
+
+/* -- Data tables --------------------------------------------------- */
+.theme-nature .data-table          { border-color: #C8DDD2 !important; }
+.theme-nature .data-table thead tr { background: #EDFAF3 !important; }
+.theme-nature .data-table th       { color: #1B4332 !important; }
+.theme-nature .data-table tr:hover td {
+    background: rgba(45,106,79,0.03) !important;
+}
+
+/* -- Footer � deep forest ------------------------------------------ */
+.theme-nature .footer {
+    background: linear-gradient(135deg, #1B4332 0%, #2D6A4F 100%) !important;
+    border-top: none !important;
+}
+.theme-nature .footer p {
+    color: rgba(255,255,255,0.65) !important;
+    text-shadow: none !important;
+}
+
+/* -- Scrollbar ----------------------------------------------------- */
+.theme-nature ::-webkit-scrollbar-thumb {
+    background: rgba(45,106,79,0.22) !important;
+}
+.theme-nature ::-webkit-scrollbar-thumb:hover {
+    background: rgba(45,106,79,0.42) !important;
+}
+
+/* -- Mini timeline hover ------------------------------------------- */
+.theme-nature .mini-timeline-item:hover {
+    background: rgba(45,106,79,0.05) !important;
+}
+
+/* -- Focus ring ---------------------------------------------------- */
+.theme-nature :focus-visible {
+    outline-color: rgba(45,106,79,0.60) !important;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   ✦ VIBRANT COLORFUL ICON SYSTEM  —  Homepage, Publications & More
+   Brings rich, distinct, expressive colors to all icons across themes
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── 1. Hero & Contact Icons ─────────────────────────────────────── */
+.hero-institution i,
+.contact-item i.fa-university { color: #1A73E8 !important; }
+.contact-item i.fa-envelope   { color: #EA4335 !important; }
+.contact-item i.fa-phone      { color: #25D366 !important; }
+.contact-item i.fa-whatsapp   { color: #25D366 !important; }
+.contact-item i.fa-map-marker-alt { color: #EA4335 !important; }
+
+/* Profile ID Badges */
+.profile-ids-grid a i.fa-graduation-cap { color: #4285F4 !important; } /* Google Scholar */
+.profile-ids-grid a i.fa-book           { color: #FF6600 !important; } /* Scopus */
+.profile-ids-grid a i.fa-id-badge       { color: #A6CE39 !important; } /* ORCID */
+.profile-ids-grid a i.fa-linkedin       { color: #0A66C2 !important; } /* LinkedIn */
+.profile-ids-grid a i.fa-researchgate   { color: #00CCBB !important; } /* ResearchGate */
+
+/* ── 2. Stat Card Badges (Homepage, Publications, Mentorship) ────── */
+.stat-card .stat-icon-badge {
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease !important;
+}
+.stat-card:hover .stat-icon-badge {
+    transform: scale(1.15) rotate(4deg) !important;
+}
+
+/* ── 3. Section & Card Header Icons Color Coding ─────────────────── */
+.card-header i.fa-book,
+.card-header i.fa-book-open,
+.card-header i.fa-newspaper,
+.card-header i.fa-quote-right,
+.card-header i.fa-file-alt {
+    color: #2563EB !important; /* Royal Blue for Publications & Papers */
+}
+
+.card-header i.fa-chalkboard-teacher,
+.card-header i.fa-graduation-cap,
+.card-header i.fa-university,
+.card-header i.fa-certificate,
+.card-header i.fa-award {
+    color: #D97706 !important; /* Warm Gold/Amber for Teaching & Awards */
+}
+
+.card-header i.fa-user-friends,
+.card-header i.fa-users,
+.card-header i.fa-hands-helping,
+.card-header i.fa-user-graduate,
+.card-header i.fa-lightbulb {
+    color: #059669 !important; /* Vibrant Emerald for Mentorship & Projects */
+}
+
+.card-header i.fa-laptop-code,
+.card-header i.fa-cube,
+.card-header i.fa-cogs,
+.card-header i.fa-project-diagram,
+.card-header i.fa-truck,
+.card-header i.fa-boxes {
+    color: #6366F1 !important; /* Vibrant Indigo for Simulations & Supply Chain */
+}
+
+.card-header i.fa-briefcase,
+.card-header i.fa-history,
+.card-header i.fa-medal,
+.card-header i.fa-trophy,
+.card-header i.fa-crown,
+.card-header i.fa-building {
+    color: #8B5CF6 !important; /* Vibrant Purple for Experience & Roles */
+}
+
+.card-header i.fa-pen-nib,
+.card-header i.fa-check-double,
+.card-header i.fa-tasks,
+.card-header i.fa-journal-whills {
+    color: #E11D48 !important; /* Crimson Red for Editorial & Peer Reviews */
+}
+
+.card-header i.fa-camera,
+.card-header i.fa-images,
+.card-header i.fa-map-marker-alt,
+.card-header i.fa-palette {
+    color: #EA580C !important; /* Vibrant Orange for Clicks & Gallery */
+}
+
+/* ── 4. Simulation & Project Card Badges Color Rotation ──────────── */
+#simulations-grid .glass-card:nth-child(6n+1) .sim-icon-badge,
+.project-card:nth-child(6n+1) .card-icon-badge {
+    background: rgba(37, 99, 235, 0.12) !important;
+    color: #2563EB !important;
+}
+#simulations-grid .glass-card:nth-child(6n+2) .sim-icon-badge,
+.project-card:nth-child(6n+2) .card-icon-badge {
+    background: rgba(5, 150, 105, 0.12) !important;
+    color: #059669 !important;
+}
+#simulations-grid .glass-card:nth-child(6n+3) .sim-icon-badge,
+.project-card:nth-child(6n+3) .card-icon-badge {
+    background: rgba(217, 119, 6, 0.12) !important;
+    color: #D97706 !important;
+}
+#simulations-grid .glass-card:nth-child(6n+4) .sim-icon-badge,
+.project-card:nth-child(6n+4) .card-icon-badge {
+    background: rgba(139, 92, 246, 0.12) !important;
+    color: #8B5CF6 !important;
+}
+#simulations-grid .glass-card:nth-child(6n+5) .sim-icon-badge,
+.project-card:nth-child(6n+5) .card-icon-badge {
+    background: rgba(225, 29, 72, 0.12) !important;
+    color: #E11D48 !important;
+}
+#simulations-grid .glass-card:nth-child(6n+6) .sim-icon-badge,
+.project-card:nth-child(6n+6) .card-icon-badge {
+    background: rgba(8, 145, 178, 0.12) !important;
+    color: #0891B2 !important;
+}
+
+/* Hover state pop for simulation/project badges */
+.glass-card:hover .sim-icon-badge,
+.project-card:hover .card-icon-badge {
+    transform: scale(1.12) rotate(4deg) !important;
+}
+
+/* ── 5. Publication & Role Badges ────────────────────────────────── */
+.publication-item .pub-icon-badge {
+    background: rgba(37, 99, 235, 0.12) !important;
+    color: #2563EB !important;
+}
+.role-card:nth-child(odd) .card-header i {
+    color: #E11D48 !important;
+}
+.role-card:nth-child(even) .card-header i {
+    color: #059669 !important;
+}
+
+/* ── 6. Timeline Milestone Icons ─────────────────────────────────── */
+.timeline-item:nth-child(4n+1)::before { background: #2563EB !important; box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25) !important; }
+.timeline-item:nth-child(4n+2)::before { background: #059669 !important; box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.25) !important; }
+.timeline-item:nth-child(4n+3)::before { background: #D97706 !important; box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.25) !important; }
+.timeline-item:nth-child(4n+4)::before { background: #8B5CF6 !important; box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.25) !important; }
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   ✦ SQUARESPACE EDITORIAL FELLOW THEME (.theme-editorial)
+   Inspired by Squarespace 7.1 'Fellow' & 'Palmer' Academic Templates
+   Ivy League Editorial Aesthetic · Serif Headings · Warm Linen Canvas
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── 1. Design Tokens ────────────────────────────────────────────── */
+.theme-editorial {
+    --primary-color:  #064E3B; /* Royal Forest Emerald */
+    --primary-hover:  #022C22;
+    --primary-rgb:    6, 78, 59;
+    --bg-color:       #F9F8F6; /* Warm Linen */
+    --surface-color:  #FFFFFF; /* Warm Ivory Card */
+    --text-primary:   #1C1917; /* Deep Charcoal Stone */
+    --text-secondary: #57534E; /* Warm Slate Charcoal */
+    --border-color:   #E7E5E4; /* Warm Stone Divider */
+    --glass-bg:       rgba(255, 255, 255, 0.94);
+    --glass-border:   #E7E5E4;
+    --shadow-sm:      0 1px 3px rgba(28, 25, 23, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+    --shadow-md:      0 4px 16px rgba(28, 25, 23, 0.07), 0 2px 6px rgba(0, 0, 0, 0.04);
+    --shadow-lg:      0 12px 36px rgba(28, 25, 23, 0.10), 0 4px 12px rgba(0, 0, 0, 0.05);
+    --shadow-hover:   0 20px 48px rgba(28, 25, 23, 0.13), 0 8px 20px rgba(0, 0, 0, 0.06);
+    --shadow-card:    0 2px 8px rgba(28, 25, 23, 0.05), 0 0 0 1px #E7E5E4;
+}
+
+/* ── 2. Typography & Canvas (Linen & Organic Warmth) ─────────────── */
+.theme-editorial body {
+    background-color: #F9F8F6 !important;
+    background-image:
+        radial-gradient(ellipse at 12% 8%,   rgba(6, 78, 59, 0.045) 0%, transparent 50%),
+        radial-gradient(ellipse at 88% 92%, rgba(197, 168, 128, 0.065) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 45%, rgba(6, 78, 59, 0.02)  0%, transparent 70%),
+        radial-gradient(rgba(28, 25, 23, 0.022) 1px, transparent 1px) !important;
+    background-size: 100% 100%, 100% 100%, 100% 100%, 28px 28px !important;
+    color: #1C1917 !important;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+/* Serif Headings (Squarespace Editorial Signature) */
+.theme-editorial h1,
+.theme-editorial h2,
+.theme-editorial h3,
+.theme-editorial .hero-name,
+.theme-editorial .section-header h2,
+.theme-editorial .navbar .nav-logo,
+.theme-editorial .card-header h3,
+.theme-editorial .timeline-title,
+.theme-editorial .roadmap-title {
+    font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.018em !important;
+}
+
+/* ── 3. Navbar (Floating Warm Ivory Glass & Gold Accent) ─────────── */
+.theme-editorial .navbar {
+    background: rgba(250, 249, 246, 0.94) !important;
+    backdrop-filter: blur(18px) !important;
+    -webkit-backdrop-filter: blur(18px) !important;
+    border-bottom: 1px solid #E7E5E4 !important;
+    box-shadow: 0 4px 20px rgba(28, 25, 23, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02) !important;
+}
+
+.theme-editorial .navbar .nav-logo {
+    color: #1C1917 !important;
+    font-size: 1.42rem !important;
+    font-weight: 700 !important;
+    transition: var(--transition);
+}
+.theme-editorial .navbar .nav-logo:hover {
+    color: #064E3B !important;
+}
+
+.theme-editorial .navbar .nav-link {
+    color: #44403C !important;
+    font-weight: 600 !important;
+    font-size: 0.86rem !important;
+    transition: var(--transition-fast) !important;
+}
+.theme-editorial .navbar .nav-link:hover {
+    color: #064E3B !important;
+    background: rgba(6, 78, 59, 0.06) !important;
+}
+.theme-editorial .navbar .nav-link::after {
+    background: linear-gradient(90deg, #064E3B, #C5A880) !important;
+    height: 2px !important;
+}
+.theme-editorial .navbar .nav-link.active {
+    color: #064E3B !important;
+    background: rgba(6, 78, 59, 0.09) !important;
+    font-weight: 700 !important;
+}
+.theme-editorial .navbar .nav-link.active::after {
+    background: linear-gradient(90deg, #064E3B, #C5A880) !important;
+}
+
+.theme-editorial #tabs-dropdown-toggle,
+.theme-editorial .mobile-menu-btn {
+    color: #1C1917 !important;
+    border-color: #E7E5E4 !important;
+    background: rgba(255, 255, 255, 0.85) !important;
+    transition: var(--transition-fast) !important;
+}
+
+/* ── 4. Section Headers & Elegant Underline Flourish ──────────────── */
+.theme-editorial .section-header h2 {
+    color: #1C1917 !important;
+    font-size: 2.25rem !important;
+    background: none !important;
+    -webkit-text-fill-color: initial !important;
+}
+
+.theme-editorial .section-underline {
+    background: linear-gradient(90deg, #064E3B 0%, #C5A880 100%) !important;
+    height: 3px !important;
+    width: 65px !important;
+    border-radius: 9999px !important;
+    box-shadow: 0 1px 6px rgba(197, 168, 128, 0.25) !important;
+    transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s ease !important;
+}
+.theme-editorial .section-header:hover .section-underline {
+    width: 90px !important;
+}
+.theme-editorial .section-underline::after {
+    background: linear-gradient(90deg, #064E3B 0%, #C5A880 100%) !important;
+    opacity: 0.20 !important;
+}
+
+/* ── 5. Cards & Glass Surfaces (Ivory with Soft Elevated Shadow) ─── */
+.theme-editorial .glass-card,
+.theme-editorial .detail-card,
+.theme-editorial .stat-card,
+.theme-editorial .pub-card,
+.theme-editorial .publication-item,
+.theme-editorial .course-topic-card,
+.theme-editorial .mentorship-card,
+.theme-editorial .project-card,
+.theme-editorial .timeline-card,
+.theme-editorial .contribution-item-card,
+.theme-editorial .role-card,
+.theme-editorial .material-card,
+.theme-editorial #simulations-grid .glass-card {
+    background: #FFFFFF !important;
+    border: 1px solid #E7E5E4 !important;
+    box-shadow: 0 2px 10px rgba(28, 25, 23, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02) !important;
+    border-radius: var(--radius-md) !important;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease !important;
+    backdrop-filter: none !important;
+}
+
+/* Subtle champagne top highlight shimmer on cards */
+.theme-editorial .glass-card::before {
+    background: linear-gradient(90deg, transparent, rgba(197, 168, 128, 0.15) 30%, rgba(197, 168, 128, 0.22) 50%, rgba(197, 168, 128, 0.15) 70%, transparent) !important;
+}
+
+.theme-editorial .glass-card:hover,
+.theme-editorial .detail-card:hover,
+.theme-editorial .stat-card:hover,
+.theme-editorial .pub-card:hover,
+.theme-editorial .publication-item:hover,
+.theme-editorial .course-topic-card:hover,
+.theme-editorial .role-card:hover {
+    border-color: #C5A880 !important;
+    box-shadow: 0 10px 28px rgba(28, 25, 23, 0.08), 0 2px 8px rgba(0, 0, 0, 0.03) !important;
+    transform: translateY(-4px) !important;
+}
+
+/* ── 6. Hero Profile Card ────────────────────────────────────────── */
+.theme-editorial .hero-profile {
+    background: #FFFFFF !important;
+    border: 1px solid #E7E5E4 !important;
+    box-shadow: 0 4px 24px rgba(28, 25, 23, 0.06) !important;
+}
+
+.theme-editorial .hero-image-wrapper {
+    border: 4px solid #064E3B !important;
+    box-shadow:
+        0 4px 16px rgba(6, 78, 59, 0.15),
+        0 0 0 5px rgba(197, 168, 128, 0.30),
+        0 0 0 9px rgba(6, 78, 59, 0.05) !important;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease !important;
+}
+.theme-editorial .hero-image-wrapper:hover {
+    transform: scale(1.03) !important;
+    box-shadow:
+        0 8px 24px rgba(6, 78, 59, 0.22),
+        0 0 0 6px rgba(197, 168, 128, 0.45),
+        0 0 0 11px rgba(6, 78, 59, 0.08) !important;
+}
+
+.theme-editorial .hero-name {
+    color: #1C1917 !important;
+    font-size: 2.15rem !important;
+    background: none !important;
+    -webkit-text-fill-color: initial !important;
+}
+
+.theme-editorial .hero-title {
+    color: #57534E !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    letter-spacing: 0.06em !important;
+    font-size: 0.92rem !important;
+}
+
+.theme-editorial .hero-institution {
+    color: #064E3B !important;
+    font-weight: 700 !important;
+}
+
+/* ── 7. Primary CV & Action Buttons ──────────────────────────────── */
+.theme-editorial .btn-primary-cv,
+.theme-editorial #view-cv-btn,
+.theme-editorial #print-cv-btn {
+    background: #064E3B !important;
+    color: #FFFFFF !important;
+    border-color: #064E3B !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.02em !important;
+    transition: var(--transition) !important;
+}
+.theme-editorial .btn-primary-cv:hover,
+.theme-editorial #view-cv-btn:hover,
+.theme-editorial #print-cv-btn:hover {
+    background: #022C22 !important;
+    border-color: #022C22 !important;
+    box-shadow: 0 6px 20px rgba(6, 78, 59, 0.32) !important;
+    transform: translateY(-2px) !important;
+}
+
+.theme-editorial .tab-btn {
+    background: rgba(6, 78, 59, 0.04) !important;
+    border: 1.5px solid rgba(6, 78, 59, 0.14) !important;
+    color: #57534E !important;
+    transition: var(--transition-fast) !important;
+}
+.theme-editorial .tab-btn:hover {
+    background: rgba(6, 78, 59, 0.08) !important;
+    border-color: #C5A880 !important;
+    color: #064E3B !important;
+}
+.theme-editorial .tab-btn.active,
+.theme-editorial .tab-btn.active:hover {
+    background: #064E3B !important;
+    border-color: #064E3B !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 4px 14px rgba(6, 78, 59, 0.28) !important;
+}
+
+/* ── 8. Publications & Timeline ──────────────────────────────────── */
+.theme-editorial .publication-item {
+    background: #FFFFFF !important;
+    border-left: 4px solid #064E3B !important;
+}
+.theme-editorial .publication-item::before { background: #C5A880 !important; }
+.theme-editorial .publication-item:hover { background: #FAFAF8 !important; }
+
+.theme-editorial .timeline::before {
+    background: linear-gradient(to bottom, #064E3B, rgba(197, 168, 128, 0.25)) !important;
+}
+.theme-editorial .timeline-item::before {
+    background: #064E3B !important;
+    border-color: #F9F8F6 !important;
+    box-shadow: 0 0 0 3px rgba(197, 168, 128, 0.30) !important;
+}
+.theme-editorial .timeline-date {
+    color: #064E3B !important;
+    font-weight: 700 !important;
+}
+
+/* ── 9. Footer (Deep Charcoal Stone) ─────────────────────────────── */
+.theme-editorial .footer {
+    background: #1C1917 !important;
+    border-top: 2px solid #C5A880 !important;
+}
+.theme-editorial .footer p {
+    color: #A8A29E !important;
+}
+
+/* ── 10. Background Icons ────────────────────────────────────────── */
+.theme-editorial .icon-decor {
+    color: #064E3B !important;
+    opacity: 0.05 !important;
+    transition: transform 0.4s ease, opacity 0.3s ease !important;
+}
+.theme-editorial .icon-decor:hover {
+    opacity: 0.16 !important;
+}
+

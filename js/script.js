@@ -821,16 +821,58 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (colorHex.toLowerCase() === 'metallic') {
             document.body.classList.remove('theme-rasta');
             document.body.classList.remove('theme-tricolour');
+            document.body.classList.remove('theme-nature');
+            document.body.classList.remove('theme-batman');
+            document.body.classList.remove('theme-vivid');
             document.body.classList.add('theme-metallic');
-            
-            // Set premium corporate tech blue variables
-            document.documentElement.style.setProperty('--primary-color', '#0064e0'); // Premium tech blue
+            document.documentElement.style.setProperty('--primary-color', '#0064e0');
             document.documentElement.style.setProperty('--primary-hover', '#004ec2');
             document.documentElement.style.setProperty('--primary-rgb', '0, 100, 224');
             document.documentElement.style.setProperty('--primary-hover-rgb', '0, 78, 194');
             document.documentElement.style.setProperty('--primary-light-bg', 'rgba(0, 100, 224, 0.05)');
             document.documentElement.style.setProperty('--primary-border', '#e2e8f0');
             document.documentElement.style.setProperty('--accent-gradient', 'linear-gradient(135deg, #0064e0 0%, #004ec2 100%)');
+        } else if (colorHex.toLowerCase() === 'nature') {
+            document.body.classList.remove('theme-rasta');
+            document.body.classList.remove('theme-tricolour');
+            document.body.classList.remove('theme-metallic');
+            document.body.classList.remove('theme-batman');
+            document.body.classList.remove('theme-vivid');
+            document.body.classList.add('theme-nature');
+            document.documentElement.style.setProperty('--primary-color', '#2D6A4F');
+            document.documentElement.style.setProperty('--primary-hover', '#1B4332');
+            document.documentElement.style.setProperty('--primary-rgb', '45, 106, 79');
+        } else if (colorHex.toLowerCase() === 'batman') {
+            document.body.classList.remove('theme-rasta');
+            document.body.classList.remove('theme-tricolour');
+            document.body.classList.remove('theme-metallic');
+            document.body.classList.remove('theme-nature');
+            document.body.classList.remove('theme-vivid');
+            document.body.classList.add('theme-batman');
+            document.documentElement.style.setProperty('--primary-color', '#FFD700');
+            document.documentElement.style.setProperty('--primary-hover', '#FFC200');
+            document.documentElement.style.setProperty('--primary-rgb', '255, 215, 0');
+        } else if (colorHex.toLowerCase() === 'vivid') {
+            document.body.classList.remove('theme-rasta');
+            document.body.classList.remove('theme-tricolour');
+            document.body.classList.remove('theme-metallic');
+            document.body.classList.remove('theme-nature');
+            document.body.classList.remove('theme-batman');
+            document.body.classList.add('theme-vivid');
+            document.documentElement.style.setProperty('--primary-color', '#6366F1');
+            document.documentElement.style.setProperty('--primary-hover', '#4F46E5');
+            document.documentElement.style.setProperty('--primary-rgb', '99, 102, 241');
+        } else if (colorHex.toLowerCase() === 'editorial') {
+            document.body.classList.remove('theme-rasta');
+            document.body.classList.remove('theme-tricolour');
+            document.body.classList.remove('theme-metallic');
+            document.body.classList.remove('theme-nature');
+            document.body.classList.remove('theme-batman');
+            document.body.classList.remove('theme-vivid');
+            document.body.classList.add('theme-editorial');
+            document.documentElement.style.setProperty('--primary-color', '#064E3B');
+            document.documentElement.style.setProperty('--primary-hover', '#022C22');
+            document.documentElement.style.setProperty('--primary-rgb', '6, 78, 59');
         } else {
             document.body.classList.remove('theme-rasta');
             document.body.classList.remove('theme-tricolour');
@@ -886,12 +928,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Initialize from localStorage (Metallic Chrome theme as default)
+    // Initialize — Squarespace Editorial Fellow theme as default
     let savedAccent = localStorage.getItem('theme-accent-color');
-    if (!savedAccent || savedAccent === '#0050ef' || savedAccent === '#0067b8' || savedAccent === 'rainbow' || savedAccent === '#8d9096' || savedAccent === '#3f4448') {
-        savedAccent = 'metallic';
+    const legacyAccents = ['#0050ef','#0067b8','rainbow','#8d9096','#3f4448','nature','metallic','vivid'];
+    if (!savedAccent || legacyAccents.includes(savedAccent)) {
+        savedAccent = 'editorial';
     }
     updateAccentColor(savedAccent);
+    localStorage.setItem('theme-accent-color', savedAccent);
 
     // ── Publications Timeline SVG Chart ──────────────────────────
     const chartContainer = document.getElementById('publication-chart-container');
