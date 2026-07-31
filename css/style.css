@@ -3581,8 +3581,8 @@ p, li, span, td, th {
 
 
 /* -------------------------------------------------------------------
-   ? VIVID INDIGO THEME  �  Vibrant � Readable � High-Contrast
-   All text: dark (#0F172A) on light surfaces � WCAG AAA throughout
+   ? VIVID INDIGO THEME  �  Vibrant � Readable � High-Contrast
+   All text: dark (#0F172A) on light surfaces � WCAG AAA throughout
    ------------------------------------------------------------------- */
 
 /* -- Design tokens ------------------------------------------------ */
@@ -3704,7 +3704,7 @@ p, li, span, td, th {
     opacity: 0.18 !important;
 }
 
-/* -- Glass cards � white, deep shadow, vibrant accent border ------- */
+/* -- Glass cards � white, deep shadow, vibrant accent border ------- */
 .theme-vivid .glass-card,
 .theme-vivid .detail-card,
 .theme-vivid .stat-card,
@@ -3997,8 +3997,8 @@ p, li, span, td, th {
 
 
 /* -------------------------------------------------------------------
-   ? NATURE THEME  � Forest green � Sage white � Peaceful & vibrant
-   All text: dark (#1A2E22) on light surfaces � WCAG AAA throughout
+   ? NATURE THEME  � Forest green � Sage white � Peaceful & vibrant
+   All text: dark (#1A2E22) on light surfaces � WCAG AAA throughout
    ------------------------------------------------------------------- */
 
 /* -- Design tokens ------------------------------------------------ */
@@ -4020,7 +4020,7 @@ p, li, span, td, th {
     --shadow-card:    0 2px 8px rgba(45,106,79,0.08), 0 0 0 1px rgba(45,106,79,0.05);
 }
 
-/* -- Page body � organic sage background --------------------------- */
+/* -- Page body � organic sage background --------------------------- */
 .theme-nature body {
     background-color: #F0F7F4 !important;
     background-image:
@@ -4073,7 +4073,7 @@ p, li, span, td, th {
 }
 .theme-nature .icon-decor:hover { opacity: 0.20 !important; }
 
-/* -- Navbar � deep forest green ------------------------------------ */
+/* -- Navbar � deep forest green ------------------------------------ */
 .theme-nature .navbar {
     background: linear-gradient(135deg, #1B4332 0%, #2D6A4F 100%) !important;
     backdrop-filter: none !important;
@@ -4224,7 +4224,6 @@ p, li, span, td, th {
 .theme-nature .card-header h3,
 .theme-nature .timeline-title,
 .theme-nature .roadmap-title { color: #1B4332 !important; }
-.theme-nature .card-header i  { color: #2D6A4F !important; }
 .theme-nature .timeline-date {
     color: #2D6A4F !important;
     font-weight: 700 !important;
@@ -4233,7 +4232,7 @@ p, li, span, td, th {
 .theme-nature .timeline-subtitle { color: #3D5A47 !important; }
 .theme-nature .timeline-desc     { color: #4B6B57 !important; }
 
-/* -- Timeline � vine-like gradient line ---------------------------- */
+/* -- Timeline � vine-like gradient line ---------------------------- */
 .theme-nature .timeline::before {
     background: linear-gradient(to bottom, #2D6A4F, rgba(82,183,136,0.15)) !important;
 }
@@ -4312,19 +4311,12 @@ p, li, span, td, th {
     border-color: #2D6A4F !important;
 }
 
-/* -- Icon squircle badges ------------------------------------------ */
+/* -- Icon squircle badges (Nature Theme fallback) ------------------ */
 .theme-nature .sim-icon-badge,
 .theme-nature .card-icon-badge,
-.theme-nature .pub-icon-badge,
-.theme-nature .stat-card .stat-icon-badge {
-    background: rgba(45,106,79,0.10) !important;
-    color: #2D6A4F !important;
-}
-.theme-nature .glass-card:hover .sim-icon-badge,
-.theme-nature .glass-card:hover .card-icon-badge,
-.theme-nature .stat-card:hover .stat-icon-badge {
-    background: #2D6A4F !important;
-    color: #FFFFFF !important;
+.theme-nature .pub-icon-badge {
+    background: rgba(45,106,79,0.08);
+    color: #2D6A4F;
 }
 
 /* -- Primary CV button --------------------------------------------- */
@@ -4416,7 +4408,7 @@ p, li, span, td, th {
     background: rgba(45,106,79,0.03) !important;
 }
 
-/* -- Footer � deep forest ------------------------------------------ */
+/* -- Footer � deep forest ------------------------------------------ */
 .theme-nature .footer {
     background: linear-gradient(135deg, #1B4332 0%, #2D6A4F 100%) !important;
     border-top: none !important;
@@ -4443,3 +4435,145 @@ p, li, span, td, th {
 .theme-nature :focus-visible {
     outline-color: rgba(45,106,79,0.60) !important;
 }
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   ✦ VIBRANT COLORFUL ICON SYSTEM  —  Homepage, Publications & More
+   Brings rich, distinct, expressive colors to all icons across themes
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── 1. Hero & Contact Icons ─────────────────────────────────────── */
+.hero-institution i,
+.contact-item i.fa-university { color: #1A73E8 !important; }
+.contact-item i.fa-envelope   { color: #EA4335 !important; }
+.contact-item i.fa-phone      { color: #25D366 !important; }
+.contact-item i.fa-whatsapp   { color: #25D366 !important; }
+.contact-item i.fa-map-marker-alt { color: #EA4335 !important; }
+
+/* Profile ID Badges */
+.profile-ids-grid a i.fa-graduation-cap { color: #4285F4 !important; } /* Google Scholar */
+.profile-ids-grid a i.fa-book           { color: #FF6600 !important; } /* Scopus */
+.profile-ids-grid a i.fa-id-badge       { color: #A6CE39 !important; } /* ORCID */
+.profile-ids-grid a i.fa-linkedin       { color: #0A66C2 !important; } /* LinkedIn */
+.profile-ids-grid a i.fa-researchgate   { color: #00CCBB !important; } /* ResearchGate */
+
+/* ── 2. Stat Card Badges (Homepage, Publications, Mentorship) ────── */
+.stat-card .stat-icon-badge {
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease !important;
+}
+.stat-card:hover .stat-icon-badge {
+    transform: scale(1.15) rotate(4deg) !important;
+}
+
+/* ── 3. Section & Card Header Icons Color Coding ─────────────────── */
+.card-header i.fa-book,
+.card-header i.fa-book-open,
+.card-header i.fa-newspaper,
+.card-header i.fa-quote-right,
+.card-header i.fa-file-alt {
+    color: #2563EB !important; /* Royal Blue for Publications & Papers */
+}
+
+.card-header i.fa-chalkboard-teacher,
+.card-header i.fa-graduation-cap,
+.card-header i.fa-university,
+.card-header i.fa-certificate,
+.card-header i.fa-award {
+    color: #D97706 !important; /* Warm Gold/Amber for Teaching & Awards */
+}
+
+.card-header i.fa-user-friends,
+.card-header i.fa-users,
+.card-header i.fa-hands-helping,
+.card-header i.fa-user-graduate,
+.card-header i.fa-lightbulb {
+    color: #059669 !important; /* Vibrant Emerald for Mentorship & Projects */
+}
+
+.card-header i.fa-laptop-code,
+.card-header i.fa-cube,
+.card-header i.fa-cogs,
+.card-header i.fa-project-diagram,
+.card-header i.fa-truck,
+.card-header i.fa-boxes {
+    color: #6366F1 !important; /* Vibrant Indigo for Simulations & Supply Chain */
+}
+
+.card-header i.fa-briefcase,
+.card-header i.fa-history,
+.card-header i.fa-medal,
+.card-header i.fa-trophy,
+.card-header i.fa-crown,
+.card-header i.fa-building {
+    color: #8B5CF6 !important; /* Vibrant Purple for Experience & Roles */
+}
+
+.card-header i.fa-pen-nib,
+.card-header i.fa-check-double,
+.card-header i.fa-tasks,
+.card-header i.fa-journal-whills {
+    color: #E11D48 !important; /* Crimson Red for Editorial & Peer Reviews */
+}
+
+.card-header i.fa-camera,
+.card-header i.fa-images,
+.card-header i.fa-map-marker-alt,
+.card-header i.fa-palette {
+    color: #EA580C !important; /* Vibrant Orange for Clicks & Gallery */
+}
+
+/* ── 4. Simulation & Project Card Badges Color Rotation ──────────── */
+#simulations-grid .glass-card:nth-child(6n+1) .sim-icon-badge,
+.project-card:nth-child(6n+1) .card-icon-badge {
+    background: rgba(37, 99, 235, 0.12) !important;
+    color: #2563EB !important;
+}
+#simulations-grid .glass-card:nth-child(6n+2) .sim-icon-badge,
+.project-card:nth-child(6n+2) .card-icon-badge {
+    background: rgba(5, 150, 105, 0.12) !important;
+    color: #059669 !important;
+}
+#simulations-grid .glass-card:nth-child(6n+3) .sim-icon-badge,
+.project-card:nth-child(6n+3) .card-icon-badge {
+    background: rgba(217, 119, 6, 0.12) !important;
+    color: #D97706 !important;
+}
+#simulations-grid .glass-card:nth-child(6n+4) .sim-icon-badge,
+.project-card:nth-child(6n+4) .card-icon-badge {
+    background: rgba(139, 92, 246, 0.12) !important;
+    color: #8B5CF6 !important;
+}
+#simulations-grid .glass-card:nth-child(6n+5) .sim-icon-badge,
+.project-card:nth-child(6n+5) .card-icon-badge {
+    background: rgba(225, 29, 72, 0.12) !important;
+    color: #E11D48 !important;
+}
+#simulations-grid .glass-card:nth-child(6n+6) .sim-icon-badge,
+.project-card:nth-child(6n+6) .card-icon-badge {
+    background: rgba(8, 145, 178, 0.12) !important;
+    color: #0891B2 !important;
+}
+
+/* Hover state pop for simulation/project badges */
+.glass-card:hover .sim-icon-badge,
+.project-card:hover .card-icon-badge {
+    transform: scale(1.12) rotate(4deg) !important;
+}
+
+/* ── 5. Publication & Role Badges ────────────────────────────────── */
+.publication-item .pub-icon-badge {
+    background: rgba(37, 99, 235, 0.12) !important;
+    color: #2563EB !important;
+}
+.role-card:nth-child(odd) .card-header i {
+    color: #E11D48 !important;
+}
+.role-card:nth-child(even) .card-header i {
+    color: #059669 !important;
+}
+
+/* ── 6. Timeline Milestone Icons ─────────────────────────────────── */
+.timeline-item:nth-child(4n+1)::before { background: #2563EB !important; box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25) !important; }
+.timeline-item:nth-child(4n+2)::before { background: #059669 !important; box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.25) !important; }
+.timeline-item:nth-child(4n+3)::before { background: #D97706 !important; box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.25) !important; }
+.timeline-item:nth-child(4n+4)::before { background: #8B5CF6 !important; box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.25) !important; }
