@@ -4604,14 +4604,15 @@ p, li, span, td, th {
     --shadow-card:    0 2px 8px rgba(28, 25, 23, 0.05), 0 0 0 1px #E7E5E4;
 }
 
-/* ── 2. Typography & Canvas ──────────────────────────────────────── */
+/* ── 2. Typography & Canvas (Linen & Organic Warmth) ─────────────── */
 .theme-editorial body {
     background-color: #F9F8F6 !important;
     background-image:
-        radial-gradient(ellipse at 10% 0%,   rgba(6, 78, 59, 0.04) 0%, transparent 50%),
-        radial-gradient(ellipse at 90% 100%, rgba(197, 168, 128, 0.06) 0%, transparent 50%),
-        radial-gradient(rgba(28, 25, 23, 0.025) 1px, transparent 1px) !important;
-    background-size: 100% 100%, 100% 100%, 30px 30px !important;
+        radial-gradient(ellipse at 12% 8%,   rgba(6, 78, 59, 0.045) 0%, transparent 50%),
+        radial-gradient(ellipse at 88% 92%, rgba(197, 168, 128, 0.065) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 45%, rgba(6, 78, 59, 0.02)  0%, transparent 70%),
+        radial-gradient(rgba(28, 25, 23, 0.022) 1px, transparent 1px) !important;
+    background-size: 100% 100%, 100% 100%, 100% 100%, 28px 28px !important;
     color: #1C1917 !important;
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
 }
@@ -4628,35 +4629,41 @@ p, li, span, td, th {
 .theme-editorial .roadmap-title {
     font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif !important;
     font-weight: 700 !important;
-    letter-spacing: -0.015em !important;
+    letter-spacing: -0.018em !important;
 }
 
-/* ── 3. Navbar (Floating Warm Ivory Glass) ───────────────────────── */
+/* ── 3. Navbar (Floating Warm Ivory Glass & Gold Accent) ─────────── */
 .theme-editorial .navbar {
     background: rgba(250, 249, 246, 0.94) !important;
-    backdrop-filter: blur(16px) !important;
-    -webkit-backdrop-filter: blur(16px) !important;
+    backdrop-filter: blur(18px) !important;
+    -webkit-backdrop-filter: blur(18px) !important;
     border-bottom: 1px solid #E7E5E4 !important;
-    box-shadow: 0 2px 14px rgba(28, 25, 23, 0.05), 0 1px 3px rgba(0, 0, 0, 0.03) !important;
+    box-shadow: 0 4px 20px rgba(28, 25, 23, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02) !important;
 }
 
 .theme-editorial .navbar .nav-logo {
     color: #1C1917 !important;
-    font-size: 1.38rem !important;
+    font-size: 1.42rem !important;
     font-weight: 700 !important;
+    transition: var(--transition);
+}
+.theme-editorial .navbar .nav-logo:hover {
+    color: #064E3B !important;
 }
 
 .theme-editorial .navbar .nav-link {
     color: #44403C !important;
     font-weight: 600 !important;
     font-size: 0.86rem !important;
+    transition: var(--transition-fast) !important;
 }
 .theme-editorial .navbar .nav-link:hover {
     color: #064E3B !important;
     background: rgba(6, 78, 59, 0.06) !important;
 }
 .theme-editorial .navbar .nav-link::after {
-    background: #064E3B !important;
+    background: linear-gradient(90deg, #064E3B, #C5A880) !important;
+    height: 2px !important;
 }
 .theme-editorial .navbar .nav-link.active {
     color: #064E3B !important;
@@ -4664,20 +4671,21 @@ p, li, span, td, th {
     font-weight: 700 !important;
 }
 .theme-editorial .navbar .nav-link.active::after {
-    background: #064E3B !important;
+    background: linear-gradient(90deg, #064E3B, #C5A880) !important;
 }
 
 .theme-editorial #tabs-dropdown-toggle,
 .theme-editorial .mobile-menu-btn {
     color: #1C1917 !important;
     border-color: #E7E5E4 !important;
-    background: rgba(255, 255, 255, 0.8) !important;
+    background: rgba(255, 255, 255, 0.85) !important;
+    transition: var(--transition-fast) !important;
 }
 
-/* ── 4. Section Headers ──────────────────────────────────────────── */
+/* ── 4. Section Headers & Elegant Underline Flourish ──────────────── */
 .theme-editorial .section-header h2 {
     color: #1C1917 !important;
-    font-size: 2.2rem !important;
+    font-size: 2.25rem !important;
     background: none !important;
     -webkit-text-fill-color: initial !important;
 }
@@ -4685,12 +4693,20 @@ p, li, span, td, th {
 .theme-editorial .section-underline {
     background: linear-gradient(90deg, #064E3B 0%, #C5A880 100%) !important;
     height: 3px !important;
-    width: 60px !important;
+    width: 65px !important;
     border-radius: 9999px !important;
-    box-shadow: none !important;
+    box-shadow: 0 1px 6px rgba(197, 168, 128, 0.25) !important;
+    transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s ease !important;
+}
+.theme-editorial .section-header:hover .section-underline {
+    width: 90px !important;
+}
+.theme-editorial .section-underline::after {
+    background: linear-gradient(90deg, #064E3B 0%, #C5A880 100%) !important;
+    opacity: 0.20 !important;
 }
 
-/* ── 5. Cards & Glass Surfaces ───────────────────────────────────── */
+/* ── 5. Cards & Glass Surfaces (Ivory with Soft Elevated Shadow) ─── */
 .theme-editorial .glass-card,
 .theme-editorial .detail-card,
 .theme-editorial .stat-card,
@@ -4708,6 +4724,13 @@ p, li, span, td, th {
     border: 1px solid #E7E5E4 !important;
     box-shadow: 0 2px 10px rgba(28, 25, 23, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02) !important;
     border-radius: var(--radius-md) !important;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease !important;
+    backdrop-filter: none !important;
+}
+
+/* Subtle champagne top highlight shimmer on cards */
+.theme-editorial .glass-card::before {
+    background: linear-gradient(90deg, transparent, rgba(197, 168, 128, 0.15) 30%, rgba(197, 168, 128, 0.22) 50%, rgba(197, 168, 128, 0.15) 70%, transparent) !important;
 }
 
 .theme-editorial .glass-card:hover,
@@ -4718,27 +4741,36 @@ p, li, span, td, th {
 .theme-editorial .course-topic-card:hover,
 .theme-editorial .role-card:hover {
     border-color: #C5A880 !important;
-    box-shadow: 0 8px 24px rgba(28, 25, 23, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04) !important;
-    transform: translateY(-3px) !important;
+    box-shadow: 0 10px 28px rgba(28, 25, 23, 0.08), 0 2px 8px rgba(0, 0, 0, 0.03) !important;
+    transform: translateY(-4px) !important;
 }
 
 /* ── 6. Hero Profile Card ────────────────────────────────────────── */
 .theme-editorial .hero-profile {
     background: #FFFFFF !important;
     border: 1px solid #E7E5E4 !important;
-    box-shadow: 0 4px 20px rgba(28, 25, 23, 0.06) !important;
+    box-shadow: 0 4px 24px rgba(28, 25, 23, 0.06) !important;
 }
 
 .theme-editorial .hero-image-wrapper {
     border: 4px solid #064E3B !important;
     box-shadow:
         0 4px 16px rgba(6, 78, 59, 0.15),
-        0 0 0 5px rgba(197, 168, 128, 0.25) !important;
+        0 0 0 5px rgba(197, 168, 128, 0.30),
+        0 0 0 9px rgba(6, 78, 59, 0.05) !important;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease !important;
+}
+.theme-editorial .hero-image-wrapper:hover {
+    transform: scale(1.03) !important;
+    box-shadow:
+        0 8px 24px rgba(6, 78, 59, 0.22),
+        0 0 0 6px rgba(197, 168, 128, 0.45),
+        0 0 0 11px rgba(6, 78, 59, 0.08) !important;
 }
 
 .theme-editorial .hero-name {
     color: #1C1917 !important;
-    font-size: 2.1rem !important;
+    font-size: 2.15rem !important;
     background: none !important;
     -webkit-text-fill-color: initial !important;
 }
@@ -4747,6 +4779,7 @@ p, li, span, td, th {
     color: #57534E !important;
     font-family: 'Plus Jakarta Sans', sans-serif !important;
     letter-spacing: 0.06em !important;
+    font-size: 0.92rem !important;
 }
 
 .theme-editorial .hero-institution {
@@ -4763,15 +4796,28 @@ p, li, span, td, th {
     border-color: #064E3B !important;
     font-weight: 700 !important;
     letter-spacing: 0.02em !important;
+    transition: var(--transition) !important;
 }
 .theme-editorial .btn-primary-cv:hover,
 .theme-editorial #view-cv-btn:hover,
 .theme-editorial #print-cv-btn:hover {
     background: #022C22 !important;
     border-color: #022C22 !important;
-    box-shadow: 0 6px 20px rgba(6, 78, 59, 0.30) !important;
+    box-shadow: 0 6px 20px rgba(6, 78, 59, 0.32) !important;
+    transform: translateY(-2px) !important;
 }
 
+.theme-editorial .tab-btn {
+    background: rgba(6, 78, 59, 0.04) !important;
+    border: 1.5px solid rgba(6, 78, 59, 0.14) !important;
+    color: #57534E !important;
+    transition: var(--transition-fast) !important;
+}
+.theme-editorial .tab-btn:hover {
+    background: rgba(6, 78, 59, 0.08) !important;
+    border-color: #C5A880 !important;
+    color: #064E3B !important;
+}
 .theme-editorial .tab-btn.active,
 .theme-editorial .tab-btn.active:hover {
     background: #064E3B !important;
@@ -4780,7 +4826,28 @@ p, li, span, td, th {
     box-shadow: 0 4px 14px rgba(6, 78, 59, 0.28) !important;
 }
 
-/* ── 8. Footer (Deep Charcoal Stone) ─────────────────────────────── */
+/* ── 8. Publications & Timeline ──────────────────────────────────── */
+.theme-editorial .publication-item {
+    background: #FFFFFF !important;
+    border-left: 4px solid #064E3B !important;
+}
+.theme-editorial .publication-item::before { background: #C5A880 !important; }
+.theme-editorial .publication-item:hover { background: #FAFAF8 !important; }
+
+.theme-editorial .timeline::before {
+    background: linear-gradient(to bottom, #064E3B, rgba(197, 168, 128, 0.25)) !important;
+}
+.theme-editorial .timeline-item::before {
+    background: #064E3B !important;
+    border-color: #F9F8F6 !important;
+    box-shadow: 0 0 0 3px rgba(197, 168, 128, 0.30) !important;
+}
+.theme-editorial .timeline-date {
+    color: #064E3B !important;
+    font-weight: 700 !important;
+}
+
+/* ── 9. Footer (Deep Charcoal Stone) ─────────────────────────────── */
 .theme-editorial .footer {
     background: #1C1917 !important;
     border-top: 2px solid #C5A880 !important;
@@ -4789,8 +4856,13 @@ p, li, span, td, th {
     color: #A8A29E !important;
 }
 
-/* ── 9. Background Icons ─────────────────────────────────────────── */
+/* ── 10. Background Icons ────────────────────────────────────────── */
 .theme-editorial .icon-decor {
     color: #064E3B !important;
     opacity: 0.05 !important;
+    transition: transform 0.4s ease, opacity 0.3s ease !important;
 }
+.theme-editorial .icon-decor:hover {
+    opacity: 0.16 !important;
+}
+
