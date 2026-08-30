@@ -1,0 +1,814 @@
+/* ═══════════════════════════════════════════════════════════════════
+   REDESIGN LAYER — "al-folio academic" · v2.0.0
+   Loaded AFTER style.css. Single-theme refinement of .theme-editorial.
+   Aesthetic modelled on the al-folio Jekyll theme (the de-facto
+   standard for academic personal sites): white canvas, Roboto Slab
+   headings, flat surfaces, hairline rules, one accent for links.
+   Remove the <link> to css/redesign.css to fully revert.
+   No JS is touched; every selector hooks existing markup/classes.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── 1. Tokens ──────────────────────────────────────────────────── */
+body.theme-editorial {
+    /* Accent — one colour for links / active state / rules.
+       Deep cardinal (also nods to GLIM maroon). Change this one line
+       to re-tint the whole site (e.g. #1F6FEB blue, #0E4D3C green). */
+    --primary-color:  #8C1515;
+    --primary-hover:  #6E1010;
+    --primary-rgb:    140, 21, 21;
+    --rd-accent:      #8C1515;
+    --rd-accent-soft: rgba(140, 21, 21, 0.08);
+
+    /* Neutrals — al-folio light palette */
+    --bg-color:        #ffffff;
+    --rd-paper:        #ffffff;
+    --surface-color:   #ffffff;
+    --rd-surface-2:    #fafafa;
+    --text-primary:    #1a1a1a;
+    --text-secondary:  #4a4a4a;
+    --rd-muted:        #828282;   /* Roboto grey */
+    --border-color:    #e8e8e8;
+    --rd-border:       #e8e8e8;
+    --rd-divider:      #e8e8e8;
+
+    /* Elevation — al-folio is flat; shadows are barely-there */
+    --shadow-sm:    none;
+    --shadow-md:    0 1px 4px rgba(0, 0, 0, 0.06);
+    --shadow-lg:    0 3px 12px rgba(0, 0, 0, 0.08);
+    --shadow-hover: 0 2px 10px rgba(0, 0, 0, 0.08);
+    --shadow-card:  none;
+
+    /* Motion */
+    --rd-ease:            cubic-bezier(0.4, 0, 0.2, 1);
+    --transition:         all 0.20s var(--rd-ease);
+    --transition-fast:    all 0.15s var(--rd-ease);
+    --transition-spring:  all 0.24s var(--rd-ease);
+    --transition-smooth:  all 0.24s var(--rd-ease);
+
+    /* Radius — al-folio uses small, gentle rounding */
+    --radius-sm:   4px;
+    --radius-md:   6px;
+    --radius-lg:   8px;
+    --radius-xl:   10px;
+
+    /* Type — Roboto Slab headings, Roboto/system body */
+    --font-main:    'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    --font-display: 'Roboto Slab', Georgia, 'Times New Roman', serif;
+    --rd-slab:      'Roboto Slab', Georgia, serif;
+
+    /* Type scale — restrained, airy */
+    --rd-step--1: 0.85rem;
+    --rd-step-0:  1rem;
+    --rd-step-1:  1.15rem;
+    --rd-step-2:  1.4rem;
+    --rd-step-3:  clamp(1.6rem, 1.35rem + 1vw, 2.1rem);
+    --rd-step-4:  clamp(1.9rem, 1.5rem + 1.6vw, 2.6rem);
+
+    --rd-measure: 46rem;
+}
+
+/* ── 2. Canvas ──────────────────────────────────────────────────── */
+body.theme-editorial {
+    background: #ffffff !important;
+    background-image: none !important;
+    font-family: var(--font-main) !important;
+    font-size: 16px !important;
+    line-height: 1.7 !important;
+    letter-spacing: 0 !important;
+    color: var(--text-primary) !important;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+/* al-folio has no decorative icon field */
+.theme-editorial .academic-bg-decorations { display: none !important; }
+
+/* ── 3. Typography ──────────────────────────────────────────────── */
+.theme-editorial h1,
+.theme-editorial h2,
+.theme-editorial h3,
+.theme-editorial h4,
+.theme-editorial h5,
+.theme-editorial .hero-name,
+.theme-editorial .section-header h2,
+.theme-editorial .card-header h3,
+.theme-editorial .timeline-title,
+.theme-editorial .roadmap-title,
+.theme-editorial .nav-logo {
+    font-family: var(--rd-slab) !important;
+    font-weight: 400 !important;
+    letter-spacing: 0 !important;
+    line-height: 1.25 !important;
+    color: var(--text-primary) !important;
+    -webkit-text-fill-color: currentColor !important;
+    background: none !important;
+    text-wrap: balance;
+}
+
+.theme-editorial p,
+.theme-editorial li { text-wrap: pretty; }
+
+.theme-editorial .detail-card p {
+    text-align: justify !important;
+    text-justify: inter-word;
+    hyphens: auto;
+    color: var(--text-secondary) !important;
+    font-size: var(--rd-step-0) !important;
+    max-width: 100% !important;   /* fill the card — no artificial line cap */
+}
+.theme-editorial .detail-card p em,
+.theme-editorial .detail-card p i { color: var(--text-primary) !important; font-style: italic; }
+
+/* Links — accent colour; colour-only change on hover (no underline) */
+.theme-editorial .page-section a:not(.nav-link):not(.tab-btn):not(.sim-action-btn):not(.hero-contact a):not(.glass-card):not(.hover-lift):not(.rd-btn-primary),
+.theme-editorial .pub-link,
+.theme-editorial .detail-card a:not(.rd-btn-primary) {
+    color: var(--rd-accent) !important;
+    text-decoration: none !important;
+    transition: color 0.15s var(--rd-ease) !important;
+}
+.theme-editorial .page-section a:not(.nav-link):not(.tab-btn):not(.sim-action-btn):not(.rd-btn-primary):hover,
+.theme-editorial .pub-link:hover,
+.theme-editorial .detail-card a:not(.rd-btn-primary):hover {
+    color: var(--primary-hover) !important;
+    text-decoration: none !important;
+}
+
+/* ── 4. Navbar — flat white, right-aligned links, underlined active ── */
+.theme-editorial .navbar {
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: saturate(180%) blur(10px) !important;
+    -webkit-backdrop-filter: saturate(180%) blur(10px) !important;
+    border-bottom: 1px solid var(--rd-divider) !important;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05) !important;
+    padding: 0.55rem 2rem !important;
+}
+.theme-editorial .nav-logo {
+    font-family: var(--rd-slab) !important;
+    font-size: 1.3rem !important;
+    font-weight: 500 !important;
+    color: var(--text-primary) !important;
+    text-shadow: none !important;
+    letter-spacing: 0 !important;
+}
+.theme-editorial .nav-logo:hover { color: var(--rd-accent) !important; opacity: 1 !important; }
+
+.theme-editorial .navbar .nav-link {
+    color: #424242 !important;
+    font-family: var(--font-main) !important;
+    font-weight: 400 !important;
+    font-size: 0.92rem !important;
+    letter-spacing: 0 !important;
+    text-transform: none !important;
+    padding: 0.4rem 0.7rem !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    border-bottom: 2px solid transparent !important;
+    transition: color 0.15s var(--rd-ease), border-color 0.15s var(--rd-ease) !important;
+}
+.theme-editorial .navbar .nav-link:hover {
+    color: var(--rd-accent) !important;
+    background: transparent !important;
+    border-bottom-color: transparent !important;
+}
+.theme-editorial .navbar .nav-link.active {
+    color: var(--rd-accent) !important;
+    background: transparent !important;
+    font-weight: 500 !important;
+    /* the per-link border is replaced by the single sliding indicator */
+    border-bottom-color: transparent !important;
+}
+.theme-editorial .navbar .nav-link::after { display: none !important; }
+
+/* Kill the Material ink-ripple on the header tabs — with the maroon
+   accent it rendered as a blob flashing over the tab name on click. */
+.theme-editorial .navbar .nav-link .ripple { display: none !important; }
+
+/* Sliding selection indicator — one bar that glides between tabs.
+   JS (positionNavSlider) sets its transform-x + width to match the
+   active link; the transition here does the gliding.                 */
+.theme-editorial #nav-links-scrollable { position: relative; }
+.theme-editorial .nav-slider {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    background: var(--rd-accent);
+    border-radius: 2px;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+    transform: translateX(0);
+    transition: transform 0.34s var(--rd-ease), width 0.34s var(--rd-ease), opacity 0.18s linear;
+}
+@media (prefers-reduced-motion: reduce) {
+    .theme-editorial .nav-slider { transition: opacity 0.18s linear !important; }
+}
+
+.theme-editorial .nav-scroll-btn {
+    border-color: var(--rd-border) !important;
+    color: var(--rd-muted) !important;
+    background: #fff !important;
+}
+.theme-editorial .nav-scroll-btn:hover {
+    color: var(--rd-accent) !important;
+    border-color: var(--rd-accent) !important;
+}
+.theme-editorial #tabs-dropdown-toggle {
+    color: var(--text-primary) !important;
+    border-color: var(--rd-border) !important;
+    background: #fff !important;
+}
+
+/* single-theme site — hide any theme switcher remnants */
+.theme-editorial #theme-picker-toggle,
+.theme-editorial #theme-palette-dropdown,
+.theme-editorial .theme-picker,
+.theme-editorial .theme-palette { display: none !important; }
+
+/* ── 5. Section headers — left-aligned title + hairline rule ────── */
+.theme-editorial .section-header {
+    margin-bottom: 2rem !important;
+    text-align: left !important;
+    border-bottom: 1px solid var(--rd-divider) !important;
+    padding-bottom: 0.75rem !important;
+}
+.theme-editorial .section-header h2 {
+    font-family: var(--rd-slab) !important;
+    font-size: var(--rd-step-4) !important;
+    font-weight: 300 !important;
+    color: var(--text-primary) !important;
+    display: block !important;
+    line-height: 1.2 !important;
+}
+.theme-editorial .section-underline { display: none !important; }
+
+/* ── 6. Section transition — seamless cross-dissolve ───────────────
+   A tab change is a pure opacity dissolve: the outgoing section is
+   held on top (position:absolute over the same spot) at full opacity
+   and fades to 0, revealing the incoming section fading 0 → 1 beneath
+   it. NO transform, NO blur, NO scale — those are what flicker. Both
+   halves share one duration + linear timing so it reads as a single
+   continuous fade. The JS locks .main-content's height for the
+   duration so pulling the outgoing section out of flow can't collapse
+   the page (the other flicker source).                                */
+@keyframes rd-fade-in  { from { opacity: 0; } to { opacity: 1; } }
+@keyframes rd-fade-out { from { opacity: 1; } to { opacity: 0; } }
+
+.theme-editorial .main-content { position: relative !important; }
+
+.theme-editorial .page-section {
+    /* Resting opacity — keeps the section visible if the animation is
+       ever disabled/interrupted (base .page-section sets opacity:0). */
+    opacity: 1;
+    transform: none !important;
+    filter: none !important;
+}
+.theme-editorial .page-section.active-section {
+    animation: rd-fade-in 0.45s linear both !important;
+    will-change: opacity;
+}
+.theme-editorial .page-section.section-exit {
+    display: block !important;
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    pointer-events: none !important;
+    animation: rd-fade-out 0.45s linear both !important;
+    will-change: opacity;
+}
+
+/* ── 7. Hero / profile — rounded-rect image, thin frame ─────────── */
+.theme-editorial .hero-container { gap: 2.5rem !important; margin-top: 1.75rem !important; }
+
+.theme-editorial .hero-profile {
+    background: #fff !important;
+    border: 1px solid var(--rd-divider) !important;
+    border-radius: var(--radius-lg) !important;
+    box-shadow: none !important;
+    padding: 1.75rem !important;
+}
+
+.theme-editorial .hero-image-wrapper {
+    border-radius: var(--radius-lg) !important;
+    border: 1px solid var(--rd-divider) !important;
+    box-shadow: none !important;
+    width: 200px !important;
+    height: 200px !important;
+    transition: box-shadow 0.25s var(--rd-ease) !important;
+}
+.theme-editorial .hero-image-wrapper:hover {
+    transform: none !important;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.10) !important;
+}
+.theme-editorial .hero-image-wrapper .profile-img { border-radius: 0 !important; }
+
+.theme-editorial .hero-name {
+    font-family: var(--rd-slab) !important;
+    font-size: clamp(1.45rem, 1.2rem + 1vw, 1.95rem) !important;
+    font-weight: 400 !important;
+    color: var(--text-primary) !important;
+    line-height: 1.2 !important;
+}
+.theme-editorial .hero-title {
+    font-family: var(--font-main) !important;
+    text-transform: none !important;
+    letter-spacing: 0 !important;
+    font-size: 0.95rem !important;
+    font-weight: 400 !important;
+    color: var(--rd-muted) !important;
+    margin-top: 0.5rem !important;
+}
+.theme-editorial .hero-institution { color: var(--text-secondary) !important; font-weight: 500 !important; }
+
+.theme-editorial .hero-contact a {
+    border: 1px solid var(--rd-border) !important;
+    border-radius: var(--radius-sm) !important;
+    background: #fff !important;
+    color: var(--rd-muted) !important;
+    transition: var(--transition-fast) !important;
+}
+.theme-editorial .hero-contact a:hover {
+    color: var(--rd-accent) !important;
+    border-color: var(--rd-accent) !important;
+    background: #fff !important;
+    transform: none !important;
+}
+
+/* ── 8. Cards — flat, hairline border, no lift ─────────────────── */
+.theme-editorial .glass-card,
+.theme-editorial .detail-card,
+.theme-editorial .content-card,
+.theme-editorial .stat-card,
+.theme-editorial .publication-item,
+.theme-editorial .course-topic-card,
+.theme-editorial .contribution-item-card,
+.theme-editorial .role-list-card,
+.theme-editorial #simulations-grid .glass-card {
+    background: #fff !important;
+    border: 1px solid var(--rd-divider) !important;
+    border-radius: var(--radius-md) !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    transition: border-color 0.18s var(--rd-ease), box-shadow 0.18s var(--rd-ease) !important;
+}
+.theme-editorial .glass-card::before { display: none !important; }
+
+.theme-editorial .glass-card:hover,
+.theme-editorial .detail-card:hover,
+.theme-editorial .content-card:hover,
+.theme-editorial .stat-card:hover,
+.theme-editorial .course-topic-card:hover,
+.theme-editorial #simulations-grid .glass-card:hover {
+    transform: none !important;
+    border-color: #d5d5d5 !important;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06) !important;
+}
+
+.theme-editorial .card-header {
+    margin-bottom: 1rem !important;
+    gap: 0.6rem !important;
+    padding-bottom: 0.6rem !important;
+    border-bottom: 1px solid var(--rd-divider) !important;
+}
+.theme-editorial .card-header h3 {
+    font-family: var(--rd-slab) !important;
+    font-size: var(--rd-step-1) !important;
+    font-weight: 500 !important;
+    color: var(--text-primary) !important;
+}
+.theme-editorial .card-header i { font-size: 0.95rem !important; color: var(--rd-accent) !important; }
+
+/* ── 9. Feature lists & chips ──────────────────────────────────── */
+.theme-editorial .interest-list { gap: 0.6rem 1.25rem !important; }
+.theme-editorial .interest-list li {
+    color: var(--text-secondary) !important;
+    font-size: var(--rd-step-0) !important;
+}
+.theme-editorial .interest-list li i { color: var(--rd-accent) !important; font-size: 0.7rem !important; }
+
+.theme-editorial .detail-card > div > span[style] {
+    background: var(--rd-surface-2) !important;
+    color: var(--text-secondary) !important;
+    border: 1px solid var(--rd-divider) !important;
+    border-radius: var(--radius-sm) !important;
+    padding: 0.35rem 0.7rem !important;
+    font-size: 0.82rem !important;
+    font-weight: 400 !important;
+    transition: var(--transition-fast) !important;
+}
+.theme-editorial .detail-card > div > span[style]:hover {
+    border-color: var(--rd-accent) !important;
+    color: var(--rd-accent) !important;
+    transform: none !important;
+}
+.theme-editorial .detail-card > div > span[style] i { color: var(--rd-accent) !important; }
+
+/* ── 10. Stat cards ────────────────────────────────────────────── */
+.theme-editorial .stat-card { padding: 1.15rem 1rem !important; }
+.theme-editorial .stat-number {
+    font-family: var(--rd-slab) !important;
+    font-weight: 500 !important;
+    color: var(--text-primary) !important;
+}
+.theme-editorial .stat-icon-badge { border-radius: var(--radius-sm) !important; }
+
+/* ── 11. Inner tabs (Research) ─────────────────────────────────── */
+.theme-editorial .tab-btn {
+    background: transparent !important;
+    border: 0 !important;
+    border-bottom: 2px solid transparent !important;
+    border-radius: 0 !important;
+    color: var(--rd-muted) !important;
+    font-family: var(--font-main) !important;
+    font-weight: 400 !important;
+    font-size: 0.95rem !important;
+    letter-spacing: 0 !important;
+    text-transform: none !important;
+    padding: 0.5rem 0.15rem !important;
+    margin-right: 1.5rem !important;
+    transition: color 0.15s var(--rd-ease), border-color 0.15s var(--rd-ease) !important;
+}
+.theme-editorial .tab-btn:hover {
+    background: transparent !important;
+    border-color: #d5d5d5 !important;
+    color: var(--text-primary) !important;
+}
+.theme-editorial .tab-btn.active,
+.theme-editorial .tab-btn.active:hover {
+    background: transparent !important;
+    border-color: var(--rd-accent) !important;
+    color: var(--rd-accent) !important;
+    font-weight: 500 !important;
+    box-shadow: none !important;
+}
+
+/* ── 12. Publications — clean bibliography list ────────────────── */
+.theme-editorial .publication-item {
+    background: #fff !important;
+    border: 0 !important;
+    border-bottom: 1px solid var(--rd-divider) !important;
+    border-radius: 0 !important;
+    padding: 0.9rem 0.25rem !important;
+}
+.theme-editorial .publication-item::before { display: none !important; }
+.theme-editorial .publication-item:hover {
+    background: var(--rd-surface-2) !important;
+    transform: none !important;
+    border-color: var(--rd-divider) !important;
+    box-shadow: none !important;
+}
+.theme-editorial .pub-apa {
+    font-size: 0.95rem !important;
+    line-height: 1.6 !important;
+    color: var(--text-secondary) !important;
+}
+.theme-editorial .pub-apa i { color: var(--text-primary) !important; }
+.theme-editorial .pub-link {
+    color: var(--rd-accent) !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+}
+.theme-editorial .pub-link:hover { color: var(--primary-hover) !important; text-decoration: none !important; }
+
+/* ── 13. Roadmap / timeline ────────────────────────────────────── */
+.theme-editorial .roadmap-title { font-size: 1rem !important; font-weight: 500 !important; color: var(--text-primary) !important; }
+.theme-editorial .roadmap-dot,
+.theme-editorial .timeline-item::before {
+    background: var(--rd-accent) !important;
+    box-shadow: 0 0 0 3px var(--rd-accent-soft) !important;
+    border-color: #fff !important;
+}
+.theme-editorial .roadmap-date,
+.theme-editorial .timeline-date {
+    color: var(--rd-muted) !important;
+    font-weight: 500 !important;
+    font-size: 0.8rem !important;
+    letter-spacing: 0 !important;
+}
+.theme-editorial .timeline::before,
+.theme-editorial .horizontal-roadmap-container::before {
+    background: var(--rd-divider) !important;
+}
+
+/* ── 14. Buttons / badges ──────────────────────────────────────── */
+.theme-editorial #view-cv-btn,
+.theme-editorial #print-cv-btn,
+.theme-editorial .btn-primary-cv,
+.theme-editorial a.rd-btn-primary {
+    background: var(--rd-accent) !important;
+    color: #fff !important;
+    border: 1px solid var(--rd-accent) !important;
+    border-radius: var(--radius-sm) !important;
+    font-family: var(--font-main) !important;
+    font-weight: 500 !important;
+    letter-spacing: 0 !important;
+    box-shadow: none !important;
+    text-decoration: none !important;
+    transition: background 0.15s var(--rd-ease) !important;
+}
+.theme-editorial #view-cv-btn:hover,
+.theme-editorial #print-cv-btn:hover,
+.theme-editorial .btn-primary-cv:hover,
+.theme-editorial a.rd-btn-primary:hover {
+    background: var(--primary-hover) !important;
+    border-color: var(--primary-hover) !important;
+    color: #fff !important;
+    transform: none !important;
+    box-shadow: none !important;
+}
+.theme-editorial a.rd-btn-primary,
+.theme-editorial a.rd-btn-primary i { color: #fff !important; }
+
+.theme-editorial .sim-action-btn { color: var(--rd-accent) !important; font-weight: 500 !important; letter-spacing: 0 !important; }
+.theme-editorial .score-badge {
+    background: var(--rd-accent-soft) !important;
+    color: var(--rd-accent) !important;
+    border-radius: var(--radius-sm) !important;
+    font-weight: 500 !important;
+    padding: 0.15rem 0.55rem !important;
+}
+.theme-editorial .word-tag { font-family: var(--font-main) !important; font-weight: 500 !important; }
+
+.theme-editorial .page-btn {
+    border-radius: var(--radius-sm) !important;
+    border: 1px solid var(--rd-border) !important;
+    color: var(--text-secondary) !important;
+    transition: var(--transition-fast) !important;
+}
+.theme-editorial .page-btn:hover,
+.theme-editorial .page-btn.active {
+    background: var(--rd-accent) !important;
+    border-color: var(--rd-accent) !important;
+    color: #fff !important;
+}
+
+/* ── 15. Simulations grid ──────────────────────────────────────── */
+.theme-editorial #simulations-grid .glass-card { padding: 1.4rem 1.25rem !important; }
+.theme-editorial .sim-icon-badge {
+    border-radius: var(--radius-sm) !important;
+    background: var(--rd-accent-soft) !important;
+    color: var(--rd-accent) !important;
+}
+.theme-editorial #simulations-grid h3 {
+    font-family: var(--rd-slab) !important;
+    font-size: 1.1rem !important;
+    font-weight: 500 !important;
+    color: var(--text-primary) !important;
+}
+
+/* ── 16. Footer — centred, small, grey ─────────────────────────── */
+.theme-editorial .footer {
+    background: #fafafa !important;
+    border-top: 1px solid var(--rd-divider) !important;
+    text-align: center !important;
+}
+.theme-editorial .footer p,
+.theme-editorial .footer a { color: var(--rd-muted) !important; font-size: 0.85rem !important; }
+.theme-editorial .footer a:hover { color: var(--rd-accent) !important; }
+
+/* ── 17. Forms / search inputs ─────────────────────────────────── */
+.theme-editorial input[type="text"],
+.theme-editorial #pub-search,
+.theme-editorial #sim-search,
+.theme-editorial #mentorship-search,
+.theme-editorial #course-filter {
+    border: 1px solid var(--rd-border) !important;
+    border-radius: var(--radius-sm) !important;
+    background: #fff !important;
+    color: var(--text-primary) !important;
+    font-family: var(--font-main) !important;
+    box-shadow: none !important;
+    transition: border-color 0.15s var(--rd-ease), box-shadow 0.15s var(--rd-ease) !important;
+}
+.theme-editorial input[type="text"]:focus,
+.theme-editorial #course-filter:focus {
+    border-color: var(--rd-accent) !important;
+    box-shadow: 0 0 0 3px var(--rd-accent-soft) !important;
+    outline: none !important;
+}
+
+/* ── 18. Global polish: focus, selection, scrollbar, motion ─────── */
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+    outline: 2px solid var(--rd-accent, #8C1515) !important;
+    outline-offset: 2px !important;
+    border-radius: 3px;
+}
+.theme-editorial ::selection {
+    background: rgba(140, 21, 21, 0.14);
+    color: #1a1a1a;
+}
+.theme-editorial * {
+    scrollbar-width: thin;
+    scrollbar-color: #cfcfcf transparent;
+}
+.theme-editorial *::-webkit-scrollbar { width: 10px; height: 10px; }
+.theme-editorial *::-webkit-scrollbar-thumb {
+    background: #d6d6d6;
+    border-radius: 999px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+}
+.theme-editorial *::-webkit-scrollbar-thumb:hover { background: #bdbdbd; background-clip: content-box; }
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
+    .theme-editorial .page-section.active-section { animation: none !important; }
+    .theme-editorial .page-section.section-exit { animation: none !important; display: none !important; }
+}
+
+/* ── 19. Small screens ────────────────────────────────────────────
+   The redesign's navbar padding carries !important, which was
+   overriding the base mobile media query and pushing the header ~13px
+   past the viewport. Restore a compact header + reclaim card width so
+   body text fills the screen on phones and tablets.                   */
+@media (max-width: 768px) {
+    .theme-editorial .navbar { padding: 0.5rem 1rem !important; }
+    .theme-editorial .nav-logo { font-size: 1.1rem !important; }
+    .theme-editorial .navbar .nav-link {
+        font-size: 0.85rem !important;
+        padding: 0.35rem 0.55rem !important;
+    }
+    .theme-editorial .hero-container { gap: 1.5rem !important; }
+    .theme-editorial .section-header h2 {
+        font-size: clamp(1.4rem, 1rem + 3.5vw, 2rem) !important;
+    }
+}
+
+@media (max-width: 560px) {
+    /* tighter card gutters so justified text isn't a narrow ribbon */
+    .theme-editorial .detail-card,
+    .theme-editorial .content-card,
+    .theme-editorial .glass-card:not(.stat-card) {
+        padding: 1.15rem !important;
+    }
+    .theme-editorial .detail-card p { hyphens: auto; }
+}
+
+/* ── 20. Simulations — featured & showcase ────────────────────────── */
+
+/* Home-tab band — sits between the stats dashboard and the About card
+   (inside .hero-details, which is a flex column with 1.5rem gap). */
+.theme-editorial .home-sim-band {
+    padding: 1.4rem 0 0.2rem;
+    border-top: 1px solid var(--rd-divider);
+}
+.theme-editorial .home-sim-band-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+}
+.theme-editorial .home-sim-band-head h2 {
+    font-family: var(--rd-slab) !important;
+    font-weight: 400 !important;
+    font-size: 1.3rem !important;
+    color: var(--text-primary) !important;
+    margin: 0 0 0.35rem !important;
+}
+.theme-editorial .home-sim-band-head h2 i { color: var(--rd-accent); font-size: 0.78em; margin-right: 0.4rem; }
+.theme-editorial .home-sim-band-head > div > p {
+    margin: 0 !important;
+    max-width: 100% !important;
+    color: var(--text-secondary) !important;
+    font-size: var(--rd-step-0) !important;
+    text-align: left !important;
+    line-height: 1.6 !important;
+}
+.theme-editorial .home-sim-band-head .rd-btn-primary {
+    white-space: nowrap;
+    align-self: center;
+    padding: 0.55rem 1rem;
+}
+.theme-editorial .home-sim-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+}
+.theme-editorial .home-sim-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    padding: 1.35rem 1.25rem;
+    text-decoration: none;
+    color: inherit;
+    background: #fff;
+    border: 1px solid var(--rd-divider);
+    border-radius: var(--radius-md);
+    transition: border-color 0.18s var(--rd-ease), box-shadow 0.18s var(--rd-ease);
+}
+.theme-editorial .home-sim-card:hover {
+    border-color: var(--rd-accent);
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.06);
+}
+.theme-editorial .home-sim-card h3 {
+    font-family: var(--rd-slab) !important;
+    font-weight: 500 !important;
+    font-size: 1rem !important;
+    line-height: 1.3 !important;
+    color: var(--text-primary) !important;
+    margin: 0 !important;
+}
+.theme-editorial .home-sim-card > p {
+    margin: 0 !important;
+    font-size: 0.85rem !important;
+    line-height: 1.5 !important;
+    color: var(--rd-muted) !important;
+    text-align: left !important;
+}
+.theme-editorial .home-sim-card .sim-action-btn {
+    margin-top: auto;
+    color: var(--rd-accent) !important;
+    font-weight: 500 !important;
+    font-size: 0.85rem !important;
+}
+.theme-editorial .home-sim-card .sim-icon-badge,
+.theme-editorial #sim-featured .sim-icon-badge {
+    width: 38px;
+    height: 38px;
+    border-radius: var(--radius-sm);
+    background: var(--rd-accent-soft);
+    color: var(--rd-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+}
+
+/* Simulations tab */
+.theme-editorial .sim-lede {
+    max-width: 100% !important;   /* fill the section width at every screen size */
+    margin: 0 0 2rem !important;
+    color: var(--text-secondary) !important;
+    font-size: var(--rd-step-1) !important;
+    line-height: 1.65 !important;
+    text-align: justify !important;
+    text-justify: inter-word;
+    hyphens: auto;
+}
+.theme-editorial .sim-lede strong { color: var(--text-primary) !important; font-weight: 600; }
+
+.theme-editorial .sim-cat-title {
+    font-family: var(--rd-slab) !important;
+    font-weight: 400 !important;
+    font-size: 1.35rem !important;
+    color: var(--text-primary) !important;
+    margin: 0 0 1.1rem !important;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--rd-divider);
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+}
+.theme-editorial .sim-cat-title i { color: var(--rd-accent); font-size: 0.8em; }
+.theme-editorial .sim-cat-count {
+    font-family: var(--font-main);
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--rd-muted);
+}
+
+.theme-editorial #sim-featured { margin-bottom: 2.75rem; }
+.theme-editorial .sim-featured-grid,
+.theme-editorial .sim-cat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+.theme-editorial .sim-category { margin-bottom: 2.75rem; }
+.theme-editorial .sim-category:last-child { margin-bottom: 0; }
+
+.theme-editorial .sim-feature-card { border-color: rgba(140, 21, 21, 0.28) !important; }
+.theme-editorial .sim-feature-card:hover { border-color: var(--rd-accent) !important; }
+
+.theme-editorial .sim-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 0.15rem 0 0.4rem;
+}
+.theme-editorial .sim-tags span {
+    font-size: 0.71rem;
+    font-weight: 500;
+    color: var(--rd-muted);
+    background: var(--rd-surface-2);
+    border: 1px solid var(--rd-divider);
+    border-radius: var(--radius-sm);
+    padding: 0.14rem 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .theme-editorial .home-sim-band-head { gap: 1rem; }
+    .theme-editorial .home-sim-band-head .rd-btn-primary { align-self: flex-start; }
+    .theme-editorial .sim-cat-title { font-size: 1.2rem !important; }
+}

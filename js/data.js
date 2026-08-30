@@ -1313,7 +1313,7 @@ const portfolioData = {
         },
         {
                 "name": "Peer Reviewer",
-                "detail": "Emerald - British Food Journal",
+                "detail": "Emerald - British Food Journal, International Journal of Lean Six Sigma",
                 "icon": "fa-check-double"
         },
         {
@@ -1374,7 +1374,7 @@ const portfolioData = {
     achievements: [
         {
                 "name": "Organizing Committee Member",
-                "issuer": "Served as an organizing committee member for Sportscom, college annual fest, and tour at Great Lakes Institute of Management, Chennai, for multiple years"
+                "issuer": "Organizing committee member for Sportscom, Lattitude (the cultural fest of Great Lakes), faculty tour, and other events at Great Lakes Institute of Management, Chennai."
         },
         {
                 "name": "Young Achiever Award",

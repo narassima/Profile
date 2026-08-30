@@ -23,6 +23,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const dropdownLinks = document.querySelectorAll('.dropdown-link');
     const sections = document.querySelectorAll('.page-section');
 
+    // ── Sliding selection indicator for the header nav ───────────
+    // One bar that glides from the old tab to the new one, instead of a
+    // per-link marker that just blinks off here and on there.
+    const navScrollEl = document.getElementById('nav-links-scrollable');
+    let navSlider = null;
+    if (navScrollEl) {
+        navSlider = document.createElement('span');
+        navSlider.className = 'nav-slider';
+        navScrollEl.appendChild(navSlider);
+    }
+    const positionNavSlider = (animate = true) => {
+        if (!navScrollEl || !navSlider) return;
+        const active = navScrollEl.querySelector('.nav-link.active');
+        if (!active) { navSlider.style.opacity = '0'; return; }
+        if (!animate) navSlider.style.transition = 'none';
+        navSlider.style.transform = 'translateX(' + active.offsetLeft + 'px)';
+        navSlider.style.width = active.offsetWidth + 'px';
+        navSlider.style.opacity = '1';
+        if (!animate) {
+            void navSlider.offsetWidth; // flush, then restore the transition
+            navSlider.style.transition = '';
+        }
+    };
+
     const activateTab = (targetId) => {
         // Sync active class on nav links
         navLinks.forEach(l => {
@@ -42,6 +66,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        // Glide the selection bar to the newly-active tab
+        positionNavSlider(true);
+
         // Sync active class on dropdown links
         dropdownLinks.forEach(dl => {
             if (dl.getAttribute('data-target') === targetId) {
@@ -51,23 +78,53 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Toggle active section with fluid animation
-        sections.forEach(sec => {
-            if (sec.id === targetId) {
-                sec.classList.remove('active-section');
-                void sec.offsetWidth; // Force reflow for silky smooth re-trigger
-                sec.classList.add('active-section');
-            } else {
-                sec.classList.remove('active-section');
+        // Reset scroll FIRST and instantly — a concurrent smooth-scroll
+        // animation fights the section transition.
+        window.scrollTo({ top: 0 });
+
+        // Seamless cross-dissolve: the outgoing section is held on top
+        // (CSS .section-exit) fading out, while the incoming section fades
+        // in beneath it. .main-content's height is pinned for the duration
+        // so pulling the outgoing section out of flow can't collapse the
+        // page — that collapse is what looked like a flicker.
+        const incomingSection = document.getElementById(targetId);
+        const outgoingSection = document.querySelector('.page-section.active-section');
+        const mainEl = document.querySelector('.main-content');
+
+        if (incomingSection && incomingSection !== outgoingSection) {
+            if (mainEl && outgoingSection) {
+                mainEl.style.minHeight = outgoingSection.offsetHeight + 'px';
             }
-        });
+
+            // Clear any section still mid-exit from a rapid switch.
+            sections.forEach(sec => {
+                if (sec !== incomingSection) sec.classList.remove('active-section');
+                if (sec !== outgoingSection) sec.classList.remove('section-exit');
+            });
+
+            if (outgoingSection) {
+                outgoingSection.classList.add('section-exit');
+                const finishExit = () => {
+                    outgoingSection.classList.remove('section-exit');
+                    // release the height lock only once nothing is still exiting
+                    if (mainEl && !document.querySelector('.page-section.section-exit')) {
+                        mainEl.style.minHeight = '';
+                    }
+                };
+                outgoingSection.addEventListener('animationend', finishExit, { once: true });
+                setTimeout(finishExit, 600); // safety net if animationend doesn't fire
+            } else if (mainEl) {
+                mainEl.style.minHeight = '';
+            }
+
+            void incomingSection.offsetWidth; // restart the incoming animation
+            incomingSection.classList.add('active-section');
+        }
 
         // Hide dropdown menu
         if (navDropdownMenu) {
             navDropdownMenu.style.display = 'none';
         }
-
-        window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
     // Bind horizontal links
@@ -91,6 +148,16 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // Place the selection bar under the initial tab (snap, don't glide),
+    // and re-place it once web fonts load / the window resizes, since
+    // those change link widths.
+    positionNavSlider(false);
+    requestAnimationFrame(() => positionNavSlider(false));
+    if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(() => positionNavSlider(false));
+    }
+    window.addEventListener('resize', () => positionNavSlider(false));
 
     // ── Publications Inner Tabs ──────────────────────────────────
     const pubTabs = document.querySelectorAll('.tab-btn');
@@ -433,47 +500,56 @@ document.addEventListener('DOMContentLoaded', () => {
     const simSearch = document.getElementById('sim-search');
     const simSearchClear = document.getElementById('sim-search-clear');
     const simGrid = document.getElementById('simulations-grid');
-    
+    const simFeatured = document.getElementById('sim-featured');
+
     if (simSearch && simGrid) {
-        const simCards = simGrid.querySelectorAll('a');
-        
+        // only the categorised library cards are searchable; the Featured
+        // row is hidden while a query is active so it doesn't duplicate hits
+        const simCards = simGrid.querySelectorAll('a.sim-card');
+        const simCategories = simGrid.querySelectorAll('.sim-category');
+
         const filterSimulations = () => {
             const query = simSearch.value.toLowerCase().trim();
             if (simSearchClear) {
                 simSearchClear.style.display = query.length > 0 ? 'block' : 'none';
             }
-            
+            if (simFeatured) {
+                simFeatured.style.display = query ? 'none' : '';
+            }
+
             let anyVisible = false;
             simCards.forEach(card => {
-                const title = card.querySelector('h3').textContent.toLowerCase();
-                const desc = card.querySelector('p').textContent.toLowerCase();
-                const matches = title.includes(query) || desc.includes(query);
-                
-                if (matches) {
-                    card.style.display = 'flex';
-                    anyVisible = true;
-                } else {
-                    card.style.display = 'none';
-                }
+                const title = (card.querySelector('h3') || {}).textContent || '';
+                const desc = (card.querySelector('p') || {}).textContent || '';
+                const matches = !query ||
+                    title.toLowerCase().includes(query) ||
+                    desc.toLowerCase().includes(query);
+                card.style.display = matches ? 'flex' : 'none';
+                if (matches) anyVisible = true;
             });
-            
-            // Handle "No results" message
+
+            // collapse category blocks that have no visible cards
+            simCategories.forEach(cat => {
+                const hasVisible = [...cat.querySelectorAll('a.sim-card')]
+                    .some(c => c.style.display !== 'none');
+                cat.style.display = hasVisible ? '' : 'none';
+            });
+
+            // "No results" message
             let noResultsMsg = document.getElementById('sim-no-results');
             if (!anyVisible) {
                 if (!noResultsMsg) {
                     noResultsMsg = document.createElement('p');
                     noResultsMsg.id = 'sim-no-results';
-                    noResultsMsg.style.cssText = 'color:var(--text-secondary);padding:3rem;text-align:center;font-style:italic;grid-column: 1 / -1;';
+                    noResultsMsg.style.cssText = 'color:var(--text-secondary);padding:3rem;text-align:center;font-style:italic;';
                     noResultsMsg.innerHTML = '<i class="fas fa-search-minus" style="font-size:1.8rem;display:block;margin-bottom:0.75rem;color:var(--primary-color);"></i> No simulations matching your search.';
                     simGrid.appendChild(noResultsMsg);
                 }
-            } else {
-                if (noResultsMsg) {
-                    noResultsMsg.remove();
-                }
+            } else if (noResultsMsg) {
+                noResultsMsg.remove();
             }
         };
-        
+
         simSearch.addEventListener('input', filterSimulations);
         if (simSearchClear) {
             simSearchClear.addEventListener('click', () => {

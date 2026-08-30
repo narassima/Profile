@@ -28,11 +28,13 @@
     <!-- Google Fonts - Premium Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Roboto+Slab:wght@300;400;500;700&display=swap" rel="stylesheet">
     <!-- FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css?v=4.0.0">
+    <!-- Redesign layer (loaded last; remove this line to revert) -->
+    <link rel="stylesheet" href="css/redesign.css?v=2.4.2">
 
     <!-- JSON-LD Structured Data for Google Search -->
     <script type="application/ld+json">
@@ -319,7 +321,7 @@
 
                         </div>
                         
-                        <a href="#experience" onclick="document.querySelector('[data-target=\'experience\']').click();" style="display: flex; align-items: center; justify-content: center; width: 100%; padding: 0.6rem; background: rgba(26, 115, 232, 0.06); color: var(--primary-color); text-decoration: none; border-radius: 0; font-size: 0.85rem; font-weight: 600; transition: all 0.3s ease; border: 1px solid rgba(26, 115, 232, 0.1);" onmouseover="this.style.background='var(--primary-color)'; this.style.color='white';" onmouseout="this.style.background='rgba(26, 115, 232, 0.06)'; this.style.color='var(--primary-color)';">
+                        <a href="#experience" onclick="document.querySelector('[data-target=\'experience\']').click();" class="rd-btn-primary" style="display: flex; align-items: center; justify-content: center; width: 100%; padding: 0.6rem; font-size: 0.85rem; font-weight: 600; text-decoration: none;">
                             View Full Roadmap Details <i class="fas fa-arrow-right" style="margin-left: 0.35rem;"></i>
                         </a>
                     </div>
@@ -389,9 +391,20 @@
                                 <i class="fas fa-quote-right"></i>
                             </div>
                             <div>
-                                <h4 id="scholar-citations" class="stat-number" data-target="510" style="font-size: 1.3rem; font-weight: 800; color: var(--text-primary); margin: 0; line-height: 1.2;">510</h4>
+                                <h4 id="scholar-citations" class="stat-number" data-target="515" style="font-size: 1.3rem; font-weight: 800; color: var(--text-primary); margin: 0; line-height: 1.2;">515</h4>
                                 <p style="font-size: 0.7rem; color: var(--text-secondary); font-weight: 700; margin: 0.15rem 0 0; text-transform: uppercase; letter-spacing: 0.5px;">Citations</p>
                             </div>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Tools & Simulations -->
+                    <div class="home-sim-band">
+                        <div class="home-sim-band-head">
+                            <div>
+                                <h2><i class="fas fa-bolt"></i> Interactive Tools &amp; Simulations</h2>
+                                <p>20 web tools designed and built end-to-end &mdash; 2 registered with the Copyright Office of India &mdash; spanning operations research, lean &amp; quality, ERP, and public-health economics.</p>
+                            </div>
+                            <a href="#materials" class="rd-btn-primary" onclick="document.querySelector('[data-target=\'materials\']').click(); return false;">View all 20 tools <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
 
@@ -400,7 +413,9 @@
                             <i class="fas fa-user-circle"></i>
                             <h3>About</h3>
                         </div>
-                        <p>Dr. Narassima M.S. is an Assistant Professor of Operations at the Great Lakes Institute of Management, Chennai, specializing in Operations Management, Supply Chain Management and Resilience, and Stochastic Simulation Modelling. Driven by a passion to bridge rigorous theory and business practice, his research focuses on developing evidence-based models for complex systems in healthcare, manufacturing, and public policy. He has authored various peer-reviewed articles in top-tier journals (such as Production Planning and Control, Supply Chain Management, Nature's Scientific Reports, BMJ Open, and others), published the textbook 'Design Thinking with Problem-Solving Techniques' with PHI Learning, and managed key research projects in collaboration with UNICEF and the Government of Tamil Nadu.</p>
+                        <p>Dr. Narassima M.S. is an Assistant Professor of Operations at the Great Lakes Institute of Management, Chennai, specializing in Operations Management, Supply Chain Management and Resilience, and Stochastic Simulation Modelling. Driven by a passion to bridge rigorous theory and business practice, his research focuses on developing evidence-based models for complex systems in healthcare, manufacturing, and public policy. He has authored 69 publications so far, including 2 books, with peer-reviewed articles in top-tier journals (such as Production Planning and Control, Supply Chain Management, Nature's Scientific Reports, BMJ Open, and others) and the textbook 'Design Thinking with Problem-Solving Techniques' with PHI Learning. He has also managed key research projects in collaboration with UNICEF and the Government of Tamil Nadu.</p>
+                        <p>He serves on the editorial boards of three journals namely the <em>International Journal of Generative AI in Business</em>, the <em>Journal of Intelligent Operations and Analytics</em>, and <em>SN Business &amp; Economics</em>.</p>
+                        <p>Across the PGDM, PGPM and executive programmes at Great Lakes, he has taught the following courses, with an average student feedback of around 4.5 out of 5.</p>
                     </div>
 
                     <div class="glass-card detail-card">
@@ -423,6 +438,34 @@
                             <li><i class="fas fa-check-circle"></i> Interdisciplinary research: Healthcare, Manufacturing, Industrial Engineering</li>
                             <li><i class="fas fa-check-circle"></i> Sustainability</li>
                         </ul>
+                    </div>
+
+                    <div class="glass-card detail-card slide-up" style="animation-delay: 0.15s;">
+                        <div class="card-header">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <h3>Courses Taught</h3>
+                        </div>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.5rem;">
+                            <span style="background: rgba(26, 115, 232, 0.08); color: var(--primary-color); padding: 0.35rem 0.75rem; border-radius: 15px; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-book-open" style="margin-right: 0.25rem;"></i> Business Excellence for Competitive Advantage</span>
+                            <span style="background: rgba(26, 115, 232, 0.08); color: var(--primary-color); padding: 0.35rem 0.75rem; border-radius: 15px; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-book-open" style="margin-right: 0.25rem;"></i> Optimisation Techniques for Decision Making</span>
+                            <span style="background: rgba(26, 115, 232, 0.08); color: var(--primary-color); padding: 0.35rem 0.75rem; border-radius: 15px; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-book-open" style="margin-right: 0.25rem;"></i> AI for Business</span>
+                            <span style="background: rgba(26, 115, 232, 0.08); color: var(--primary-color); padding: 0.35rem 0.75rem; border-radius: 15px; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-book-open" style="margin-right: 0.25rem;"></i> Application Building using AI</span>
+                            <span style="background: rgba(26, 115, 232, 0.08); color: var(--primary-color); padding: 0.35rem 0.75rem; border-radius: 15px; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-book-open" style="margin-right: 0.25rem;"></i> Productions and Operations Management</span>
+                            <span style="background: rgba(26, 115, 232, 0.08); color: var(--primary-color); padding: 0.35rem 0.75rem; border-radius: 15px; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-book-open" style="margin-right: 0.25rem;"></i> Logistics and Distribution Management</span>
+                            <span style="background: rgba(26, 115, 232, 0.08); color: var(--primary-color); padding: 0.35rem 0.75rem; border-radius: 15px; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-book-open" style="margin-right: 0.25rem;"></i> Operations Simulation</span>
+                            <span style="background: rgba(26, 115, 232, 0.08); color: var(--primary-color); padding: 0.35rem 0.75rem; border-radius: 15px; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-book-open" style="margin-right: 0.25rem;"></i> Supply chain &amp; logistics Management</span>
+                            <span style="background: rgba(26, 115, 232, 0.08); color: var(--primary-color); padding: 0.35rem 0.75rem; border-radius: 15px; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-book-open" style="margin-right: 0.25rem;"></i> Art &amp; Science of Data Storytelling (with AI)</span>
+                            <span style="background: rgba(26, 115, 232, 0.08); color: var(--primary-color); padding: 0.35rem 0.75rem; border-radius: 15px; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-book-open" style="margin-right: 0.25rem;"></i> Technology Consulting</span>
+                            <span style="background: rgba(26, 115, 232, 0.08); color: var(--primary-color); padding: 0.35rem 0.75rem; border-radius: 15px; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-book-open" style="margin-right: 0.25rem;"></i> Business Process Simulation</span>
+                            <span style="background: rgba(26, 115, 232, 0.08); color: var(--primary-color); padding: 0.35rem 0.75rem; border-radius: 15px; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-book-open" style="margin-right: 0.25rem;"></i> Sustainable Practices in Supply Chain</span>
+                            <span style="background: rgba(26, 115, 232, 0.08); color: var(--primary-color); padding: 0.35rem 0.75rem; border-radius: 15px; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-book-open" style="margin-right: 0.25rem;"></i> Competitive Problem Solving and Abstract Thinking</span>
+                            <span style="background: rgba(26, 115, 232, 0.08); color: var(--primary-color); padding: 0.35rem 0.75rem; border-radius: 15px; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-book-open" style="margin-right: 0.25rem;"></i> Unstructured Problem solving and Management Consulting</span>
+                            <span style="background: rgba(26, 115, 232, 0.08); color: var(--primary-color); padding: 0.35rem 0.75rem; border-radius: 15px; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-book-open" style="margin-right: 0.25rem;"></i> Optimization Business Model</span>
+                            <span style="background: rgba(26, 115, 232, 0.08); color: var(--primary-color); padding: 0.35rem 0.75rem; border-radius: 15px; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-book-open" style="margin-right: 0.25rem;"></i> Sustainable Operations</span>
+                            <span style="background: rgba(26, 115, 232, 0.08); color: var(--primary-color); padding: 0.35rem 0.75rem; border-radius: 15px; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-book-open" style="margin-right: 0.25rem;"></i> Excel</span>
+                            <span style="background: rgba(26, 115, 232, 0.08); color: var(--primary-color); padding: 0.35rem 0.75rem; border-radius: 15px; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-book-open" style="margin-right: 0.25rem;"></i> Quants &ndash; Linear Algebra</span>
+                            <span style="background: rgba(26, 115, 232, 0.08); color: var(--primary-color); padding: 0.35rem 0.75rem; border-radius: 15px; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-book-open" style="margin-right: 0.25rem;"></i> Python</span>
+                        </div>
                     </div>
 
                     <div class="glass-card detail-card slide-up" style="animation-delay: 0.2s;">
@@ -460,6 +503,10 @@
                                 <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">Contributed as a mentor for Sportscom at GLIM, coordinating athletic leagues, scheduling campus tournaments, and fostering physical health.</p>
                             </div>
                             <div>
+                                <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.25rem;"><i class="fas fa-masks-theater" style="color: var(--primary-color); margin-right: 0.35rem;"></i> Cultural Fest Organiser</h4>
+                                <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin: 0;">Handles Lattitude, the annual cultural fest of Great Lakes, coordinating events.</p>
+                            </div>
+                            <div>
                                 <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.25rem;"><i class="fas fa-icons" style="color: var(--primary-color); margin-right: 0.35rem;"></i> Personal Interests & Hobbies</h4>
                                 <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem;">
                                     <span style="display: inline-flex; align-items: center; gap: 0.35rem; background: rgba(234, 67, 53, 0.08); color: #ea4335; padding: 0.25rem 0.6rem; border-radius: 12px; font-size: 0.8rem; font-weight: 600;"><i class="fas fa-baseball-bat-ball"></i> Cricket</span>
@@ -474,6 +521,7 @@
 
                 </div>
             </div>
+
         </section>
 
         <!-- Publications Section -->
@@ -506,15 +554,15 @@
                     <h3 style="font-size: 1.1rem; font-weight: 700; margin: 0 0 1rem 0; display: inline-flex; align-items: center; gap: 0.5rem; color: var(--text-primary);"><i class="fas fa-graduation-cap" style="color: var(--primary-color);"></i> Research Impact</h3>
                     <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; text-align: center;">
                         <div style="background: rgba(26,115,232,0.06); padding: 0.75rem 0.25rem; border-radius: 12px; border: 1px solid rgba(26,115,232,0.1);">
-                            <div id="scholar-citations-impact" style="font-size: 1.5rem; font-weight: 700; color: var(--primary-color);">510</div>
+                            <div id="scholar-citations-impact" style="font-size: 1.5rem; font-weight: 700; color: var(--primary-color);">515</div>
                             <div style="font-size: 0.7rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 0.25rem;">Citations</div>
                         </div>
                         <div style="background: rgba(52,168,83,0.06); padding: 0.75rem 0.25rem; border-radius: 12px; border: 1px solid rgba(52,168,83,0.1);">
-                            <div id="scholar-hindex-impact" style="font-size: 1.5rem; font-weight: 700; color: #34A853;">13</div>
+                            <div id="scholar-hindex-impact" style="font-size: 1.5rem; font-weight: 700; color: #34A853;">14</div>
                             <div style="font-size: 0.7rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 0.25rem;">h-index</div>
                         </div>
                         <div style="background: rgba(234,67,53,0.06); padding: 0.75rem 0.25rem; border-radius: 12px; border: 1px solid rgba(234,67,53,0.1);">
-                            <div id="scholar-i10index-impact" style="font-size: 1.5rem; font-weight: 700; color: #EA4335;">18</div>
+                            <div id="scholar-i10index-impact" style="font-size: 1.5rem; font-weight: 700; color: #EA4335;">16</div>
                             <div style="font-size: 0.7rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 0.25rem;">i10-index</div>
                         </div>
                     </div>
@@ -1064,8 +1112,8 @@
                 <div class="section-underline"></div>
             </div>
             
-            <p style="text-align: justify; max-width: 900px; margin: 0 auto 3rem; color: var(--text-secondary); font-size: 1.15rem; line-height: 1.8;">
-                Welcome to the Operations & Policy Analytics Portal. Below are the custom-engineered interactive web platforms, scientific calculators, and simulation dashboards. These state-of-the-art analytical tools were designed to bridge the gap between theoretical optimization models and real-world implementation, offering robust solutions for business workflow planning, public health epidemiological analysis, and macroeconomic policy formulation.
+            <p class="sim-lede">
+                20 interactive web tools, each designed and built end-to-end &mdash; operations-research solvers, discrete-event simulators, lean &amp; quality diagnostics, and public-health economic-burden calculators. Two are registered with the Copyright Office of India. Every tool runs entirely in the browser; click any card to launch it.
             </p>
 
             <div style="max-width: 600px; margin: 0 auto 2.5rem; display: flex; align-items: center; position: relative; gap: 0.5rem; z-index: 2;">
@@ -1074,292 +1122,275 @@
                 <button id="sim-search-clear" style="position: absolute; right: 1.25rem; background: none; border: none; color: var(--text-secondary); font-size: 1.1rem; cursor: pointer; display: none; transition: var(--transition);"><i class="fas fa-times"></i></button>
             </div>
 
-            <div id="simulations-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; max-width: 1200px; margin: 0 auto 2.5rem;">
-                <!-- Card 1: Supply Chain Simulation & Optimization Studio Pro (Pastel Mint Green) -->
-                <a href="https://narassima.github.io/SupplyChainStudio/" target="_blank" class="glass-card hover-lift sim-card-1" style="text-decoration: none; color: inherit; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; border-radius: var(--radius-lg); height: 100%; transition: all 0.3s ease;">
-                    <div class="sim-icon-badge">
-                        <i class="fas fa-truck-ramp-box"></i>
-                    </div>
-                    <div>
-                        <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem;">Supply Chain Simulation & Optimization Studio Pro</h3>
-                        <p style="font-size: 0.88rem; color: #334155; line-height: 1.55; margin: 0; text-align: justify;">
-                            An enterprise-grade, interactive supply chain design and simulation platform modeled after anyLogistix. Features Greenfield Analysis (GFA), MILP Network Optimization (NO), dynamic discrete-event simulation (SIM) with 14 real-time telemetry plots, multi-echelon inventory policies, disruption risk modeling, and full multi-tab Excel (.xlsx) workbook import/export.
-                        </p>
-                    </div>
-                    <span class="sim-action-btn">Launch Studio Pro <i class="fas fa-arrow-right"></i></span>
-                </a>
-
-                <!-- Card 2: Flexible Job Shop Scheduler (Pastel Sky Blue) -->
-                <a href="https://narassima.github.io/Job-Shop-Scheduler/" target="_blank" class="glass-card hover-lift sim-card-2" style="text-decoration: none; color: inherit; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; border-radius: var(--radius-lg); height: 100%; transition: all 0.3s ease;">
-                    <div class="sim-icon-badge">
-                        <i class="fas fa-cogs"></i>
-                    </div>
-                    <div>
-                        <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem;">Flexible Job Shop Scheduler & MCDM Simulator</h3>
-                        <p style="font-size: 0.88rem; color: #334155; line-height: 1.55; margin: 0; text-align: justify;">
-                            An advanced operations scheduling and Multi-Criteria Decision Making (MCDM) simulation platform. It models flexible job routing, machine sequence allocations, composite priority queues, scheduled downtime calendars, and dynamic shop floor productivity. Features point-and-click arithmetic CDR builders and native professional XML Excel report downloading.
-                        </p>
-                    </div>
-                    <span class="sim-action-btn">Explore Scheduler <i class="fas fa-arrow-right"></i></span>
-                </a>
-
-                <!-- Card 3: Optimization & Business Modeling Hub (3rd Position - Pastel Sunshine Amber) -->
-                <a href="https://narassima.github.io/Optimisation-techniques/" target="_blank" class="glass-card hover-lift sim-card-3" style="text-decoration: none; color: inherit; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; border-radius: var(--radius-lg); height: 100%; transition: all 0.3s ease;">
-                    <div class="sim-icon-badge">
-                        <i class="fas fa-diagram-project"></i>
-                    </div>
-                    <div>
-                        <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem;">Optimization & Business Modeling Hub</h3>
-                        <p style="font-size: 0.88rem; color: #334155; line-height: 1.55; margin: 0; text-align: justify;">
-                            An interactive Operations Research and Decision Modeling platform for PGDM/MBA learning. Features step-by-step algorithms, rim-condition feasibility verifications, minimum line coverage test analyses, and dynamic SVG network graph visualizers for Linear Programming (LPP), Transportation Problems, Assignment (Hungarian Method), Shortest Path (Dijkstra), and Minimum Spanning Trees (Prim's MST).
-                        </p>
-                    </div>
-                    <span class="sim-action-btn">Launch Optimization Hub <i class="fas fa-arrow-right"></i></span>
-                </a>
-
-                <!-- Card 4: Integer Programming & Combinatorial Optimization Studio (4th Position - Pastel Soft Amethyst) -->
-                <a href="https://narassima.github.io/Integer-Programming/" target="_blank" class="glass-card hover-lift sim-card-4" style="text-decoration: none; color: inherit; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; border-radius: var(--radius-lg); height: 100%; transition: all 0.3s ease;">
-                    <div class="sim-icon-badge">
-                        <i class="fas fa-layer-group"></i>
-                    </div>
-                    <div>
-                        <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem;">Integer Programming &amp; Combinatorial Optimization Studio</h3>
-                        <p style="font-size: 0.88rem; color: #334155; line-height: 1.55; margin: 0; text-align: justify;">
-                            An interactive operations research platform for discrete optimization. Solves Pure and Mixed Integer Linear Programming (MILP) problems using step-by-step Branch-and-Bound trees, Gomory Cutting Plane algorithms, binary decision variables, and dynamic solution space visualizations.
-                        </p>
-                    </div>
-                    <span class="sim-action-btn">Launch IP Solver <i class="fas fa-arrow-right"></i></span>
-                </a>
-
-                <!-- Card 5: Sensitivity Analysis & Post-Optimality Diagnostic Suite (5th Position - Pastel Soft Rose Coral) -->
-                <a href="https://narassima.github.io/Sensitivity-Analysis/" target="_blank" class="glass-card hover-lift sim-card-5" style="text-decoration: none; color: inherit; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; border-radius: var(--radius-lg); height: 100%; transition: all 0.3s ease;">
-                    <div class="sim-icon-badge">
-                        <i class="fas fa-sliders"></i>
-                    </div>
-                    <div>
-                        <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem;">Sensitivity Analysis &amp; Post-Optimality Diagnostic Suite</h3>
-                        <p style="font-size: 0.88rem; color: #334155; line-height: 1.55; margin: 0; text-align: justify;">
-                            An advanced parametric optimization and post-optimality analyzer. Calculates objective function coefficient range variations, right-hand side shadow prices (dual values), allowable increase/decrease limits, and dynamic 2D/3D parametric trade-off sensitivity curves for linear programming models.
-                        </p>
-                    </div>
-                    <span class="sim-action-btn">Explore Sensitivity Suite <i class="fas fa-arrow-right"></i></span>
-                </a>
-
-                <!-- Card 6: Hospital Scheduler Application (Pastel Soft Coral Rose) -->
-                <a href="https://narassima.github.io/HospitalScheduler/" target="_blank" class="glass-card hover-lift sim-card-6" style="text-decoration: none; color: inherit; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; border-radius: var(--radius-lg); height: 100%; transition: all 0.3s ease;">
-                    <div class="sim-icon-badge">
-                        <i class="fas fa-hospital-user"></i>
-                    </div>
-                    <div>
-                        <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem;">Hospital Scheduler Application</h3>
-                        <p style="font-size: 0.88rem; color: #334155; line-height: 1.55; margin: 0; text-align: justify;">
-                            An interactive web-based scheduling application engineered to optimize hospital workforce and shift allocations. It provides intuitive tools to balance healthcare capacity with patient demands through systematic operations management techniques.
-                        </p>
-                    </div>
-                    <span class="sim-action-btn">Launch Scheduler <i class="fas fa-arrow-right"></i></span>
-                </a>
-
-                <!-- Card 7: OM PGPM Planning Dashboard (Pastel Royal Lavender) -->
-                <a href="https://narassima.github.io/OM_PGPM_Planning/index.html" target="_blank" class="glass-card hover-lift sim-card-7" style="text-decoration: none; color: inherit; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; border-radius: var(--radius-lg); height: 100%; transition: all 0.3s ease;">
-                    <div class="sim-icon-badge">
-                        <i class="fas fa-sitemap"></i>
-                    </div>
-                    <div>
-                        <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem;">OM PGPM Planning Dashboard</h3>
-                        <p style="font-size: 0.88rem; color: #334155; line-height: 1.55; margin: 0; text-align: justify;">
-                            A sophisticated operations simulation and capacity modeling dashboard. It facilitates dynamic workflow mapping, scheduling coordination, bottleneck detection, and queueing-theory allocations for corporate supply chain processes. Designed as an active learning module for strategic operations analysis.
-                        </p>
-                    </div>
-                    <span class="sim-action-btn">Explore Dashboard <i class="fas fa-arrow-right"></i></span>
-                </a>
-
-                <!-- Card 8: Goal Programming & Multi-Objective Decision Suite (8th Position - Pastel Ocean Teal) -->
-                <a href="https://narassima.github.io/Goal-Programming/" target="_blank" class="glass-card hover-lift sim-card-8" style="text-decoration: none; color: inherit; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; border-radius: var(--radius-lg); height: 100%; transition: all 0.3s ease;">
-                    <div class="sim-icon-badge">
-                        <i class="fas fa-bullseye"></i>
-                    </div>
-                    <div>
-                        <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem;">Goal Programming &amp; Multi-Objective Decision Suite</h3>
-                        <p style="font-size: 0.88rem; color: #334155; line-height: 1.55; margin: 0; text-align: justify;">
-                            An interactive multi-objective optimization platform for complex operational decision-making. Models non-preemptive and lexicographic (preemptive) goal programming, minimizing positive and negative deviational variables across competing strategic targets and resource constraints.
-                        </p>
-                    </div>
-                    <span class="sim-action-btn">Launch Goal Suite <i class="fas fa-arrow-right"></i></span>
-                </a>
-
-                <!-- Card 9: ERPSim Learning Dashboard (Pastel Ocean Teal) -->
-                <a href="https://narassima.github.io/ERPSim/" target="_blank" class="glass-card hover-lift sim-card-9" style="text-decoration: none; color: inherit; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; border-radius: var(--radius-lg); height: 100%; transition: all 0.3s ease;">
-                    <div class="sim-icon-badge">
-                        <i class="fas fa-cubes"></i>
-                    </div>
-                    <div>
-                        <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem;">ERPSim Learning Dashboard</h3>
-                        <p style="font-size: 0.88rem; color: #334155; line-height: 1.55; margin: 0; text-align: justify;">
-                            An interactive ERP simulation and enterprise systems learning platform. It facilitates hands-on active learning of business process integration, real-time data analysis, workflow synchronization, and collaborative operational decision-making in a simulated corporate environment.
-                        </p>
-                    </div>
-                    <span class="sim-action-btn">Explore ERP Simulator <i class="fas fa-arrow-right"></i></span>
-                </a>
-
-                <!-- Card 10: COVID-19 DALY Calculator (Pastel Ocean Teal) -->
-                <a href="https://coviddaly.cphr-mant.org/" target="_blank" class="glass-card hover-lift sim-card-10" style="text-decoration: none; color: inherit; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; border-radius: var(--radius-lg); height: 100%; transition: all 0.3s ease;">
-                    <div class="sim-icon-badge">
-                        <i class="fas fa-calculator"></i>
-                    </div>
-                    <div>
-                        <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem;">COVID-19 DALY Calculator</h3>
-                        <p style="font-size: 0.88rem; color: #334155; line-height: 1.55; margin: 0; text-align: justify;">
-                            An interactive, scientifically validated web-based calculator developed to evaluate and quantify public health impacts. It computes Disability-Adjusted Life Years (DALY) based on Years of Life Lost (YLL) and Years Lived with Disability (YLD) to guide evidence-based epidemic policy decisions.
-                        </p>
-                        <div style="margin-top: 0.5rem; font-size: 0.78rem; font-weight: 600; color: #0369a1; background: rgba(14, 165, 233, 0.15); display: inline-block; padding: 0.2rem 0.5rem; border-radius: 5px;">
-                            <i class="fas fa-copyright" style="margin-right: 0.25rem;"></i> Copyright Reg: 7242/2024-CO/L
+            <!-- Featured -->
+            <div id="sim-featured">
+                <h3 class="sim-cat-title"><i class="fas fa-star"></i> Featured</h3>
+                <div class="sim-featured-grid">
+                    <a href="https://narassima.github.io/SupplyChainStudio/" target="_blank" class="glass-card sim-card sim-feature-card" style="text-decoration: none; color: inherit; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.75rem; border-radius: var(--radius-lg);">
+                        <div class="sim-icon-badge"><i class="fas fa-truck-ramp-box"></i></div>
+                        <div>
+                            <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem;">Supply Chain Simulation &amp; Optimization Studio Pro</h3>
+                            <p style="font-size: 0.88rem; color: #334155; line-height: 1.55; margin: 0; text-align: justify;">An enterprise-grade supply chain design &amp; simulation platform modelled after anyLogistix &mdash; Greenfield Analysis, MILP network optimization, and discrete-event simulation with 14 live telemetry plots and full multi-tab Excel import/export.</p>
                         </div>
-                    </div>
-                    <span class="sim-action-btn">Open Official Calculator <i class="fas fa-arrow-right"></i></span>
-                </a>
-
-                <!-- Card 11: Non-Health GDP Loss Estimator (Pastel Warm Apricot Peach) -->
-                <a href="https://covidnonhealthgdp.cphr-mant.org/" target="_blank" class="glass-card hover-lift sim-card-11" style="text-decoration: none; color: inherit; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; border-radius: var(--radius-lg); height: 100%; transition: all 0.3s ease;">
-                    <div class="sim-icon-badge">
-                        <i class="fas fa-chart-pie"></i>
-                    </div>
-                    <div>
-                        <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem;">Non-Health GDP Loss Estimator</h3>
-                        <p style="font-size: 0.88rem; color: #334155; line-height: 1.55; margin: 0; text-align: justify;">
-                            An advanced macroeconomic econometric simulator. This tool allows researchers and economists to evaluate, simulate, and project sectoral non-health Gross Domestic Product (GDP) losses resulting from workforce morbidity, mortality, and associated macroeconomic pandemic shockwaves.
-                        </p>
-                        <div style="margin-top: 0.5rem; font-size: 0.78rem; font-weight: 600; color: #c2410c; background: rgba(249, 115, 22, 0.15); display: inline-block; padding: 0.2rem 0.5rem; border-radius: 5px;">
-                            <i class="fas fa-copyright" style="margin-right: 0.25rem;"></i> Copyright Reg: 6311/2024-CO/L
+                        <div class="sim-tags"><span>MILP</span><span>Discrete-event sim</span><span>14 live plots</span><span>.xlsx I/O</span></div>
+                        <span class="sim-action-btn">Launch Studio Pro <i class="fas fa-arrow-right"></i></span>
+                    </a>
+                    <a href="https://narassima.github.io/Job-Shop-Scheduler/" target="_blank" class="glass-card sim-card sim-feature-card" style="text-decoration: none; color: inherit; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.75rem; border-radius: var(--radius-lg);">
+                        <div class="sim-icon-badge"><i class="fas fa-cogs"></i></div>
+                        <div>
+                            <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem;">Flexible Job Shop Scheduler &amp; MCDM Simulator</h3>
+                            <p style="font-size: 0.88rem; color: #334155; line-height: 1.55; margin: 0; text-align: justify;">An advanced scheduling and Multi-Criteria Decision Making simulator &mdash; flexible job routing, composite priority queues, downtime calendars, point-and-click composite dispatching-rule builders, and native XML Excel reporting.</p>
                         </div>
-                    </div>
-                    <span class="sim-action-btn">Launch Official Estimator <i class="fas fa-arrow-right"></i></span>
-                </a>
+                        <div class="sim-tags"><span>Flexible routing</span><span>MCDM</span><span>Composite priority rules</span><span>XML reports</span></div>
+                        <span class="sim-action-btn">Explore Scheduler <i class="fas fa-arrow-right"></i></span>
+                    </a>
+                    <a href="https://coviddaly.cphr-mant.org/" target="_blank" class="glass-card sim-card sim-feature-card" style="text-decoration: none; color: inherit; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.75rem; border-radius: var(--radius-lg);">
+                        <div class="sim-icon-badge"><i class="fas fa-calculator"></i></div>
+                        <div>
+                            <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem;">COVID-19 DALY Calculator</h3>
+                            <p style="font-size: 0.88rem; color: #334155; line-height: 1.55; margin: 0; text-align: justify;">A scientifically validated calculator that computes Disability-Adjusted Life Years from Years of Life Lost and Years Lived with Disability, to support evidence-based epidemic policy. Hosted on its own domain.</p>
+                            <div style="margin-top: 0.5rem; font-size: 0.78rem; font-weight: 600; color: #0369a1; background: rgba(14, 165, 233, 0.15); display: inline-block; padding: 0.2rem 0.5rem; border-radius: 5px;">
+                                <i class="fas fa-copyright" style="margin-right: 0.25rem;"></i> Copyright Reg: 7242/2024-CO/L
+                            </div>
+                        </div>
+                        <div class="sim-tags"><span>DALY = YLL + YLD</span><span>Policy analytics</span><span>Copyright-registered</span></div>
+                        <span class="sim-action-btn">Open Official Calculator <i class="fas fa-arrow-right"></i></span>
+                    </a>
+                </div>
+            </div>
 
-                <!-- Card 12: 7 QC Tools & COPQ Diagnostic Suite (Pastel Soft Periwinkle Indigo) -->
-                <a href="https://narassima.github.io/7QCToolsCOPQDiagnosticSuite/" target="_blank" class="glass-card hover-lift sim-card-12" style="text-decoration: none; color: inherit; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; border-radius: var(--radius-lg); height: 100%; transition: all 0.3s ease;">
-                    <div class="sim-icon-badge">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <div>
-                        <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem;">7 QC Tools &amp; COPQ Diagnostic Suite</h3>
-                        <p style="font-size: 0.88rem; color: #334155; line-height: 1.55; margin: 0; text-align: justify;">
-                            An interactive diagnostic suite containing all seven critical Quality Control tools integrated with Cost of Poor Quality (COPQ) analysis for lean manufacturing optimization and continuous process improvement.
-                        </p>
-                    </div>
-                    <span class="sim-action-btn">Explore QC Suite <i class="fas fa-arrow-right"></i></span>
-                </a>
+            <div id="simulations-grid" style="max-width: 1200px; margin: 0 auto;">
 
-                <!-- Card 13: QFD House of Quality Suite (Pastel Soft Blush Pink) -->
-                <a href="https://narassima.github.io/QFDHouseofQualitySuite/" target="_blank" class="glass-card hover-lift sim-card-13" style="text-decoration: none; color: inherit; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; border-radius: var(--radius-lg); height: 100%; transition: all 0.3s ease;">
-                    <div class="sim-icon-badge">
-                        <i class="fas fa-hotel"></i>
+                <div class="sim-category">
+                    <h3 class="sim-cat-title">Operations Research &amp; Optimization <span class="sim-cat-count">6 tools</span></h3>
+                    <div class="sim-cat-grid">
+                        <a href="https://narassima.github.io/SupplyChainStudio/" target="_blank" class="glass-card hover-lift sim-card-1 sim-card" style="text-decoration: none; color: inherit; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; border-radius: var(--radius-lg); height: 100%; transition: all 0.3s ease;">
+                            <div class="sim-icon-badge"><i class="fas fa-truck-ramp-box"></i></div>
+                            <div>
+                                <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem;">Supply Chain Simulation &amp; Optimization Studio Pro</h3>
+                                <p style="font-size: 0.88rem; color: #334155; line-height: 1.55; margin: 0; text-align: justify;">
+                                    An enterprise-grade, interactive supply chain design and simulation platform modeled after anyLogistix. Features Greenfield Analysis (GFA), MILP Network Optimization (NO), dynamic discrete-event simulation (SIM) with 14 real-time telemetry plots, multi-echelon inventory policies, disruption risk modeling, and full multi-tab Excel (.xlsx) workbook import/export.
+                                </p>
+                            </div>
+                            <span class="sim-action-btn">Launch Studio Pro <i class="fas fa-arrow-right"></i></span>
+                        </a>
+                        <a href="https://narassima.github.io/Job-Shop-Scheduler/" target="_blank" class="glass-card hover-lift sim-card-2 sim-card" style="text-decoration: none; color: inherit; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; border-radius: var(--radius-lg); height: 100%; transition: all 0.3s ease;">
+                            <div class="sim-icon-badge"><i class="fas fa-cogs"></i></div>
+                            <div>
+                                <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem;">Flexible Job Shop Scheduler &amp; MCDM Simulator</h3>
+                                <p style="font-size: 0.88rem; color: #334155; line-height: 1.55; margin: 0; text-align: justify;">
+                                    An advanced operations scheduling and Multi-Criteria Decision Making (MCDM) simulation platform. It models flexible job routing, machine sequence allocations, composite priority queues, scheduled downtime calendars, and dynamic shop floor productivity. Features point-and-click arithmetic CDR builders and native professional XML Excel report downloading.
+                                </p>
+                            </div>
+                            <span class="sim-action-btn">Explore Scheduler <i class="fas fa-arrow-right"></i></span>
+                        </a>
+                        <a href="https://narassima.github.io/Optimisation-techniques/" target="_blank" class="glass-card hover-lift sim-card-3 sim-card" style="text-decoration: none; color: inherit; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; border-radius: var(--radius-lg); height: 100%; transition: all 0.3s ease;">
+                            <div class="sim-icon-badge"><i class="fas fa-diagram-project"></i></div>
+                            <div>
+                                <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem;">Optimization &amp; Business Modeling Hub</h3>
+                                <p style="font-size: 0.88rem; color: #334155; line-height: 1.55; margin: 0; text-align: justify;">
+                                    An interactive Operations Research and Decision Modeling platform for PGDM/MBA learning. Features step-by-step algorithms, rim-condition feasibility verifications, minimum line coverage test analyses, and dynamic SVG network graph visualizers for Linear Programming (LPP), Transportation Problems, Assignment (Hungarian Method), Shortest Path (Dijkstra), and Minimum Spanning Trees (Prim's MST).
+                                </p>
+                            </div>
+                            <span class="sim-action-btn">Launch Optimization Hub <i class="fas fa-arrow-right"></i></span>
+                        </a>
+                        <a href="https://narassima.github.io/Integer-Programming/" target="_blank" class="glass-card hover-lift sim-card-4 sim-card" style="text-decoration: none; color: inherit; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; border-radius: var(--radius-lg); height: 100%; transition: all 0.3s ease;">
+                            <div class="sim-icon-badge"><i class="fas fa-layer-group"></i></div>
+                            <div>
+                                <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem;">Integer Programming &amp; Combinatorial Optimization Studio</h3>
+                                <p style="font-size: 0.88rem; color: #334155; line-height: 1.55; margin: 0; text-align: justify;">
+                                    An interactive operations research platform for discrete optimization. Solves Pure and Mixed Integer Linear Programming (MILP) problems using step-by-step Branch-and-Bound trees, Gomory Cutting Plane algorithms, binary decision variables, and dynamic solution space visualizations.
+                                </p>
+                            </div>
+                            <span class="sim-action-btn">Launch IP Solver <i class="fas fa-arrow-right"></i></span>
+                        </a>
+                        <a href="https://narassima.github.io/Sensitivity-Analysis/" target="_blank" class="glass-card hover-lift sim-card-5 sim-card" style="text-decoration: none; color: inherit; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; border-radius: var(--radius-lg); height: 100%; transition: all 0.3s ease;">
+                            <div class="sim-icon-badge"><i class="fas fa-sliders"></i></div>
+                            <div>
+                                <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem;">Sensitivity Analysis &amp; Post-Optimality Diagnostic Suite</h3>
+                                <p style="font-size: 0.88rem; color: #334155; line-height: 1.55; margin: 0; text-align: justify;">
+                                    An advanced parametric optimization and post-optimality analyzer. Calculates objective function coefficient range variations, right-hand side shadow prices (dual values), allowable increase/decrease limits, and dynamic 2D/3D parametric trade-off sensitivity curves for linear programming models.
+                                </p>
+                            </div>
+                            <span class="sim-action-btn">Explore Sensitivity Suite <i class="fas fa-arrow-right"></i></span>
+                        </a>
+                        <a href="https://narassima.github.io/Goal-Programming/" target="_blank" class="glass-card hover-lift sim-card-8 sim-card" style="text-decoration: none; color: inherit; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; border-radius: var(--radius-lg); height: 100%; transition: all 0.3s ease;">
+                            <div class="sim-icon-badge"><i class="fas fa-bullseye"></i></div>
+                            <div>
+                                <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem;">Goal Programming &amp; Multi-Objective Decision Suite</h3>
+                                <p style="font-size: 0.88rem; color: #334155; line-height: 1.55; margin: 0; text-align: justify;">
+                                    An interactive multi-objective optimization platform for complex operational decision-making. Models non-preemptive and lexicographic (preemptive) goal programming, minimizing positive and negative deviational variables across competing strategic targets and resource constraints.
+                                </p>
+                            </div>
+                            <span class="sim-action-btn">Launch Goal Suite <i class="fas fa-arrow-right"></i></span>
+                        </a>
                     </div>
-                    <div>
-                        <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem;">QFD House of Quality Suite</h3>
-                        <p style="font-size: 0.88rem; color: #334155; line-height: 1.55; margin: 0; text-align: justify;">
-                            A structured Quality Function Deployment (QFD) planning engine. Integrates Voice of Customer (WHATs), engineering specs (HOWs), inter-relationships, and correlation matrices to drive product planning, benchmarking, and cross-functional design decisions.
-                        </p>
-                    </div>
-                    <span class="sim-action-btn">Explore QFD Suite <i class="fas fa-arrow-right"></i></span>
-                </a>
+                </div>
 
-                <!-- Card 14: SMED Setup Optimizer (Pastel Soft Emerald Sage) -->
-                <a href="https://narassima.github.io/SMED-Setup-Optimizer/" target="_blank" class="glass-card hover-lift sim-card-14" style="text-decoration: none; color: inherit; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; border-radius: var(--radius-lg); height: 100%; transition: all 0.3s ease;">
-                    <div class="sim-icon-badge">
-                        <i class="fas fa-stopwatch-20"></i>
+                <div class="sim-category">
+                    <h3 class="sim-cat-title">Lean &amp; Quality Engineering <span class="sim-cat-count">4 tools</span></h3>
+                    <div class="sim-cat-grid">
+                        <a href="https://narassima.github.io/7QCToolsCOPQDiagnosticSuite/" target="_blank" class="glass-card hover-lift sim-card-12 sim-card" style="text-decoration: none; color: inherit; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; border-radius: var(--radius-lg); height: 100%; transition: all 0.3s ease;">
+                            <div class="sim-icon-badge"><i class="fas fa-chart-line"></i></div>
+                            <div>
+                                <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem;">7 QC Tools &amp; COPQ Diagnostic Suite</h3>
+                                <p style="font-size: 0.88rem; color: #334155; line-height: 1.55; margin: 0; text-align: justify;">
+                                    An interactive diagnostic suite containing all seven critical Quality Control tools integrated with Cost of Poor Quality (COPQ) analysis for lean manufacturing optimization and continuous process improvement.
+                                </p>
+                            </div>
+                            <span class="sim-action-btn">Explore QC Suite <i class="fas fa-arrow-right"></i></span>
+                        </a>
+                        <a href="https://narassima.github.io/QFDHouseofQualitySuite/" target="_blank" class="glass-card hover-lift sim-card-13 sim-card" style="text-decoration: none; color: inherit; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; border-radius: var(--radius-lg); height: 100%; transition: all 0.3s ease;">
+                            <div class="sim-icon-badge"><i class="fas fa-hotel"></i></div>
+                            <div>
+                                <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem;">QFD House of Quality Suite</h3>
+                                <p style="font-size: 0.88rem; color: #334155; line-height: 1.55; margin: 0; text-align: justify;">
+                                    A structured Quality Function Deployment (QFD) planning engine. Integrates Voice of Customer (WHATs), engineering specs (HOWs), inter-relationships, and correlation matrices to drive product planning, benchmarking, and cross-functional design decisions.
+                                </p>
+                            </div>
+                            <span class="sim-action-btn">Explore QFD Suite <i class="fas fa-arrow-right"></i></span>
+                        </a>
+                        <a href="https://narassima.github.io/SMED-Setup-Optimizer/" target="_blank" class="glass-card hover-lift sim-card-14 sim-card" style="text-decoration: none; color: inherit; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; border-radius: var(--radius-lg); height: 100%; transition: all 0.3s ease;">
+                            <div class="sim-icon-badge"><i class="fas fa-stopwatch-20"></i></div>
+                            <div>
+                                <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem;">SMED Setup Optimizer &amp; Simulator</h3>
+                                <p style="font-size: 0.88rem; color: #334155; line-height: 1.55; margin: 0; text-align: justify;">
+                                    An interactive simulator and capacity analyzer implementing Shigeo Shingo's Single Minute Exchange of Die (SMED) methodology. Features customizable process templates, interactive drag-and-drop workflow layout charts, parallel operations planners, and auto-generated PDF diagnostic reports.
+                                </p>
+                            </div>
+                            <span class="sim-action-btn">Explore SMED Optimizer <i class="fas fa-arrow-right"></i></span>
+                        </a>
+                        <a href="https://narassima.github.io/VSM-Mapper-Architect/" target="_blank" class="glass-card hover-lift sim-card-15 sim-card" style="text-decoration: none; color: inherit; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; border-radius: var(--radius-lg); height: 100%; transition: all 0.3s ease;">
+                            <div class="sim-icon-badge"><i class="fas fa-project-diagram"></i></div>
+                            <div>
+                                <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem;">VSM Mapper &amp; Spaghetti Diagram Architect</h3>
+                                <p style="font-size: 0.88rem; color: #334155; line-height: 1.55; margin: 0; text-align: justify;">
+                                    An interactive Value Stream Mapping (VSM) and layout analysis platform. Supports standard lean symbology (Kaizen bursts, supermarkets, Kanbans), multi-modal flows (electronic, push, pull connection types), automatic timeline lead-time ladder generation, and custom industrial case studies.
+                                </p>
+                            </div>
+                            <span class="sim-action-btn">Explore VSM Architect <i class="fas fa-arrow-right"></i></span>
+                        </a>
                     </div>
-                    <div>
-                        <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem;">SMED Setup Optimizer &amp; Simulator</h3>
-                        <p style="font-size: 0.88rem; color: #334155; line-height: 1.55; margin: 0; text-align: justify;">
-                            An interactive simulator and capacity analyzer implementing Shigeo Shingo's Single Minute Exchange of Die (SMED) methodology. Features customizable process templates, interactive drag-and-drop workflow layout charts, parallel operations planners, and auto-generated PDF diagnostic reports.
-                        </p>
-                    </div>
-                    <span class="sim-action-btn">Explore SMED Optimizer <i class="fas fa-arrow-right"></i></span>
-                </a>
+                </div>
 
-                <!-- Card 15: VSM Mapper & Spaghetti Diagram Architect (Pastel Soft Royal Lilac) -->
-                <a href="https://narassima.github.io/VSM-Mapper-Architect/" target="_blank" class="glass-card hover-lift sim-card-15" style="text-decoration: none; color: inherit; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; border-radius: var(--radius-lg); height: 100%; transition: all 0.3s ease;">
-                    <div class="sim-icon-badge">
-                        <i class="fas fa-project-diagram"></i>
+                <div class="sim-category">
+                    <h3 class="sim-cat-title">Public Health &amp; Economic Burden <span class="sim-cat-count">7 tools &middot; 2 copyright-registered</span></h3>
+                    <div class="sim-cat-grid">
+                        <a href="https://coviddaly.cphr-mant.org/" target="_blank" class="glass-card hover-lift sim-card-10 sim-card" style="text-decoration: none; color: inherit; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; border-radius: var(--radius-lg); height: 100%; transition: all 0.3s ease;">
+                            <div class="sim-icon-badge"><i class="fas fa-calculator"></i></div>
+                            <div>
+                                <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem;">COVID-19 DALY Calculator</h3>
+                                <p style="font-size: 0.88rem; color: #334155; line-height: 1.55; margin: 0; text-align: justify;">
+                                    An interactive, scientifically validated web-based calculator developed to evaluate and quantify public health impacts. It computes Disability-Adjusted Life Years (DALY) based on Years of Life Lost (YLL) and Years Lived with Disability (YLD) to guide evidence-based epidemic policy decisions.
+                                </p>
+                                <div style="margin-top: 0.5rem; font-size: 0.78rem; font-weight: 600; color: #0369a1; background: rgba(14, 165, 233, 0.15); display: inline-block; padding: 0.2rem 0.5rem; border-radius: 5px;">
+                                    <i class="fas fa-copyright" style="margin-right: 0.25rem;"></i> Copyright Reg: 7242/2024-CO/L
+                                </div>
+                            </div>
+                            <span class="sim-action-btn">Open Official Calculator <i class="fas fa-arrow-right"></i></span>
+                        </a>
+                        <a href="https://covidnonhealthgdp.cphr-mant.org/" target="_blank" class="glass-card hover-lift sim-card-11 sim-card" style="text-decoration: none; color: inherit; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; border-radius: var(--radius-lg); height: 100%; transition: all 0.3s ease;">
+                            <div class="sim-icon-badge"><i class="fas fa-chart-pie"></i></div>
+                            <div>
+                                <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem;">Non-Health GDP Loss Estimator</h3>
+                                <p style="font-size: 0.88rem; color: #334155; line-height: 1.55; margin: 0; text-align: justify;">
+                                    An advanced macroeconomic econometric simulator. This tool allows researchers and economists to evaluate, simulate, and project sectoral non-health Gross Domestic Product (GDP) losses resulting from workforce morbidity, mortality, and associated macroeconomic pandemic shockwaves.
+                                </p>
+                                <div style="margin-top: 0.5rem; font-size: 0.78rem; font-weight: 600; color: #c2410c; background: rgba(249, 115, 22, 0.15); display: inline-block; padding: 0.2rem 0.5rem; border-radius: 5px;">
+                                    <i class="fas fa-copyright" style="margin-right: 0.25rem;"></i> Copyright Reg: 6311/2024-CO/L
+                                </div>
+                            </div>
+                            <span class="sim-action-btn">Launch Official Estimator <i class="fas fa-arrow-right"></i></span>
+                        </a>
+                        <a href="https://narassima.github.io/SelfHarm-DEBCal/" target="_blank" class="glass-card hover-lift sim-card-16 sim-card" style="text-decoration: none; color: inherit; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; border-radius: var(--radius-lg); height: 100%; transition: all 0.3s ease;">
+                            <div class="sim-icon-badge"><i class="fas fa-brain"></i></div>
+                            <div>
+                                <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem;">Self-Harm Prevalence &amp; Economic Burden Calculator</h3>
+                                <p style="font-size: 0.88rem; color: #334155; line-height: 1.55; margin: 0; text-align: justify;">
+                                    An interactive forecasting tool to evaluate age-standardised self-harm prevalence rates and estimate direct and indirect economic burdens in India (2021–2035). Implements a mathematical cohort model weighting DALYs by productivity coefficients.
+                                </p>
+                            </div>
+                            <span class="sim-action-btn">Launch Calculator <i class="fas fa-arrow-right"></i></span>
+                        </a>
+                        <a href="https://narassima.github.io/Cancers-DEBCal/" target="_blank" class="glass-card hover-lift sim-card-17 sim-card" style="text-decoration: none; color: inherit; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; border-radius: var(--radius-lg); height: 100%; transition: all 0.3s ease;">
+                            <div class="sim-icon-badge"><i class="fas fa-ribbon"></i></div>
+                            <div>
+                                <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem;">Cancer Prevalence &amp; Economic Burden Calculator</h3>
+                                <p style="font-size: 0.88rem; color: #334155; line-height: 1.55; margin: 0; text-align: justify;">
+                                    An interactive forecasting dashboard to model age-standardised prevalence rates and project the direct and indirect macroeconomic burden of major cancers in India (2021–2035). Employs cohort-based human capital valuation methodologies.
+                                </p>
+                            </div>
+                            <span class="sim-action-btn">Launch Calculator <i class="fas fa-arrow-right"></i></span>
+                        </a>
+                        <a href="https://narassima.github.io/LowBackPain-DEBCal/" target="_blank" class="glass-card hover-lift sim-card-18 sim-card" style="text-decoration: none; color: inherit; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; border-radius: var(--radius-lg); height: 100%; transition: all 0.3s ease;">
+                            <div class="sim-icon-badge"><i class="fas fa-accessibility"></i></div>
+                            <div>
+                                <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem;">Low Back Pain Prevalence &amp; Economic Burden Calculator</h3>
+                                <p style="font-size: 0.88rem; color: #334155; line-height: 1.55; margin: 0; text-align: justify;">
+                                    An interactive forecasting tool to evaluate age-standardised prevalence rates and project the direct and indirect macroeconomic burden of Low Back Pain (LBP) in India (2021–2035). Implements a cohort-based human capital methodology.
+                                </p>
+                            </div>
+                            <span class="sim-action-btn">Launch Calculator <i class="fas fa-arrow-right"></i></span>
+                        </a>
+                        <a href="https://narassima.github.io/OralConditions-DEBCal/" target="_blank" class="glass-card hover-lift sim-card-19 sim-card" style="text-decoration: none; color: inherit; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; border-radius: var(--radius-lg); height: 100%; transition: all 0.3s ease;">
+                            <div class="sim-icon-badge"><i class="fas fa-tooth"></i></div>
+                            <div>
+                                <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem;">Oral Conditions Prevalence &amp; Economic Burden Calculator</h3>
+                                <p style="font-size: 0.88rem; color: #334155; line-height: 1.55; margin: 0; text-align: justify;">
+                                    An interactive forecasting tool to evaluate age-standardised prevalence rates and project direct and indirect macroeconomic burdens of major oral diseases (caries, periodontal disease, edentulism) in India (2021–2035). Implements a cohort-based human capital valuation framework.
+                                </p>
+                            </div>
+                            <span class="sim-action-btn">Launch Calculator <i class="fas fa-arrow-right"></i></span>
+                        </a>
+                        <a href="https://narassima.github.io/23Cancers-DEBCal/" target="_blank" class="glass-card hover-lift sim-card-20 sim-card" style="text-decoration: none; color: inherit; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; border-radius: var(--radius-lg); height: 100%; transition: all 0.3s ease;">
+                            <div class="sim-icon-badge"><i class="fas fa-chart-line"></i></div>
+                            <div>
+                                <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem;">23 Cancers Mortality &amp; Economic Burden Calculator</h3>
+                                <p style="font-size: 0.88rem; color: #334155; line-height: 1.55; margin: 0; text-align: justify;">
+                                    An interactive forecasting platform to project Age-Standardised Mortality Rates (ASMR) and premature death macroeconomic burdens across 23 distinct cancer types in India (2020–2035) utilizing Auto-ARIMA models.
+                                </p>
+                            </div>
+                            <span class="sim-action-btn">Launch Calculator <i class="fas fa-arrow-right"></i></span>
+                        </a>
                     </div>
-                    <div>
-                        <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem;">VSM Mapper &amp; Spaghetti Diagram Architect</h3>
-                        <p style="font-size: 0.88rem; color: #334155; line-height: 1.55; margin: 0; text-align: justify;">
-                            An interactive Value Stream Mapping (VSM) and layout analysis platform. Supports standard lean symbology (Kaizen bursts, supermarkets, Kanbans), multi-modal flows (electronic, push, pull connection types), automatic timeline lead-time ladder generation, and custom industrial case studies.
-                        </p>
-                    </div>
-                    <span class="sim-action-btn">Explore VSM Architect <i class="fas fa-arrow-right"></i></span>
-                </a>
+                </div>
 
-                <!-- Card 16: Self-Harm Prevalence & Economic Burden Calculator (Pastel Soft Plum Orchid) -->
-                <a href="https://narassima.github.io/SelfHarm-DEBCal/" target="_blank" class="glass-card hover-lift sim-card-16" style="text-decoration: none; color: inherit; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; border-radius: var(--radius-lg); height: 100%; transition: all 0.3s ease;">
-                    <div class="sim-icon-badge">
-                        <i class="fas fa-brain"></i>
+                <div class="sim-category">
+                    <h3 class="sim-cat-title">ERP &amp; Operations Dashboards <span class="sim-cat-count">3 tools</span></h3>
+                    <div class="sim-cat-grid">
+                        <a href="https://narassima.github.io/HospitalScheduler/" target="_blank" class="glass-card hover-lift sim-card-6 sim-card" style="text-decoration: none; color: inherit; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; border-radius: var(--radius-lg); height: 100%; transition: all 0.3s ease;">
+                            <div class="sim-icon-badge"><i class="fas fa-hospital-user"></i></div>
+                            <div>
+                                <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem;">Hospital Scheduler Application</h3>
+                                <p style="font-size: 0.88rem; color: #334155; line-height: 1.55; margin: 0; text-align: justify;">
+                                    An interactive web-based scheduling application engineered to optimize hospital workforce and shift allocations. It provides intuitive tools to balance healthcare capacity with patient demands through systematic operations management techniques.
+                                </p>
+                            </div>
+                            <span class="sim-action-btn">Launch Scheduler <i class="fas fa-arrow-right"></i></span>
+                        </a>
+                        <a href="https://narassima.github.io/OM_PGPM_Planning/index.html" target="_blank" class="glass-card hover-lift sim-card-7 sim-card" style="text-decoration: none; color: inherit; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; border-radius: var(--radius-lg); height: 100%; transition: all 0.3s ease;">
+                            <div class="sim-icon-badge"><i class="fas fa-sitemap"></i></div>
+                            <div>
+                                <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem;">OM PGPM Planning Dashboard</h3>
+                                <p style="font-size: 0.88rem; color: #334155; line-height: 1.55; margin: 0; text-align: justify;">
+                                    A sophisticated operations simulation and capacity modeling dashboard. It facilitates dynamic workflow mapping, scheduling coordination, bottleneck detection, and queueing-theory allocations for corporate supply chain processes. Designed as an active learning module for strategic operations analysis.
+                                </p>
+                            </div>
+                            <span class="sim-action-btn">Explore Dashboard <i class="fas fa-arrow-right"></i></span>
+                        </a>
+                        <a href="https://narassima.github.io/ERPSim/" target="_blank" class="glass-card hover-lift sim-card-9 sim-card" style="text-decoration: none; color: inherit; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; border-radius: var(--radius-lg); height: 100%; transition: all 0.3s ease;">
+                            <div class="sim-icon-badge"><i class="fas fa-cubes"></i></div>
+                            <div>
+                                <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem;">ERPSim Learning Dashboard</h3>
+                                <p style="font-size: 0.88rem; color: #334155; line-height: 1.55; margin: 0; text-align: justify;">
+                                    An interactive ERP simulation and enterprise systems learning platform. It facilitates hands-on active learning of business process integration, real-time data analysis, workflow synchronization, and collaborative operational decision-making in a simulated corporate environment.
+                                </p>
+                            </div>
+                            <span class="sim-action-btn">Explore ERP Simulator <i class="fas fa-arrow-right"></i></span>
+                        </a>
                     </div>
-                    <div>
-                        <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem;">Self-Harm Prevalence &amp; Economic Burden Calculator</h3>
-                        <p style="font-size: 0.88rem; color: #334155; line-height: 1.55; margin: 0; text-align: justify;">
-                            An interactive forecasting tool to evaluate age-standardised self-harm prevalence rates and estimate direct and indirect economic burdens in India (2021–2035). Implements a mathematical cohort model weighting DALYs by productivity coefficients.
-                        </p>
-                    </div>
-                    <span class="sim-action-btn">Launch Calculator <i class="fas fa-arrow-right"></i></span>
-                </a>
+                </div>
 
-                <!-- Card 17: Cancer Prevalence & Economic Burden Calculator (Pastel Soft Strawberry Rose) -->
-                <a href="https://narassima.github.io/Cancers-DEBCal/" target="_blank" class="glass-card hover-lift sim-card-17" style="text-decoration: none; color: inherit; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; border-radius: var(--radius-lg); height: 100%; transition: all 0.3s ease;">
-                    <div class="sim-icon-badge">
-                        <i class="fas fa-ribbon"></i>
-                    </div>
-                    <div>
-                        <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem;">Cancer Prevalence &amp; Economic Burden Calculator</h3>
-                        <p style="font-size: 0.88rem; color: #334155; line-height: 1.55; margin: 0; text-align: justify;">
-                            An interactive forecasting dashboard to model age-standardised prevalence rates and project the direct and indirect macroeconomic burden of major cancers in India (2021–2035). Employs cohort-based human capital valuation methodologies.
-                        </p>
-                    </div>
-                    <span class="sim-action-btn">Launch Calculator <i class="fas fa-arrow-right"></i></span>
-                </a>
-
-                <!-- Card 18: Low Back Pain Prevalence & Economic Burden Calculator (Pastel Soft Butter Cream) -->
-                <a href="https://narassima.github.io/LowBackPain-DEBCal/" target="_blank" class="glass-card hover-lift sim-card-18" style="text-decoration: none; color: inherit; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; border-radius: var(--radius-lg); height: 100%; transition: all 0.3s ease;">
-                    <div class="sim-icon-badge">
-                        <i class="fas fa-accessibility"></i>
-                    </div>
-                    <div>
-                        <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem;">Low Back Pain Prevalence &amp; Economic Burden Calculator</h3>
-                        <p style="font-size: 0.88rem; color: #334155; line-height: 1.55; margin: 0; text-align: justify;">
-                            An interactive forecasting tool to evaluate age-standardised prevalence rates and project the direct and indirect macroeconomic burden of Low Back Pain (LBP) in India (2021–2035). Implements a cohort-based human capital methodology.
-                        </p>
-                    </div>
-                    <span class="sim-action-btn">Launch Calculator <i class="fas fa-arrow-right"></i></span>
-                </a>
-
-                <!-- Card 19: Oral Conditions Prevalence & Economic Burden Calculator (Pastel Soft Seafoam Cyan) -->
-                <a href="https://narassima.github.io/OralConditions-DEBCal/" target="_blank" class="glass-card hover-lift sim-card-19" style="text-decoration: none; color: inherit; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; border-radius: var(--radius-lg); height: 100%; transition: all 0.3s ease;">
-                    <div class="sim-icon-badge">
-                        <i class="fas fa-tooth"></i>
-                    </div>
-                    <div>
-                        <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem;">Oral Conditions Prevalence &amp; Economic Burden Calculator</h3>
-                        <p style="font-size: 0.88rem; color: #334155; line-height: 1.55; margin: 0; text-align: justify;">
-                            An interactive forecasting tool to evaluate age-standardised prevalence rates and project direct and indirect macroeconomic burdens of major oral diseases (caries, periodontal disease, edentulism) in India (2021–2035). Implements a cohort-based human capital valuation framework.
-                        </p>
-                    </div>
-                    <span class="sim-action-btn">Launch Calculator <i class="fas fa-arrow-right"></i></span>
-                </a>
-
-                <!-- Card 20: 23 Cancers Mortality & Economic Burden Calculator (Pastel Soft Deep Emerald Mint) -->
-                <a href="https://narassima.github.io/23Cancers-DEBCal/" target="_blank" class="glass-card hover-lift sim-card-20" style="text-decoration: none; color: inherit; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; border-radius: var(--radius-lg); height: 100%; transition: all 0.3s ease;">
-                    <div class="sim-icon-badge">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <div>
-                        <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem;">23 Cancers Mortality &amp; Economic Burden Calculator</h3>
-                        <p style="font-size: 0.88rem; color: #334155; line-height: 1.55; margin: 0; text-align: justify;">
-                            An interactive forecasting platform to project Age-Standardised Mortality Rates (ASMR) and premature death macroeconomic burdens across 23 distinct cancer types in India (2020–2035) utilizing Auto-ARIMA models.
-                        </p>
-                    </div>
-                    <span class="sim-action-btn">Launch Calculator <i class="fas fa-arrow-right"></i></span>
-                </a>
             </div>
         </section>
 
@@ -1669,7 +1700,7 @@
         </div>
     </div>
 
-    <script src="js/data.js?v=2.3.1"></script>
-    <script src="js/script.js?v=2.3.1"></script>
+    <script src="js/data.js?v=2.3.5"></script>
+    <script src="js/script.js?v=2.3.5"></script>
 </body>
 </html>
