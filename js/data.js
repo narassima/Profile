@@ -139,6 +139,22 @@ const portfolioData = {
     publications: {
         "journals": [
                 {
+                        "title": "An Event Study of the Impact of the Israel-Iran-US Conflict Escalation on Crude Oil Futures Prices in India",
+                        "authors": "Elangovan, A., Maniam, B., Babu, M., & Narassima, M. S.",
+                        "year": "2026",
+                        "journal": "Journal of International Finance and Economics, 26(3), 77-86",
+                        "metrics": "ABDC – C",
+                        "url": ""
+                },
+                {
+                        "title": "Modelling Non-Linear Market Dynamics: Technical Analysis and Deep Learning Price Forecasting for Indian Energy PSUs",
+                        "authors": "Anandhabalaji, V., Babu, M., Narassima, M. S., & Maniam, B.",
+                        "year": "2026",
+                        "journal": "Journal of Academy of Business and Economics, 26(3), 66-76",
+                        "metrics": "ABDC – C",
+                        "url": ""
+                },
+                {
                         "title": "A Segmented Machine Learning Approach to Predicting and Mitigating Churn in the Gig Economy",
                         "authors": "Shanmugam, S., Elavarasan, E., Madhavarao Seshadri, N., Ashokkumar, D., Senthilkumar, S., & Mohanavelu, T.",
                         "year": "2026",
