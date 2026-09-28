@@ -1163,13 +1163,13 @@ const portfolioData = {
         {
                 "title": "Junior Faculty (Senior Research Associate)",
                 "organization": "Great Lakes Institute of Management",
-                "duration": "Jul 2023 - Nov 2023",
+                "duration": "Apr 2023 - Nov 2023",
                 "description": "Research and academic operations."
         },
         {
                 "title": "Junior Faculty (Research Associate)",
                 "organization": "Great Lakes Institute of Management",
-                "duration": "Dec 2022 - Jun 2023",
+                "duration": "May 2022 - Mar 2023",
                 "description": "Research support and academic coordination."
         },
         {
