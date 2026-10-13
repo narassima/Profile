@@ -1609,6 +1609,10 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Dynamic initial checks
         setTimeout(updateScrollArrows, 300);
+        // fonts and layout settle after the first paint, so re-check then too
+        window.addEventListener('load', updateScrollArrows);
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(updateScrollArrows);
+        if (window.ResizeObserver) new ResizeObserver(updateScrollArrows).observe(navScrollLinks);
         
         // Auto-center active link on click
         navScrollLinks.querySelectorAll('.nav-link').forEach(link => {

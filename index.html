@@ -34,7 +34,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css?v=4.0.0">
     <!-- Redesign layer (loaded last; remove this line to revert) -->
-    <link rel="stylesheet" href="css/redesign.css?v=2.4.2">
+    <link rel="stylesheet" href="css/redesign.css?v=2.4.3">
 
     <!-- JSON-LD Structured Data for Google Search -->
     <script type="application/ld+json">
@@ -530,7 +530,18 @@
                 <h2>Research</h2>
                 <div class="section-underline"></div>
             </div>
-            
+
+            <!-- Research tool: journal finder -->
+            <a href="https://narassima.github.io/JournalFinder/" target="_blank" class="glass-card sim-card sim-feature-card" id="research-tool-journalfinder" style="text-decoration: none; color: inherit; padding: 1.5rem 1.5rem; display: flex; flex-wrap: wrap; align-items: center; gap: 1.25rem 1.5rem; border-radius: var(--radius-lg); max-width: 1000px; margin: 0 auto 2.5rem;">
+                <div class="sim-icon-badge"><i class="fas fa-book-open-reader"></i></div>
+                <div style="flex: 1 1 320px; min-width: 0;">
+                    <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem;">Journal Finder &mdash; Find the Right Journal for Your Manuscript</h3>
+                    <p style="font-size: 0.88rem; color: #334155; line-height: 1.55; margin: 0 0 0.75rem; text-align: justify;">Paste a title and abstract and compare it against the scope of over 30,000 Scopus-indexed journals. Rank matches by scope fit or prestige, filter by ABDC rating, SJR quartile, subject area and open-access or APC status, and export a starred shortlist.</p>
+                    <div class="sim-tags"><span>30,000+ journals</span><span>ABDC &amp; SJR filters</span><span>Scope-fit ranking</span><span>CSV shortlist</span></div>
+                </div>
+                <span class="sim-action-btn">Open Journal Finder <i class="fas fa-arrow-right"></i></span>
+            </a>
+
             <div style="max-width: 600px; margin: 0 auto 2.5rem; display: flex; align-items: center; position: relative; gap: 0.5rem; z-index: 2;">
                 <i class="fas fa-search" style="position: absolute; left: 1.25rem; color: var(--text-secondary); font-size: 1.1rem; pointer-events: none;"></i>
                 <input type="text" id="pub-search" placeholder="Search publications by title, co-author, or keywords..." style="width: 100%; padding: 0.85rem 1.5rem 0.85rem 3rem; border-radius: 30px; border: 1px solid var(--border-color); background: var(--glass-bg); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); color: var(--text-primary); font-family: var(--font-main); font-size: 1rem; outline: none; box-shadow: var(--shadow-sm); transition: var(--transition);">
@@ -1563,7 +1574,7 @@
             </div>
             
             <p class="sim-lede">
-                21 interactive web tools, each designed and built end-to-end &mdash; operations-research solvers, financial decision planners, discrete-event simulators, lean &amp; quality diagnostics, and public-health economic-burden calculators. Two are registered with the Copyright Office of India. Every tool runs entirely in the browser; click any card to launch it.
+                22 interactive web tools, each designed and built end-to-end &mdash; operations-research solvers, financial decision planners, discrete-event simulators, lean &amp; quality diagnostics, and public-health economic-burden calculators. Two are registered with the Copyright Office of India. Every tool runs entirely in the browser; click any card to launch it.
             </p>
 
             <div style="max-width: 600px; margin: 0 auto 2.5rem; display: flex; align-items: center; position: relative; gap: 0.5rem; z-index: 2;">
@@ -1576,6 +1587,15 @@
             <div id="sim-featured">
                 <h3 class="sim-cat-title"><i class="fas fa-star"></i> Featured</h3>
                 <div class="sim-featured-grid">
+                    <a href="https://narassima.github.io/SHIVIR/" target="_blank" class="glass-card sim-card sim-feature-card" style="text-decoration: none; color: inherit; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.75rem; border-radius: var(--radius-lg);">
+                        <div class="sim-icon-badge"><i class="fas fa-virus-covid"></i></div>
+                        <div>
+                            <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem;">SHIVIR &mdash; Agent-Based COVID-19 Simulator</h3>
+                            <p style="font-size: 0.88rem; color: #334155; line-height: 1.55; margin: 0; text-align: justify;">An agent-based model of COVID-19 transmission with ward, ICU and ventilator demand &mdash; synthetic populations, user-defined age groups, and lockdown, mask, isolation and vaccination scenarios with live views, comparison charts and Excel export.</p>
+                        </div>
+                        <div class="sim-tags"><span>Agent-based</span><span>Ward / ICU / ventilator</span><span>Scenario comparison</span><span>.xlsx export</span></div>
+                        <span class="sim-action-btn">Launch SHIVIR <i class="fas fa-arrow-right"></i></span>
+                    </a>
                     <a href="https://narassima.github.io/SupplyChainStudio/" target="_blank" class="glass-card sim-card sim-feature-card" style="text-decoration: none; color: inherit; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.75rem; border-radius: var(--radius-lg);">
                         <div class="sim-icon-badge"><i class="fas fa-truck-ramp-box"></i></div>
                         <div>
@@ -1734,8 +1754,18 @@
                 </div>
 
                 <div class="sim-category">
-                    <h3 class="sim-cat-title">Public Health &amp; Economic Burden <span class="sim-cat-count">7 tools &middot; 2 copyright-registered</span></h3>
+                    <h3 class="sim-cat-title">Public Health &amp; Economic Burden <span class="sim-cat-count">8 tools &middot; 2 copyright-registered</span></h3>
                     <div class="sim-cat-grid">
+                        <a href="https://narassima.github.io/SHIVIR/" target="_blank" class="glass-card hover-lift sim-card-22 sim-card" style="text-decoration: none; color: inherit; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; border-radius: var(--radius-lg); height: 100%; transition: all 0.3s ease;">
+                            <div class="sim-icon-badge"><i class="fas fa-virus-covid"></i></div>
+                            <div>
+                                <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem;">SHIVIR &mdash; Agent-Based COVID-19 Simulator</h3>
+                                <p style="font-size: 0.88rem; color: #334155; line-height: 1.55; margin: 0; text-align: justify;">
+                                    SHIVIR (Susceptible, Hospitalized, Infected, Ventilator, ICU, Recovered, Immune) is an interactive agent-based model of COVID-19 transmission with ward, ICU and ventilator demand. Build synthetic populations with user-defined age groups, set interventions such as contact reduction, masks, isolation, importation control and vaccination, then run and compare scenarios with live views, charts and Excel export.
+                                </p>
+                            </div>
+                            <span class="sim-action-btn">Launch SHIVIR <i class="fas fa-arrow-right"></i></span>
+                        </a>
                         <a href="https://coviddaly.cphr-mant.org/" target="_blank" class="glass-card hover-lift sim-card-10 sim-card" style="text-decoration: none; color: inherit; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; border-radius: var(--radius-lg); height: 100%; transition: all 0.3s ease;">
                             <div class="sim-icon-badge"><i class="fas fa-calculator"></i></div>
                             <div>
@@ -2161,6 +2191,6 @@
     </div>
 
     <script src="js/data.js?v=2.3.5"></script>
-    <script src="js/script.js?v=2.3.5"></script>
+    <script src="js/script.js?v=2.3.6"></script>
 </body>
 </html>

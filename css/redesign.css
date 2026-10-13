@@ -188,6 +188,17 @@ body.theme-editorial {
    JS (positionNavSlider) sets its transform-x + width to match the
    active link; the transition here does the gliding.                 */
 .theme-editorial #nav-links-scrollable { position: relative; }
+/* The header tabs scroll with the chevron buttons only: the global thin
+   scrollbar (section 18) must not show under them. */
+.theme-editorial #nav-links-scrollable {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+}
+.theme-editorial #nav-links-scrollable::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
 .theme-editorial .nav-slider {
     position: absolute;
     left: 0;
