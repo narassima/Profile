@@ -796,6 +796,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const suffix = el.getAttribute('data-suffix') || '';
             const duration = 1500; // ms
             const startTime = performance.now();
+            el.dataset.counted = 'running';
             
             const updateCount = (currentTime) => {
                 const elapsed = currentTime - startTime;
@@ -814,11 +815,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (progress < 1) {
                     requestAnimationFrame(updateCount);
                 } else {
-                    if (target >= 1000) {
-                        el.textContent = target.toLocaleString() + suffix;
-                    } else {
-                        el.textContent = target + suffix;
-                    }
+                    // Re-read: the Scholar loader below may have changed it mid-animation.
+                    const end = parseInt(el.getAttribute('data-target') || '0', 10);
+                    el.textContent = (end >= 1000 ? end.toLocaleString() : end) + suffix;
+                    el.dataset.counted = 'done';
                 }
             };
             
@@ -842,6 +842,45 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     
     runCountUpAnimation();
+
+    // ── Google Scholar metrics (home stat card + Research Impact) ──
+    // The numbers live in data/scholar.json, which scripts/update_citations.py and
+    // the scheduled workflow keep fresh, so a reload picks up new values without an
+    // HTML edit. The figures hard-coded in index.html remain the fallback.
+    const SCHOLAR_FIELDS = {
+        citations: ['scholar-citations', 'scholar-citations-impact'],
+        hindex:    ['scholar-hindex-impact'],
+        i10index:  ['scholar-i10index-impact']
+    };
+    const applyScholarMetrics = (m) => {
+        Object.entries(SCHOLAR_FIELDS).forEach(([key, ids]) => {
+            const v = Number(m[key]);
+            if (!Number.isInteger(v) || v < 0) return;
+            ids.forEach(id => {
+                const el = document.getElementById(id);
+                if (!el) return;
+                if (el.hasAttribute('data-target')) {
+                    // Count-up element: only touch the text once it has finished
+                    // (otherwise the animation reads the new target itself).
+                    el.setAttribute('data-target', v);
+                    if (el.dataset.counted === 'done') {
+                        el.textContent = v >= 1000 ? v.toLocaleString() : v;
+                    }
+                } else {
+                    el.textContent = v >= 1000 ? v.toLocaleString() : v;
+                }
+            });
+        });
+        const stamp = document.getElementById('scholar-updated');
+        const when = m.updated ? new Date(m.updated + 'T00:00:00') : null;
+        if (stamp && when && !isNaN(when)) {
+            stamp.textContent = 'Updated ' + when.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+        }
+    };
+    fetch('data/scholar.json?t=' + Date.now(), { cache: 'no-store' })
+        .then(r => (r.ok ? r.json() : Promise.reject(r.status)))
+        .then(applyScholarMetrics)
+        .catch(() => { /* offline / file:// — keep the values already in the page */ });
 
     // ── Microsoft Lumia Theme Accent Picker (Metro Tile Picker) ─────
     const colorTiles = document.querySelectorAll('.color-tile');
