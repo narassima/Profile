@@ -806,7 +806,7 @@ const portfolioData = {
                 "students": 0
         },
         {
-                "course": "Productions and Operations Management",
+                "course": "Production and Operations Management",
                 "term": "2025-26",
                 "score": 4.83,
                 "students": 146
@@ -830,7 +830,7 @@ const portfolioData = {
                 "students": 269
         },
         {
-                "course": "Supply chain & logistics Management",
+                "course": "Supply Chain & Logistics Management",
                 "term": "2025-26",
                 "score": 4.83,
                 "students": 50
@@ -878,7 +878,7 @@ const portfolioData = {
                 "students": 302
         },
         {
-                "course": "Unstructured Problem solving and Management Consulting",
+                "course": "Unstructured Problem Solving and Management Consulting",
                 "term": "2024-25",
                 "score": 4.08,
                 "students": 90
@@ -934,7 +934,7 @@ const portfolioData = {
 ],
     courseOutlines: [
         {
-                "course": "Productions and Operations Management",
+                "course": "Production and Operations Management",
                 "description": "Provides the foundational frameworks to efficiently transform resources into products, optimizing both capacity and process flows.",
                 "topics": [
                         "Demand Forecasting & Market Factors",

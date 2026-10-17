@@ -1,0 +1,43 @@
+name: Update Google Scholar Metrics
+
+on:
+  schedule:
+    # 06:00 UTC on Mon, Wed, Fri — three tries a week so at least one lands
+    # even when Google Scholar rate-limits the runner on a given day.
+    - cron: '0 6 * * 1,3,5'
+  workflow_dispatch: # manual trigger from the Actions tab
+
+concurrency:
+  group: update-scholar
+  cancel-in-progress: false
+
+jobs:
+  update-metrics:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Fetch metrics and update data/scholar.json
+        run: python scripts/update_citations.py
+
+      - name: Commit and push if changed
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/scholar.json index.html
+          if git diff --cached --quiet; then
+            echo "No metric changes to commit."
+            exit 0
+          fi
+          git commit -m "chore: auto-update Google Scholar metrics"
+          git pull --rebase --autostash origin "${GITHUB_REF_NAME}"
+          git push

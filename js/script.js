@@ -496,7 +496,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ── Simulations Search & Filtering ───────────────────
+    // ── Web Tools tab (#materials): Search & Filtering ───────────────────
     const simSearch = document.getElementById('sim-search');
     const simSearchClear = document.getElementById('sim-search-clear');
     const simGrid = document.getElementById('simulations-grid');
@@ -542,7 +542,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     noResultsMsg = document.createElement('p');
                     noResultsMsg.id = 'sim-no-results';
                     noResultsMsg.style.cssText = 'color:var(--text-secondary);padding:3rem;text-align:center;font-style:italic;';
-                    noResultsMsg.innerHTML = '<i class="fas fa-search-minus" style="font-size:1.8rem;display:block;margin-bottom:0.75rem;color:var(--primary-color);"></i> No simulations matching your search.';
+                    noResultsMsg.innerHTML = '<i class="fas fa-search-minus" style="font-size:1.8rem;display:block;margin-bottom:0.75rem;color:var(--primary-color);"></i> No tools match your search.';
                     simGrid.appendChild(noResultsMsg);
                 }
             } else if (noResultsMsg) {
@@ -559,6 +559,29 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     }
+
+    // ── Copy e-mail addresses (inline "Copied" tag instead of a blocking alert) ──
+    document.querySelectorAll('.contact-item[data-copy]').forEach(el => {
+        let timer = null;
+        const copy = () => {
+            const text = el.dataset.copy;
+            const done = () => {
+                el.classList.add('copied');
+                clearTimeout(timer);
+                timer = setTimeout(() => el.classList.remove('copied'), 1600);
+            };
+            const fallback = () => { window.location.href = 'mailto:' + text; };
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(done, fallback);
+            } else {
+                fallback();
+            }
+        };
+        el.addEventListener('click', copy);
+        el.addEventListener('keydown', e => {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); copy(); }
+        });
+    });
 
     // ── Render Experience Timeline (Horizontal Roadmap) ──────────
     const expTimeline = document.getElementById('experience-timeline');

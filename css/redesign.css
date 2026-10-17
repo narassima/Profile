@@ -756,7 +756,7 @@ body.theme-editorial {
     font-size: 1rem;
 }
 
-/* Simulations tab */
+/* Web Tools tab (section #materials) */
 .theme-editorial .sim-lede {
     max-width: 100% !important;   /* fill the section width at every screen size */
     margin: 0 0 2rem !important;
@@ -778,8 +778,9 @@ body.theme-editorial {
     padding-bottom: 0.5rem;
     border-bottom: 1px solid var(--rd-divider);
     display: flex;
+    flex-wrap: wrap;              /* on phones the count drops under the title instead of squeezing into 3 lines */
     align-items: baseline;
-    gap: 0.6rem;
+    gap: 0.15rem 0.6rem;
 }
 .theme-editorial .sim-cat-title i { color: var(--rd-accent); font-size: 0.8em; }
 .theme-editorial .sim-cat-count {
@@ -787,6 +788,7 @@ body.theme-editorial {
     font-size: 0.78rem;
     font-weight: 500;
     color: var(--rd-muted);
+    white-space: nowrap;
 }
 
 .theme-editorial #sim-featured { margin-bottom: 2.75rem; }
@@ -795,6 +797,25 @@ body.theme-editorial {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.5rem;
+}
+/* Four featured cards: 4 across on wide screens, 2 x 2 on tablets, 1 column on phones (never a lone card on row 2) */
+.theme-editorial .sim-featured-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (min-width: 1200px) { .theme-editorial .sim-featured-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (max-width: 640px)  { .theme-editorial .sim-featured-grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* E-mail addresses on the home card: copy on click or Enter, with an inline "Copied" tag */
+.contact-item[data-copy] { border-radius: 4px; }
+.contact-item[data-copy]:focus-visible { outline: 2px solid var(--rd-accent); outline-offset: 2px; }
+.contact-item.copied::after {
+    content: "Copied";
+    margin-left: auto;
+    font-family: var(--font-main);
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #fff;
+    background: var(--rd-accent);
+    padding: 0.05rem 0.45rem;
+    border-radius: 4px;
 }
 .theme-editorial .sim-category { margin-bottom: 2.75rem; }
 .theme-editorial .sim-category:last-child { margin-bottom: 0; }
