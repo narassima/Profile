@@ -1367,9 +1367,19 @@ const portfolioData = {
 ],
     contributions: [
         {
+                "type": "Guest Session Speaker",
+                "description": "Delivered sessions on conducting research for select International Baccalaureate (IB) students of Grade 12.",
+                "icon": "fa-book-open-reader"
+        },
+        {
                 "type": "Chief Guest",
                 "description": "Served as the Chief Guest for the SANMUN (Model United Nations) 2026 on 12 June, 2026 at Sri Sankara Senior Secondary School, Adyar, Chennai.",
                 "icon": "fa-user-tie"
+        },
+        {
+                "type": "Design Thinking Workshops",
+                "description": "Handled Design Thinking workshops for Grade 12 students of GL Sri Sankara School, GLPS Senior Secondary School, and GL PSBB Millennium School in March and April 2026.",
+                "icon": "fa-chalkboard-user"
         },
         {
                 "type": "Session Panel Chair",
