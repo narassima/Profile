@@ -1,0 +1,462 @@
+{
+ "accessibility": {
+  "name": "accessibility",
+  "reg": 61700,
+  "fil": 61700
+ },
+ "arrow-right": {
+  "name": "arrow_right",
+  "reg": 61826,
+  "fil": 61826
+ },
+ "award": {
+  "name": "ribbon_star",
+  "reg": 59952,
+  "fil": 59960
+ },
+ "bars": {
+  "name": "navigation",
+  "reg": 62817,
+  "fil": 62827
+ },
+ "baseball-bat-ball": {
+  "name": "sport_baseball",
+  "reg": 60267,
+  "fil": 60276
+ },
+ "bolt": {
+  "name": "flash",
+  "reg": 58905,
+  "fil": 58918
+ },
+ "book": {
+  "name": "book",
+  "reg": 63742,
+  "fil": 57715
+ },
+ "book-open": {
+  "name": "book_open",
+  "reg": 57721,
+  "fil": 57741
+ },
+ "book-open-reader": {
+  "name": "book_open_globe",
+  "reg": 57726,
+  "fil": 57746
+ },
+ "book-reader": {
+  "name": "book_open_globe",
+  "reg": 57726,
+  "fil": 57746
+ },
+ "brain": {
+  "name": "brain_circuit",
+  "reg": 63547,
+  "fil": 63571
+ },
+ "briefcase": {
+  "name": "briefcase",
+  "reg": 61949,
+  "fil": 61949
+ },
+ "building": {
+  "name": "building",
+  "reg": 61957,
+  "fil": 61957
+ },
+ "bullseye": {
+  "name": "target_arrow",
+  "reg": 60561,
+  "fil": 60559
+ },
+ "calculator": {
+  "name": "calculator",
+  "reg": 57907,
+  "fil": 57927
+ },
+ "camera": {
+  "name": "camera",
+  "reg": 62037,
+  "fil": 62037
+ },
+ "certificate": {
+  "name": "certificate",
+  "reg": 62079,
+  "fil": 62079
+ },
+ "chair": {
+  "name": "conference_room",
+  "reg": 62233,
+  "fil": 62233
+ },
+ "chalkboard-teacher": {
+  "name": "person_board",
+  "reg": 62926,
+  "fil": 62936
+ },
+ "chalkboard-user": {
+  "name": "person_board",
+  "reg": 62926,
+  "fil": 62936
+ },
+ "chart-bar": {
+  "name": "data_bar_vertical",
+  "reg": 62272,
+  "fil": 62272
+ },
+ "chart-line": {
+  "name": "data_trending",
+  "reg": 58462,
+  "fil": 58474
+ },
+ "chart-pie": {
+  "name": "data_pie",
+  "reg": 62277,
+  "fil": 62277
+ },
+ "check-circle": {
+  "name": "checkmark_circle",
+  "reg": 62105,
+  "fil": 62105
+ },
+ "check-double": {
+  "name": "checkmark_starburst",
+  "reg": 58123,
+  "fil": 58144
+ },
+ "chevron-down": {
+  "name": "chevron_down",
+  "reg": 62116,
+  "fil": 62116
+ },
+ "chevron-left": {
+  "name": "chevron_left",
+  "reg": 62123,
+  "fil": 62123
+ },
+ "chevron-right": {
+  "name": "chevron_right",
+  "reg": 62129,
+  "fil": 62129
+ },
+ "code": {
+  "name": "code",
+  "reg": 62192,
+  "fil": 62192
+ },
+ "cogs": {
+  "name": "settings_cog_multiple",
+  "reg": 983357,
+  "fil": 983356
+ },
+ "comment-dots": {
+  "name": "comment",
+  "reg": 62208,
+  "fil": 62208
+ },
+ "copyright": {
+  "name": "shield_checkmark",
+  "reg": 60105,
+  "fil": 60114
+ },
+ "cubes": {
+  "name": "cube_multiple",
+  "reg": 58419,
+  "fil": 58431
+ },
+ "diagram-project": {
+  "name": "flowchart",
+  "reg": 58937,
+  "fil": 58950
+ },
+ "project-diagram": {
+  "name": "flowchart",
+  "reg": 58937,
+  "fil": 58950
+ },
+ "download": {
+  "name": "arrow_download",
+  "reg": 61777,
+  "fil": 61777
+ },
+ "dumbbell": {
+  "name": "dumbbell",
+  "reg": 58800,
+  "fil": 58813
+ },
+ "envelope": {
+  "name": "mail",
+  "reg": 62727,
+  "fil": 62737
+ },
+ "external-link-alt": {
+  "name": "open",
+  "reg": 62851,
+  "fil": 62861
+ },
+ "file-invoice": {
+  "name": "document_text",
+  "reg": 58712,
+  "fil": 58724
+ },
+ "file-pdf": {
+  "name": "document_pdf",
+  "reg": 62381,
+  "fil": 62381
+ },
+ "font": {
+  "name": "text_font",
+  "reg": 63461,
+  "fil": 63485
+ },
+ "graduation-cap": {
+  "name": "hat_graduation",
+  "reg": 59111,
+  "fil": 59124
+ },
+ "hand-pointer": {
+  "name": "cursor_click",
+  "reg": 58438,
+  "fil": 58450
+ },
+ "handshake": {
+  "name": "handshake",
+  "reg": 62576,
+  "fil": 62580
+ },
+ "hands-helping": {
+  "name": "people_community",
+  "reg": 62897,
+  "fil": 62907
+ },
+ "heart": {
+  "name": "heart",
+  "reg": 62586,
+  "fil": 62590
+ },
+ "hospital-user": {
+  "name": "stethoscope",
+  "reg": 63269,
+  "fil": 63293
+ },
+ "hotel": {
+  "name": "building_multiple",
+  "reg": 57892,
+  "fil": 57912
+ },
+ "house-user": {
+  "name": "home_person",
+  "reg": 59160,
+  "fil": 59173
+ },
+ "icons": {
+  "name": "icons",
+  "reg": 62598,
+  "fil": 62605
+ },
+ "images": {
+  "name": "image_multiple",
+  "reg": 59174,
+  "fil": 59187
+ },
+ "industry": {
+  "name": "building_factory",
+  "reg": 57880,
+  "fil": 57900
+ },
+ "layer-group": {
+  "name": "layer",
+  "reg": 62668,
+  "fil": 62678
+ },
+ "lightbulb": {
+  "name": "lightbulb",
+  "reg": 62679,
+  "fil": 62689
+ },
+ "map-marked-alt": {
+  "name": "map",
+  "reg": 62766,
+  "fil": 62776
+ },
+ "masks-theater": {
+  "name": "emoji_laugh",
+  "reg": 62438,
+  "fil": 62437
+ },
+ "microscope": {
+  "name": "microscope",
+  "reg": 63055,
+  "fil": 63065
+ },
+ "money-bill-transfer": {
+  "name": "currency_dollar_euro",
+  "reg": 58431,
+  "fil": 58443
+ },
+ "network-wired": {
+  "name": "organization",
+  "reg": 62858,
+  "fil": 62868
+ },
+ "palette": {
+  "name": "color",
+  "reg": 62198,
+  "fil": 62198
+ },
+ "pencil": {
+  "name": "edit",
+  "reg": 62430,
+  "fil": 62429
+ },
+ "pencil-ruler": {
+  "name": "ruler",
+  "reg": 63101,
+  "fil": 63111
+ },
+ "pen-fancy": {
+  "name": "pen",
+  "reg": 59608,
+  "fil": 59626
+ },
+ "print": {
+  "name": "print",
+  "reg": 63019,
+  "fil": 63029
+ },
+ "quote-left": {
+  "name": "text_quote",
+  "reg": 63489,
+  "fil": 63514
+ },
+ "quote-right": {
+  "name": "text_quote",
+  "reg": 63489,
+  "fil": 63514
+ },
+ "ribbon": {
+  "name": "ribbon",
+  "reg": 59944,
+  "fil": 59952
+ },
+ "route": {
+  "name": "directions",
+  "reg": 62310,
+  "fil": 62310
+ },
+ "running": {
+  "name": "run",
+  "reg": 63102,
+  "fil": 63112
+ },
+ "search": {
+  "name": "search",
+  "reg": 63120,
+  "fil": 63130
+ },
+ "search-minus": {
+  "name": "search_info",
+  "reg": 63123,
+  "fil": 63132
+ },
+ "share-nodes": {
+  "name": "share_android",
+  "reg": 63154,
+  "fil": 63163
+ },
+ "sitemap": {
+  "name": "organization",
+  "reg": 62858,
+  "fil": 62868
+ },
+ "sliders": {
+  "name": "options",
+  "reg": 62856,
+  "fil": 62866
+ },
+ "star": {
+  "name": "star",
+  "reg": 63248,
+  "fil": 63257
+ },
+ "stopwatch-20": {
+  "name": "timer",
+  "reg": 63527,
+  "fil": 63552
+ },
+ "th-large": {
+  "name": "grid",
+  "reg": 62563,
+  "fil": 62567
+ },
+ "th-list": {
+  "name": "apps_list",
+  "reg": 61752,
+  "fil": 61752
+ },
+ "times": {
+  "name": "dismiss",
+  "reg": 62314,
+  "fil": 62314
+ },
+ "tools": {
+  "name": "toolbox",
+  "reg": 63535,
+  "fil": 63560
+ },
+ "trophy": {
+  "name": "trophy",
+  "reg": 63543,
+  "fil": 63567
+ },
+ "truck": {
+  "name": "vehicle_truck",
+  "reg": 63562,
+  "fil": 63586
+ },
+ "truck-ramp-box": {
+  "name": "vehicle_truck_cube",
+  "reg": 60909,
+  "fil": 60909
+ },
+ "university": {
+  "name": "building_bank",
+  "reg": 57870,
+  "fil": 57890
+ },
+ "user-circle": {
+  "name": "person_circle",
+  "reg": 59689,
+  "fil": 59707
+ },
+ "user-friends": {
+  "name": "people",
+  "reg": 62889,
+  "fil": 62899
+ },
+ "user-graduate": {
+  "name": "hat_graduation",
+  "reg": 59111,
+  "fil": 59124
+ },
+ "users": {
+  "name": "people_team",
+  "reg": 62905,
+  "fil": 62915
+ },
+ "user-tie": {
+  "name": "person_star",
+  "reg": 61197,
+  "fil": 61197
+ },
+ "virus-covid": {
+  "name": "heart_pulse",
+  "reg": 59138,
+  "fil": 59151
+ },
+ "wrench": {
+  "name": "wrench",
+  "reg": 63681,
+  "fil": 63705
+ }
+}

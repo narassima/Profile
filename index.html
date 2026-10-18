@@ -39,6 +39,10 @@
     <link rel="stylesheet" href="css/style.css?v=4.0.0">
     <!-- Redesign layer (loaded last; remove this line to revert) -->
     <link rel="stylesheet" href="css/redesign.css?v=2.4.4">
+    <!-- Fluent layer: Windows 11 / Microsoft Fluent 2 look (remove this line, or the theme-fluent body class, to revert) -->
+    <link rel="stylesheet" href="css/fluent.css?v=1.1.1">
+    <link rel="stylesheet" href="css/fluent-icons.css?v=1.0.0">
+    <meta name="theme-color" content="#0078D4">
 
     <!-- JSON-LD Structured Data for Google Search -->
     <script type="application/ld+json">
@@ -115,7 +119,7 @@
     }
     </script>
 </head>
-<body class="theme-editorial">
+<body class="theme-editorial theme-fluent">
     <!-- Academic/Operations Background Decorations -->
     <div class="academic-bg-decorations" aria-hidden="true">
         <!-- LEFT COLUMN ICONS -->
@@ -409,9 +413,9 @@
                         <div class="home-sim-band-head">
                             <div>
                                 <h2><i class="fas fa-bolt"></i> Interactive Web Tools</h2>
-                                <p>23 browser-based tools designed and built end-to-end: optimisation solvers, simulators, lean &amp; quality diagnostics, ERP dashboards and public-health economic calculators.</p>
+                                <p>24 browser-based tools designed and built end-to-end: optimisation solvers, simulators, lean &amp; quality diagnostics, ERP dashboards and public-health economic calculators.</p>
                             </div>
-                            <a href="#materials" class="rd-btn-primary" onclick="document.querySelector('[data-target=\'materials\']').click(); return false;">View all 23 tools <i class="fas fa-arrow-right"></i></a>
+                            <a href="#materials" class="rd-btn-primary" onclick="document.querySelector('[data-target=\'materials\']').click(); return false;">View all 24 tools <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
 
@@ -1582,7 +1586,7 @@
             </div>
             
             <p class="sim-lede">
-                23 interactive web tools, each designed and built end-to-end &mdash; operations-research solvers, financial decision planners, discrete-event simulators, lean &amp; quality diagnostics, and public-health economic-burden calculators. Two are registered with the Copyright Office of India. Every tool runs entirely in the browser; click any card to launch it.
+                24 interactive web tools, each designed and built end-to-end &mdash; operations-research solvers, financial decision planners, discrete-event simulators, lean &amp; quality diagnostics, and public-health economic-burden calculators. Two are registered with the Copyright Office of India. Every tool runs entirely in the browser; click any card to launch it.
             </p>
 
             <div style="max-width: 600px; margin: 0 auto 2.5rem; display: flex; align-items: center; position: relative; gap: 0.5rem; z-index: 2;">
@@ -1762,8 +1766,18 @@
                 </div>
 
                 <div class="sim-category">
-                    <h3 class="sim-cat-title">Public Health &amp; Economic Burden <span class="sim-cat-count">9 tools &middot; 2 copyright-registered</span></h3>
+                    <h3 class="sim-cat-title">Public Health &amp; Economic Burden <span class="sim-cat-count">10 tools &middot; 2 copyright-registered</span></h3>
                     <div class="sim-cat-grid">
+                        <a href="https://narassima.github.io/Dental-Caries-DES-Simulator/" target="_blank" class="glass-card hover-lift sim-card-24 sim-card" style="text-decoration: none; color: inherit; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; border-radius: var(--radius-lg); height: 100%; transition: all 0.3s ease;">
+                            <div class="sim-icon-badge"><i class="fas fa-teeth"></i></div>
+                            <div>
+                                <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin: 0 0 0.5rem;">Dental Caries DES Simulator</h3>
+                                <p style="font-size: 0.88rem; color: #334155; line-height: 1.55; margin: 0; text-align: justify;">
+                                    A discrete-event simulation of school-based dental caries prevention through task-shifting. Models school dental camps across India's 35 states, or any country through a custom modeller, compares policy tiers from the status quo to stretch targets, and reports children treated, national coverage, dentists needed and disability averted, with probabilistic sensitivity analysis and Excel import and export.
+                                </p>
+                            </div>
+                            <span class="sim-action-btn">Launch Simulator <i class="fas fa-arrow-right"></i></span>
+                        </a>
                         <a href="https://narassima.github.io/Health-Cost-Converter/" target="_blank" class="glass-card hover-lift sim-card-23 sim-card" style="text-decoration: none; color: inherit; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; border-radius: var(--radius-lg); height: 100%; transition: all 0.3s ease;">
                             <div class="sim-icon-badge"><i class="fas fa-money-bill-transfer"></i></div>
                             <div>

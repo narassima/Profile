@@ -1,0 +1,970 @@
+/* ═══════════════════════════════════════════════════════════════════
+   FLUENT LAYER · v1.1.0
+   Microsoft Fluent 2 / Windows 11 look for the profile site.
+   Loaded AFTER redesign.css (icons: fluent-icons.css) and scoped to
+   body.theme-fluent: remove that class (or these <link>s) to return to the
+   previous look.
+
+   Design notes
+   - Accent: the Windows default blue family. #0078D4 is the Windows
+     default accent; #005FB8 is the shade Windows 11 uses for accent text
+     and fills on light backgrounds (6:1 on white).
+   - Canvas: "Mica" style, a light grey (#F3F3F3) washed with slowly
+     drifting blue light; surfaces are white tiles with a hairline stroke
+     and Fluent elevation shadows.
+   - Selection is shown by fills, never underlines: a pill glides behind
+     the active header tab; section tabs are segmented controls.
+   - Shape: 12px tiles, 8px controls, pills for tags.
+   - Type: Segoe UI Variable (Windows), platform UI font elsewhere.
+   - Icons: Fluent System Icons (fluent-icons.css); every icon sits on a
+     tint or a solid tile so it reads against its background.
+   - Motion: Fluent decelerate curve; everything respects
+     prefers-reduced-motion.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── 1. Tokens ──────────────────────────────────────────────────────── */
+body.theme-editorial.theme-fluent {
+    --fl-accent:        #005FB8;
+    --fl-accent-hover:  #1A6FC2;
+    --fl-accent-press:  #004C87;
+    --fl-accent-bright: #0078D4;
+    --fl-accent-sky:    #3AA0F3;
+    /* tiles that carry white icons: lightest stop #2B88D8 keeps white at >= 3.7:1 */
+    --fl-tile:          linear-gradient(135deg, #0067C0 0%, #2B88D8 100%);
+    --fl-tint-1:        #F2F7FD;
+    --fl-tint-2:        #E3EFFB;
+    --fl-tint-3:        #C9E0F7;
+
+    --fl-canvas:        #F3F3F3;
+    --fl-surface:       #FFFFFF;
+    --fl-surface-2:     #F9F9F9;
+    --fl-subtle:        rgba(0, 0, 0, 0.045);
+    --fl-stroke:        rgba(0, 0, 0, 0.07);
+    --fl-stroke-2:      rgba(0, 0, 0, 0.12);
+    --fl-text-1:        #1A1A1A;
+    --fl-text-2:        #4F4F4F;
+    --fl-text-3:        #646464;
+
+    --fl-r-control: 8px;
+    --fl-r-card:    12px;
+    --fl-r-flyout:  12px;
+    --fl-r-pill:    999px;
+
+    --fl-shadow-2:  0 0 1px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+    --fl-shadow-4:  0 0 2px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.05);
+    --fl-shadow-8:  0 0 2px rgba(0, 0, 0, 0.07), 0 4px 10px rgba(0, 0, 0, 0.08);
+    --fl-shadow-16: 0 0 2px rgba(0, 0, 0, 0.08), 0 8px 18px rgba(0, 0, 0, 0.10);
+    --fl-shadow-28: 0 0 8px rgba(0, 0, 0, 0.10), 0 14px 30px rgba(0, 0, 0, 0.16);
+    --fl-glow:      0 0 0 1px rgba(0, 120, 212, 0.20), 0 10px 26px rgba(0, 95, 184, 0.16);
+
+    --fl-decel:  cubic-bezier(0.1, 0.9, 0.2, 1);
+    --fl-ease:   cubic-bezier(0.33, 0, 0.67, 1);
+    --fl-fast:   180ms;
+    --fl-normal: 320ms;
+    --fl-slow:   480ms;
+
+    --fl-font-text:    "Segoe UI Variable Text", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", Arial, sans-serif;
+    --fl-font-display: "Segoe UI Variable Display", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", Arial, sans-serif;
+
+    /* the older layers read these */
+    --primary-color:     var(--fl-accent);
+    --primary-hover:     var(--fl-accent-press);
+    --primary-rgb:       0, 95, 184;
+    --primary-hover-rgb: 0, 76, 135;
+    --primary-light-bg:  var(--fl-tint-1);
+    --primary-border:    var(--fl-tint-3);
+    --accent-gradient:   var(--fl-tile);
+    --secondary-color:   var(--fl-accent-bright);
+    --rd-accent:         var(--fl-accent);
+    --rd-accent-soft:    var(--fl-tint-2);
+
+    --bg-color:        var(--fl-canvas);
+    --rd-paper:        var(--fl-surface);
+    --surface-color:   var(--fl-surface);
+    --rd-surface-2:    var(--fl-surface-2);
+    --glass-bg:        var(--fl-surface);
+    --text-primary:    var(--fl-text-1);
+    --text-secondary:  var(--fl-text-2);
+    --rd-muted:        var(--fl-text-3);
+    --border-color:    var(--fl-stroke);
+    --rd-border:       var(--fl-stroke-2);
+    --rd-divider:      var(--fl-stroke);
+
+    --shadow-sm:    var(--fl-shadow-2);
+    --shadow-md:    var(--fl-shadow-4);
+    --shadow-lg:    var(--fl-shadow-16);
+    --shadow-hover: var(--fl-shadow-16);
+    --shadow-card:  var(--fl-shadow-4);
+
+    --radius-sm: var(--fl-r-control);
+    --radius-md: 10px;
+    --radius-lg: var(--fl-r-card);
+    --radius-xl: 16px;
+
+    --rd-ease:           var(--fl-decel);
+    --transition:        all var(--fl-normal) var(--fl-decel);
+    --transition-fast:   all var(--fl-fast) var(--fl-decel);
+    --transition-spring: all var(--fl-normal) var(--fl-decel);
+    --transition-smooth: all var(--fl-normal) var(--fl-decel);
+
+    --font-main:    var(--fl-font-text);
+    --font-display: var(--fl-font-display);
+    --rd-slab:      var(--fl-font-display);
+}
+
+/* ── 2. Canvas: Mica-style grey with slowly drifting blue light ─────── */
+html:has(body.theme-fluent) { scroll-behavior: smooth; }
+body.theme-editorial.theme-fluent {
+    background-color: var(--fl-canvas) !important;
+    background-image: none !important;
+    font-family: var(--fl-font-text) !important;
+    font-size: 16px !important;
+    line-height: 1.6 !important;
+    color: var(--fl-text-1) !important;
+}
+body.theme-editorial.theme-fluent::before {
+    content: "";
+    position: fixed;
+    inset: -12%;
+    z-index: -1;
+    pointer-events: none;
+    background:
+        radial-gradient(48% 42% at 12% 6%, rgba(0, 120, 212, 0.17), transparent 70%),
+        radial-gradient(40% 40% at 92% 12%, rgba(58, 160, 243, 0.14), transparent 70%),
+        radial-gradient(46% 44% at 50% 100%, rgba(0, 95, 184, 0.09), transparent 70%),
+        var(--fl-canvas);
+    animation: fl-drift 38s ease-in-out infinite alternate;
+    will-change: transform;
+}
+@keyframes fl-drift {
+    from { transform: translate3d(-2%, -1%, 0) scale(1); }
+    to   { transform: translate3d(2%, 1.5%, 0) scale(1.06); }
+}
+
+/* ── 3. Typography and text colour ──────────────────────────────────── */
+.theme-fluent.theme-editorial h1,
+.theme-fluent.theme-editorial h2,
+.theme-fluent.theme-editorial h3,
+.theme-fluent.theme-editorial h4,
+.theme-fluent.theme-editorial h5,
+.theme-fluent.theme-editorial .hero-name,
+.theme-fluent.theme-editorial .section-header h2,
+.theme-fluent.theme-editorial .card-header h3,
+.theme-fluent.theme-editorial .timeline-title,
+.theme-fluent.theme-editorial .roadmap-title,
+.theme-fluent.theme-editorial .nav-logo {
+    font-family: var(--fl-font-display) !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.005em !important;
+    color: var(--fl-text-1) !important;
+}
+.theme-fluent.theme-editorial .detail-card p { color: var(--fl-text-2) !important; }
+
+/* links: accent colour, no underline; a colour shift on hover */
+.theme-fluent.theme-editorial .page-section a:not(.nav-link):not(.tab-btn):not(.sim-action-btn):not(.hero-contact a):not(.glass-card):not(.hover-lift):not(.rd-btn-primary),
+.theme-fluent.theme-editorial .pub-link,
+.theme-fluent.theme-editorial .detail-card a:not(.rd-btn-primary) {
+    color: var(--fl-accent) !important;
+    text-decoration: none !important;
+    transition: color var(--fl-fast) var(--fl-ease) !important;
+}
+.theme-fluent.theme-editorial .page-section a:not(.nav-link):not(.tab-btn):not(.sim-action-btn):not(.rd-btn-primary):hover,
+.theme-fluent.theme-editorial .pub-link:hover {
+    color: var(--fl-accent-press) !important;
+    text-decoration: none !important;
+}
+
+/* ── 4. Header: acrylic bar; the selected tab is a gliding blue pill ─── */
+.theme-fluent.theme-editorial .navbar {
+    background: rgba(249, 249, 249, 0.74) !important;
+    backdrop-filter: blur(28px) saturate(160%) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(160%) !important;
+    border-bottom: 1px solid var(--fl-stroke) !important;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.7) inset, 0 4px 18px rgba(0, 0, 0, 0.04) !important;
+}
+.theme-fluent.theme-editorial .nav-logo {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 1.12rem !important;
+    color: var(--fl-text-1) !important;
+    transition: color var(--fl-fast) var(--fl-ease) !important;
+}
+.theme-fluent.theme-editorial .nav-logo::before {        /* small app-tile mark */
+    content: "";
+    flex: none;
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    background: linear-gradient(135deg, var(--fl-accent-bright) 0%, var(--fl-accent-sky) 100%);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.28), 0 2px 6px rgba(0, 120, 212, 0.35);
+}
+.theme-fluent.theme-editorial .nav-logo:hover { color: var(--fl-accent) !important; }
+
+.theme-fluent.theme-editorial #nav-links-scrollable { gap: 2px; }
+.theme-fluent.theme-editorial .navbar .nav-link {
+    position: relative;
+    z-index: 1;
+    color: var(--fl-text-2) !important;
+    font-family: var(--fl-font-text) !important;
+    font-weight: 500 !important;
+    font-size: 0.9rem !important;
+    padding: 0.46rem 0.85rem !important;
+    border-radius: var(--fl-r-control) !important;
+    border-bottom: 0 !important;
+    background: transparent !important;
+    transition: color var(--fl-normal) var(--fl-decel), background-color var(--fl-fast) var(--fl-ease) !important;
+}
+.theme-fluent.theme-editorial .navbar .nav-link:not(.active):hover {
+    background: var(--fl-subtle) !important;
+    color: var(--fl-text-1) !important;
+}
+.theme-fluent.theme-editorial .navbar .nav-link.active,
+.theme-fluent.theme-editorial .navbar .nav-link.active:hover {
+    color: var(--fl-accent) !important;
+    font-weight: 600 !important;
+    background: transparent !important;
+}
+/* the old sliding underline becomes a filled pill that glides behind the tabs */
+.theme-fluent.theme-editorial .nav-slider {
+    top: 0 !important;
+    bottom: 0 !important;
+    height: auto !important;
+    z-index: 0 !important;
+    border-radius: var(--fl-r-control) !important;
+    background: var(--fl-tint-2) !important;
+    box-shadow: inset 0 0 0 1px var(--fl-tint-3);
+    transition: transform var(--fl-slow) var(--fl-decel), width var(--fl-slow) var(--fl-decel), opacity 0.2s linear !important;
+}
+.theme-fluent.theme-editorial .nav-slider::after { content: none !important; }
+
+.theme-fluent.theme-editorial .nav-scroll-btn,
+.theme-fluent.theme-editorial #tabs-dropdown-toggle {
+    border: 1px solid var(--fl-stroke-2) !important;
+    border-radius: var(--fl-r-control) !important;
+    background: rgba(255, 255, 255, 0.85) !important;
+    color: var(--fl-text-1) !important;
+    box-shadow: var(--fl-shadow-2) !important;
+    transition: background-color var(--fl-fast) var(--fl-ease), color var(--fl-fast) var(--fl-ease), transform var(--fl-fast) var(--fl-ease) !important;
+}
+.theme-fluent.theme-editorial .nav-scroll-btn:hover,
+.theme-fluent.theme-editorial #tabs-dropdown-toggle:hover {
+    background: #fff !important;
+    color: var(--fl-accent) !important;
+}
+.theme-fluent.theme-editorial .nav-scroll-btn:active,
+.theme-fluent.theme-editorial #tabs-dropdown-toggle:active { transform: scale(0.96); }
+/* style.css paints these icons white for the old dark header: follow the button's text colour instead */
+.theme-fluent.theme-editorial #tabs-dropdown-toggle { gap: 0.4rem !important; padding: 0.4rem 0.7rem !important; }
+.theme-fluent.theme-editorial #tabs-dropdown-toggle i,
+.theme-fluent.theme-editorial .nav-scroll-btn i { color: currentColor !important; margin-right: 0 !important; }
+.theme-fluent.theme-editorial #tabs-dropdown-toggle .fa-chevron-down { font-size: 0.8rem !important; }
+
+/* tab flyout (narrow screens): selection is a filled row */
+.theme-fluent.theme-editorial #nav-dropdown-menu {
+    border: 1px solid var(--fl-stroke) !important;
+    border-radius: var(--fl-r-flyout) !important;
+    background: rgba(252, 252, 252, 0.94) !important;
+    backdrop-filter: blur(24px) saturate(150%);
+    -webkit-backdrop-filter: blur(24px) saturate(150%);
+    box-shadow: var(--fl-shadow-28) !important;
+    padding: 6px !important;
+    animation: fl-pop var(--fl-normal) var(--fl-decel);
+    transform-origin: top right;
+}
+@keyframes fl-pop { from { opacity: 0; transform: translateY(-6px) scale(0.98); } to { opacity: 1; transform: none; } }
+.theme-fluent.theme-editorial #nav-dropdown-menu .dropdown-link {
+    border-radius: var(--fl-r-control) !important;
+    border-left: 0 !important;
+    font-family: var(--fl-font-text) !important;
+    font-weight: 500 !important;
+    font-size: 0.88rem !important;
+    color: var(--fl-text-1) !important;
+    padding: 0.55rem 0.9rem !important;
+    transition: background-color var(--fl-fast) var(--fl-ease), color var(--fl-fast) var(--fl-ease) !important;
+}
+.theme-fluent.theme-editorial #nav-dropdown-menu .dropdown-link:hover { background: var(--fl-subtle) !important; }
+.theme-fluent.theme-editorial #nav-dropdown-menu .dropdown-link.active {
+    background: var(--fl-tint-2) !important;
+    color: var(--fl-accent) !important;
+    font-weight: 600 !important;
+}
+
+/* ── 5. Page headers ────────────────────────────────────────────────── */
+.theme-fluent.theme-editorial .section-header {
+    border-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 1.6rem !important;
+}
+.theme-fluent.theme-editorial .section-header h2 {
+    font-size: clamp(1.85rem, 1.35rem + 1.7vw, 2.6rem) !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.015em !important;
+}
+
+/* ── 6. Tiles and cards ─────────────────────────────────────────────── */
+.theme-fluent.theme-editorial .glass-card,
+.theme-fluent.theme-editorial .detail-card,
+.theme-fluent.theme-editorial .content-card,
+.theme-fluent.theme-editorial .stat-card,
+.theme-fluent.theme-editorial .course-topic-card,
+.theme-fluent.theme-editorial .contribution-item-card,
+.theme-fluent.theme-editorial .role-list-card,
+.theme-fluent.theme-editorial .roadmap-card,
+.theme-fluent.theme-editorial .testimonial-card,
+.theme-fluent.theme-editorial #simulations-grid .glass-card {
+    background: var(--fl-surface) !important;
+    border: 1px solid var(--fl-stroke) !important;
+    border-radius: var(--fl-r-card) !important;
+    box-shadow: var(--fl-shadow-4) !important;
+    transition: box-shadow var(--fl-normal) var(--fl-decel), transform var(--fl-normal) var(--fl-decel), border-color var(--fl-fast) var(--fl-ease), background-color var(--fl-fast) var(--fl-ease) !important;
+}
+.theme-fluent.theme-editorial .glass-card:hover,
+.theme-fluent.theme-editorial .detail-card:hover,
+.theme-fluent.theme-editorial .content-card:hover,
+.theme-fluent.theme-editorial .stat-card:hover,
+.theme-fluent.theme-editorial .course-topic-card:hover,
+.theme-fluent.theme-editorial .contribution-item-card:hover,
+.theme-fluent.theme-editorial .roadmap-card:hover {
+    transform: none !important;
+    border-color: var(--fl-stroke-2) !important;
+    box-shadow: var(--fl-shadow-8) !important;
+}
+/* tiles that are links lift and pick up the accent */
+.theme-fluent.theme-editorial a.glass-card:hover,
+.theme-fluent.theme-editorial a.sim-card:hover,
+.theme-fluent.theme-editorial #simulations-grid .glass-card:hover,
+.theme-fluent.theme-editorial .stat-card:hover {
+    transform: translateY(-4px) !important;
+    border-color: var(--fl-tint-3) !important;
+    box-shadow: var(--fl-shadow-16), var(--fl-glow) !important;
+}
+.theme-fluent.theme-editorial a.glass-card:active,
+.theme-fluent.theme-editorial a.sim-card:active {
+    transform: translateY(-1px) scale(0.992) !important;
+    box-shadow: var(--fl-shadow-8) !important;
+    transition-duration: 90ms !important;
+}
+
+/* card titles: icon on a blue tint tile next to the heading */
+.theme-fluent.theme-editorial .card-header {
+    border-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 0.95rem !important;
+    gap: 0.75rem !important;
+    align-items: center !important;
+}
+.theme-fluent.theme-editorial .card-header > i,
+.theme-fluent.theme-editorial .card-header > div > i:first-child,
+.theme-fluent.theme-editorial h3 > i:first-child {
+    width: 36px;
+    height: 36px;
+    flex: none;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: var(--fl-tint-2) !important;
+    color: var(--fl-accent) !important;
+    font-size: 1.22rem !important;
+    vertical-align: middle;
+}
+.theme-fluent.theme-editorial .card-header h3 { font-size: 1.12rem !important; font-weight: 600 !important; }
+
+/* ── 7. Home: profile tile ──────────────────────────────────────────── */
+.theme-fluent.theme-editorial .hero-container { gap: 2rem !important; }
+.theme-fluent.theme-editorial .hero-profile {
+    position: relative;
+    overflow: hidden;
+    padding-top: 1.1rem !important;
+}
+.theme-fluent.theme-editorial .hero-profile::before {      /* blue banner behind the photo */
+    content: "" !important;
+    display: block !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 122px !important;
+    opacity: 1 !important;
+    background:
+        radial-gradient(240px 140px at 85% 0%, rgba(255, 255, 255, 0.30), transparent 70%),
+        radial-gradient(260px 160px at 0% 100%, rgba(0, 40, 110, 0.28), transparent 70%),
+        linear-gradient(120deg, #0058A8 0%, var(--fl-accent-bright) 48%, var(--fl-accent-sky) 100%) !important;
+    z-index: 0 !important;
+    pointer-events: none;
+}
+.theme-fluent.theme-editorial .hero-profile > * { position: relative; z-index: 1; }
+.theme-fluent.theme-editorial .hero-image-wrapper {
+    border-radius: 20px !important;
+    border: 4px solid #fff !important;
+    box-shadow: var(--fl-shadow-16) !important;
+    overflow: hidden;
+    transition: box-shadow var(--fl-normal) var(--fl-decel), transform var(--fl-normal) var(--fl-decel) !important;
+}
+.theme-fluent.theme-editorial .hero-image-wrapper .profile-img { border-radius: 16px !important; transition: transform var(--fl-slow) var(--fl-decel); }
+.theme-fluent.theme-editorial .hero-image-wrapper:hover { box-shadow: var(--fl-shadow-28) !important; transform: translateY(-2px) !important; }
+.theme-fluent.theme-editorial .hero-image-wrapper:hover .profile-img { transform: scale(1.04); }
+.theme-fluent.theme-editorial .hero-name { font-size: clamp(1.5rem, 1.25rem + 1vw, 2rem) !important; }
+.theme-fluent.theme-editorial .hero-title { color: var(--fl-text-2) !important; font-weight: 500 !important; }
+.theme-fluent.theme-editorial .hero-institution { color: var(--fl-text-1) !important; }
+.theme-fluent.theme-editorial .hero-institution i { color: var(--fl-accent) !important; }
+
+/* e-mail rows and profile links: every icon on a blue tint tile */
+.theme-fluent.theme-editorial .contact-item {
+    padding: 0.4rem 0.6rem 0.4rem 0.4rem;
+    border-radius: 10px;
+    background: var(--fl-surface-2);
+    border: 1px solid var(--fl-stroke);
+    color: var(--fl-text-1) !important;
+    font-size: 0.88rem;
+    transition: background-color var(--fl-fast) var(--fl-ease), border-color var(--fl-fast) var(--fl-ease);
+}
+.theme-fluent.theme-editorial .contact-item:hover { background: var(--fl-tint-1); border-color: var(--fl-tint-3); }
+.theme-fluent.theme-editorial .contact-item > i,
+.theme-fluent.theme-editorial .profile-ids-grid a > i {
+    width: 28px;
+    height: 28px;
+    flex: none;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    border-radius: 7px;
+    background: var(--fl-tint-2) !important;
+    color: var(--fl-accent) !important;
+    font-size: 1.08rem !important;
+    vertical-align: middle;
+}
+.theme-fluent.theme-editorial .hero-contact a {
+    border: 1px solid var(--fl-stroke) !important;
+    border-radius: 10px !important;
+    background: var(--fl-surface-2) !important;
+    color: var(--fl-text-1) !important;
+    padding: 0.35rem 0.55rem 0.35rem 0.35rem !important;
+    font-weight: 500;
+    transition: background-color var(--fl-fast) var(--fl-ease), border-color var(--fl-fast) var(--fl-ease), color var(--fl-fast) var(--fl-ease), transform var(--fl-fast) var(--fl-ease) !important;
+}
+.theme-fluent.theme-editorial .hero-contact a:hover {
+    background: var(--fl-tint-1) !important;
+    border-color: var(--fl-tint-3) !important;
+    color: var(--fl-accent) !important;
+    transform: translateY(-1px) !important;
+}
+
+/* stat tiles: white icons on solid blue tiles */
+.theme-fluent.theme-editorial .stat-card { padding: 1rem !important; cursor: default; }
+.theme-fluent.theme-editorial .stat-icon-badge {
+    border-radius: 11px !important;
+    background: var(--fl-tile) !important;
+    color: #fff !important;
+    box-shadow: 0 3px 8px rgba(0, 120, 212, 0.28) !important;
+}
+.theme-fluent.theme-editorial .stat-icon-badge i { color: #fff !important; }
+.theme-fluent.theme-editorial .stat-number {
+    font-family: var(--fl-font-display) !important;
+    font-weight: 700 !important;
+    color: var(--fl-text-1) !important;
+    font-variant-numeric: tabular-nums;
+}
+.theme-fluent.theme-editorial .stat-card p { color: var(--fl-text-2) !important; }
+
+/* chips (courses, tools, hobbies): dark text on a blue tint, icon in accent */
+.theme-fluent.theme-editorial .detail-card div[style*="flex-wrap: wrap"] > span,
+.theme-fluent.theme-editorial .detail-card > div > span[style] {
+    background: var(--fl-tint-1) !important;
+    color: var(--fl-text-1) !important;
+    border: 1px solid var(--fl-tint-2) !important;
+    border-radius: var(--fl-r-pill) !important;
+    padding: 0.3rem 0.8rem 0.3rem 0.6rem !important;
+    font-size: 0.82rem !important;
+    font-weight: 500 !important;
+    transition: background-color var(--fl-fast) var(--fl-ease), border-color var(--fl-fast) var(--fl-ease), color var(--fl-fast) var(--fl-ease), transform var(--fl-fast) var(--fl-ease) !important;
+}
+.theme-fluent.theme-editorial .detail-card div[style*="flex-wrap: wrap"] > span:hover,
+.theme-fluent.theme-editorial .detail-card > div > span[style]:hover {
+    background: var(--fl-tint-2) !important;
+    border-color: var(--fl-tint-3) !important;
+    color: var(--fl-accent) !important;
+    transform: translateY(-1px) !important;
+}
+.theme-fluent.theme-editorial .detail-card div[style*="flex-wrap: wrap"] > span i,
+.theme-fluent.theme-editorial .detail-card > div > span[style] i,
+.theme-fluent.theme-editorial .interest-list li i,
+.theme-fluent.theme-editorial .detail-card h4 > i { color: var(--fl-accent) !important; }
+.theme-fluent.theme-editorial .interest-list li { color: var(--fl-text-1) !important; }
+
+/* Career Roadmap card: left-aligned lines (no justified gaps) */
+.theme-fluent.theme-editorial .mini-timeline { border-left-color: var(--fl-tint-3) !important; }
+.theme-fluent.theme-editorial .mini-timeline-item p,
+.theme-fluent.theme-editorial .mini-timeline-item span { text-align: left !important; hyphens: manual !important; }
+.theme-fluent.theme-editorial .mini-timeline-item p { color: var(--fl-accent) !important; }
+.theme-fluent.theme-editorial .mini-timeline-item span { color: var(--fl-text-3) !important; }
+
+/* Web Tools band on Home: a blue hero tile with white text */
+.theme-fluent.theme-editorial .home-sim-band {
+    border-top: 0 !important;
+    padding: 1.4rem 1.5rem !important;
+    border-radius: 14px;
+    color: #fff;
+    background:
+        radial-gradient(420px 220px at 92% -20%, rgba(255, 255, 255, 0.14), transparent 70%),
+        radial-gradient(380px 240px at -5% 120%, rgba(0, 35, 100, 0.32), transparent 70%),
+        linear-gradient(115deg, #004E9A 0%, var(--fl-accent) 50%, var(--fl-accent-bright) 100%);   /* white text >= 4.5:1 throughout */
+    box-shadow: var(--fl-shadow-16), 0 10px 30px rgba(0, 95, 184, 0.22);
+}
+.theme-fluent.theme-editorial .home-sim-band-head h2 { color: #fff !important; }
+.theme-fluent.theme-editorial .home-sim-band-head h2 i {
+    color: #fff !important;
+    width: 34px;
+    height: 34px;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.18);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.28);
+    margin-right: 0.55rem !important;
+}
+.theme-fluent.theme-editorial .home-sim-band-head > div > p { color: #fff !important; opacity: 0.94; }
+.theme-fluent.theme-editorial .home-sim-band-head .rd-btn-primary,
+.theme-fluent.theme-editorial .home-sim-band-head a.rd-btn-primary i {
+    background: #fff !important;
+    border-color: #fff !important;
+    color: var(--fl-accent) !important;
+}
+.theme-fluent.theme-editorial .home-sim-band-head .rd-btn-primary:hover { background: var(--fl-tint-1) !important; }
+
+/* ── 8. Buttons ─────────────────────────────────────────────────────── */
+.theme-fluent.theme-editorial #view-cv-btn,
+.theme-fluent.theme-editorial #print-cv-btn,
+.theme-fluent.theme-editorial .btn-primary-cv,
+.theme-fluent.theme-editorial a.rd-btn-primary,
+.theme-fluent.theme-editorial .lightbox-download-btn {
+    background: var(--fl-accent) !important;
+    border: 1px solid var(--fl-accent) !important;
+    border-radius: var(--fl-r-control) !important;
+    color: #fff !important;
+    font-family: var(--fl-font-text) !important;
+    font-weight: 600 !important;
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.18), var(--fl-shadow-2) !important;
+    transition: background-color var(--fl-fast) var(--fl-ease), transform var(--fl-fast) var(--fl-ease), box-shadow var(--fl-normal) var(--fl-decel) !important;
+}
+.theme-fluent.theme-editorial #view-cv-btn i,
+.theme-fluent.theme-editorial #print-cv-btn i,
+.theme-fluent.theme-editorial a.rd-btn-primary i { color: #fff !important; }
+.theme-fluent.theme-editorial #view-cv-btn:hover,
+.theme-fluent.theme-editorial #print-cv-btn:hover,
+.theme-fluent.theme-editorial .btn-primary-cv:hover,
+.theme-fluent.theme-editorial a.rd-btn-primary:hover,
+.theme-fluent.theme-editorial .lightbox-download-btn:hover {
+    background: var(--fl-accent-hover) !important;
+    border-color: var(--fl-accent-hover) !important;
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.18), 0 6px 16px rgba(0, 95, 184, 0.28) !important;
+}
+.theme-fluent.theme-editorial #view-cv-btn:active,
+.theme-fluent.theme-editorial a.rd-btn-primary:active {
+    background: var(--fl-accent-press) !important;
+    transform: scale(0.98);
+}
+.theme-fluent.theme-editorial a.rd-btn-primary .fa-arrow-right { transition: transform var(--fl-normal) var(--fl-decel); }
+.theme-fluent.theme-editorial a.rd-btn-primary:hover .fa-arrow-right { transform: translateX(3px); }
+
+/* ── 9. Section tabs: segmented controls, no underline ──────────────── */
+.theme-fluent.theme-editorial .tabs,
+.theme-fluent.theme-editorial .collab-tabs {
+    display: inline-flex !important;
+    flex-wrap: wrap;
+    gap: 3px !important;
+    padding: 4px !important;
+    margin-bottom: 1.2rem !important;
+    border: 1px solid var(--fl-stroke) !important;
+    border-radius: 12px !important;
+    background: rgba(0, 0, 0, 0.035) !important;
+}
+.theme-fluent.theme-editorial .tab-btn,
+.theme-fluent.theme-editorial .collab-tab-btn {
+    position: relative;
+    border: 0 !important;
+    border-bottom: 0 !important;
+    border-radius: 9px !important;
+    padding: 0.48rem 1rem !important;
+    margin: 0 !important;
+    color: var(--fl-text-2) !important;
+    background: transparent !important;
+    font-family: var(--fl-font-text) !important;
+    font-weight: 500 !important;
+    font-size: 0.9rem !important;
+    box-shadow: none !important;
+    transition: background-color var(--fl-normal) var(--fl-decel), color var(--fl-normal) var(--fl-decel), box-shadow var(--fl-normal) var(--fl-decel) !important;
+}
+.theme-fluent.theme-editorial .collab-tab-btn::before { content: none !important; }
+.theme-fluent.theme-editorial .tab-btn::after { content: none !important; }
+.theme-fluent.theme-editorial .tab-btn:not(.active):hover,
+.theme-fluent.theme-editorial .collab-tab-btn:not(.active):hover {
+    background: rgba(255, 255, 255, 0.7) !important;
+    color: var(--fl-text-1) !important;
+}
+.theme-fluent.theme-editorial .tab-btn.active,
+.theme-fluent.theme-editorial .tab-btn.active:hover,
+.theme-fluent.theme-editorial .collab-tab-btn.active {
+    background: #fff !important;
+    color: var(--fl-accent) !important;
+    font-weight: 600 !important;
+    box-shadow: var(--fl-shadow-4) !important;
+}
+.theme-fluent.theme-editorial .collab-tab-btn i { color: inherit !important; }
+.theme-fluent.theme-editorial .tab-content.active,
+.theme-fluent.theme-editorial .collab-tab-content.active { animation: fl-fade-up var(--fl-slow) var(--fl-decel) both !important; }
+@keyframes fl-fade-up { from { opacity: 0.001; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+/* ── 10. Search boxes and inputs ────────────────────────────────────── */
+.theme-fluent.theme-editorial input[type="text"],
+.theme-fluent.theme-editorial #pub-search,
+.theme-fluent.theme-editorial #sim-search,
+.theme-fluent.theme-editorial #mentorship-search,
+.theme-fluent.theme-editorial #course-filter,
+.theme-fluent.theme-editorial select {
+    background: rgba(255, 255, 255, 0.92) !important;
+    border: 1px solid var(--fl-stroke-2) !important;
+    border-radius: 10px !important;
+    color: var(--fl-text-1) !important;
+    font-family: var(--fl-font-text) !important;
+    box-shadow: var(--fl-shadow-2) !important;
+    transition: border-color var(--fl-fast) var(--fl-ease), box-shadow var(--fl-normal) var(--fl-decel), background-color var(--fl-fast) var(--fl-ease) !important;
+}
+.theme-fluent.theme-editorial input[type="text"]::placeholder { color: var(--fl-text-3) !important; opacity: 1; }
+.theme-fluent.theme-editorial input[type="text"]:hover,
+.theme-fluent.theme-editorial select:hover { background: #fff !important; border-color: rgba(0, 0, 0, 0.2) !important; }
+.theme-fluent.theme-editorial input[type="text"]:focus,
+.theme-fluent.theme-editorial #course-filter:focus,
+.theme-fluent.theme-editorial select:focus {
+    background: #fff !important;
+    border-color: var(--fl-accent) !important;
+    box-shadow: 0 0 0 4px rgba(0, 120, 212, 0.14) !important;
+    outline: none !important;
+}
+.theme-fluent.theme-editorial input[type="text"] ~ i,
+.theme-fluent.theme-editorial .fa-search { color: var(--fl-text-2) !important; }
+
+/* ── 11. Research: impact tiles, publications, pagination ───────────── */
+.theme-fluent.theme-editorial div:has(> #scholar-citations-impact),
+.theme-fluent.theme-editorial div:has(> #scholar-hindex-impact),
+.theme-fluent.theme-editorial div:has(> #scholar-i10index-impact) {
+    background: var(--fl-tint-1) !important;
+    border: 1px solid var(--fl-tint-2) !important;
+    border-radius: 10px !important;
+}
+.theme-fluent.theme-editorial #scholar-citations-impact,
+.theme-fluent.theme-editorial #scholar-hindex-impact,
+.theme-fluent.theme-editorial #scholar-i10index-impact { color: var(--fl-accent) !important; }
+
+.theme-fluent.theme-editorial .publication-item {
+    background: transparent !important;
+    border: 0 !important;
+    border-bottom: 1px solid var(--fl-stroke) !important;
+    border-radius: 10px !important;
+    padding: 0.85rem 0.8rem !important;
+    transition: background-color var(--fl-fast) var(--fl-ease) !important;
+}
+.theme-fluent.theme-editorial .publication-item:hover { background: var(--fl-tint-1) !important; }
+.theme-fluent.theme-editorial .pub-apa { color: var(--fl-text-2) !important; }
+.theme-fluent.theme-editorial .pub-apa i { color: var(--fl-text-1) !important; }
+.theme-fluent.theme-editorial .page-btn {
+    border-radius: var(--fl-r-control) !important;
+    border: 1px solid var(--fl-stroke-2) !important;
+    background: var(--fl-surface) !important;
+    color: var(--fl-text-1) !important;
+    transition: background-color var(--fl-fast) var(--fl-ease), color var(--fl-fast) var(--fl-ease) !important;
+}
+.theme-fluent.theme-editorial .page-btn:hover { background: var(--fl-tint-1) !important; color: var(--fl-accent) !important; }
+.theme-fluent.theme-editorial .page-btn.active { background: var(--fl-accent) !important; border-color: var(--fl-accent) !important; color: #fff !important; }
+.theme-fluent.theme-editorial .timeline-bar { border-radius: 6px 6px 2px 2px !important; }
+.theme-fluent.theme-editorial #reset-timeline-filter {
+    background: var(--fl-tint-2) !important;
+    color: var(--fl-accent) !important;
+    border-radius: var(--fl-r-pill) !important;
+}
+.theme-fluent.theme-editorial .score-badge {
+    background: var(--fl-tint-2) !important;
+    color: var(--fl-accent) !important;
+    border-radius: var(--fl-r-pill) !important;
+    font-weight: 600 !important;
+}
+
+/* collaborators: pill chips with a person icon tile and a Fluent tooltip card */
+.theme-fluent.theme-editorial .collab-chip {
+    border-radius: var(--fl-r-pill) !important;
+    background: var(--fl-surface) !important;
+    border: 1px solid var(--fl-stroke) !important;
+    box-shadow: var(--fl-shadow-2) !important;
+    color: var(--fl-text-1) !important;
+    transition: background-color var(--fl-fast) var(--fl-ease), border-color var(--fl-fast) var(--fl-ease), box-shadow var(--fl-normal) var(--fl-decel), transform var(--fl-normal) var(--fl-decel) !important;
+}
+.theme-fluent.theme-editorial .collab-chip:hover {
+    background: var(--fl-tint-1) !important;
+    border-color: var(--fl-tint-3) !important;
+    box-shadow: var(--fl-shadow-8) !important;
+    transform: translateY(-2px) !important;
+}
+.theme-fluent.theme-editorial .collab-chip > i {
+    color: var(--fl-accent) !important;
+    background: var(--fl-tint-2);
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem !important;
+}
+.theme-fluent.theme-editorial .collab-tooltip,
+.theme-fluent.theme-editorial .floating-collab-tooltip {
+    border-radius: var(--fl-r-flyout) !important;
+    border: 1px solid var(--fl-stroke) !important;
+    box-shadow: var(--fl-shadow-16) !important;
+}
+.theme-fluent.theme-editorial .tooltip-badge {
+    border-radius: var(--fl-r-pill) !important;
+    background: var(--fl-tint-2) !important;
+    color: var(--fl-accent) !important;
+}
+
+/* ── 12. Web Tools tiles ────────────────────────────────────────────── */
+.theme-fluent.theme-editorial .sim-icon-badge,
+.theme-fluent.theme-editorial .home-sim-card .sim-icon-badge,
+.theme-fluent.theme-editorial #sim-featured .sim-icon-badge,
+.theme-fluent.theme-editorial #simulations-grid .glass-card .sim-icon-badge,   /* beats the old 6-colour rotation (ID selectors) */
+.theme-fluent.theme-editorial .project-card .card-icon-badge {
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 12px !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+    background: var(--fl-tile) !important;
+    color: #fff !important;
+    box-shadow: 0 4px 10px rgba(0, 120, 212, 0.28) !important;
+    font-size: 1.1rem;
+    transition: transform var(--fl-normal) var(--fl-decel), box-shadow var(--fl-normal) var(--fl-decel) !important;
+}
+.theme-fluent.theme-editorial .sim-icon-badge i,
+.theme-fluent.theme-editorial .card-icon-badge i { color: #fff !important; }
+.theme-fluent.theme-editorial .sim-card:hover .sim-icon-badge,
+.theme-fluent.theme-editorial #simulations-grid .glass-card:hover .sim-icon-badge {
+    transform: scale(1.06) rotate(-2deg) !important;
+    box-shadow: 0 8px 18px rgba(0, 120, 212, 0.34) !important;
+}
+/* card descriptions: left-aligned (justified text leaves gaps in narrow tiles) */
+.theme-fluent.theme-editorial .sim-card p,
+.theme-fluent.theme-editorial #simulations-grid .glass-card p { text-align: left !important; hyphens: manual !important; }
+.theme-fluent.theme-editorial #simulations-grid h3,
+.theme-fluent.theme-editorial .sim-card h3 { font-weight: 600 !important; color: var(--fl-text-1) !important; }
+.theme-fluent.theme-editorial .sim-card p { color: var(--fl-text-2) !important; }
+
+.theme-fluent.theme-editorial .sim-action-btn {
+    align-self: flex-start;
+    display: inline-flex !important;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: auto;
+    padding: 0.4rem 0.9rem;
+    border-radius: var(--fl-r-control);
+    background: var(--fl-tint-2);
+    color: var(--fl-accent) !important;
+    font-weight: 600 !important;
+    font-size: 0.85rem !important;
+    transition: background-color var(--fl-normal) var(--fl-decel), color var(--fl-normal) var(--fl-decel);
+}
+.theme-fluent.theme-editorial .sim-action-btn i { color: inherit !important; transition: transform var(--fl-normal) var(--fl-decel); }
+.theme-fluent.theme-editorial .sim-card:hover .sim-action-btn,
+.theme-fluent.theme-editorial a.glass-card:hover .sim-action-btn {
+    background: var(--fl-accent);
+    color: #fff !important;
+}
+.theme-fluent.theme-editorial .sim-card:hover .sim-action-btn i { transform: translateX(3px); }
+
+.theme-fluent.theme-editorial .sim-feature-card {
+    background: linear-gradient(180deg, #FFFFFF 0%, var(--fl-tint-1) 100%) !important;
+    border-color: var(--fl-tint-3) !important;
+}
+.theme-fluent.theme-editorial .sim-tags span {
+    background: var(--fl-surface) !important;
+    border: 1px solid var(--fl-tint-3) !important;
+    color: var(--fl-accent) !important;
+    border-radius: var(--fl-r-pill) !important;
+    font-weight: 500 !important;
+    padding: 0.14rem 0.6rem !important;
+}
+.theme-fluent.theme-editorial .sim-cat-title {
+    font-family: var(--fl-font-display) !important;
+    font-weight: 600 !important;
+    font-size: 1.3rem !important;
+    border-bottom: 1px solid var(--fl-stroke) !important;
+}
+.theme-fluent.theme-editorial .sim-cat-title i { color: var(--fl-accent) !important; }
+.theme-fluent.theme-editorial .sim-cat-count {
+    background: var(--fl-tint-2);
+    color: var(--fl-accent) !important;
+    border-radius: var(--fl-r-pill);
+    padding: 0.08rem 0.65rem;
+    font-weight: 600 !important;
+}
+.theme-fluent.theme-editorial .sim-lede { color: var(--fl-text-2) !important; }
+.theme-fluent.theme-editorial .sim-card div[style*="Copyright Reg"],
+.theme-fluent.theme-editorial .sim-card div[style*="border-radius: 5px"] {
+    background: var(--fl-tint-2) !important;
+    color: var(--fl-accent) !important;
+    border-radius: var(--fl-r-pill) !important;
+}
+
+/* ── 13. Experience timeline, roadmap, contributions, awards ────────── */
+.theme-fluent.theme-editorial .roadmap-dot,
+.theme-fluent.theme-editorial .timeline-item::before {
+    background: var(--fl-accent-bright) !important;
+    box-shadow: 0 0 0 4px var(--fl-tint-2) !important;
+    border-color: #fff !important;
+}
+.theme-fluent.theme-editorial .roadmap-date,
+.theme-fluent.theme-editorial .timeline-date {
+    display: inline-block;
+    color: var(--fl-accent) !important;
+    background: var(--fl-tint-1);
+    border: 1px solid var(--fl-tint-2);
+    border-radius: var(--fl-r-pill);
+    padding: 0.08rem 0.65rem;
+    font-weight: 600 !important;
+}
+.theme-fluent.theme-editorial .timeline::before,
+.theme-fluent.theme-editorial .horizontal-roadmap-container::before {
+    background: linear-gradient(90deg, var(--fl-tint-3), var(--fl-tint-2)) !important;
+}
+.theme-fluent.theme-editorial .contribution-item-card > div:first-child,
+.theme-fluent.theme-editorial .cert-icon {
+    border-radius: 10px !important;
+    background: var(--fl-tint-2) !important;
+    color: var(--fl-accent) !important;
+}
+.theme-fluent.theme-editorial .contribution-item-card strong { color: var(--fl-accent) !important; }
+.theme-fluent.theme-editorial #achievements-list .fa-trophy {
+    color: #5C3B00 !important;                       /* dark bronze on gold: 5.4:1 (white on gold was 1.7:1) */
+    background: linear-gradient(135deg, #F5B31F, #FFD666);
+    border-radius: 9px;
+    width: 32px;
+    height: 32px;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem !important;
+    flex: none;
+}
+
+/* ── 14. Gallery and lightbox ───────────────────────────────────────── */
+.theme-fluent.theme-editorial .gallery-item-card {
+    border-radius: var(--fl-r-card) !important;
+    border: 1px solid var(--fl-stroke) !important;
+    box-shadow: var(--fl-shadow-4) !important;
+    transition: box-shadow var(--fl-normal) var(--fl-decel), transform var(--fl-normal) var(--fl-decel) !important;
+}
+.theme-fluent.theme-editorial .gallery-item-card img { transition: transform var(--fl-slow) var(--fl-decel) !important; }
+.theme-fluent.theme-editorial .gallery-item-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--fl-shadow-16) !important;
+}
+.theme-fluent.theme-editorial .gallery-item-card:hover img { transform: scale(1.05); }
+
+/* the three platform cards keep their brand hues, deepened so labels reach 4.5:1 and white icons 3:1 */
+.theme-fluent.theme-editorial #gallery a.hover-lift { border-radius: var(--fl-r-card) !important; }
+.theme-fluent.theme-editorial #gallery a.hover-lift div[style*="width: 52px"] { border-radius: 12px !important; }
+.theme-fluent.theme-editorial #gallery a.hover-lift div[style*="width: 18px"] { border-radius: 6px !important; }
+.theme-fluent.theme-editorial #gallery div[style*="width: 52px"][style*="#e8710a"] { background: linear-gradient(135deg, #B94A06, #E8710A) !important; }
+.theme-fluent.theme-editorial #gallery div[style*="width: 52px"][style*="#05a585"] { background: linear-gradient(135deg, #03715B, #05A585) !important; }
+.theme-fluent.theme-editorial #gallery div[style*="width: 52px"][style*="#e1306c"] { background: linear-gradient(135deg, #833AB4, #C13584 45%, #E1306C 75%, #F56040) !important; }
+.theme-fluent.theme-editorial #gallery span[style*="color: #e8710a"] { color: #A84300 !important; }
+.theme-fluent.theme-editorial #gallery span[style*="color: #05a585"] { color: #03715B !important; }
+.theme-fluent.theme-editorial #gallery span[style*="color: #e1306c"] { color: #B0174F !important; }
+.theme-fluent.theme-editorial .lightbox-content { border-radius: var(--fl-r-card); box-shadow: var(--fl-shadow-28); }
+
+/* ── 15. CV builder window ──────────────────────────────────────────── */
+.theme-fluent.theme-editorial #cv-viewer-modal { background-color: rgba(0, 0, 0, 0.45) !important; }
+.theme-fluent.theme-editorial #cv-viewer-modal > div {
+    border-radius: var(--fl-r-card) !important;
+    box-shadow: var(--fl-shadow-28) !important;
+    border: 1px solid var(--fl-stroke) !important;
+}
+
+/* ── 16. Footer ─────────────────────────────────────────────────────── */
+.theme-fluent.theme-editorial .footer {
+    background: rgba(249, 249, 249, 0.7) !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid var(--fl-stroke) !important;
+}
+.theme-fluent.theme-editorial .footer p,
+.theme-fluent.theme-editorial .footer a { color: var(--fl-text-2) !important; }
+
+/* ── 17. Focus, selection, scrollbars ───────────────────────────────── */
+.theme-fluent :where(a, button, input, select, textarea, [tabindex]):focus-visible {
+    outline: 2px solid var(--fl-text-1) !important;
+    outline-offset: 2px !important;
+    border-radius: 8px;
+}
+.theme-fluent.theme-editorial ::selection { background: rgba(0, 120, 212, 0.22); color: var(--fl-text-1); }
+.theme-fluent.theme-editorial * { scrollbar-color: rgba(0, 0, 0, 0.28) transparent; }
+.theme-fluent.theme-editorial *::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.26); background-clip: content-box; }
+.theme-fluent.theme-editorial *::-webkit-scrollbar-thumb:hover { background: rgba(0, 0, 0, 0.42); background-clip: content-box; }
+
+/* ── 18. Motion: smooth section change, staggered tiles ─────────────── */
+.theme-fluent.theme-editorial .page-section.active-section { animation: rd-fade-in 0.42s var(--fl-ease) both !important; }
+.theme-fluent.theme-editorial .page-section.section-exit { animation: rd-fade-out 0.32s var(--fl-ease) both !important; }
+/* slide only: the section's cross-fade already handles opacity, and a paused
+   animation must never leave a tile invisible */
+@keyframes fl-rise { from { transform: translateY(14px); } to { transform: none; } }
+.theme-fluent.theme-editorial .page-section.active-section .glass-card,
+.theme-fluent.theme-editorial .page-section.active-section .detail-card,
+.theme-fluent.theme-editorial .page-section.active-section .home-sim-band {
+    animation: fl-rise 0.6s var(--fl-decel) both;
+}
+.theme-fluent.theme-editorial .page-section.active-section :is(.sim-card, .stat-card, .gallery-item-card):nth-child(2) { animation-delay: 45ms; }
+.theme-fluent.theme-editorial .page-section.active-section :is(.sim-card, .stat-card, .gallery-item-card):nth-child(3) { animation-delay: 90ms; }
+.theme-fluent.theme-editorial .page-section.active-section :is(.sim-card, .stat-card, .gallery-item-card):nth-child(4) { animation-delay: 135ms; }
+.theme-fluent.theme-editorial .page-section.active-section :is(.sim-card, .stat-card, .gallery-item-card):nth-child(n+5) { animation-delay: 180ms; }
+@media (prefers-reduced-motion: reduce) {
+    html:has(body.theme-fluent) { scroll-behavior: auto; }
+    body.theme-editorial.theme-fluent::before { animation: none !important; }
+    .theme-fluent.theme-editorial .page-section.active-section .glass-card,
+    .theme-fluent.theme-editorial .page-section.active-section .detail-card,
+    .theme-fluent.theme-editorial .page-section.active-section .home-sim-band,
+    .theme-fluent.theme-editorial .tab-content.active,
+    .theme-fluent.theme-editorial .collab-tab-content.active,
+    .theme-fluent.theme-editorial #nav-dropdown-menu { animation: none !important; }
+}
+
+/* ── 19. Small screens ──────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .theme-fluent.theme-editorial .nav-logo { font-size: 1rem !important; gap: 0.5rem; }
+    .theme-fluent.theme-editorial .nav-logo::before { width: 20px; height: 20px; border-radius: 5px; }
+    .theme-fluent.theme-editorial .home-sim-band { padding: 1.15rem 1.1rem !important; }
+    .theme-fluent.theme-editorial .hero-profile::before { height: 108px !important; }
+    .theme-fluent.theme-editorial .tabs,
+    .theme-fluent.theme-editorial .collab-tabs { display: flex !important; }
+    .theme-fluent.theme-editorial .tab-btn,
+    .theme-fluent.theme-editorial .collab-tab-btn { padding: 0.42rem 0.75rem !important; font-size: 0.85rem !important; }
+    /* justified text opens wide gaps in a phone-width column */
+    .theme-fluent.theme-editorial .sim-lede,
+    .theme-fluent.theme-editorial .detail-card p { text-align: left !important; }
+}
+/* On phones the tab strip has room for only a fragment of one tab, so the Tabs flyout carries navigation */
+@media (max-width: 560px) {
+    .theme-fluent.theme-editorial .nav-scroll-container { display: none !important; }
+    .theme-fluent.theme-editorial .nav-container { justify-content: space-between !important; }
+}
+
+/* ── 20. Teaching word cloud ───────────────────────────────────────────
+   script.js picks random Google colours (yellow on white is 1.7:1) and random
+   opacity per word; here every word gets a solid shade from the accent family. */
+.theme-fluent.theme-editorial .word-tag { opacity: 1 !important; color: var(--fl-accent) !important; }
+.theme-fluent.theme-editorial .word-tag:nth-child(4n+2) { color: #003A75 !important; }
+.theme-fluent.theme-editorial .word-tag:nth-child(4n+3) { color: #0F6CBD !important; }
+.theme-fluent.theme-editorial .word-tag:nth-child(4n+4) { color: var(--fl-text-1) !important; }
+.theme-fluent.theme-editorial .word-tag:nth-child(n):hover { color: var(--fl-accent-bright) !important; }
