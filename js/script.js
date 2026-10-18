@@ -725,9 +725,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Let's open lightbox modal
                 e.preventDefault();
                 modal.style.display = 'block';
-                modalImg.src = this.src;
-                downloadBtn.href = this.src;
-                downloadBtn.setAttribute('download', this.src.substring(this.src.lastIndexOf('/') + 1));
+                const full = this.dataset.full || this.currentSrc || this.src; // 1600px copy for the enlarged view
+                modalImg.src = full;
+                downloadBtn.href = full;
+                downloadBtn.setAttribute('download', full.substring(full.lastIndexOf('/') + 1));
             });
         });
         closeBtn.addEventListener('click', () => { modal.style.display = 'none'; });

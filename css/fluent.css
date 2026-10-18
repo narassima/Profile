@@ -39,6 +39,7 @@ body.theme-editorial.theme-fluent {
     --fl-surface:       #FFFFFF;
     --fl-surface-2:     #F9F9F9;
     --fl-subtle:        rgba(0, 0, 0, 0.045);
+    --fl-subtle-press:  #EDEDED;
     --fl-stroke:        rgba(0, 0, 0, 0.07);
     --fl-stroke-2:      rgba(0, 0, 0, 0.12);
     --fl-text-1:        #1A1A1A;
@@ -125,7 +126,7 @@ body.theme-editorial.theme-fluent {
 body.theme-editorial.theme-fluent::before {
     content: "";
     position: fixed;
-    inset: -12%;
+    inset: 0;
     z-index: -1;
     pointer-events: none;
     background:
@@ -133,12 +134,6 @@ body.theme-editorial.theme-fluent::before {
         radial-gradient(40% 40% at 92% 12%, rgba(58, 160, 243, 0.14), transparent 70%),
         radial-gradient(46% 44% at 50% 100%, rgba(0, 95, 184, 0.09), transparent 70%),
         var(--fl-canvas);
-    animation: fl-drift 38s ease-in-out infinite alternate;
-    will-change: transform;
-}
-@keyframes fl-drift {
-    from { transform: translate3d(-2%, -1%, 0) scale(1); }
-    to   { transform: translate3d(2%, 1.5%, 0) scale(1.06); }
 }
 
 /* ── 3. Typography and text colour ──────────────────────────────────── */
@@ -189,15 +184,6 @@ body.theme-editorial.theme-fluent::before {
     font-size: 1.12rem !important;
     color: var(--fl-text-1) !important;
     transition: color var(--fl-fast) var(--fl-ease) !important;
-}
-.theme-fluent.theme-editorial .nav-logo::before {        /* small app-tile mark */
-    content: "";
-    flex: none;
-    width: 22px;
-    height: 22px;
-    border-radius: 6px;
-    background: linear-gradient(135deg, var(--fl-accent-bright) 0%, var(--fl-accent-sky) 100%);
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.28), 0 2px 6px rgba(0, 120, 212, 0.35);
 }
 .theme-fluent.theme-editorial .nav-logo:hover { color: var(--fl-accent) !important; }
 
@@ -253,7 +239,7 @@ body.theme-editorial.theme-fluent::before {
     color: var(--fl-accent) !important;
 }
 .theme-fluent.theme-editorial .nav-scroll-btn:active,
-.theme-fluent.theme-editorial #tabs-dropdown-toggle:active { transform: scale(0.96); }
+.theme-fluent.theme-editorial #tabs-dropdown-toggle:active { background: var(--fl-subtle-press) !important; }
 /* style.css paints these icons white for the old dark header: follow the button's text colour instead */
 .theme-fluent.theme-editorial #tabs-dropdown-toggle { gap: 0.4rem !important; padding: 0.4rem 0.7rem !important; }
 .theme-fluent.theme-editorial #tabs-dropdown-toggle i,
@@ -272,7 +258,7 @@ body.theme-editorial.theme-fluent::before {
     animation: fl-pop var(--fl-normal) var(--fl-decel);
     transform-origin: top right;
 }
-@keyframes fl-pop { from { opacity: 0; transform: translateY(-6px) scale(0.98); } to { opacity: 1; transform: none; } }
+@keyframes fl-pop { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
 .theme-fluent.theme-editorial #nav-dropdown-menu .dropdown-link {
     border-radius: var(--fl-r-control) !important;
     border-left: 0 !important;
@@ -335,13 +321,13 @@ body.theme-editorial.theme-fluent::before {
 .theme-fluent.theme-editorial a.sim-card:hover,
 .theme-fluent.theme-editorial #simulations-grid .glass-card:hover,
 .theme-fluent.theme-editorial .stat-card:hover {
-    transform: translateY(-4px) !important;
+    transform: translateY(-2px) !important;
     border-color: var(--fl-tint-3) !important;
     box-shadow: var(--fl-shadow-16), var(--fl-glow) !important;
 }
 .theme-fluent.theme-editorial a.glass-card:active,
 .theme-fluent.theme-editorial a.sim-card:active {
-    transform: translateY(-1px) scale(0.992) !important;
+    transform: translateY(-1px) !important;
     box-shadow: var(--fl-shadow-8) !important;
     transition-duration: 90ms !important;
 }
@@ -404,7 +390,7 @@ body.theme-editorial.theme-fluent::before {
 }
 .theme-fluent.theme-editorial .hero-image-wrapper .profile-img { border-radius: 16px !important; transition: transform var(--fl-slow) var(--fl-decel); }
 .theme-fluent.theme-editorial .hero-image-wrapper:hover { box-shadow: var(--fl-shadow-28) !important; transform: translateY(-2px) !important; }
-.theme-fluent.theme-editorial .hero-image-wrapper:hover .profile-img { transform: scale(1.04); }
+.theme-fluent.theme-editorial .hero-image-wrapper:hover .profile-img { transform: none !important; }
 .theme-fluent.theme-editorial .hero-name { font-size: clamp(1.5rem, 1.25rem + 1vw, 2rem) !important; }
 .theme-fluent.theme-editorial .hero-title { color: var(--fl-text-2) !important; font-weight: 500 !important; }
 .theme-fluent.theme-editorial .hero-institution { color: var(--fl-text-1) !important; }
@@ -525,7 +511,7 @@ body.theme-editorial.theme-fluent::before {
     box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.28);
     margin-right: 0.55rem !important;
 }
-.theme-fluent.theme-editorial .home-sim-band-head > div > p { color: #fff !important; opacity: 0.94; }
+.theme-fluent.theme-editorial .home-sim-band-head > div > p { color: #fff !important; opacity: 1 !important; }
 .theme-fluent.theme-editorial .home-sim-band-head .rd-btn-primary,
 .theme-fluent.theme-editorial .home-sim-band-head a.rd-btn-primary i {
     background: #fff !important;
@@ -564,7 +550,6 @@ body.theme-editorial.theme-fluent::before {
 .theme-fluent.theme-editorial #view-cv-btn:active,
 .theme-fluent.theme-editorial a.rd-btn-primary:active {
     background: var(--fl-accent-press) !important;
-    transform: scale(0.98);
 }
 .theme-fluent.theme-editorial a.rd-btn-primary .fa-arrow-right { transition: transform var(--fl-normal) var(--fl-decel); }
 .theme-fluent.theme-editorial a.rd-btn-primary:hover .fa-arrow-right { transform: translateX(3px); }
@@ -752,7 +737,7 @@ body.theme-editorial.theme-fluent::before {
 .theme-fluent.theme-editorial .card-icon-badge i { color: #fff !important; }
 .theme-fluent.theme-editorial .sim-card:hover .sim-icon-badge,
 .theme-fluent.theme-editorial #simulations-grid .glass-card:hover .sim-icon-badge {
-    transform: scale(1.06) rotate(-2deg) !important;
+    transform: translateY(-2px) !important;
     box-shadow: 0 8px 18px rgba(0, 120, 212, 0.34) !important;
 }
 /* card descriptions: left-aligned (justified text leaves gaps in narrow tiles) */
@@ -868,7 +853,7 @@ body.theme-editorial.theme-fluent::before {
 }
 .theme-fluent.theme-editorial .gallery-item-card img { transition: transform var(--fl-slow) var(--fl-decel) !important; }
 .theme-fluent.theme-editorial .gallery-item-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-2px);
     box-shadow: var(--fl-shadow-16) !important;
 }
 .theme-fluent.theme-editorial .gallery-item-card:hover img { transform: scale(1.05); }
@@ -915,7 +900,7 @@ body.theme-editorial.theme-fluent::before {
 .theme-fluent.theme-editorial *::-webkit-scrollbar-thumb:hover { background: rgba(0, 0, 0, 0.42); background-clip: content-box; }
 
 /* ── 18. Motion: smooth section change, staggered tiles ─────────────── */
-.theme-fluent.theme-editorial .page-section.active-section { animation: rd-fade-in 0.42s var(--fl-ease) both !important; }
+.theme-fluent.theme-editorial .page-section.active-section { animation: rd-fade-in 0.42s var(--fl-ease) backwards !important; will-change: auto !important; }
 .theme-fluent.theme-editorial .page-section.section-exit { animation: rd-fade-out 0.32s var(--fl-ease) both !important; }
 /* slide only: the section's cross-fade already handles opacity, and a paused
    animation must never leave a tile invisible */
@@ -943,7 +928,6 @@ body.theme-editorial.theme-fluent::before {
 /* ── 19. Small screens ──────────────────────────────────────────────── */
 @media (max-width: 768px) {
     .theme-fluent.theme-editorial .nav-logo { font-size: 1rem !important; gap: 0.5rem; }
-    .theme-fluent.theme-editorial .nav-logo::before { width: 20px; height: 20px; border-radius: 5px; }
     .theme-fluent.theme-editorial .home-sim-band { padding: 1.15rem 1.1rem !important; }
     .theme-fluent.theme-editorial .hero-profile::before { height: 108px !important; }
     .theme-fluent.theme-editorial .tabs,
@@ -968,3 +952,51 @@ body.theme-editorial.theme-fluent::before {
 .theme-fluent.theme-editorial .word-tag:nth-child(4n+3) { color: #0F6CBD !important; }
 .theme-fluent.theme-editorial .word-tag:nth-child(4n+4) { color: var(--fl-text-1) !important; }
 .theme-fluent.theme-editorial .word-tag:nth-child(n):hover { color: var(--fl-accent-bright) !important; }
+
+/* ── 21. Crisp rendering ───────────────────────────────────────────────
+   Text and icons are never scaled, rotated, pushed into 3D or faded:
+   a scaled layer is resampled as a bitmap, which is what made the
+   testimonials soft. States follow Fluent 2 / Material 3 instead:
+   elevation, a tinted background and colour, nothing that resizes glyphs. */
+.theme-fluent.theme-editorial .testimonials-grid { perspective: none !important; gap: 0.85rem !important; padding: 0 !important; }
+.theme-fluent.theme-editorial .testimonial-card,
+.theme-fluent.theme-editorial .testimonial-card:hover {
+    transform: none !important;
+    opacity: 1 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    cursor: default !important;
+    min-height: 0 !important;
+    padding: 1.25rem 1.4rem !important;
+    gap: 0.75rem !important;
+}
+.theme-fluent.theme-editorial .testimonial-card:hover { border-color: var(--fl-stroke-2) !important; box-shadow: var(--fl-shadow-8) !important; }
+.theme-fluent.theme-editorial .testimonial-text {
+    font-style: normal !important;
+    color: var(--fl-text-1) !important;
+    font-size: 0.97rem !important;
+    line-height: 1.65 !important;
+}
+.theme-fluent.theme-editorial .testimonial-author {
+    opacity: 1 !important;
+    color: var(--fl-accent) !important;
+    font-weight: 600 !important;
+    letter-spacing: 0 !important;
+}
+.theme-fluent.theme-editorial .timeline-date { opacity: 1 !important; }
+
+/* the base stylesheet's hover wobble (scale up to 1.25 plus rotation) on icons, words and photos */
+.theme-fluent.theme-editorial :is(.glass-card, .detail-card, .pub-card, .stat-card, .project-card):hover :is(.card-icon-badge, .pub-icon-badge, .stat-icon-badge, .card-header i),
+.theme-fluent.theme-editorial .interest-list li:hover i,
+.theme-fluent.theme-editorial .icon-decor:hover,
+.theme-fluent.theme-editorial .word-tag:hover,
+.theme-fluent.theme-editorial .gallery-item-card:hover .instagram-overlay-icon,
+.theme-fluent.theme-editorial .hero-image-wrapper:hover { transform: none !important; }
+.theme-fluent.theme-editorial .word-tag { transition: color var(--fl-fast) var(--fl-ease) !important; text-shadow: none !important; }
+
+/* sharper type: kerning and ligatures on, one rendering path everywhere */
+body.theme-editorial.theme-fluent {
+    text-rendering: optimizeLegibility;
+    font-kerning: normal;
+    font-optical-sizing: auto;
+}
