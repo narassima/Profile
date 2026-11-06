@@ -800,6 +800,12 @@ const portfolioData = {
                 "students": 0
         },
         {
+                "course": "Enterprise Resource Planning",
+                "term": "PGDM 2025-27",
+                "score": 4.64,
+                "students": 0
+        },
+        {
                 "course": "Application Building using AI",
                 "term": "2025-26",
                 "score": "-",
