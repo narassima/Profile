@@ -155,6 +155,14 @@ const portfolioData = {
                         "url": ""
                 },
                 {
+                        "title": "Performance evaluation and optimization of powder mixed EDM of Inconel 718 using composite electrodes and the VIKOR method",
+                        "authors": "Shabarinathan, K. T., Narassima, M. S., Petru, J., & Thenarasu, M.",
+                        "year": "2026",
+                        "journal": "Scientific Reports, 16, 33146",
+                        "metrics": "Scopus Q1",
+                        "url": "https://doi.org/10.1038/s41598-026-62571-7"
+                },
+                {
                         "title": "An Event Study of the Impact of the Israel-Iran-US Conflict Escalation on Crude Oil Futures Prices in India",
                         "authors": "Elangovan, A., Maniam, B., Babu, M., & Narassima, M. S.",
                         "year": "2026",
