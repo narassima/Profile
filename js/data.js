@@ -139,6 +139,22 @@ const portfolioData = {
     publications: {
         "journals": [
                 {
+                        "title": "Sequential and Multi-Pass Machining Effects on Surface Integrity and Functional Performance: A Critical Evidence Synthesis",
+                        "authors": "Marimuthu, P., Narassima, M. S., Petru, J., & Mohanavelu, T.",
+                        "year": "2026",
+                        "journal": "Machines, 14(11), 1284",
+                        "metrics": "Scopus Q1",
+                        "url": "https://doi.org/10.3390/machines14111284"
+                },
+                {
+                        "title": "Detection of Banana Plantations using a Two-Stage Transfer Learning Framework",
+                        "authors": "Shravan, A. P., Gunasekaran, A., Narassima, M. S., Mohanraj, T., & Thenarasu, M.",
+                        "year": "2026",
+                        "journal": "European Journal of Remote Sensing (Accepted)",
+                        "metrics": "",
+                        "url": ""
+                },
+                {
                         "title": "An Event Study of the Impact of the Israel-Iran-US Conflict Escalation on Crude Oil Futures Prices in India",
                         "authors": "Elangovan, A., Maniam, B., Babu, M., & Narassima, M. S.",
                         "year": "2026",
