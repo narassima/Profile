@@ -1254,6 +1254,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (viewCvBtn && cvModal && closeCvBtn && printCvBtn && cvContent && customizePanel) {
         // Every section the CV can carry, in print order (About last)
         const CV_SECTIONS = [
+            ['courses', 'Courses Taught'],
+            ['interests', 'Research Interests'],
+            ['tools', 'Tools &amp; Technologies'],
             ['education', 'Education'],
             ['experience', 'Work Experience'],
             ['publications', 'Publications'],
@@ -1261,9 +1264,6 @@ document.addEventListener('DOMContentLoaded', () => {
             ['roles', 'Review &amp; Editorial Boards'],
             ['certifications', 'Certifications'],
             ['achievements', 'Achievements &amp; Key Awards'],
-            ['courses', 'Courses Taught'],
-            ['interests', 'Research Interests'],
-            ['tools', 'Tools &amp; Technologies'],
             ['hobbies', 'Beyond Academics: Hobbies &amp; Activities'],
             ['links', 'Profile Links'],
             ['about', 'About']
@@ -1616,6 +1616,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     <!-- BODY SECTIONS -->
                     <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+                        ${coursesHtml}
+                        ${interestsHtml}
+                        ${toolsHtml}
                         ${eduHtml}
                         ${expHtml}
                         ${pubHtml}
@@ -1623,9 +1626,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         ${rolesHtml}
                         ${certHtml}
                         ${achHtml}
-                        ${coursesHtml}
-                        ${interestsHtml}
-                        ${toolsHtml}
                         ${hobbiesHtml}
                         ${linksHtml}
                         ${aboutHtml}
