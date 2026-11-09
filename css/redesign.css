@@ -11,13 +11,13 @@
 /* ── 1. Tokens ──────────────────────────────────────────────────── */
 body.theme-editorial {
     /* Accent — one colour for links / active state / rules.
-       Deep cardinal (also nods to GLIM maroon). Change this one line
-       to re-tint the whole site (e.g. #1F6FEB blue, #0E4D3C green). */
-    --primary-color:  #8C1515;
-    --primary-hover:  #6E1010;
-    --primary-rgb:    140, 21, 21;
-    --rd-accent:      #8C1515;
-    --rd-accent-soft: rgba(140, 21, 21, 0.08);
+       Windows blue (same family as the Fluent layer), so the page never
+       shows a different accent while fluent.css loads. */
+    --primary-color:  #005FB8;
+    --primary-hover:  #004C87;
+    --primary-rgb:    0, 95, 184;
+    --rd-accent:      #005FB8;
+    --rd-accent-soft: rgba(0, 95, 184, 0.08);
 
     /* Neutrals — al-folio light palette */
     --bg-color:        #ffffff;
@@ -180,8 +180,8 @@ body.theme-editorial {
 }
 .theme-editorial .navbar .nav-link::after { display: none !important; }
 
-/* Kill the Material ink-ripple on the header tabs — with the maroon
-   accent it rendered as a blob flashing over the tab name on click. */
+/* Kill the Material ink-ripple on the header tabs: it rendered as a
+   blob flashing over the tab name on click. */
 .theme-editorial .navbar .nav-link .ripple { display: none !important; }
 
 /* Sliding selection indicator — one bar that glides between tabs.
@@ -605,12 +605,12 @@ body.theme-editorial {
 
 /* ── 18. Global polish: focus, selection, scrollbar, motion ─────── */
 :where(a, button, input, select, textarea, [tabindex]):focus-visible {
-    outline: 2px solid var(--rd-accent, #8C1515) !important;
+    outline: 2px solid var(--rd-accent, #005FB8) !important;
     outline-offset: 2px !important;
     border-radius: 3px;
 }
 .theme-editorial ::selection {
-    background: rgba(140, 21, 21, 0.14);
+    background: rgba(0, 120, 212, 0.22);
     color: #1a1a1a;
 }
 .theme-editorial * {
@@ -820,7 +820,7 @@ body.theme-editorial {
 .theme-editorial .sim-category { margin-bottom: 2.75rem; }
 .theme-editorial .sim-category:last-child { margin-bottom: 0; }
 
-.theme-editorial .sim-feature-card { border-color: rgba(140, 21, 21, 0.28) !important; }
+.theme-editorial .sim-feature-card { border-color: rgba(0, 95, 184, 0.28) !important; }
 .theme-editorial .sim-feature-card:hover { border-color: var(--rd-accent) !important; }
 
 .theme-editorial .sim-tags {

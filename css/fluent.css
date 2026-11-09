@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════════
-   FLUENT LAYER · v1.1.0
+   FLUENT LAYER · v1.3.0
    Microsoft Fluent 2 / Windows 11 look for the profile site.
    Loaded AFTER redesign.css (icons: fluent-icons.css) and scoped to
    body.theme-fluent: remove that class (or these <link>s) to return to the
@@ -599,7 +599,7 @@ body.theme-editorial.theme-fluent::before {
 }
 .theme-fluent.theme-editorial .collab-tab-btn i { color: inherit !important; }
 .theme-fluent.theme-editorial .tab-content.active,
-.theme-fluent.theme-editorial .collab-tab-content.active { animation: fl-fade-up var(--fl-slow) var(--fl-decel) both !important; }
+.theme-fluent.theme-editorial .collab-tab-content.active { animation: fl-fade-up 280ms var(--fl-decel) both !important; }
 @keyframes fl-fade-up { from { opacity: 0.001; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 
 /* ── 10. Search boxes and inputs ────────────────────────────────────── */
@@ -858,16 +858,20 @@ body.theme-editorial.theme-fluent::before {
 }
 .theme-fluent.theme-editorial .gallery-item-card:hover img { transform: scale(1.05); }
 
-/* the three platform cards keep their brand hues, deepened so labels reach 4.5:1 and white icons 3:1 */
+/* Maps and the green card keep their hues, deepened so labels reach 4.5:1 and white icons 3:1;
+   Instagram moves to the accent blue family (no crimson anywhere on the site) */
 .theme-fluent.theme-editorial #gallery a.hover-lift { border-radius: var(--fl-r-card) !important; }
 .theme-fluent.theme-editorial #gallery a.hover-lift div[style*="width: 52px"] { border-radius: 12px !important; }
 .theme-fluent.theme-editorial #gallery a.hover-lift div[style*="width: 18px"] { border-radius: 6px !important; }
 .theme-fluent.theme-editorial #gallery div[style*="width: 52px"][style*="#e8710a"] { background: linear-gradient(135deg, #B94A06, #E8710A) !important; }
 .theme-fluent.theme-editorial #gallery div[style*="width: 52px"][style*="#05a585"] { background: linear-gradient(135deg, #03715B, #05A585) !important; }
-.theme-fluent.theme-editorial #gallery div[style*="width: 52px"][style*="#e1306c"] { background: linear-gradient(135deg, #833AB4, #C13584 45%, #E1306C 75%, #F56040) !important; }
+.theme-fluent.theme-editorial #gallery div[style*="width: 52px"][style*="#e1306c"] { background: var(--fl-tile) !important; box-shadow: none !important; }
+.theme-fluent.theme-editorial #gallery div[style*="width: 7px"][style*="#e1306c"] { background: linear-gradient(180deg, #005FB8, #3AA0F3) !important; }
+.theme-fluent.theme-editorial #gallery div[style*="#e1306c15"] { background: var(--fl-tint-1) !important; }
+.theme-fluent.theme-editorial #gallery a[href*="instagram.com"] { border-color: var(--fl-stroke) !important; box-shadow: var(--fl-shadow-4) !important; }
 .theme-fluent.theme-editorial #gallery span[style*="color: #e8710a"] { color: #A84300 !important; }
 .theme-fluent.theme-editorial #gallery span[style*="color: #05a585"] { color: #03715B !important; }
-.theme-fluent.theme-editorial #gallery span[style*="color: #e1306c"] { color: #B0174F !important; }
+.theme-fluent.theme-editorial #gallery span[style*="color: #e1306c"] { color: var(--fl-accent) !important; }
 .theme-fluent.theme-editorial .lightbox-content { border-radius: var(--fl-r-card); box-shadow: var(--fl-shadow-28); }
 
 /* ── 15. CV builder window ──────────────────────────────────────────── */
@@ -999,4 +1003,35 @@ body.theme-editorial.theme-fluent {
     text-rendering: optimizeLegibility;
     font-kerning: normal;
     font-optical-sizing: auto;
+}
+
+/* ── 22. Native motion: Fluent 2 / Material 3 "fade through" ────────────
+   A tab change now behaves like a page change in a Windows 11 or Google app:
+   the old page fades out quickly (120 ms, accelerate), and the new page fades
+   in while rising 16px on the Fluent decelerate curve (360 ms). The page moves
+   as one piece, so cards no longer drift in one by one, and the two pages
+   barely overlap, so there is no ghosting. `translate` is used rather than
+   `transform` because redesign.css pins `transform: none !important` on
+   sections (an !important declaration outranks animation values). */
+.theme-fluent.theme-editorial .page-section.section-exit {
+    animation: fl-page-out 120ms cubic-bezier(0.4, 0, 1, 1) both !important;
+}
+.theme-fluent.theme-editorial .page-section.active-section {
+    animation: fl-page-in 360ms cubic-bezier(0.1, 0.9, 0.2, 1) 60ms backwards !important;
+}
+@keyframes fl-page-out { from { opacity: 1; } to { opacity: 0; } }
+@keyframes fl-page-in  { from { opacity: 0; translate: 0 16px; } to { opacity: 1; translate: 0 0; } }
+.theme-fluent.theme-editorial .page-section.active-section :is(.glass-card, .detail-card, .home-sim-band, .slide-up) {
+    animation: none !important;
+}
+/* list rows and the feedback word cloud ride the page fade too: no per-row
+   slide-ups, and no springy random-delay "pop" (it overshot and scaled glyphs) */
+.theme-fluent.theme-editorial :is(.publication-item, .course-topic-card) { animation: none !important; }
+.theme-fluent.theme-editorial .word-tag { animation: none !important; transform: none !important; opacity: 1 !important; }
+@media (prefers-reduced-motion: reduce) {
+    .theme-fluent.theme-editorial .page-section.active-section,
+    .theme-fluent.theme-editorial .page-section.section-exit {
+        animation-duration: 1ms !important;
+        animation-delay: 0s !important;
+    }
 }
