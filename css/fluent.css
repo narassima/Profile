@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════════
-   FLUENT LAYER · v1.5.0
+   FLUENT LAYER · v1.6.0
    Microsoft Fluent 2 / Windows 11 look for the profile site.
    Loaded AFTER redesign.css (icons: fluent-icons.css) and scoped to
    body.theme-fluent: remove that class (or these <link>s) to return to the
@@ -1277,4 +1277,47 @@ body.theme-editorial.theme-fluent {
         .mini-timeline-item, #gallery a.hover-lift):hover:is(*, #z#z) { transform: none !important; }
     .theme-fluent.theme-editorial .seg-indicator { transition: none; }
     .theme-fluent.theme-editorial :is(.tab-content, .collab-tab-content).active { animation-duration: 1ms !important; }
+}
+
+/* ── 26. Print / Save PDF: the CV alone on plain white A4 ───────────────
+   The screen styling above outranks style.css's print block, so on paper the
+   CV builder window kept its 1px outline and shadow (a tall grey frame cut
+   across every page, hugging the right-aligned dates) and the fixed Mica
+   glow behind the page repeated on every sheet. Here, for print only: no
+   frame, no shadow, no backdrop, no grey canvas, no on-screen A4 minimum
+   height (it pushed a blank page), and headings stay with their first entry. */
+@media print {
+    @page { size: A4; margin: 15mm; }
+    html,
+    body.theme-editorial.theme-fluent { background: #FFFFFF !important; }
+    body.theme-editorial.theme-fluent::before,
+    body.theme-editorial.theme-fluent::after { content: none !important; display: none !important; }
+    .theme-fluent.theme-editorial #cv-viewer-modal:is(*, #z#z) {
+        position: static !important;
+        padding: 0 !important;
+        background: transparent !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+    .theme-fluent.theme-editorial #cv-viewer-modal > div:is(*, #z#z),
+    .theme-fluent.theme-editorial #cv-preview-container:is(*, #z#z) {
+        border: 0 !important;
+        outline: 0 !important;
+        box-shadow: none !important;
+        background: transparent !important;
+        animation: none !important;
+        transform: none !important;
+        padding: 0 !important;
+    }
+    .theme-fluent.theme-editorial #cv-content-body:is(*, #z#z) {
+        min-height: 0 !important;
+        border: 0 !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        background: #FFFFFF !important;
+        transition: none !important;
+    }
+    #cv-content-body .cv-section-title { break-after: avoid; page-break-after: avoid; }
+    #cv-content-body > div > div:first-child { break-inside: avoid; page-break-inside: avoid; }
+    #cv-content-body li { break-inside: avoid; page-break-inside: avoid; }
 }
