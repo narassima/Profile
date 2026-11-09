@@ -1254,6 +1254,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (viewCvBtn && cvModal && closeCvBtn && printCvBtn && cvContent && customizePanel) {
         // Every section the CV can carry, in print order (About last)
         const CV_SECTIONS = [
+            ['objective', 'Objective'],
             ['courses', 'Courses Taught'],
             ['interests', 'Research Interests'],
             ['tools', 'Tools &amp; Technologies'],
@@ -1293,6 +1294,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const tools = homeCard('Tools');
             const beyond = homeCard('Beyond Academics');
             const about = homeCard('About');
+            const objective = homeCard('Objective');
             const heads = beyond ? [...beyond.querySelectorAll('h4')] : [];
             const hobbyHead = heads.find(h => /personal interests/i.test(h.textContent));
             return {
@@ -1302,6 +1304,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 activities: heads.filter(h => h !== hobbyHead)
                     .map(h => ({ title: cleanText(h), desc: cleanText(h.parentElement.querySelector('p')) })),
                 hobbies: hobbyHead ? [...hobbyHead.parentElement.querySelectorAll('span')].map(cleanText).filter(Boolean) : [],
+                objective: objective ? [...objective.querySelectorAll('p')].map(p => p.innerHTML.trim()).filter(Boolean) : [],
                 about: about ? [...about.querySelectorAll('p')]
                     .map(p => p.innerHTML.trim().replace(/\s*\(listed below\)/i, '')).filter(Boolean) : []   // courses sit above About on the CV
             };
@@ -1576,6 +1579,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
+            let objectiveHtml = '';
+            if (cvConfig.sections.objective && home.objective.length) {
+                objectiveHtml = cvSec('Objective', home.objective.map(par => `<p style="${bodyText} text-align: justify;">${par}</p>`).join(''));
+            }
+
             let aboutHtml = '';
             if (cvConfig.sections.about && home.about.length) {
                 aboutHtml = cvSec('About', home.about.map(par => `<p style="${bodyText} margin-bottom: 0.5rem; text-align: justify;">${par}</p>`).join(''));
@@ -1616,6 +1624,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     <!-- BODY SECTIONS -->
                     <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+                        ${objectiveHtml}
                         ${coursesHtml}
                         ${interestsHtml}
                         ${toolsHtml}
