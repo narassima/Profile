@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════════
-   FLUENT LAYER · v1.3.0
+   FLUENT LAYER · v1.4.0
    Microsoft Fluent 2 / Windows 11 look for the profile site.
    Loaded AFTER redesign.css (icons: fluent-icons.css) and scoped to
    body.theme-fluent: remove that class (or these <link>s) to return to the
@@ -14,7 +14,7 @@
      and Fluent elevation shadows.
    - Selection is shown by fills, never underlines: a pill glides behind
      the active header tab; section tabs are segmented controls.
-   - Shape: 12px tiles, 8px controls, pills for tags.
+   - Shape: square corners everywhere (section 23 overrides the older radii).
    - Type: Segoe UI Variable (Windows), platform UI font elsewhere.
    - Icons: Fluent System Icons (fluent-icons.css); every icon sits on a
      tint or a solid tile so it reads against its background.
@@ -1035,3 +1035,140 @@ body.theme-editorial.theme-fluent {
         animation-delay: 0s !important;
     }
 }
+
+/* ── 23. Sharp + HD ────────────────────────────────────────────────────
+   Square corners on everything, opaque surfaces and crisp 1px outlines.
+   Why each rule helps on screen:
+   - frosted glass (backdrop-filter) and semi-transparent surfaces put text
+     on composited layers, where Chrome drops ClearType/LCD antialiasing and
+     falls back to softer greyscale text; opaque white keeps text sharp;
+   - hover lifts and zooms move text and photos by fractions of a pixel and
+     resample them; states are now border and colour changes only;
+   - wide soft shadows blur card edges; cards rest on a hairline outline and
+     only links get a small, tight shadow on hover. */
+body.theme-editorial.theme-fluent {
+    --fl-stroke:    #E1E1E1;
+    --fl-stroke-2:  #C6C6C6;
+    --fl-shadow-2:  none;
+    --fl-shadow-4:  none;
+    --fl-shadow-8:  0 1px 2px rgba(60, 64, 67, 0.30), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    --fl-shadow-16: 0 1px 2px rgba(60, 64, 67, 0.30), 0 2px 6px 2px rgba(60, 64, 67, 0.15);
+    --fl-shadow-28: 0 4px 8px 3px rgba(60, 64, 67, 0.15), 0 1px 3px rgba(60, 64, 67, 0.30);
+    --fl-glow:      0 0 0 1px var(--fl-accent);
+    --fl-r-control: 0;
+    --fl-r-card:    0;
+    --fl-r-flyout:  0;
+    --fl-r-pill:    0;
+}
+/* `:is(*, #z#z#z)` adds ID weight without changing what matches, so these blanket
+   rules outrank the older ID-scoped !important ones */
+.theme-fluent.theme-editorial :is(*, #z#z#z),
+.theme-fluent.theme-editorial :is(*, #z#z#z)::before,
+.theme-fluent.theme-editorial :is(*, #z#z#z)::after { border-radius: 0 !important; }
+
+body.theme-editorial.theme-fluent,
+body.theme-editorial.theme-fluent :is(*, #z#z#z) {
+    -webkit-font-smoothing: auto !important;
+    -moz-osx-font-smoothing: auto !important;
+}
+
+.theme-fluent.theme-editorial,
+.theme-fluent.theme-editorial :is(*, #z#z#z),
+.theme-fluent.theme-editorial :is(*, #z#z#z)::before,
+.theme-fluent.theme-editorial :is(*, #z#z#z)::after { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+.theme-fluent.theme-editorial .navbar:is(*, #z) { background: #FFFFFF !important; border-bottom: 1px solid var(--fl-stroke) !important; box-shadow: none !important; }
+.theme-fluent.theme-editorial :is(#pub-search, #mentorship-search, #sim-search, #course-filter) { background: #FFFFFF !important; }
+.theme-fluent.theme-editorial #gallery a.hover-lift {
+    background: #FFFFFF !important;
+    border: 1px solid var(--fl-stroke) !important;
+    box-shadow: none !important;
+}
+
+/* no movement on hover/press: no lift, no zoom */
+.theme-fluent.theme-editorial :is(a, button, .hover-lift, .glass-card, .detail-card, .content-card, .stat-card, .sim-card,
+    .collab-chip, .gallery-item-card, .hero-image-wrapper, .rd-btn-primary, .btn-primary-cv, .sim-action-btn, .pub-card,
+    .project-card, .publication-item, .course-topic-card, .contribution-item-card, .role-list-card, .roadmap-card,
+    .contact-item, .collab-tab-btn, .tab-btn, .testimonial-card):is(:hover, :active, :focus-visible),
+.theme-fluent.theme-editorial :is(a, .glass-card, .sim-card, .gallery-item-card, .stat-card, .project-card):is(:hover, :active)
+    :is(.sim-icon-badge, .stat-icon-badge, .card-icon-badge, img) { transform: none !important; }
+
+/* static cards stay still on hover; link tiles answer with an accent outline */
+.theme-fluent.theme-editorial :is(.glass-card, .detail-card, .content-card, .course-topic-card, .contribution-item-card,
+    .roadmap-card, .testimonial-card, .publication-item):not(a):hover {
+    border-color: var(--fl-stroke) !important;
+    box-shadow: none !important;
+}
+.theme-fluent.theme-editorial :is(a.glass-card, a.sim-card, #simulations-grid .glass-card, #gallery a.hover-lift):hover {
+    border-color: var(--fl-accent) !important;
+    box-shadow: var(--fl-shadow-8) !important;
+}
+.theme-fluent.theme-editorial .stat-card:hover { border-color: var(--fl-stroke) !important; box-shadow: none !important; }
+.theme-fluent.theme-editorial :is(.glass-card, .detail-card, .content-card, .stat-card, .sim-card, .collab-chip,
+    .testimonial-card, .publication-item, .course-topic-card, #gallery a.hover-lift) {
+    transition: border-color 120ms linear, background-color 120ms linear, box-shadow 120ms linear !important;
+}
+
+/* pop-ups: solid, square, tight shadow, no blur */
+.theme-fluent.theme-editorial .word-tag .tooltip {
+    background: #202124 !important;
+    color: #FFFFFF !important;
+    box-shadow: none !important;
+    font-weight: 500 !important;
+    transition: opacity 100ms linear !important;
+}
+.theme-fluent.theme-editorial .word-tag .tooltip::after { border-top-color: #202124 !important; }
+#collab-floating-tooltip {
+    background: #FFFFFF !important;
+    border: 1px solid #DADCE0 !important;
+    border-radius: 0 !important;
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.30), 0 2px 6px 2px rgba(60, 64, 67, 0.15) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    -webkit-font-smoothing: auto !important;
+}
+#collab-floating-tooltip .tooltip-badge { border-radius: 0 !important; }
+.theme-fluent.theme-editorial #nav-dropdown-menu { background: #FFFFFF !important; border: 1px solid var(--fl-stroke) !important; }
+
+/* testimonials: full-strength type on plain white */
+.theme-fluent.theme-editorial .testimonial-card { background: #FFFFFF !important; border: 1px solid var(--fl-stroke) !important; box-shadow: none !important; }
+.theme-fluent.theme-editorial .testimonial-text { color: #202124 !important; font-size: 1rem !important; font-weight: 400 !important; line-height: 1.6 !important; }
+.theme-fluent.theme-editorial .testimonial-author { font-size: 0.9rem !important; font-weight: 600 !important; }
+
+/* buttons: flat fills, no shadow */
+.theme-fluent.theme-editorial :is(.rd-btn-primary, .btn-primary-cv, .sim-action-btn, .lightbox-download-btn) { box-shadow: none !important; }
+
+/* ── 24. Icons in Google colours ───────────────────────────────────────
+   Big tiles (web tools, home stats, mentorship) are solid squares with a
+   white glyph, like Google's app icons; small icons (card titles,
+   collaborator chips) are tonal: a light tint with the colour on the glyph.
+   The cycle runs blue, red, yellow, green by position in each grid. */
+body.theme-editorial.theme-fluent {
+    --g-blue: #1A73E8;    --g-blue-tint: #E8F0FE;    --g-blue-ink: #1A73E8;
+    --g-red: #EA4335;     --g-red-tint: #FCE8E6;     --g-red-ink: #D93025;
+    --g-yellow: #F9AB00;  --g-yellow-tint: #FEF7E0;  --g-yellow-ink: #E37400;
+    --g-green: #1E8E3E;   --g-green-tint: #E6F4EA;   --g-green-ink: #188038;
+}
+.theme-fluent.theme-editorial :is(.sim-icon-badge, .stat-icon-badge, .card-icon-badge):is(*, #z#z) { box-shadow: none !important; background: var(--g-blue) !important; }
+.theme-fluent.theme-editorial :is(.sim-icon-badge, .stat-icon-badge, .card-icon-badge):is(*, #z#z) i { color: #FFFFFF !important; }
+
+.theme-fluent.theme-editorial #materials :is(.sim-cat-grid, .sim-featured-grid) > .sim-card:nth-child(4n+2) .sim-icon-badge:is(*, #z#z),
+.theme-fluent.theme-editorial #home .stat-card:nth-child(4n+2) .stat-icon-badge:is(*, #z#z),
+.theme-fluent.theme-editorial #projects .project-card:nth-child(4n+2) .card-icon-badge:is(*, #z#z) { background: var(--g-red) !important; }
+.theme-fluent.theme-editorial #materials :is(.sim-cat-grid, .sim-featured-grid) > .sim-card:nth-child(4n+3) .sim-icon-badge:is(*, #z#z),
+.theme-fluent.theme-editorial #home .stat-card:nth-child(4n+3) .stat-icon-badge:is(*, #z#z),
+.theme-fluent.theme-editorial #projects .project-card:nth-child(4n+3) .card-icon-badge:is(*, #z#z) { background: var(--g-yellow) !important; }
+.theme-fluent.theme-editorial #materials :is(.sim-cat-grid, .sim-featured-grid) > .sim-card:nth-child(4n+4) .sim-icon-badge:is(*, #z#z),
+.theme-fluent.theme-editorial #home .stat-card:nth-child(4n+4) .stat-icon-badge:is(*, #z#z),
+.theme-fluent.theme-editorial #projects .project-card:nth-child(4n+4) .card-icon-badge:is(*, #z#z) { background: var(--g-green) !important; }
+
+/* small icons, tonal */
+.theme-fluent.theme-editorial :is(.card-header > i, .card-header > div > i:first-child, h3 > i:first-child):is(*, #z),
+.theme-fluent.theme-editorial .collab-chip > i:is(*, #z) {
+    background: var(--g-blue-tint) !important; color: var(--g-blue-ink) !important;
+}
+.theme-fluent.theme-editorial :is(.glass-card, .detail-card):nth-child(4n+2) :is(.card-header > i, .card-header > div > i:first-child, h3 > i:first-child):is(*, #z),
+.theme-fluent.theme-editorial .collab-chip:nth-child(4n+2) > i:is(*, #z) { background: var(--g-red-tint) !important; color: var(--g-red-ink) !important; }
+.theme-fluent.theme-editorial :is(.glass-card, .detail-card):nth-child(4n+3) :is(.card-header > i, .card-header > div > i:first-child, h3 > i:first-child):is(*, #z),
+.theme-fluent.theme-editorial .collab-chip:nth-child(4n+3) > i:is(*, #z) { background: var(--g-yellow-tint) !important; color: var(--g-yellow-ink) !important; }
+.theme-fluent.theme-editorial :is(.glass-card, .detail-card):nth-child(4n+4) :is(.card-header > i, .card-header > div > i:first-child, h3 > i:first-child):is(*, #z),
+.theme-fluent.theme-editorial .collab-chip:nth-child(4n+4) > i:is(*, #z) { background: var(--g-green-tint) !important; color: var(--g-green-ink) !important; }
