@@ -810,6 +810,57 @@ document.addEventListener('DOMContentLoaded', () => {
     // Run collaborators switcher initialization
     initCollaboratorsTabs();
 
+    // ── Segmented tabs: gliding selection tile + directional slide ──
+    // One white tile sits behind the active button and glides to the next
+    // one; the incoming list slides in from the side the user moved to.
+    const initSegmented = (groupSel, btnSel, panelFor) => {
+        document.querySelectorAll(groupSel).forEach(group => {
+            const btns = [...group.querySelectorAll(btnSel)];
+            if (!btns.length) return;
+            const tile = document.createElement('span');
+            tile.className = 'seg-indicator';
+            tile.setAttribute('aria-hidden', 'true');
+            group.prepend(tile);
+            group.classList.add('has-seg-indicator');
+            let current = Math.max(0, btns.findIndex(b => b.classList.contains('active')));
+            const place = (animate) => {
+                const b = btns.find(x => x.classList.contains('active')) || btns[0];
+                if (!b.offsetWidth) return;              // group hidden (other page)
+                if (!animate) tile.style.transition = 'none';
+                tile.style.width = b.offsetWidth + 'px';
+                tile.style.height = b.offsetHeight + 'px';
+                tile.style.transform = `translate(${b.offsetLeft}px, ${b.offsetTop}px)`;
+                if (!animate) { void tile.offsetWidth; tile.style.transition = ''; }
+                tile.classList.add('ready');
+            };
+            btns.forEach((b, i) => b.addEventListener('click', () => {
+                const dir = Math.sign(i - current);
+                current = i;
+                const panel = panelFor(b);
+                if (panel) {
+                    panel.style.setProperty('--tab-dx', (dir * 32) + 'px');
+                    panel.style.setProperty('--tab-dy', dir ? '0px' : '8px');
+                }
+                place(true);
+            }));
+            if ('ResizeObserver' in window) new ResizeObserver(() => place(false)).observe(group);
+            window.addEventListener('resize', () => place(false));
+            place(false);
+        });
+    };
+    initSegmented('.tabs', '.tab-btn', b => document.getElementById('tab-' + b.getAttribute('data-tab')));
+    initSegmented('.collab-tabs', '.collab-tab-btn', b =>
+        document.getElementById(b.id === 'btn-collab-names' ? 'collab-tab-names' : 'collab-tab-institutions'));
+
+    // ── Home Career Roadmap rows act as buttons → Experience tab ──
+    document.querySelectorAll('.mini-timeline-item').forEach(row => {
+        row.setAttribute('role', 'button');
+        row.setAttribute('tabindex', '0');
+        const go = () => { const t = document.querySelector('.nav-link[data-target="experience"]'); if (t) t.click(); };
+        row.addEventListener('click', go);
+        row.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
+    });
+
     // ── Count-Up Animation for Stats on Scroll ──────────────────
     const runCountUpAnimation = () => {
         const stats = document.querySelectorAll('.stat-number');

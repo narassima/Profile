@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════════
-   FLUENT LAYER · v1.4.0
+   FLUENT LAYER · v1.5.0
    Microsoft Fluent 2 / Windows 11 look for the profile site.
    Loaded AFTER redesign.css (icons: fluent-icons.css) and scoped to
    body.theme-fluent: remove that class (or these <link>s) to return to the
@@ -1172,3 +1172,109 @@ body.theme-editorial.theme-fluent {
 .theme-fluent.theme-editorial .collab-chip:nth-child(4n+3) > i:is(*, #z) { background: var(--g-yellow-tint) !important; color: var(--g-yellow-ink) !important; }
 .theme-fluent.theme-editorial :is(.glass-card, .detail-card):nth-child(4n+4) :is(.card-header > i, .card-header > div > i:first-child, h3 > i:first-child):is(*, #z),
 .theme-fluent.theme-editorial .collab-chip:nth-child(4n+4) > i:is(*, #z) { background: var(--g-green-tint) !important; color: var(--g-green-ink) !important; }
+
+/* ── 25. Hover projection + segmented tabs that glide ───────────────────
+   Text boxes rise 2px (Experience roadmap cards and the home Career Roadmap
+   rows rise 3px) and pick up a Google elevation-2 shadow on the Fluent
+   decelerate curve. Moves are whole pixels and nothing is scaled, so text
+   is repainted crisp once the move settles. A box that holds smaller boxes
+   (e.g. the Testimonials panel) stays put and lets its children rise. */
+body.theme-editorial.theme-fluent {
+    --fl-lift-shadow: 0 1px 3px rgba(60, 64, 67, 0.30), 0 4px 8px 3px rgba(60, 64, 67, 0.15);
+    --fl-press-shadow: 0 1px 2px rgba(60, 64, 67, 0.30), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+}
+.theme-fluent.theme-editorial :is(.glass-card, .detail-card, .content-card, .course-topic-card, .contribution-item-card,
+    .testimonial-card, .publication-item, .role-list-card, .stat-card, .sim-card, .roadmap-card, .timeline-item,
+    #gallery a.hover-lift):is(*, #z#z) {
+    transition: transform 240ms cubic-bezier(0.1, 0.9, 0.2, 1), box-shadow 240ms cubic-bezier(0.1, 0.9, 0.2, 1),
+                border-color 150ms linear, background-color 150ms linear !important;
+}
+.theme-fluent.theme-editorial :is(.glass-card, .detail-card, .content-card, .course-topic-card, .contribution-item-card,
+    .testimonial-card, .publication-item, .role-list-card, .stat-card, .sim-card, .timeline-item, #gallery a.hover-lift):not(:has(
+    .testimonial-card, .course-topic-card, .publication-item, .roadmap-card, .stat-card, .sim-card, .collab-chip,
+    .contribution-item-card, .timeline-item, .mini-timeline-item, .role-list-card)):hover:is(*, #z#z) {
+    transform: translateY(-2px) !important;
+    border-color: var(--fl-tint-3) !important;
+    box-shadow: var(--fl-lift-shadow) !important;
+}
+/* links keep the accent outline while lifted */
+.theme-fluent.theme-editorial :is(a.glass-card, a.sim-card, #simulations-grid .glass-card, #gallery a.hover-lift):hover:is(*, #z#z) {
+    border-color: var(--fl-accent) !important;
+}
+.theme-fluent.theme-editorial :is(a.glass-card, a.sim-card, #gallery a.hover-lift):active:is(*, #z#z) {
+    transform: translateY(0) !important;
+    box-shadow: var(--fl-press-shadow) !important;
+    transition-duration: 90ms !important;
+}
+
+/* Experience tab roadmap: the card rises above its dot */
+.theme-fluent.theme-editorial .roadmap-item:hover .roadmap-card:is(*, #z#z) {
+    transform: translateY(-3px) !important;
+    border-color: var(--fl-tint-3) !important;
+    box-shadow: var(--fl-lift-shadow) !important;
+}
+
+/* Home Career Roadmap rows behave like buttons: on hover each row turns into
+   a raised white tile; click opens the Experience tab (script.js) */
+.theme-fluent.theme-editorial .mini-timeline-item:is(*, #z#z) {
+    cursor: pointer;
+    transform: none !important;
+    transition: transform 240ms cubic-bezier(0.1, 0.9, 0.2, 1), box-shadow 240ms cubic-bezier(0.1, 0.9, 0.2, 1),
+                background-color 150ms linear !important;
+}
+.theme-fluent.theme-editorial .mini-timeline-item:is(:hover, :focus-visible):is(*, #z#z) {
+    transform: translateY(-3px) !important;
+    background: #FFFFFF !important;
+    box-shadow: 0 0 0 1px var(--fl-tint-3), var(--fl-lift-shadow) !important;
+    outline: none !important;
+}
+.theme-fluent.theme-editorial .mini-timeline-item:is(:hover, :focus-visible) h4:is(*, #z#z) { color: var(--fl-accent) !important; }
+.theme-fluent.theme-editorial .mini-timeline-item:active:is(*, #z#z) {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 0 0 1px var(--fl-tint-3), var(--fl-press-shadow) !important;
+    transition-duration: 90ms !important;
+}
+
+/* Segmented tabs (Journals | Conferences | ..., Collaborators | Institutions):
+   one white selection tile glides to the clicked button (script.js places it),
+   and the new list slides in from the side you moved towards. */
+.theme-fluent.theme-editorial .has-seg-indicator { position: relative !important; }
+.theme-fluent.theme-editorial .seg-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: #FFFFFF;
+    border: 1px solid var(--fl-stroke);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.20);
+    opacity: 0;
+    transition: transform 320ms cubic-bezier(0.1, 0.9, 0.2, 1), width 320ms cubic-bezier(0.1, 0.9, 0.2, 1),
+                height 320ms cubic-bezier(0.1, 0.9, 0.2, 1), opacity 120ms linear;
+}
+.theme-fluent.theme-editorial .seg-indicator.ready { opacity: 1; }
+.theme-fluent.theme-editorial .has-seg-indicator > :is(.tab-btn, .collab-tab-btn):is(*, #z#z) {
+    position: relative;
+    z-index: 1;
+    background: transparent !important;
+    box-shadow: none !important;
+    transition: color 200ms linear !important;
+}
+.theme-fluent.theme-editorial .has-seg-indicator > :is(.tab-btn, .collab-tab-btn):not(.active):hover:is(*, #z#z) { color: var(--fl-text-1) !important; background: rgba(255, 255, 255, 0.55) !important; }
+.theme-fluent.theme-editorial .has-seg-indicator .ripple { display: none !important; }
+
+.theme-fluent.theme-editorial :is(.tab-content, .collab-tab-content).active {
+    animation: fl-tab-in 360ms cubic-bezier(0.1, 0.9, 0.2, 1) both !important;
+}
+@keyframes fl-tab-in {
+    from { opacity: 0; translate: var(--tab-dx, 0px) var(--tab-dy, 8px); }
+    to   { opacity: 1; translate: 0 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .theme-fluent.theme-editorial :is(.glass-card, .detail-card, .content-card, .course-topic-card, .contribution-item-card,
+        .testimonial-card, .publication-item, .role-list-card, .stat-card, .sim-card, .roadmap-card, .timeline-item,
+        .mini-timeline-item, #gallery a.hover-lift):hover:is(*, #z#z) { transform: none !important; }
+    .theme-fluent.theme-editorial .seg-indicator { transition: none; }
+    .theme-fluent.theme-editorial :is(.tab-content, .collab-tab-content).active { animation-duration: 1ms !important; }
+}
