@@ -1252,19 +1252,90 @@ document.addEventListener('DOMContentLoaded', () => {
     const customizePanel = document.getElementById('cv-customize-panel');
     
     if (viewCvBtn && cvModal && closeCvBtn && printCvBtn && cvContent && customizePanel) {
+        // Every section the CV can carry, in print order (About last)
+        const CV_SECTIONS = [
+            ['education', 'Education'],
+            ['experience', 'Work Experience'],
+            ['publications', 'Publications'],
+            ['contributions', 'Academic Contributions &amp; Invited Talks'],
+            ['roles', 'Review &amp; Editorial Boards'],
+            ['certifications', 'Certifications'],
+            ['achievements', 'Achievements &amp; Key Awards'],
+            ['courses', 'Courses Taught'],
+            ['interests', 'Research Interests'],
+            ['tools', 'Tools &amp; Technologies'],
+            ['hobbies', 'Beyond Academics: Hobbies &amp; Activities'],
+            ['links', 'Profile Links'],
+            ['about', 'About']
+        ];
+
         // Shared CV customizer configuration state
         let cvConfig = {
             theme: 'modern',
             fontFamily: "'Outfit', 'Inter', sans-serif",
-            sections: {
-                education: true,
-                experience: true,
-                roles: true,
-                contributions: true,
-                publications: true,
-                certifications: true
-            },
+            sections: Object.fromEntries(CV_SECTIONS.map(([key]) => [key, true])),
+            linksMode: 'both',            // 'urls' | 'qr' | 'both'
             selectedPubIndices: (allPublications || []).slice(0, 10).map((_, idx) => idx)
+        };
+
+        // Home-page content reused by the CV, read from the page itself so the
+        // CV always says what the site says.
+        const cleanText = el => (el ? el.textContent.replace(/\s+/g, ' ').trim() : '');
+        const escHtml = str => String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+        const homeCard = (title) => {
+            const h = [...document.querySelectorAll('#home .card-header h3')]
+                .find(x => cleanText(x).toLowerCase().startsWith(title.toLowerCase()));
+            return h ? h.closest('.glass-card, .detail-card') : null;
+        };
+        const cvHomeData = () => {
+            const courses = homeCard('Courses Taught');
+            const interests = homeCard('Research Interests');
+            const tools = homeCard('Tools');
+            const beyond = homeCard('Beyond Academics');
+            const about = homeCard('About');
+            const heads = beyond ? [...beyond.querySelectorAll('h4')] : [];
+            const hobbyHead = heads.find(h => /personal interests/i.test(h.textContent));
+            return {
+                courses: courses ? [...courses.querySelectorAll('span')].map(cleanText).filter(Boolean) : [],
+                interests: interests ? [...interests.querySelectorAll('li')].map(cleanText).filter(Boolean) : [],
+                tools: tools ? [...tools.querySelectorAll('span')].map(cleanText).filter(Boolean) : [],
+                activities: heads.filter(h => h !== hobbyHead)
+                    .map(h => ({ title: cleanText(h), desc: cleanText(h.parentElement.querySelector('p')) })),
+                hobbies: hobbyHead ? [...hobbyHead.parentElement.querySelectorAll('span')].map(cleanText).filter(Boolean) : [],
+                about: about ? [...about.querySelectorAll('p')]
+                    .map(p => p.innerHTML.trim().replace(/\s*\(listed below\)/i, '')).filter(Boolean) : []   // courses sit above About on the CV
+            };
+        };
+        const cvProfileLinks = () => {
+            const links = [{ label: 'Website', url: 'https://narassima.github.io/Profile/' }];
+            document.querySelectorAll('#home .profile-ids-grid a[href^="http"]')
+                .forEach(a => links.push({ label: cleanText(a), url: a.href }));
+            return links;
+        };
+        const shortUrl = u => u.replace(/^https?:\/\/(www\.)?/, '').replace(/&hl=en$/, '').replace(/\/$/, '');
+
+        // QR codes: qrcode-generator (cdnjs), loaded the first time the CV opens
+        let qrLibState = typeof window.qrcode === 'function' ? 'ready' : 'idle';
+        const loadQrLib = () => {
+            if (qrLibState !== 'idle') return;
+            qrLibState = 'loading';
+            const el = document.createElement('script');
+            el.src = 'https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js';
+            el.integrity = 'sha384-mZT2gIty7ZDdOGkxfP6joZcYdMW1Jvj9dRlfpTmaJAKKXTqzygtB22k7FLe+KZC1';
+            el.crossOrigin = 'anonymous';
+            el.referrerPolicy = 'no-referrer';
+            el.onload = () => { qrLibState = 'ready'; updateCVPreview(); };
+            el.onerror = () => { qrLibState = 'failed'; updateCVPreview(); };
+            document.head.appendChild(el);
+        };
+        const qrSvg = (url) => {
+            if (qrLibState !== 'ready' || typeof window.qrcode !== 'function') return '';
+            try {
+                const q = window.qrcode(0, 'M');
+                q.addData(url);
+                q.make();
+                return q.createSvgTag({ cellSize: 4, margin: 0, scalable: true });
+            } catch (e) { return ''; }
         };
 
         const updateCVPreview = () => {
@@ -1425,42 +1496,89 @@ document.addEventListener('DOMContentLoaded', () => {
                 `;
             }
 
+            const cvSec = (title, inner) => `
+                <div class="cv-section" style="margin-bottom: ${sectionSpacing}; page-break-inside: auto;">
+                    <h2 class="cv-section-title">${title}</h2>
+                    ${inner}
+                </div>`;
+            const ruledGrid = (items) => `
+                <ul style="list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0.6rem 1.25rem; font-size: 0.82rem; color: #334155;">
+                    ${items.map(it => `
+                        <li style="border-left: 2px solid ${titleColor}; padding-left: 0.5rem; margin-bottom: 0.1rem;">
+                            <div style="font-weight: 700; color: #1e293b;">${it.head}</div>
+                            ${it.sub ? `<div style="color: #475569; font-size: 0.78rem;">${it.sub}</div>` : ''}
+                        </li>`).join('')}
+                </ul>`;
+            const bodyText = 'font-size: 0.82rem; color: #334155; line-height: 1.55; margin: 0;';
+            const home = cvHomeData();
+
             let certHtml = '';
-            if (cvConfig.sections.certifications) {
-                const hasCerts = portfolioData.certifications && portfolioData.certifications.length > 0;
-                const hasAwards = portfolioData.achievements && portfolioData.achievements.length > 0;
-                
-                if (hasCerts || hasAwards) {
-                    let certListHtml = '';
-                    if (hasCerts) {
-                        certListHtml = portfolioData.certifications.map(cert => `
-                            <li style="border-left: 2px solid ${titleColor}; padding-left: 0.5rem; margin-bottom: 0.1rem;">
-                                <div style="font-weight: 700; color: #1e293b;">${cert.name}</div>
-                                <div style="color: #475569; font-size: 0.78rem;">${cert.issuer}</div>
-                            </li>
-                        `).join('');
-                    }
-                    
-                    let awardsListHtml = '';
-                    if (hasAwards) {
-                        awardsListHtml = portfolioData.achievements.map(ach => `
-                            <li style="border-left: 2px solid ${titleColor}; padding-left: 0.5rem; margin-bottom: 0.1rem;">
-                                <div style="font-weight: 700; color: #1e293b;">${ach.name}</div>
-                                <div style="color: #475569; font-size: 0.78rem;">${ach.issuer}</div>
-                            </li>
-                        `).join('');
-                    }
-                    
-                    certHtml = `
-                        <div class="cv-section" style="margin-bottom: ${sectionSpacing}; page-break-inside: auto;">
-                            <h2 class="cv-section-title">Certifications &amp; Awards</h2>
-                            <ul style="list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0.6rem 1.25rem; font-size: 0.82rem; color: #334155;">
-                                ${certListHtml}
-                                ${awardsListHtml}
-                            </ul>
-                        </div>
-                    `;
+            if (cvConfig.sections.certifications && portfolioData.certifications && portfolioData.certifications.length) {
+                certHtml = cvSec('Certifications', ruledGrid(portfolioData.certifications.map(c => ({ head: c.name, sub: c.issuer }))));
+            }
+
+            let achHtml = '';
+            if (cvConfig.sections.achievements && portfolioData.achievements && portfolioData.achievements.length) {
+                achHtml = cvSec('Achievements &amp; Key Awards', ruledGrid(portfolioData.achievements.map(a => ({ head: a.name, sub: a.issuer }))));
+            }
+
+            let coursesHtml = '';
+            if (cvConfig.sections.courses && home.courses.length) {
+                coursesHtml = cvSec('Courses Taught', `
+                    <ul style="columns: 2; column-gap: 2rem; padding-left: 1.1rem; ${bodyText}">
+                        ${home.courses.map(c => `<li>${escHtml(c)}</li>`).join('')}
+                    </ul>`);
+            }
+
+            let interestsHtml = '';
+            if (cvConfig.sections.interests && home.interests.length) {
+                interestsHtml = cvSec('Research Interests', `
+                    <ul style="padding-left: 1.1rem; ${bodyText}">
+                        ${home.interests.map(c => `<li>${escHtml(c)}</li>`).join('')}
+                    </ul>`);
+            }
+
+            let toolsHtml = '';
+            if (cvConfig.sections.tools && home.tools.length) {
+                toolsHtml = cvSec('Tools &amp; Technologies', `<p style="${bodyText}">${home.tools.map(escHtml).join(' &nbsp;&middot;&nbsp; ')}</p>`);
+            }
+
+            let hobbiesHtml = '';
+            if (cvConfig.sections.hobbies && (home.activities.length || home.hobbies.length)) {
+                hobbiesHtml = cvSec('Beyond Academics: Hobbies &amp; Activities', `
+                    ${home.activities.length ? ruledGrid(home.activities.map(a => ({ head: escHtml(a.title), sub: escHtml(a.desc) }))) : ''}
+                    ${home.hobbies.length ? `<p style="${bodyText} margin-top: 0.6rem;"><strong style="color: #1e293b;">Personal interests:</strong> ${home.hobbies.map(escHtml).join(' &nbsp;&middot;&nbsp; ')}</p>` : ''}`);
+            }
+
+            let linksHtml = '';
+            if (cvConfig.sections.links) {
+                const links = cvProfileLinks();
+                const wantQr = cvConfig.linksMode !== 'urls';
+                const qrs = wantQr ? links.map(l => qrSvg(l.url)) : [];
+                const haveQr = wantQr && qrs.every(Boolean);
+                if (haveQr) {
+                    linksHtml = cvSec('Profile Links', `
+                        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(112px, 1fr)); gap: 1rem 0.75rem;">
+                            ${links.map((l, i) => `
+                                <a class="cv-link-tile" href="${escHtml(l.url)}" target="_blank" style="display: flex; flex-direction: column; align-items: center; gap: 0.3rem; text-align: center; text-decoration: none; color: #1e293b;">
+                                    <span class="cv-qr" style="display: block; width: 84px; height: 84px;">${qrs[i]}</span>
+                                    <span style="font-size: 0.75rem; font-weight: 700;">${escHtml(l.label)}</span>
+                                    ${cvConfig.linksMode === 'both' ? `<span style="font-size: 0.62rem; color: #64748b; line-height: 1.25; word-break: break-all;">${escHtml(shortUrl(l.url))}</span>` : ''}
+                                </a>`).join('')}
+                        </div>`);
+                } else {
+                    const note = wantQr && qrLibState === 'loading'
+                        ? '<p style="font-size: 0.72rem; color: #64748b; margin: 0 0 0.4rem 0;">QR codes are loading&hellip;</p>' : '';
+                    linksHtml = cvSec('Profile Links', `${note}
+                        <ul style="list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 0.35rem 1.25rem; font-size: 0.8rem; color: #334155;">
+                            ${links.map(l => `<li><strong style="color: #1e293b;">${escHtml(l.label)}:</strong> <a href="${escHtml(l.url)}" target="_blank" style="color: ${titleColor}; text-decoration: none; word-break: break-all;">${escHtml(shortUrl(l.url))}</a></li>`).join('')}
+                        </ul>`);
                 }
+            }
+
+            let aboutHtml = '';
+            if (cvConfig.sections.about && home.about.length) {
+                aboutHtml = cvSec('About', home.about.map(par => `<p style="${bodyText} margin-bottom: 0.5rem; text-align: justify;">${par}</p>`).join(''));
             }
 
             let previewHtml = `
@@ -1469,6 +1587,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     #cv-content-body ul, #cv-content-body ol {
                         color: #334155;
                     }
+                    #cv-content-body .cv-qr svg { width: 100%; height: 100%; display: block; shape-rendering: crispEdges; }
+                    #cv-content-body .cv-link-tile { break-inside: avoid; page-break-inside: avoid; }
                     @media print {
                         #cv-content-body {
                             padding: 0 !important;
@@ -1498,10 +1618,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div style="display: flex; flex-direction: column; gap: 1.25rem;">
                         ${eduHtml}
                         ${expHtml}
-                        ${rolesHtml}
-                        ${contributionsHtml}
                         ${pubHtml}
+                        ${contributionsHtml}
+                        ${rolesHtml}
                         ${certHtml}
+                        ${achHtml}
+                        ${coursesHtml}
+                        ${interestsHtml}
+                        ${toolsHtml}
+                        ${hobbiesHtml}
+                        ${linksHtml}
+                        ${aboutHtml}
                     </div>
                 </div>
             `;
@@ -1539,31 +1666,27 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div>
                         <h4 style="margin:0 0 0.75rem 0;font-size:0.88rem;font-weight:700;color:var(--text-primary);text-transform:uppercase;letter-spacing:0.5px;border-bottom:1px solid var(--border-color);padding-bottom:0.4rem;"><i class="fas fa-th-list" style="margin-right:0.5rem;color:var(--primary-color);"></i>Included Sections</h4>
                         <div style="display:flex;flex-direction:column;gap:0.5rem;">
+                            ${CV_SECTIONS.map(([key, label]) => `
                             <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;color:var(--text-secondary);cursor:pointer;font-weight:600;">
-                                <input type="checkbox" id="sec-education" ${cvConfig.sections.education ? 'checked' : ''} style="cursor:pointer;accent-color:var(--primary-color);"> Education
-                            </label>
+                                <input type="checkbox" id="sec-${key}" ${cvConfig.sections[key] ? 'checked' : ''} style="cursor:pointer;accent-color:var(--primary-color);"> ${label}
+                            </label>`).join('')}
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 style="margin:0 0 0.75rem 0;font-size:0.88rem;font-weight:700;color:var(--text-primary);text-transform:uppercase;letter-spacing:0.5px;border-bottom:1px solid var(--border-color);padding-bottom:0.4rem;"><i class="fas fa-qrcode" style="margin-right:0.5rem;color:var(--primary-color);"></i>Profile Links As</h4>
+                        <div style="display:flex;flex-direction:column;gap:0.5rem;">
+                            ${[['both', 'QR codes + URLs'], ['qr', 'QR codes'], ['urls', 'URLs only']].map(([val, label]) => `
                             <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;color:var(--text-secondary);cursor:pointer;font-weight:600;">
-                                <input type="checkbox" id="sec-experience" ${cvConfig.sections.experience ? 'checked' : ''} style="cursor:pointer;accent-color:var(--primary-color);"> Work Experience
-                            </label>
-                            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;color:var(--text-secondary);cursor:pointer;font-weight:600;">
-                                <input type="checkbox" id="sec-roles" ${cvConfig.sections.roles ? 'checked' : ''} style="cursor:pointer;accent-color:var(--primary-color);"> Editorial &amp; Review Boards
-                            </label>
-                            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;color:var(--text-secondary);cursor:pointer;font-weight:600;">
-                                <input type="checkbox" id="sec-contributions" ${cvConfig.sections.contributions ? 'checked' : ''} style="cursor:pointer;accent-color:var(--primary-color);"> Talks &amp; Contributions
-                            </label>
-                            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;color:var(--text-secondary);cursor:pointer;font-weight:600;">
-                                <input type="checkbox" id="sec-publications" ${cvConfig.sections.publications ? 'checked' : ''} style="cursor:pointer;accent-color:var(--primary-color);"> Publications
-                            </label>
-                            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;color:var(--text-secondary);cursor:pointer;font-weight:600;">
-                                <input type="checkbox" id="sec-certifications" ${cvConfig.sections.certifications ? 'checked' : ''} style="cursor:pointer;accent-color:var(--primary-color);"> Certifications &amp; Awards
-                            </label>
+                                <input type="radio" name="cv-links" value="${val}" ${cvConfig.linksMode === val ? 'checked' : ''} style="cursor:pointer;accent-color:var(--primary-color);"> ${label}
+                            </label>`).join('')}
                         </div>
                     </div>
 
                     <div style="display: flex; flex-direction: column; gap: 0.5rem;">
                         <h4 style="margin:0;font-size:0.88rem;font-weight:700;color:var(--text-primary);text-transform:uppercase;letter-spacing:0.5px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border-color);padding-bottom:0.4rem;">
                             <span><i class="fas fa-book" style="margin-right:0.5rem;color:var(--primary-color);"></i>Publications</span>
-                            <span style="font-size:0.72rem;color:var(--primary-color);text-transform:none;font-weight:600;">(${cvConfig.selectedPubIndices.length} Selected)</span>
+                            <span id="pub-count" style="font-size:0.72rem;color:var(--primary-color);text-transform:none;font-weight:600;">(${cvConfig.selectedPubIndices.length} Selected)</span>
                         </h4>
                         <div style="display:flex;gap:0.35rem;margin-bottom:0.25rem;">
                             <button id="pub-all" style="flex:1;background:var(--border-color);color:var(--text-primary);border:none;padding:0.25rem;font-size:0.72rem;font-weight:700;border-radius:4px;cursor:pointer;transition:var(--transition);">All</button>
@@ -1599,7 +1722,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
 
-            ['education', 'experience', 'roles', 'contributions', 'publications', 'certifications'].forEach(sec => {
+            customizePanel.querySelectorAll('input[name="cv-links"]').forEach(radio => {
+                radio.addEventListener('change', (e) => {
+                    cvConfig.linksMode = e.target.value;
+                    updateCVPreview();
+                });
+            });
+
+            CV_SECTIONS.map(([key]) => key).forEach(sec => {
                 const chk = customizePanel.querySelector(`#sec-${sec}`);
                 if (chk) {
                     chk.addEventListener('change', (e) => {
@@ -1645,7 +1775,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     } else {
                         cvConfig.selectedPubIndices = cvConfig.selectedPubIndices.filter(i => i !== idx);
                     }
-                    const countEl = customizePanel.querySelector('h4 span');
+                    const countEl = customizePanel.querySelector('#pub-count');
                     if (countEl) countEl.textContent = `(${cvConfig.selectedPubIndices.length} Selected)`;
                     updateCVPreview();
                 });
@@ -1653,6 +1783,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         viewCvBtn.addEventListener('click', () => {
+            loadQrLib();
             renderCustomizer();
             updateCVPreview();
             cvModal.style.display = 'flex';
