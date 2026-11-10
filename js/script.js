@@ -711,7 +711,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    // ── Research recognitions, grant proposals, institutional service ──
+    // ── Research recognitions and institutional service ──
     const itemCard = (icon, head, body) => `
         <div style="background: rgba(255, 255, 255, 0.6); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1rem 1.25rem; display: flex; align-items: flex-start; transition: var(--transition);" class="hover-lift contribution-item-card">
             <div style="background: #e8f4fd; color: var(--primary-color); width: 36px; height: 36px; border-radius: 0px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.1rem; margin-right: 0.75rem !important;">
@@ -729,10 +729,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const serviceList = document.getElementById('service-list');
     if (serviceList && portfolioData.service) {
         serviceList.innerHTML = portfolioData.service.map(x => itemCard(x.icon || 'fa-building-columns', x.name, x.detail)).join('');
-    }
-    const proposalsList = document.getElementById('proposals-list');
-    if (proposalsList && portfolioData.proposals) {
-        proposalsList.innerHTML = portfolioData.proposals.map(x => itemCard('fa-file-signature', x.agency, x.title)).join('');
     }
 
     // ── Image Lightbox ───────────────────────────────────────────
