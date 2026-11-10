@@ -1437,20 +1437,8 @@ const portfolioData = {
 ],
     achievements: [
         {
-                "name": "Organizing Committee Member",
-                "issuer": "Organizing committee member for Sportscom, Lattitude (the cultural fest of Great Lakes), faculty tour, and other events at Great Lakes Institute of Management, Chennai."
-        },
-        {
                 "name": "Young Achiever Award",
                 "issuer": "In recognition of outstanding performance and potential as a young scholar, awarded on Founders Day at Great Lakes Institute of Management"
-        },
-        {
-                "name": "Scientific Reports 95th Percentile Publication",
-                "issuer": "Our Nature Scientific Reports publication entitled 'Economic burden of breast cancer in India, 2000-2021 and forecast to 2030' is in the 95th percentile of tracked articles of a similar age"
-        },
-        {
-                "name": "BMJ Open Top 10% Publication (91st Percentile)",
-                "issuer": "Our article published in BMJ Open is in the 91st percentile of research outputs ever tracked by Altmetric (in the top 10% of all research outputs ever)"
         },
         {
                 "name": "Bounce Hackathon 1.0 Winner",
@@ -1471,6 +1459,38 @@ const portfolioData = {
         {
                 "name": "Graduated with Distinction",
                 "issuer": "Graduated with distinction in both M.Tech. (Manufacturing Engineering) and B.Tech. (Mechanical Engineering) programs"
+        }
+],
+    researchRecognitions: [
+        {
+                "name": "Scientific Reports 95th Percentile Publication",
+                "issuer": "Our Nature Scientific Reports publication entitled 'Economic burden of breast cancer in India, 2000-2021 and forecast to 2030' is in the 95th percentile of tracked articles of a similar age"
+        },
+        {
+                "name": "BMJ Open Top 10% Publication (91st Percentile)",
+                "issuer": "Our article published in BMJ Open is in the 91st percentile of research outputs ever tracked by Altmetric (in the top 10% of all research outputs ever)"
+        }
+],
+    service: [
+        {
+                "name": "Organizing Committee Member",
+                "detail": "Organizing committee member for Sportscom, Lattitude (the cultural fest of Great Lakes), faculty tour, and other events at Great Lakes Institute of Management, Chennai.",
+                "icon": "fa-people-group"
+        },
+        {
+                "name": "Karma Yoga Leadership",
+                "detail": "Active member guiding experiential social learning initiatives in village communities to foster sustainable and localized public development.",
+                "icon": "fa-hands-helping"
+        },
+        {
+                "name": "Sports Committee Mentor",
+                "detail": "Contributed as a mentor for Sportscom at GLIM, coordinating athletic leagues, scheduling campus tournaments, and fostering physical health.",
+                "icon": "fa-running"
+        },
+        {
+                "name": "Cultural Fest Organiser",
+                "detail": "Handles Lattitude, the annual cultural fest of Great Lakes, coordinating events.",
+                "icon": "fa-masks-theater"
         }
 ],
     proposals: [

@@ -711,6 +711,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+    // ── Research recognitions, grant proposals, institutional service ──
+    const itemCard = (icon, head, body) => `
+        <div style="background: rgba(255, 255, 255, 0.6); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1rem 1.25rem; display: flex; align-items: flex-start; transition: var(--transition);" class="hover-lift contribution-item-card">
+            <div style="background: #e8f4fd; color: var(--primary-color); width: 36px; height: 36px; border-radius: 0px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.1rem; margin-right: 0.75rem !important;">
+                <i class="fas ${icon}" style="margin: 0 !important;"></i>
+            </div>
+            <div>
+                <strong style="display: block; font-size: 0.95rem; color: var(--primary-color); margin-bottom: 0.25rem;">${head}</strong>
+                <p style="font-size: 0.9rem; color: var(--text-primary); margin: 0; line-height: 1.45;">${body}</p>
+            </div>
+        </div>`;
+    const impactRec = document.getElementById('impact-recognitions');
+    if (impactRec && portfolioData.researchRecognitions) {
+        impactRec.innerHTML = portfolioData.researchRecognitions.map(r => itemCard('fa-medal', r.name, r.issuer)).join('');
+    }
+    const serviceList = document.getElementById('service-list');
+    if (serviceList && portfolioData.service) {
+        serviceList.innerHTML = portfolioData.service.map(x => itemCard(x.icon || 'fa-building-columns', x.name, x.detail)).join('');
+    }
+    const proposalsList = document.getElementById('proposals-list');
+    if (proposalsList && portfolioData.proposals) {
+        proposalsList.innerHTML = portfolioData.proposals.map(x => itemCard('fa-file-signature', x.agency, x.title)).join('');
+    }
+
     // ── Image Lightbox ───────────────────────────────────────────
     const modal       = document.getElementById('image-lightbox');
     const modalImg    = document.getElementById('lightbox-img');
@@ -810,6 +834,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // Run collaborators switcher initialization
     initCollaboratorsTabs();
 
+    // ── Generic sub-tabs: Teaching (Courses & Feedback | Student Research) ──
+    document.querySelectorAll('.sub-tabs').forEach(group => {
+        const btns = [...group.querySelectorAll('.sub-tab-btn')];
+        btns.forEach(btn => btn.addEventListener('click', () => {
+            btns.forEach(b => {
+                const on = b === btn;
+                b.classList.toggle('active', on);
+                b.setAttribute('aria-selected', on ? 'true' : 'false');
+                const panel = document.getElementById(b.dataset.panel);
+                if (panel) panel.classList.toggle('active', on);
+            });
+        }));
+    });
+
     // ── Segmented tabs: gliding selection tile + directional slide ──
     // One white tile sits behind the active button and glides to the next
     // one; the incoming list slides in from the side the user moved to.
@@ -849,8 +887,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
     initSegmented('.tabs', '.tab-btn', b => document.getElementById('tab-' + b.getAttribute('data-tab')));
-    initSegmented('.collab-tabs', '.collab-tab-btn', b =>
-        document.getElementById(b.id === 'btn-collab-names' ? 'collab-tab-names' : 'collab-tab-institutions'));
+    initSegmented('.collab-tabs', '.collab-tab-btn', b => b.dataset.panel
+        ? document.getElementById(b.dataset.panel)
+        : document.getElementById(b.id === 'btn-collab-names' ? 'collab-tab-names' : 'collab-tab-institutions'));
 
     // ── Home Career Roadmap rows act as buttons → Experience tab ──
     document.querySelectorAll('.mini-timeline-item').forEach(row => {
@@ -1263,6 +1302,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ['publications', 'Publications'],
             ['contributions', 'Academic Contributions &amp; Invited Talks'],
             ['roles', 'Review &amp; Editorial Boards'],
+            ['service', 'Institutional Service'],
             ['certifications', 'Certifications'],
             ['achievements', 'Achievements &amp; Key Awards'],
             ['hobbies', 'Beyond Academics: Hobbies &amp; Activities'],
@@ -1521,8 +1561,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             let achHtml = '';
-            if (cvConfig.sections.achievements && portfolioData.achievements && portfolioData.achievements.length) {
-                achHtml = cvSec('Achievements &amp; Key Awards', ruledGrid(portfolioData.achievements.map(a => ({ head: a.name, sub: a.issuer }))));
+            const allAwards = [...(portfolioData.achievements || []), ...(portfolioData.researchRecognitions || [])];
+            if (cvConfig.sections.achievements && allAwards.length) {
+                achHtml = cvSec('Achievements &amp; Key Awards', ruledGrid(allAwards.map(a => ({ head: a.name, sub: a.issuer }))));
+            }
+
+            let serviceHtml = '';
+            if (cvConfig.sections.service && portfolioData.service && portfolioData.service.length) {
+                serviceHtml = cvSec('Institutional Service', ruledGrid(portfolioData.service.map(x => ({ head: x.name, sub: x.detail }))));
             }
 
             let coursesHtml = '';
@@ -1633,6 +1679,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         ${pubHtml}
                         ${contributionsHtml}
                         ${rolesHtml}
+                        ${serviceHtml}
                         ${certHtml}
                         ${achHtml}
                         ${hobbiesHtml}

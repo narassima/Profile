@@ -1153,13 +1153,13 @@ body.theme-editorial.theme-fluent {
 
 .theme-fluent.theme-editorial #materials :is(.sim-cat-grid, .sim-featured-grid) > .sim-card:nth-child(4n+2) .sim-icon-badge:is(*, #z#z),
 .theme-fluent.theme-editorial #home .stat-card:nth-child(4n+2) .stat-icon-badge:is(*, #z#z),
-.theme-fluent.theme-editorial #projects .project-card:nth-child(4n+2) .card-icon-badge:is(*, #z#z) { background: var(--g-red) !important; }
+.theme-fluent.theme-editorial #projects-container .project-card:nth-child(4n+2) .card-icon-badge:is(*, #z#z) { background: var(--g-red) !important; }
 .theme-fluent.theme-editorial #materials :is(.sim-cat-grid, .sim-featured-grid) > .sim-card:nth-child(4n+3) .sim-icon-badge:is(*, #z#z),
 .theme-fluent.theme-editorial #home .stat-card:nth-child(4n+3) .stat-icon-badge:is(*, #z#z),
-.theme-fluent.theme-editorial #projects .project-card:nth-child(4n+3) .card-icon-badge:is(*, #z#z) { background: var(--g-yellow) !important; }
+.theme-fluent.theme-editorial #projects-container .project-card:nth-child(4n+3) .card-icon-badge:is(*, #z#z) { background: var(--g-yellow) !important; }
 .theme-fluent.theme-editorial #materials :is(.sim-cat-grid, .sim-featured-grid) > .sim-card:nth-child(4n+4) .sim-icon-badge:is(*, #z#z),
 .theme-fluent.theme-editorial #home .stat-card:nth-child(4n+4) .stat-icon-badge:is(*, #z#z),
-.theme-fluent.theme-editorial #projects .project-card:nth-child(4n+4) .card-icon-badge:is(*, #z#z) { background: var(--g-green) !important; }
+.theme-fluent.theme-editorial #projects-container .project-card:nth-child(4n+4) .card-icon-badge:is(*, #z#z) { background: var(--g-green) !important; }
 
 /* small icons, tonal */
 .theme-fluent.theme-editorial :is(.card-header > i, .card-header > div > i:first-child, h3 > i:first-child):is(*, #z),
