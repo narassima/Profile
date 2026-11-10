@@ -140,7 +140,7 @@ const portfolioData = {
         "journals": [
                 {
                         "title": "Sequential and Multi-Pass Machining Effects on Surface Integrity and Functional Performance: A Critical Evidence Synthesis",
-                        "authors": "Marimuthu, P., Narassima, M. S., Petru, J., & Mohanavelu, T.",
+                        "authors": "Marimuthu, P., Seshadri, N. M., Petru, J., & Mohanavelu, T.",
                         "year": "2026",
                         "journal": "Machines, 14(11), 1284",
                         "metrics": "Scopus Q1",
@@ -161,6 +161,14 @@ const portfolioData = {
                         "journal": "Scientific Reports, 16, 33146",
                         "metrics": "Scopus Q1",
                         "url": "https://doi.org/10.1038/s41598-026-62571-7"
+                },
+                {
+                        "title": "A hybrid python–excel framework with particle swarm optimization for job shop scheduling",
+                        "authors": "Potluru, R., Seshadri, N. M., Mohanavelu, T., Wu, Y., & Mannepu, V. R.",
+                        "year": "2026",
+                        "journal": "The International Journal of Advanced Manufacturing Technology, 145(1-2), 959-976",
+                        "metrics": "Scopus Q1",
+                        "url": "https://doi.org/10.1007/s00170-026-18373-2"
                 },
                 {
                         "title": "An Event Study of the Impact of the Israel-Iran-US Conflict Escalation on Crude Oil Futures Prices in India",
