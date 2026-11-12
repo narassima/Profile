@@ -1562,7 +1562,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                     ? `<div style="font-size: 0.78rem; color: #475569; margin-top: 0.1rem;">${[...steps].reverse().map(st => `${st.stepTitle || st.title} (${dash(st.duration)})`).join(' &rarr; ')}</div>`
                                     : '';
                                 const resp = full && top.responsibilities && top.responsibilities.length
-                                    ? `<ul style="margin: 0.3rem 0 0 0; padding-left: 1.05rem; font-size: 0.8rem; color: #334155; line-height: 1.45; display: flex; flex-direction: column; gap: 0.12rem;">
+                                    ? `<ul class="cv-bullets" style="margin: 0.3rem 0 0 0; padding-left: 1.05rem; font-size: 0.8rem; color: #334155; line-height: 1.45; display: flex; flex-direction: column; gap: 0.12rem;">
                                            ${top.responsibilities.map(r => `<li>${r}</li>`).join('')}
                                        </ul>`
                                     : '';
@@ -1673,7 +1673,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let coursesHtml = '';
             if (cvConfig.sections.courses && home.courses.length) {
                 coursesHtml = cvSec('Courses Taught', `
-                    <ul style="columns: 2; column-gap: 2rem; padding-left: 1.1rem; ${bodyText}">
+                    <ul class="cv-bullets" style="columns: 2; column-gap: 2rem; padding-left: 1.1rem; ${bodyText}">
                         ${home.courses.map(c => `<li>${escHtml(c)}</li>`).join('')}
                     </ul>`);
             }
@@ -1681,7 +1681,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let interestsHtml = '';
             if (cvConfig.sections.interests && home.interests.length) {
                 interestsHtml = cvSec('Research Interests', `
-                    <ul style="padding-left: 1.1rem; ${bodyText}">
+                    <ul class="cv-bullets" style="padding-left: 1.1rem; ${bodyText}">
                         ${home.interests.map(c => `<li>${escHtml(c)}</li>`).join('')}
                     </ul>`);
             }
@@ -1740,6 +1740,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     #cv-content-body ul, #cv-content-body ol {
                         color: #334155;
                     }
+                    /* one marker everywhere: small filled squares (nested lists would otherwise get open circles) */
+                    #cv-content-body ul.cv-bullets { list-style: square outside; }
+                    #cv-content-body ul.cv-bullets > li { list-style-type: square; }
+                    #cv-content-body ul.cv-bullets > li::marker { color: ${titleColor}; font-size: 0.9em; }
                     #cv-content-body .cv-qr svg { width: 100%; height: 100%; display: block; shape-rendering: crispEdges; }
                     #cv-content-body .cv-link-tile { break-inside: avoid; page-break-inside: avoid; }
                     #cv-content-body .cv-job-head { break-after: avoid; page-break-after: avoid; }
