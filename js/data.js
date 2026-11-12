@@ -1196,21 +1196,21 @@ const portfolioData = {
                 "title": "Assistant Professor",
                 "organization": "Great Lakes Institute of Management",
                 "duration": "Dec 2023 - Present",
-                "description": "Teaching, research, and institutional building.",
+                "description": "Teaching, research and institution building.",
                 "sector": "Academia",
                 "responsibilities": [
-                        "Teaching courses, conducting research, and working on institution-building activities",
-                        "Handling Karma Yoga, Sportscom, and Lattitude",
-                        "Working with students on case competitions, empirical studies, capstones, hackathons, etc.",
-                        "Conducting workshops and seminars on a need basis",
-                        "Mentoring students for various requirements for career building and overall development",
-                        "Facilitating the commencement of Corporate Learning and Development workshops for industries",
-                        "Conducting sessions and preparing training materials for the placement team",
-                        "Guiding doctoral candidates outside the institute",
-                        "Participating in and chairing conferences",
-                        "Editorial and reviewer assignments for various journals",
-                        "Involved in various meetings at the institution",
-                        "Conducting interviews as a part of the student admission process"
+                        "Teach courses, conduct research and contribute to institution-building initiatives",
+                        "Coordinate the Karma Yoga programme, the Sports Committee (Sportscom) and Lattitude, the annual cultural fest",
+                        "Guide students in case competitions, empirical studies, capstone projects and hackathons",
+                        "Conduct workshops and seminars as the need arises",
+                        "Mentor students on career building and overall development",
+                        "Facilitate the launch of Corporate Learning and Development workshops for industry",
+                        "Conduct sessions and prepare training material for the placement team",
+                        "Guide doctoral candidates from other institutions",
+                        "Participate in conferences and chair conference sessions",
+                        "Serve on editorial boards and review manuscripts for several journals",
+                        "Take part in institutional meetings",
+                        "Interview candidates as part of the student admission process"
                 ]
         },
         {
@@ -1223,11 +1223,11 @@ const portfolioData = {
                 "groupTitle": "Junior Faculty",
                 "stepTitle": "Senior Research Associate",
                 "responsibilities": [
-                        "Conducting research in any area of interest and publishing it in international journals",
-                        "Authoring books, book chapters, etc.",
-                        "Working on student projects, case competitions, IPR, etc.",
-                        "Teaching and also assisting courses of Professors, majorly in Operations",
-                        "Mentoring capstones and empirical studies"
+                        "Conducted independent research and published it in international journals",
+                        "Authored books and book chapters",
+                        "Worked on student projects, case competitions and intellectual property (IPR) filings",
+                        "Taught courses and assisted senior faculty with theirs, primarily in Operations",
+                        "Mentored capstone projects and empirical studies"
                 ]
         },
         {
@@ -1240,36 +1240,36 @@ const portfolioData = {
                 "groupTitle": "Junior Faculty",
                 "stepTitle": "Research Associate",
                 "responsibilities": [
-                        "Conducting research in any area of interest and publishing it in international journals",
-                        "Authoring books, book chapters, etc.",
-                        "Working on student projects, case competitions, IPR, etc.",
-                        "Teaching and also assisting courses of Professors, majorly in Operations",
-                        "Mentoring capstones and empirical studies"
+                        "Conducted independent research and published it in international journals",
+                        "Authored books and book chapters",
+                        "Worked on student projects, case competitions and intellectual property (IPR) filings",
+                        "Taught courses and assisted senior faculty with theirs, primarily in Operations",
+                        "Mentored capstone projects and empirical studies"
                 ]
         },
         {
                 "title": "Project Assistant",
-                "organization": "Dept. of Social Welfare, Govt. of Tamilnadu & UNICEF",
+                "organization": "Dept. of Social Welfare, Govt. of Tamil Nadu & UNICEF",
                 "duration": "Jan 2022 - Mar 2022",
                 "description": "Policy research and implementation.",
                 "sector": "Public Sector & Development",
                 "responsibilities": [
-                        "Understood the problems faced by school children in Tamilnadu",
-                        "Prepared frameworks and suggestions that can enhance the education system in the state"
+                        "Studied the challenges faced by schoolchildren in Tamil Nadu",
+                        "Developed frameworks and recommendations to strengthen the state's education system"
                 ]
         },
         {
                 "title": "Training Manager",
-                "organization": "Dept. of Social Defense, Govt. of Tamilnadu",
+                "organization": "Dept. of Social Defense, Govt. of Tamil Nadu",
                 "duration": "Jul 2019 - Aug 2021",
                 "description": "National Action Plan for Drug Demand Reduction.",
                 "sector": "Public Sector & Development",
                 "responsibilities": [
-                        "Worked with more than 20 departments, including Police (Law & Order), Juvenile Justice Board, Child Welfare Committee, Narcotics Control Bureau, Health Department, social workers, Animal Welfare Committee, psychologists, psychiatrists and NGOs, to understand the problems in society",
-                        "Conducted Training-the-Trainer programmes across districts as part of the capacity-building programme",
-                        "Prepared training materials for stakeholders on dealing with substance abuse",
-                        "Responsible for the overall commencement of the programme",
-                        "Conducted field visits to stakeholder sites to understand on-site operations and challenges"
+                        "Engaged with more than 20 departments and stakeholder groups to understand social challenges on the ground, including the Police (Law & Order), Juvenile Justice Board, Child Welfare Committee, Narcotics Control Bureau, Health Department, Animal Welfare Committee, social workers, psychologists, psychiatrists and NGOs",
+                        "Conducted Training-of-Trainers programmes across districts as part of the capacity-building programme",
+                        "Developed training material for stakeholders on addressing substance abuse",
+                        "Oversaw the overall roll-out of the programme",
+                        "Conducted field visits to stakeholder sites to assess on-site operations and challenges"
                 ]
         },
         {
@@ -1280,10 +1280,10 @@ const portfolioData = {
                 "sector": "Industry (IT Services)",
                 "client": "Cummins",
                 "responsibilities": [
-                        "Involved in discussions on the working of demand forecasts, sequencing logic, etc.",
-                        "Handled the i2 sequencer, Bill of Materials, and demand planning",
-                        "Resolving tickets",
-                        "One of the safety SPOCs in the ODC"
+                        "Contributed to discussions on demand forecasting and production-sequencing logic",
+                        "Handled the i2 Sequencer, bills of materials (BOM) and demand planning",
+                        "Resolved support tickets",
+                        "Served as one of the safety single points of contact (SPOCs) for the offshore development centre (ODC)"
                 ]
         },
         {
@@ -1294,8 +1294,8 @@ const portfolioData = {
                 "sector": "Industry (IT Services)",
                 "client": "Blue Cross Blue Shield Association",
                 "responsibilities": [
-                        "Migration of data to a newer system",
-                        "Handling source-code errors, manual testing (unit and integration), and handling tickets"
+                        "Migrated data to a new system",
+                        "Fixed source-code defects, performed manual unit and integration testing, and resolved support tickets"
                 ]
         }
 ],

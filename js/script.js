@@ -1390,6 +1390,7 @@ document.addEventListener('DOMContentLoaded', () => {
             fontFamily: "'Outfit', 'Inter', sans-serif",
             sections: Object.fromEntries(CV_SECTIONS.map(([key]) => [key, true])),
             linksMode: 'both',            // 'urls' | 'qr' | 'both'
+            expDetail: 'full',            // 'full' (with responsibilities) | 'summary'
             selectedPubIndices: (allPublications || []).slice(0, 10).map((_, idx) => idx)
         };
 
@@ -1539,20 +1540,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
             let expHtml = '';
             if (cvConfig.sections.experience && portfolioData.experience && portfolioData.experience.length > 0) {
+                const full = cvConfig.expDetail !== 'summary';
+                const dash = t => String(t || '').replace(' - ', ' – ');
+                // a promotion within one role family (shared `group`) prints as one entry
+                const jobs = [];
+                portfolioData.experience.forEach(e => {
+                    const last = jobs[jobs.length - 1];
+                    if (last && e.group && last[0].group === e.group) last.push(e);
+                    else jobs.push([e]);
+                });
                 expHtml = `
                     <div class="cv-section" style="margin-bottom: ${sectionSpacing}; page-break-inside: auto;">
                         <h2 class="cv-section-title">Work Experience</h2>
-                        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.85rem;">
-                            ${portfolioData.experience.map(exp => `
-                                <li>
-                                    <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 0.92rem; color: #1e293b;">
-                                        <span>${exp.title}</span>
-                                        <span>${exp.duration}</span>
+                        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: ${full ? '0.95rem' : '0.85rem'};">
+                            ${jobs.map(steps => {
+                                const top = steps[0], oldest = steps[steps.length - 1];
+                                const multi = steps.length > 1;
+                                const title = multi ? (top.groupTitle || top.title) : top.title;
+                                const dates = multi ? `${dash(oldest.duration).split(' – ')[0]} – ${dash(top.duration).split(' – ')[1]}` : dash(top.duration);
+                                const progression = multi
+                                    ? `<div style="font-size: 0.78rem; color: #475569; margin-top: 0.1rem;">${[...steps].reverse().map(st => `${st.stepTitle || st.title} (${dash(st.duration)})`).join(' &rarr; ')}</div>`
+                                    : '';
+                                const resp = full && top.responsibilities && top.responsibilities.length
+                                    ? `<ul style="margin: 0.3rem 0 0 0; padding-left: 1.05rem; font-size: 0.8rem; color: #334155; line-height: 1.45; display: flex; flex-direction: column; gap: 0.12rem;">
+                                           ${top.responsibilities.map(r => `<li>${r}</li>`).join('')}
+                                       </ul>`
+                                    : '';
+                                return `
+                                <li class="cv-job">
+                                    <div class="cv-job-head" style="display: flex; justify-content: space-between; gap: 1rem; font-weight: 700; font-size: 0.92rem; color: #1e293b;">
+                                        <span>${title}</span>
+                                        <span style="white-space: nowrap;">${dates}</span>
                                     </div>
-                                    <div style="font-size: 0.85rem; color: #475569; font-weight: 600;">${exp.organization}</div>
-                                    <p style="font-size: 0.82rem; color: #475569; margin: 0.2rem 0 0 0; text-align: justify; line-height: 1.45;">${exp.description}</p>
-                                </li>
-                            `).join('')}
+                                    <div style="font-size: 0.85rem; color: #475569; font-weight: 600;">${top.organization}${top.client ? ` &nbsp;&middot;&nbsp; <span style="font-weight: 500;">Client: ${top.client}</span>` : ''}</div>
+                                    ${progression}
+                                    ${top.description ? `<p style="font-size: 0.82rem; color: #475569; margin: 0.2rem 0 0 0; line-height: 1.45;${full ? ' font-style: italic;' : ''}">${top.description}</p>` : ''}
+                                    ${resp}
+                                </li>`;
+                            }).join('')}
                         </ul>
                     </div>
                 `;
@@ -1717,6 +1742,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                     #cv-content-body .cv-qr svg { width: 100%; height: 100%; display: block; shape-rendering: crispEdges; }
                     #cv-content-body .cv-link-tile { break-inside: avoid; page-break-inside: avoid; }
+                    #cv-content-body .cv-job-head { break-after: avoid; page-break-after: avoid; }
+                    /* a long job entry may run across pages; its bullets stay whole */
+                    #cv-content-body li.cv-job { break-inside: auto !important; page-break-inside: auto !important; }
                     @media print {
                         #cv-content-body {
                             padding: 0 !important;
@@ -1804,6 +1832,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
 
                     <div>
+                        <h4 style="margin:0 0 0.75rem 0;font-size:0.88rem;font-weight:700;color:var(--text-primary);text-transform:uppercase;letter-spacing:0.5px;border-bottom:1px solid var(--border-color);padding-bottom:0.4rem;"><i class="fas fa-briefcase" style="margin-right:0.5rem;color:var(--primary-color);"></i>Work Experience Detail</h4>
+                        <div style="display:flex;flex-direction:column;gap:0.5rem;">
+                            ${[['full', 'With responsibilities'], ['summary', 'Summary only']].map(([val, label]) => `
+                            <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;color:var(--text-secondary);cursor:pointer;font-weight:600;">
+                                <input type="radio" name="cv-exp" value="${val}" ${cvConfig.expDetail === val ? 'checked' : ''} style="cursor:pointer;accent-color:var(--primary-color);"> ${label}
+                            </label>`).join('')}
+                        </div>
+                    </div>
+
+                    <div>
                         <h4 style="margin:0 0 0.75rem 0;font-size:0.88rem;font-weight:700;color:var(--text-primary);text-transform:uppercase;letter-spacing:0.5px;border-bottom:1px solid var(--border-color);padding-bottom:0.4rem;"><i class="fas fa-qrcode" style="margin-right:0.5rem;color:var(--primary-color);"></i>Profile Links As</h4>
                         <div style="display:flex;flex-direction:column;gap:0.5rem;">
                             ${[['both', 'QR codes + URLs'], ['qr', 'QR codes'], ['urls', 'URLs only']].map(([val, label]) => `
@@ -1851,6 +1889,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     updateCVPreview();
                 });
             }
+
+            customizePanel.querySelectorAll('input[name="cv-exp"]').forEach(radio => {
+                radio.addEventListener('change', (e) => {
+                    cvConfig.expDetail = e.target.value;
+                    updateCVPreview();
+                });
+            });
 
             customizePanel.querySelectorAll('input[name="cv-links"]').forEach(radio => {
                 radio.addEventListener('change', (e) => {
