@@ -583,24 +583,102 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // ── Render Experience Timeline (Horizontal Roadmap) ──────────
+    // ── Career: sector chapters, role cards, responsibilities ────
     const expTimeline = document.getElementById('experience-timeline');
     if (expTimeline && portfolioData.experience) {
-        expTimeline.className = 'horizontal-roadmap-container';
-        expTimeline.innerHTML = '';
-        const newestFirstExp = [...portfolioData.experience];
-        newestFirstExp.forEach(exp => {
-            expTimeline.innerHTML += `
-                <div class="roadmap-item">
-                    <div class="roadmap-dot"></div>
-                    <div class="roadmap-date">${exp.duration}</div>
-                    <div class="roadmap-card">
-                        <div class="roadmap-title">${exp.title}</div>
-                        <div class="roadmap-subtitle">${exp.organization}</div>
-                        <div class="roadmap-desc">${exp.description}</div>
-                    </div>
-                </div>`;
+        const SECTORS = {
+            'Academia': { icon: 'fa-graduation-cap', tone: 'blue' },
+            'Public Sector & Development': { icon: 'fa-landmark', tone: 'green' },
+            'Industry (IT Services)': { icon: 'fa-laptop-code', tone: 'yellow' }
+        };
+        const dash = d => String(d || '').replace(' - ', ' – ');
+        const slug = t => 'career-' + t.toLowerCase().replace(/[^a-z]+/g, '-').replace(/-+$/, '');
+
+        // consecutive entries sharing a group (a promotion) become one card
+        const cards = [];
+        portfolioData.experience.forEach(e => {
+            const last = cards[cards.length - 1];
+            if (last && e.group && last.group === e.group) last.steps.push(e);
+            else cards.push({ group: e.group, steps: [e] });
         });
+
+        // sector tiles: roles and year span per sector
+        const sectorInfo = {};
+        portfolioData.experience.forEach(e => {
+            const k = e.sector || 'Other';
+            const info = sectorInfo[k] || (sectorInfo[k] = { roles: 0, from: 9999, to: 0, present: false });
+            info.roles += 1;
+            const yrs = (e.duration.match(/\d{4}/g) || []).map(Number);
+            if (yrs.length) { info.from = Math.min(info.from, ...yrs); info.to = Math.max(info.to, ...yrs); }
+            if (/present/i.test(e.duration)) info.present = true;
+        });
+        const stats = document.getElementById('career-stats');
+        if (stats) {
+            stats.innerHTML = Object.keys(sectorInfo).map(k => {
+                const meta = SECTORS[k] || { icon: 'fa-briefcase', tone: 'blue' };
+                const i = sectorInfo[k];
+                const span = i.present ? `${i.from} – present` : (i.from === i.to ? `${i.from}` : `${i.from} – ${i.to}`);
+                return `
+                    <button type="button" class="career-stat tone-${meta.tone}" data-jump="${slug(k)}">
+                        <span class="career-stat-icon"><i class="fas ${meta.icon}"></i></span>
+                        <span class="career-stat-text">
+                            <span class="career-stat-name">${k}</span>
+                            <span class="career-stat-meta">${i.roles} role${i.roles > 1 ? 's' : ''} &middot; ${span}</span>
+                        </span>
+                    </button>`;
+            }).join('');
+            stats.querySelectorAll('[data-jump]').forEach(b => b.addEventListener('click', () => {
+                const t = document.getElementById(b.dataset.jump);
+                if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }));
+        }
+
+        let html = '';
+        let sector = null;
+        cards.forEach(card => {
+            const top = card.steps[0];
+            const sec = top.sector || 'Other';
+            const meta = SECTORS[sec] || { icon: 'fa-briefcase', tone: 'blue' };
+            if (sec !== sector) {
+                sector = sec;
+                html += `
+                    <div class="career-chapter tone-${meta.tone}" id="${slug(sec)}">
+                        <span class="career-chapter-icon"><i class="fas ${meta.icon}"></i></span>
+                        <span>${sec}</span>
+                    </div>`;
+            }
+            const multi = card.steps.length > 1;
+            const oldest = card.steps[card.steps.length - 1];
+            const dates = multi
+                ? `${dash(oldest.duration).split(' – ')[0]} – ${dash(top.duration).split(' – ')[1]}`
+                : dash(top.duration);
+            const title = multi ? (top.groupTitle || top.title) : top.title;
+            const steps = multi ? `
+                <ol class="career-steps" aria-label="Progression">
+                    ${[...card.steps].reverse().map(st => `
+                        <li><strong>${st.stepTitle || st.title}</strong><span>${dash(st.duration)}</span></li>`).join('')}
+                </ol>` : '';
+            const resp = top.responsibilities || [];
+            html += `
+                <article class="career-card tone-${meta.tone}">
+                    <span class="career-dot" aria-hidden="true"></span>
+                    <header class="career-head">
+                        <div>
+                            <h3 class="career-title">${title}</h3>
+                            <div class="career-org">${top.organization}</div>
+                        </div>
+                        <span class="career-dates">${dates}</span>
+                    </header>
+                    ${top.description ? `<p class="career-summary">${top.description}</p>` : ''}
+                    ${top.client ? `<div class="career-client"><i class="fas fa-handshake"></i> Client: <strong>${top.client}</strong></div>` : ''}
+                    ${steps}
+                    ${resp.length ? `
+                        <h4 class="career-resp-label">Key responsibilities</h4>
+                        <ul class="career-resp">${resp.map(r => `<li>${r}</li>`).join('')}</ul>` : ''}
+                </article>`;
+        });
+        expTimeline.className = 'career-timeline';
+        expTimeline.innerHTML = html;
     }
 
     // ── Render Education Timeline ────────────────────────────────

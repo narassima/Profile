@@ -1321,3 +1321,221 @@ body.theme-editorial.theme-fluent {
     #cv-content-body > div > div:first-child { break-inside: avoid; page-break-inside: avoid; }
     #cv-content-body li { break-inside: avoid; page-break-inside: avoid; }
 }
+
+/* ── 27. Career tab: sector tiles + vertical timeline ───────────────────
+   Three chapters (Academia, Public Sector & Development, Industry) on one
+   rail. Sector colours come from the Google icon palette (blue, green,
+   yellow); cards keep the site's square edges and hairline outlines. */
+.theme-fluent.theme-editorial .tone-blue   { --tone: #1A73E8; --tone-tint: #E8F0FE; --tone-ink: #1967D2; }
+.theme-fluent.theme-editorial .tone-green  { --tone: #1E8E3E; --tone-tint: #E6F4EA; --tone-ink: #137333; }
+.theme-fluent.theme-editorial .tone-yellow { --tone: #F9AB00; --tone-tint: #FEF7E0; --tone-ink: #B06000; }
+
+.theme-fluent.theme-editorial .career-lede {
+    max-width: 760px;
+    margin: -0.5rem auto 1.75rem;
+    text-align: center;
+    color: var(--fl-text-2);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+.theme-fluent.theme-editorial .career-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+    max-width: 1000px;
+    margin: 0 auto 2.25rem;
+}
+.theme-fluent.theme-editorial .career-stat:is(*, #z#z) {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    width: 100%;
+    padding: 1rem 1.15rem;
+    text-align: left;
+    cursor: pointer;
+    font: inherit;
+    background: #FFFFFF !important;
+    border: 1px solid var(--fl-stroke) !important;
+    border-top: 3px solid var(--tone) !important;
+    box-shadow: none !important;
+    transition: transform 240ms cubic-bezier(0.1, 0.9, 0.2, 1), box-shadow 240ms cubic-bezier(0.1, 0.9, 0.2, 1), border-color 150ms linear !important;
+}
+.theme-fluent.theme-editorial .career-stat:is(:hover, :focus-visible):is(*, #z#z) {
+    transform: translateY(-2px) !important;
+    box-shadow: var(--fl-lift-shadow) !important;
+}
+.theme-fluent.theme-editorial .career-stat-icon {
+    width: 44px; height: 44px; flex: none;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: var(--tone); color: #FFFFFF; font-size: 1.15rem;
+}
+.theme-fluent.theme-editorial .career-stat-icon i { color: #FFFFFF !important; }
+.theme-fluent.theme-editorial .career-stat-text { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; }
+.theme-fluent.theme-editorial .career-stat-name { font-weight: 600; font-size: 0.98rem; color: var(--fl-text-1); }
+.theme-fluent.theme-editorial .career-stat-meta { font-size: 0.85rem; color: var(--fl-text-3); }
+
+/* rail: 2px line at x = 13px; dots and chapter icons centre on x = 14px */
+.theme-fluent.theme-editorial .career-timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding-left: 40px;
+}
+.theme-fluent.theme-editorial .career-timeline::before {
+    content: "";
+    position: absolute;
+    left: 13px; top: 14px; bottom: 14px;
+    width: 2px;
+    background: var(--fl-stroke);
+}
+.theme-fluent.theme-editorial .career-chapter {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin: 2rem 0 1rem;
+    min-height: 28px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--tone-ink);
+    scroll-margin-top: 96px;
+}
+.theme-fluent.theme-editorial .career-chapter:first-child { margin-top: 0; }
+.theme-fluent.theme-editorial .career-chapter-icon {
+    position: absolute;
+    left: -40px; top: 0;
+    width: 28px; height: 28px;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: var(--tone); color: #FFFFFF; font-size: 0.85rem;
+    box-shadow: 0 0 0 4px var(--fl-canvas);
+}
+.theme-fluent.theme-editorial .career-chapter-icon i { color: #FFFFFF !important; }
+
+.theme-fluent.theme-editorial .career-card {
+    position: relative;
+    margin-bottom: 1rem;
+    padding: 1.25rem 1.5rem 1.35rem;
+    background: #FFFFFF;
+    border: 1px solid var(--fl-stroke);
+    border-left: 3px solid var(--tone);
+    transition: transform 240ms cubic-bezier(0.1, 0.9, 0.2, 1), box-shadow 240ms cubic-bezier(0.1, 0.9, 0.2, 1), border-color 150ms linear;
+}
+.theme-fluent.theme-editorial .career-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--fl-lift-shadow);
+    border-top-color: var(--fl-tint-3);
+    border-right-color: var(--fl-tint-3);
+    border-bottom-color: var(--fl-tint-3);
+}
+.theme-fluent.theme-editorial .career-dot {
+    position: absolute;
+    left: -35px;           /* 3px border + 40px gutter, centred on the rail */
+    top: 1.55rem;
+    width: 12px; height: 12px;
+    background: #FFFFFF;
+    border: 3px solid var(--tone);
+}
+.theme-fluent.theme-editorial .career-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.5rem 1rem;
+}
+.theme-fluent.theme-editorial .career-title {
+    margin: 0;
+    font-family: var(--fl-font-display) !important;
+    font-size: 1.15rem !important;
+    font-weight: 600 !important;
+    color: var(--fl-text-1) !important;
+}
+.theme-fluent.theme-editorial .career-org { margin-top: 0.15rem; font-size: 0.95rem; font-weight: 500; color: var(--tone-ink); }
+.theme-fluent.theme-editorial .career-dates {
+    flex: none;
+    padding: 0.25rem 0.65rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    white-space: nowrap;
+    color: var(--tone-ink);
+    background: var(--tone-tint);
+}
+.theme-fluent.theme-editorial .career-summary { margin: 0.6rem 0 0; font-size: 0.93rem; color: var(--fl-text-2); }
+.theme-fluent.theme-editorial .career-client {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    margin-top: 0.7rem;
+    padding: 0.22rem 0.6rem;
+    font-size: 0.84rem;
+    color: var(--fl-text-2);
+    border: 1px solid var(--fl-stroke);
+}
+.theme-fluent.theme-editorial .career-client i { color: var(--tone-ink) !important; }
+.theme-fluent.theme-editorial .career-client strong { color: var(--fl-text-1); font-weight: 600; }
+.theme-fluent.theme-editorial .career-steps {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0.85rem 0 0;
+    padding: 0;
+}
+.theme-fluent.theme-editorial .career-steps li {
+    display: inline-flex; align-items: baseline; gap: 0.5rem;
+    padding: 0.35rem 0.7rem;
+    font-size: 0.86rem;
+    border: 1px solid var(--fl-stroke);
+    background: var(--fl-surface-2);
+}
+.theme-fluent.theme-editorial .career-steps li strong { color: var(--fl-text-1); font-weight: 600; }
+.theme-fluent.theme-editorial .career-steps li span { color: var(--fl-text-3); font-size: 0.8rem; }
+.theme-fluent.theme-editorial .career-steps li + li::before {
+    content: "\2192";
+    margin: 0 0.4rem 0 -1.25rem;
+    color: var(--tone-ink);
+    font-weight: 700;
+}
+.theme-fluent.theme-editorial .career-steps li + li { margin-left: 0.85rem; }
+.theme-fluent.theme-editorial .career-resp-label {
+    margin: 1.1rem 0 0.55rem;
+    font-size: 0.72rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--fl-text-3) !important;
+}
+.theme-fluent.theme-editorial .career-resp {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 0.5rem 1.75rem;
+}
+.theme-fluent.theme-editorial .career-resp li {
+    position: relative;
+    padding-left: 1.15rem;
+    font-size: 0.93rem;
+    line-height: 1.55;
+    color: var(--fl-text-1);
+    text-align: left;
+}
+.theme-fluent.theme-editorial .career-resp li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0.6em;
+    width: 6px; height: 6px;
+    background: var(--tone);
+}
+@media (max-width: 640px) {
+    .theme-fluent.theme-editorial .career-timeline { padding-left: 34px; }
+    .theme-fluent.theme-editorial .career-timeline::before { left: 10px; }
+    .theme-fluent.theme-editorial .career-chapter-icon { left: -35px; width: 24px; height: 24px; font-size: 0.75rem; }   /* centre 11px = rail */
+    .theme-fluent.theme-editorial .career-dot { left: -31px; width: 10px; height: 10px; }   /* 3px border + 34px gutter */
+    .theme-fluent.theme-editorial .career-card { padding: 1rem 1.1rem 1.1rem; }
+    .theme-fluent.theme-editorial .career-resp { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .theme-fluent.theme-editorial :is(.career-card, .career-stat):hover:is(*, #z#z) { transform: none !important; }
+}

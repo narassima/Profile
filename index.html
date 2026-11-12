@@ -40,7 +40,7 @@
     <!-- Redesign layer (loaded last; remove this line to revert) -->
     <link rel="stylesheet" href="css/redesign.css?v=2.4.5">
     <!-- Fluent layer: Windows 11 / Microsoft Fluent 2 look (remove this line, or the theme-fluent body class, to revert) -->
-    <link rel="stylesheet" href="css/fluent.css?v=1.6.1">
+    <link rel="stylesheet" href="css/fluent.css?v=1.6.2">
     <link rel="stylesheet" href="css/fluent-icons.css?v=1.0.0">
     <meta name="theme-color" content="#0078D4">
 
@@ -1944,14 +1944,15 @@
                 <div class="section-underline"></div>
             </div>
 
-            <div class="glass-card content-card" style="margin-bottom: 2rem; padding: 0 0 1.5rem 0;">
-                <div class="card-header" style="padding: 2rem 2rem 1rem; margin-bottom: 0;">
-                    <i class="fas fa-briefcase"></i>
-                    <h3>Work Experience</h3>
-                </div>
-                <div id="experience-timeline">
-                    <!-- Populated by JS -->
-                </div>
+            <p class="career-lede">Roles across industry, public-sector programmes and academia, with the responsibilities behind each. Most recent first.</p>
+
+            <!-- one tile per sector; click to jump to that chapter -->
+            <div class="career-stats" id="career-stats">
+                <!-- Populated by JS -->
+            </div>
+
+            <div id="experience-timeline" class="career-timeline">
+                <!-- Populated by JS -->
             </div>
         </section>
 
@@ -2261,7 +2262,7 @@
         </div>
     </div>
 
-    <script src="js/data.js?v=2.4.2"></script>
-    <script src="js/script.js?v=2.5.4"></script>
+    <script src="js/data.js?v=2.4.3"></script>
+    <script src="js/script.js?v=2.5.5"></script>
 </body>
 </html>

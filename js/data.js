@@ -1196,43 +1196,107 @@ const portfolioData = {
                 "title": "Assistant Professor",
                 "organization": "Great Lakes Institute of Management",
                 "duration": "Dec 2023 - Present",
-                "description": "Teaching, research, and institutional building."
+                "description": "Teaching, research, and institutional building.",
+                "sector": "Academia",
+                "responsibilities": [
+                        "Teaching courses, conducting research, and working on institution-building activities",
+                        "Handling Karma Yoga, Sportscom, and Lattitude",
+                        "Working with students on case competitions, empirical studies, capstones, hackathons, etc.",
+                        "Conducting workshops and seminars on a need basis",
+                        "Mentoring students for various requirements for career building and overall development",
+                        "Facilitating the commencement of Corporate Learning and Development workshops for industries",
+                        "Conducting sessions and preparing training materials for the placement team",
+                        "Guiding doctoral candidates outside the institute",
+                        "Participating in and chairing conferences",
+                        "Editorial and reviewer assignments for various journals",
+                        "Involved in various meetings at the institution",
+                        "Conducting interviews as a part of the student admission process"
+                ]
         },
         {
                 "title": "Junior Faculty (Senior Research Associate)",
                 "organization": "Great Lakes Institute of Management",
                 "duration": "Apr 2023 - Nov 2023",
-                "description": "Research and academic operations."
+                "description": "Research and academic operations.",
+                "sector": "Academia",
+                "group": "glim-junior-faculty",
+                "groupTitle": "Junior Faculty",
+                "stepTitle": "Senior Research Associate",
+                "responsibilities": [
+                        "Conducting research in any area of interest and publishing it in international journals",
+                        "Authoring books, book chapters, etc.",
+                        "Working on student projects, case competitions, IPR, etc.",
+                        "Teaching and also assisting courses of Professors, majorly in Operations",
+                        "Mentoring capstones and empirical studies"
+                ]
         },
         {
                 "title": "Junior Faculty (Research Associate)",
                 "organization": "Great Lakes Institute of Management",
                 "duration": "May 2022 - Mar 2023",
-                "description": "Research support and academic coordination."
+                "description": "Research support and academic coordination.",
+                "sector": "Academia",
+                "group": "glim-junior-faculty",
+                "groupTitle": "Junior Faculty",
+                "stepTitle": "Research Associate",
+                "responsibilities": [
+                        "Conducting research in any area of interest and publishing it in international journals",
+                        "Authoring books, book chapters, etc.",
+                        "Working on student projects, case competitions, IPR, etc.",
+                        "Teaching and also assisting courses of Professors, majorly in Operations",
+                        "Mentoring capstones and empirical studies"
+                ]
         },
         {
                 "title": "Project Assistant",
                 "organization": "Dept. of Social Welfare, Govt. of Tamilnadu & UNICEF",
                 "duration": "Jan 2022 - Mar 2022",
-                "description": "Policy research and implementation."
+                "description": "Policy research and implementation.",
+                "sector": "Public Sector & Development",
+                "responsibilities": [
+                        "Understood the problems faced by school children in Tamilnadu",
+                        "Prepared frameworks and suggestions that can enhance the education system in the state"
+                ]
         },
         {
                 "title": "Training Manager",
                 "organization": "Dept. of Social Defense, Govt. of Tamilnadu",
                 "duration": "Jul 2019 - Aug 2021",
-                "description": "National Action Plan for Drug Demand Reduction."
+                "description": "National Action Plan for Drug Demand Reduction.",
+                "sector": "Public Sector & Development",
+                "responsibilities": [
+                        "Worked with more than 20 departments, including Police (Law & Order), Juvenile Justice Board, Child Welfare Committee, Narcotics Control Bureau, Health Department, social workers, Animal Welfare Committee, psychologists, psychiatrists and NGOs, to understand the problems in society",
+                        "Conducted Training-the-Trainer programmes across districts as part of the capacity-building programme",
+                        "Prepared training materials for stakeholders on dealing with substance abuse",
+                        "Responsible for the overall commencement of the programme",
+                        "Conducted field visits to stakeholder sites to understand on-site operations and challenges"
+                ]
         },
         {
                 "title": "Assistant System Engineer",
                 "organization": "Tata Consultancy Services Ltd.",
                 "duration": "Sep 2017 - Feb 2019",
-                "description": "Software engineering and implementation."
+                "description": "Software engineering and implementation.",
+                "sector": "Industry (IT Services)",
+                "client": "Cummins",
+                "responsibilities": [
+                        "Involved in discussions on the working of demand forecasts, sequencing logic, etc.",
+                        "Handled the i2 sequencer, Bill of Materials, and demand planning",
+                        "Resolving tickets",
+                        "One of the safety SPOCs in the ODC"
+                ]
         },
         {
                 "title": "Software Engineer ILP",
                 "organization": "UST Global, Trivandrum",
                 "duration": "Jan 2015 - Jun 2015",
-                "description": "Software engineering and development."
+                "description": "Software engineering and development.",
+                "sector": "Industry (IT Services)",
+                "client": "Blue Cross Blue Shield Association",
+                "responsibilities": [
+                        "Migration of data to a newer system",
+                        "Handling source-code errors, manual testing (unit and integration), and handling tickets"
+                ]
         }
 ],
     education: [
