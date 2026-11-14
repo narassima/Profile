@@ -139,6 +139,22 @@ const portfolioData = {
     publications: {
         "journals": [
                 {
+                        "title": "Beyond the Greenium: A Behavioural Approach to Green Bond Investment Intentions in an Emerging Market",
+                        "authors": "Elangovan, A., Babu, M., Narassima, M. S., & McDermott, O.",
+                        "year": "2026",
+                        "journal": "Business Strategy and the Environment",
+                        "metrics": "Scopus Q1; ABDC – A",
+                        "url": ""
+                },
+                {
+                        "title": "Positioning, Targeting and Channel Strategy for Organic Food Purchase Intention: Evidence from India",
+                        "authors": "Soundararajan, R., Babu, M., Rajendran, B., Elangovan, A., & Narassima, M. S.",
+                        "year": "2026",
+                        "journal": "Strategic Business Research, 100328",
+                        "metrics": "",
+                        "url": "https://doi.org/10.1016/j.sbr.2026.100328"
+                },
+                {
                         "title": "Sequential and Multi-Pass Machining Effects on Surface Integrity and Functional Performance: A Critical Evidence Synthesis",
                         "authors": "Marimuthu, P., Seshadri, N. M., Petru, J., & Mohanavelu, T.",
                         "year": "2026",
